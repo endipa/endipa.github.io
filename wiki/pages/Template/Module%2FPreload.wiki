@@ -26,7 +26,7 @@ A statement used only in this proof.
 {{Proof start|id=proof-clm-name|title=Proof of the claim}}
 The proof of the claim.
 {{Proof end}}
-'''Step 2.''' The second step, using a lemma of the [[Toolkit]].
+'''Step 2.''' The second step, using a lemma of the [[Standard analysis|toolkit]].
 
 ''Sources.'' This proof follows …
 {{Proof end}}

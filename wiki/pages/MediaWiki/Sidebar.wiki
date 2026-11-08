@@ -11,9 +11,14 @@
 ** Stochastic methods|Stochastic methods
 ** Hörmander theory|Hörmander theory
 * Extensions and recent advances
-** Extensions and recent advances|Extensions and recent advances
+** State of the art|State of the art
+** Related results|Related results
+** Open problems|Open problems
+** Raw data|Raw data
 * Toolkit
-** Toolkit|Toolkit
+** Notation|Notation
+** Standard analysis|Standard analysis
+** Enhanced-dissipation tools|Enhanced-dissipation tools
 * Numerical methods
 ** Numerical methods|Numerical methods
 * Lean formalization

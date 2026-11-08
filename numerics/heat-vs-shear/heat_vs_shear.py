@@ -17,8 +17,8 @@ Checks (written to heat-vs-shear-check.txt and heat-vs-shear-check.png):
   * the run is repeated with twice the Fourier modes and half the time step, and the norms are compared;
   * energy balance: ||g(t)||^2 + 2 nu int_0^t ||(d_y g, g)||^2 ds = ||g(0)||^2 (means over y).
 
-The video lasts --duration seconds; time runs slowly at first, where the mixing happens, and faster
-later: frame s in [0, 1] shows t = T (a s + (1 - a) s^2), a = --slow; the last frame is held --hold seconds.
+The video lasts --duration seconds; frame s in [0, 1] shows t = T (a s + (1 - a) s^2), a = --slow (default 1:
+time runs uniformly; a < 1 slows down the start); the last frame is held --hold seconds.
 
 Outputs, in --out: heat-vs-shear.mp4 (video), heat-vs-shear-poster.png (one frame of it),
 heat-vs-shear-check.png and heat-vs-shear-check.txt. Needs NumPy, Matplotlib and ffmpeg
@@ -117,12 +117,12 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--out", default=".", help="folder for the video and the figures")
     ap.add_argument("--nu", type=float, default=1e-3)
-    ap.add_argument("--T", type=float, default=300.0)
+    ap.add_argument("--T", type=float, default=100.0)
     ap.add_argument("--N", type=int, default=512, help="Fourier modes in y")
     ap.add_argument("--dt", type=float, default=0.01)
     ap.add_argument("--duration", type=float, default=20.0, help="length of the video in seconds")
     ap.add_argument("--fps", type=int, default=24)
-    ap.add_argument("--slow", type=float, default=0.2, help="speed of time at the start, relative to the mean")
+    ap.add_argument("--slow", type=float, default=1.0, help="speed of time at the start, relative to the mean (1: uniform)")
     ap.add_argument("--hold", type=float, default=1.5, help="seconds the last frame is held")
     ap.add_argument("--nx", type=int, default=256, help="pixels per side of each panel")
     a = ap.parse_args()

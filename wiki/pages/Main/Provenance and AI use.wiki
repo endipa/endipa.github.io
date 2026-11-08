@@ -5,7 +5,7 @@ This page records where each piece of the wiki comes from and who has checked wh
 
 == Rules ==
 * Text drafted by Claude (AI) carries {{Demo}} until a member of the page team replaces or approves it.
-* Arguments produced by AI systems appear only as verbatim quotations, with source and date, or as entries labelled {{Raw}} on [[Extensions and recent advances]].
+* Arguments produced by AI systems appear only as verbatim quotations, with source and date, or as entries labelled {{Raw}} on [[Raw data]].
 * The first line of each page records its team, its status and the checks made. A machine check is recorded as such and never counts as a human check.
 * Statements attributed to a paper give its theorem number; synthesis proofs say which papers they follow.
 * Every accepted proposal is linked, in the edit summary, to the Zulip topic where it was discussed.

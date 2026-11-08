@@ -1,2 +1,2 @@
 <span class="badge-raw">raw · unchecked</span><noinclude>
-Label for material that is neither posted nor checked by a human: an AI-generated proof, a numerical observation, a sketch (see [[Extensions and recent advances]]).</noinclude>
+Label for material that is neither posted nor checked by a human: an AI-generated proof, a numerical observation, a sketch (see [[Raw data]]).</noinclude>

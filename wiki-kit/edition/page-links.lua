@@ -17,29 +17,23 @@
 --     rebuilt from it by a script and never edited by hand (wiki-note, from edition.json, is added
 --     in brackets when the link goes to the real wiki, e.g. "members" for a wiki by invitation),
 --   * kit v2.1: a "TeX source" link that downloads the page's TeX source (tex-source in the front
---     matter), a "PDF" link to the PDF compiled from it (pdf-source), and an "Open in Overleaf" link that opens it as a new Overleaf project (the script
---     below sends the file's text; without it, Overleaf fetches the file, which needs a public site),
+--     matter), a "PDF" link to the PDF compiled from it (pdf-source), and, on the Overview only, "PDF of the whole wiki" and "Open the whole wiki in Overleaf": a new
+--     project with whole-wiki.tex as main document and every page as a file (Overleaf fetches tex/all-pages.zip:
+--     public site only),
 -- and a "Propose a text on Zulip" link at the end of every placeholder (pages with a Zulip topic).
 
 local zulip, related, wiki, tex, pdf, wiki_note, wiki_real = nil, nil, nil, nil, nil, nil, false
+local book_pdf, book_zip = nil, nil
 
 local OVERLEAF_SCRIPT = [=[
 <script>
 (function () {
+  // Open the whole wiki in Overleaf: one project with whole-wiki.tex (main document) and the TeX file of every page
+  // (tex/all-pages.zip). Overleaf downloads the zip itself, so this works on the public site only.
   document.querySelectorAll('a.overleaf-link').forEach(function (a) {
-    var tex = new URL(a.getAttribute('data-tex'), window.location.href).href, text = null;
-    a.href = 'https://www.overleaf.com/docs?engine=pdflatex&snip_uri=' + encodeURIComponent(tex);
-    fetch(tex).then(function (r) { return r.ok ? r.text() : null; }).then(function (t) { text = t; }).catch(function () {});
-    a.addEventListener('click', function (e) {
-      if (!text) return;
-      e.preventDefault();
-      var f = document.createElement('form');
-      f.method = 'post'; f.action = 'https://www.overleaf.com/docs'; f.target = '_blank';
-      [['snip', text], ['engine', 'pdflatex']].forEach(function (p) {
-        var i = document.createElement('input'); i.type = 'hidden'; i.name = p[0]; i.value = p[1]; f.appendChild(i);
-      });
-      document.body.appendChild(f); f.submit(); f.remove();
-    });
+    var zip = new URL(a.getAttribute('data-zip'), window.location.href).href;
+    a.href = 'https://www.overleaf.com/docs?engine=pdflatex&main_document=' + encodeURIComponent(a.getAttribute('data-main'))
+      + '&snip_uri=' + encodeURIComponent(zip);
   });
 })();
 </script>
@@ -55,6 +49,8 @@ local function read_meta(m)
   if m.zulip then zulip = pandoc.utils.stringify(m.zulip) end
   if m["zulip-related"] then related = m["zulip-related"] end
   if m["tex-source"] then tex = pandoc.utils.stringify(m["tex-source"]) end   -- kit v2.1
+  if m["book-pdf"] then book_pdf = pandoc.utils.stringify(m["book-pdf"]) end
+  if m["book-zip"] then book_zip = pandoc.utils.stringify(m["book-zip"]) end
   if m["pdf-source"] then pdf = pandoc.utils.stringify(m["pdf-source"]) end
   if m["wiki-note"] then wiki_note = pandoc.utils.stringify(m["wiki-note"]) end
   if m["wiki-url"] then
@@ -104,11 +100,20 @@ local function links_row()
       table.insert(inlines, pandoc.Link({iconp, pandoc.Space(), pandoc.Str("PDF")}, pdf, "",
                                         pandoc.Attr("", {"edit-link", "pdf-link"}, {{"download", pdf:match("([^/]+)$")}})))
     end
-    local icon2 = pandoc.RawInline("html", '<i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>')
-    table.insert(inlines, pandoc.Space())
-    table.insert(inlines, pandoc.Link({icon2, pandoc.Space(), pandoc.Str("Open in Overleaf")}, tex, "",
-                                      pandoc.Attr("", {"edit-link", "overleaf-link"},
-                                                  {{"data-tex", tex}, {"target", "_blank"}, {"rel", "noopener"}})))
+    if book_pdf then
+      local iconb = pandoc.RawInline("html", '<i class="bi bi-book" aria-hidden="true"></i>')
+      table.insert(inlines, pandoc.Space())
+      table.insert(inlines, pandoc.Link({iconb, pandoc.Space(), pandoc.Str("PDF of the whole wiki")}, book_pdf, "",
+                                        pandoc.Attr("", {"edit-link", "pdf-link"}, {{"download", book_pdf:match("([^/]+)$")}})))
+    end
+    if book_zip then
+      local icon2 = pandoc.RawInline("html", '<i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>')
+      table.insert(inlines, pandoc.Space())
+      table.insert(inlines, pandoc.Link({icon2, pandoc.Space(), pandoc.Str("Open the whole wiki in Overleaf")}, book_zip, "",
+                                        pandoc.Attr("", {"edit-link", "overleaf-link"},
+                                                    {{"data-zip", book_zip}, {"data-main", "whole-wiki.tex"},
+                                                     {"target", "_blank"}, {"rel", "noopener"}})))
+    end
   end
   if related then
     table.insert(inlines, pandoc.Space())
@@ -132,7 +137,7 @@ local function div(el)
 end
 
 local function add_script(doc)
-  if tex then doc.blocks:insert(pandoc.RawBlock("html", OVERLEAF_SCRIPT)) end
+  if book_zip then doc.blocks:insert(pandoc.RawBlock("html", OVERLEAF_SCRIPT)) end
   return doc
 end
 

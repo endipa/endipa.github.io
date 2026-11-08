@@ -1,0 +1,14 @@
+<div class="mod-meta">Page team: to be named · Status: skeleton</div>
+{{Discuss|channel=advances}}
+
+{{Placeholder start}}The strongest results available to date, in one table.{{Placeholder end}}
+{| class="wikitable"
+! Flow class !! Domain !! Dissipation time !! Sharp !! Source !! Label
+|-
+| — || — || — || — || — || —
+|}
+
+
+== References ==
+<!-- refs-begin: -->
+<!-- refs-end -->

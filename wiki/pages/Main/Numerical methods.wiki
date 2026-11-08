@@ -15,11 +15,11 @@ Every computed picture and video of this wiki has a record on this page: what wa
 |-
 | Equation || <math display="inline">\partial_t f+\sin y\,\partial_x f=\nu\Delta f</math> on <math display="inline">[0,2\pi)^2</math>, periodic, and the heat equation <math display="inline">\partial_t f=\nu\Delta f</math>; same datum <math display="inline">f_0=\cos x</math>
 |-
-| Parameters || <math display="inline">\nu=10^{-3}</math>, times <math display="inline">0\le t\le 300</math>; video of 20 s at 24 frames per second, time running slower at the start (frame <math display="inline">s\in[0,1]</math> shows <math display="inline">t=300\,(0.2s+0.8s^2)</math>), last frame held 1.5 s
+| Parameters || <math display="inline">\nu=10^{-3}</math>, times <math display="inline">0\le t\le 100</math>; video of 20 s at 24 frames per second, time running uniformly (5 time units per second), last frame held 1.5 s
 |-
 | Method || one Fourier mode in <math display="inline">x</math>: <math display="inline">f=\operatorname{Re}(g(t,y)e^{ix})</math> with <math display="inline">\partial_t g=-i\sin y\,g+\nu(\partial_y^2-1)g</math>; 512 Fourier modes in <math display="inline">y</math>; Strang splitting with time step 0.01, transport and diffusion steps solved exactly; heat equation solved exactly
 |-
-| Checks || with 1024 modes and time step 0.005 the norms agree to a relative <math display="inline">6\cdot10^{-8}</math>; the energy balance <math display="inline">\|g(t)\|^2+2\nu\int_0^t\|(\partial_y g,g)\|^2ds=\|g(0)\|^2</math> holds to <math display="inline">3\cdot10^{-7}</math>; late-time decay rate of the norm 0.0167, against <math display="inline">\nu^{1/2}\approx0.0316</math>
+| Checks || with 1024 modes and time step 0.005 the norms agree to a relative <math display="inline">6\cdot10^{-8}</math>; the energy balance <math display="inline">\|g(t)\|^2+2\nu\int_0^t\|(\partial_y g,g)\|^2ds=\|g(0)\|^2</math> holds to <math display="inline">3\cdot10^{-7}</math>; decay rate of the norm on <math display="inline">[50,100]</math>: 0.0167, against <math display="inline">\nu^{1/2}\approx0.0316</math>
 |-
 | Code || <code>numerics/heat-vs-shear/heat_vs_shear.py</code> in the project folder (Python 3, NumPy, Matplotlib, ffmpeg); <code>python3 heat_vs_shear.py --out ../../wiki/media</code>, about a minute
 |-
@@ -47,8 +47,8 @@ Checks (written to heat-vs-shear-check.txt and heat-vs-shear-check.png):
   * the run is repeated with twice the Fourier modes and half the time step, and the norms are compared;
   * energy balance: ||g(t)||^2 + 2 nu int_0^t ||(d_y g, g)||^2 ds = ||g(0)||^2 (means over y).
 
-The video lasts --duration seconds; time runs slowly at first, where the mixing happens, and faster
-later: frame s in [0, 1] shows t = T (a s + (1 - a) s^2), a = --slow; the last frame is held --hold seconds.
+The video lasts --duration seconds; frame s in [0, 1] shows t = T (a s + (1 - a) s^2), a = --slow (default 1:
+time runs uniformly; a < 1 slows down the start); the last frame is held --hold seconds.
 
 Outputs, in --out: heat-vs-shear.mp4 (video), heat-vs-shear-poster.png (one frame of it),
 heat-vs-shear-check.png and heat-vs-shear-check.txt. Needs NumPy, Matplotlib and ffmpeg
@@ -147,12 +147,12 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--out", default=".", help="folder for the video and the figures")
     ap.add_argument("--nu", type=float, default=1e-3)
-    ap.add_argument("--T", type=float, default=300.0)
+    ap.add_argument("--T", type=float, default=100.0)
     ap.add_argument("--N", type=int, default=512, help="Fourier modes in y")
     ap.add_argument("--dt", type=float, default=0.01)
     ap.add_argument("--duration", type=float, default=20.0, help="length of the video in seconds")
     ap.add_argument("--fps", type=int, default=24)
-    ap.add_argument("--slow", type=float, default=0.2, help="speed of time at the start, relative to the mean")
+    ap.add_argument("--slow", type=float, default=1.0, help="speed of time at the start, relative to the mean (1: uniform)")
     ap.add_argument("--hold", type=float, default=1.5, help="seconds the last frame is held")
     ap.add_argument("--nx", type=int, default=256, help="pixels per side of each panel")
     a = ap.parse_args()

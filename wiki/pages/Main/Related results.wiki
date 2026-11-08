@@ -1,0 +1,16 @@
+<div class="mod-meta">Page team: to be named · Status: skeleton</div>
+{{Discuss|channel=advances}}
+
+Results related to enhanced dissipation and not yet part of the established theory. Each entry gives the statement, a label ({{Published}}, {{Preprint}} or {{Raw}}), the date it was added, its source, and where it would go in the established theory.
+
+== Entries ==
+{{Placeholder start}}First entries.{{Placeholder end}}
+
+== How an entry moves ==
+# An entry keeps its label until its status changes: raw data checked and posted becomes {{Preprint}}, a refereed result {{Published}}.
+# The editorial board moves established results into the part ''Techniques and general results'', or into a new page, with a synthesis proof.
+
+
+== References ==
+<!-- refs-begin: -->
+<!-- refs-end -->

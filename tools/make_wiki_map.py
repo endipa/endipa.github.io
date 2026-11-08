@@ -20,9 +20,9 @@ ROWS = [
     [("Motivation and history", "why the problem matters; its history, technique by technique", ["Motivation and history"], 1)],
     [("Techniques through examples", None, ["Couette flow", "Poiseuille flow"], 9),
      ("Techniques and general results", None, ["Spectral methods", "Hypocoercivity", "Stochastic methods", "Hörmander theory"], 11)],
-    [("Extensions and recent advances", "state of the art · recent results · raw material · open problems", ["Extensions and recent advances"], 1)],
-    [("Toolkit", "classical lemmas", ["Toolkit"], 1),
-     ("Numerical methods", "the code of the figures", ["Numerical methods"], 1),
+    [("Extensions and recent advances", None, ["State of the art", "Related results", "Open problems", "Raw data"], 1)],
+    [("Toolkit", None, ["Notation", "Standard analysis", "Enhanced-dissipation tools"], 1)],
+    [("Numerical methods", "the code of the figures", ["Numerical methods"], 1),
      ("Lean formalization", "certificates", ["Lean formalization"], 1)],
 ]
 W, PAD, GAP, ROW_GAP = 600, 16, 12, 12
@@ -46,7 +46,7 @@ def box(x, y, w, h, part, desc, pages, light):
     if len(pages) == 1 and pages[0] == part:   # the whole box opens the page
         sub = f'<text x="{x + 14:g}" y="{y + 43:g}" font-size="12" fill="{MUTED}">{escape(desc or "")}</text>'
         return f'<a href="{href(part)}" class="map-box"><title>{escape(part)}</title>{rect}{title}{sub}</a>'
-    out, ly, cols = [rect, title], y + 45, 1 if len(pages) <= 2 else 2
+    out, ly, cols = [rect, title], y + 45, 1 if len(pages) <= 2 else (3 if len(pages) == 3 else 2)
     for k in range(0, len(pages), cols):
         lx = x + 14
         for p in pages[k:k + cols]:
@@ -63,10 +63,10 @@ def main():
     for r, row in enumerate(ROWS):
         free = W - 2 * PAD - (len(row) - 1) * GAP
         total = sum(b[3] for b in row)
-        lines = max(0 if (len(pages) == 1 and pages[0] == part) else (len(pages) if len(pages) <= 2 else (len(pages) + 1) // 2)
+        lines = max(0 if (len(pages) == 1 and pages[0] == part) else (len(pages) if len(pages) <= 2 else 1 if len(pages) == 3 else (len(pages) + 1) // 2)
                     for part, _, pages, _ in row)
         h = 56 if lines == 0 else 36 + 20 * lines
-        light = r == len(ROWS) - 1
+        light = r >= len(ROWS) - 2
         x = PAD
         for part, desc, pages, weight in row:
             w = free * weight / total

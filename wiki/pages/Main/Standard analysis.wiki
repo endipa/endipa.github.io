@@ -1,0 +1,15 @@
+<div class="mod-meta">Page team: to be named · Status: skeleton</div>
+{{Discuss|channel=toolkit}}
+
+Classical facts of analysis used by the proofs. A statement comes to the Toolkit when several proofs use it, or when it holds in more generality than one result; a step used by one proof only is a claim inside that proof. Each statement is given once, with its proof or a reference, and the proofs elsewhere link to it.
+
+== Inequalities ==
+{{Placeholder start}}Poincaré and interpolation inequalities, and the other inequalities the proofs use.{{Placeholder end}}
+
+== Functional analysis ==
+{{Placeholder start}}Semigroups, spectral theory, and the other facts the proofs use.{{Placeholder end}}
+
+
+== References ==
+<!-- refs-begin: -->
+<!-- refs-end -->

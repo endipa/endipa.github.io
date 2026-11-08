@@ -1,0 +1,891 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+% The whole wiki "Enhanced dissipation for passive scalars" in one document, generated on 8 November 2026: a section per page, in the order of the menu.
+% It compiles as it is with pdflatex; typeset twice. The other .tex files of the project are the pages, one
+% file each: a proposal is made on the file of its page (see "How to contribute").
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx,tabularx,listings}
+\usepackage[round]{natbib}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{2em}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem*{claim}{Claim}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+%% The commands of the wiki. This preamble is the same for every page: do not change it, and do not
+%% define commands of your own (the wiki has none).
+\makeatletter
+% after a statement: \begin{idea}, \begin{architecture}, \begin{note}[Title] (and \begin{proof}[Title])
+\newcommand{\ed@runin}[1]{\par\topsep6\p@\@plus6\p@\relax\trivlist\item[\hskip\labelsep\itshape#1\@addpunct{.}]\ignorespaces}
+\newenvironment{idea}[1][Idea]{\ed@runin{#1}}{\endtrivlist\@endpefalse}
+\newenvironment{architecture}[1][Proof architecture]{\ed@runin{#1}}{\endtrivlist\@endpefalse}
+\newenvironment{note}[1][Note]{\ed@runin{#1}}{\endtrivlist\@endpefalse}
+% text still to be written; labels of the text; the Lean banner of the statement above
+\newcommand{\placeholder}[1]{\if@inlabel\else\par\noindent\fi\textit{[#1]}\@ifnextchar\end{}{\par}}
+\newcommand{\ed@label}[1]{\mbox{\footnotesize[#1]}}
+\newcommand{\demo}[1]{\ed@label{demo text}}
+\newcommand{\heuristic}[1]{\ed@label{heuristic}}
+\newcommand{\numerics}[1]{\ed@label{numerics}}
+\newcommand{\published}[1]{\ed@label{published}}
+\newcommand{\preprint}[1]{\ed@label{preprint, to be verified}}
+\newcommand{\raw}[1]{\ed@label{raw, unchecked}}
+\def\ed@formalized{formalized}\def\ed@image{image}\def\ed@video{video}\def\ed@diagram{diagram}
+\newcommand{\lean}[2][]{\par{\noindent\footnotesize\def\ed@a{#2}Lean: \ifx\ed@a\ed@formalized formalized\ifx\relax#1\relax\else\
+  (\href{#1}{certificate})\fi\else not yet formalized\fi.\par}}
+% the two lines under the title: the page's team and status, its Zulip topic (default: the title)
+\def\ed@title{}\let\ed@maketitle\maketitle\renewcommand{\maketitle}{\let\ed@title\@title\ed@maketitle}
+\newcommand{\pagestatus}[1]{{\par\centering\small#1\par}}
+\newcommand{\zulip}[2][]{{\par\centering\small Discuss on Zulip: \##2, topic
+  ``\ifx\relax#1\relax\ed@title\else#1\fi''.\par}\medskip}
+% links to other pages of the wiki, anchors, wiki code shown as text
+\newcommand{\wikilink}[2]{\ifx\relax#2\relax#1\else#2\fi}
+\newcommand{\wikianchor}[1]{\phantomsection\label{#1}}
+\newcommand{\nowikicode}[1]{\texttt{\frenchspacing#1}}
+\newcommand{\nowiki}[1]{#1}
+\newcommand{\wikitemplate}[1]{\texttt{\{\{#1\}\}}}
+\newcommand{\wikidiv}[2]{\par#2\par}
+% pictures, videos, diagrams: shown in the online edition; an image next to this file, or in ../media, is shown here
+\newcommand{\ed@picture}[1]{\begin{center}\includegraphics[width=0.8\linewidth]{#1}\end{center}}
+\newcommand{\media}[4][]{\par\medskip\def\ed@a{#2}{\noindent\small\ifx\ed@a\ed@video Video\else\ifx\ed@a\ed@diagram Diagram\else
+  Figure\fi\fi: \texttt{#3}, shown in the online edition.\par}\ifx\ed@a\ed@image\IfFileExists{#3}{\ed@picture{#3}}{\IfFileExists{../media/#3}{%
+  \ed@picture{../media/#3}}{}}\fi{\noindent\small#4\par}\medskip}
+% tables (\lv{label}{text}; \header{a & b}, \row{a & b}) and code
+\newenvironment{levels}[1][]{\par\smallskip\noindent\tabularx{\linewidth}{@{}>{\bfseries\raggedright\arraybackslash}p{0.2\linewidth}X@{}}}{\endtabularx\par\smallskip}
+\newcommand{\lv}[2]{#1 & #2\\[3pt]}
+\newenvironment{wikitable}[1]{\par\smallskip\noindent\tabularx{\linewidth}{|*{#1}{>{\raggedright\arraybackslash}X|}}\hline}{\endtabularx\par\smallskip}
+\newcommand{\header}[1]{#1\\\hline\hline}
+\newcommand{\row}[1]{#1\\\hline}
+\lstnewenvironment{wikicode}[1][]{\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true,columns=fullflexible,
+  keepspaces=true,showstringspaces=false,frame=single}\ifx\relax#1\relax\else\lstset{language=#1}\fi}{}
+% the heading of the reference list is the section References of the page
+\renewcommand{\bibsection}{}
+% characters of the wiki's text that LaTeX does not know
+\DeclareUnicodeCharacter{2192}{\ensuremath{\rightarrow}}\DeclareUnicodeCharacter{203A}{\ensuremath{\rangle}}
+\DeclareUnicodeCharacter{2713}{\ensuremath{\checkmark}}\DeclareUnicodeCharacter{25CB}{\ensuremath{\circ}}
+\DeclareUnicodeCharacter{2248}{\ensuremath{\approx}}\DeclareUnicodeCharacter{2264}{\ensuremath{\leq}}
+\DeclareUnicodeCharacter{2265}{\ensuremath{\geq}}\DeclareUnicodeCharacter{2212}{\ensuremath{-}}
+\makeatother
+
+\begin{document}
+\title{Enhanced dissipation for passive scalars}
+\author{}
+\date{8 November 2026}
+\maketitle
+\tableofcontents
+
+\section{Overview}\label{page-overview}
+\zulip[Overview]{overview}
+
+\placeholder{A short introduction to the topic, written as continuous prose: the phenomenon, the equation, why it matters, and what the reader will find in this wiki.}
+\[\partial_t f+u\cdot\nabla f=\nu\Delta f,\qquad \nabla\cdot u=0.\]
+\media[poster=heat-vs-shear-poster.png,record=num-heat-vs-shear]{video}{heat-vs-shear.mp4}{Left: the heat equation. Right: the same initial datum carried by the shear flow $u=(\sin y,0)$, with the same diffusivity. Bottom: the size of the two solutions in time, on a logarithmic scale. \numerics{}}
+\placeholder{A second simulation: a flow that dissipates on the time scale $|\log\nu|$.}
+
+\subsection{Map of the wiki}
+\media{diagram}{wiki-map.svg}{The parts of the wiki; click a name to open its page.}
+
+\section{Motivation and history}\label{page-motivation-and-history}
+\pagestatus{Page team: to be named · Status: skeleton}
+\zulip[Motivation and history]{overview}
+
+\subsection{Why it matters}
+\subsubsection{In applications}
+\placeholder{Why the problem matters in practice.}
+
+\subsubsection{In mathematics}
+\placeholder{Why the problem is interesting mathematically.}
+
+\subsection{History}
+\placeholder{A short account of the progress, then the history technique by technique.}
+
+\subsubsection{Origins}
+\placeholder{Before the mathematical theory.}
+
+\subsubsection{Spectral methods}
+\placeholder{Contributions and dates; the general theory is on \wikilink{Spectral methods}{}.}
+
+\subsubsection{Hypocoercivity}
+\placeholder{Contributions and dates; the general theory is on \wikilink{Hypocoercivity}{}.}
+
+\subsubsection{Stochastic methods}
+\placeholder{Contributions and dates; the general theory is on \wikilink{Stochastic methods}{}.}
+
+\subsubsection{Hörmander theory}
+\placeholder{Contributions and dates; the general theory is on \wikilink{Hörmander theory}{}.}
+
+\subsubsection{Recent advances}
+\placeholder{The latest steps; the details are on \wikilink{State of the art}{} and \wikilink{Related results}{}.}
+
+
+
+\part{Techniques through examples}
+\section{Couette flow}\label{page-couette-flow}
+\pagestatus{Page team: to be named · Status: skeleton}
+\zulip[Couette flow]{examples}
+
+\placeholder{Lead: what this example shows, in three lines.}
+
+\subsection{Setting}
+\placeholder{The flow $u=(y,0)$ on $\mathbb{T}\times\mathbb{R}$: the equation, the Fourier modes, what decays.}
+
+\subsection{The result}
+\begin{theorem}[enhanced dissipation for Couette flow]\label{thm-couette}
+\placeholder{The statement.}
+\end{theorem}
+\lean{}
+\begin{idea}
+\placeholder{The key mechanism in a few lines.}
+\end{idea}
+\begin{architecture}
+\placeholder{The proof as a short chain of steps, and its diagram.}
+\end{architecture}
+
+\subsection{One example, every technique}
+Each proof below is written for this example only, to show the mechanism; the general results, with complete proofs, are in the part \emph{Techniques and general results}.
+
+\subsubsection{Explicit solution}
+\begin{proof}[Proof by the explicit solution]\label{proof-couette-explicit}
+\placeholder{The proof.}
+\end{proof}
+
+\subsubsection{Spectral methods}
+\begin{proof}[Proof by spectral methods]\label{proof-couette-spectral}
+\placeholder{The proof.}
+\end{proof}
+General theory: \wikilink{Spectral methods}{}.
+
+\subsubsection{Hypocoercivity}
+\begin{proof}[Proof by hypocoercivity]\label{proof-couette-hypocoercivity}
+\placeholder{The proof.}
+\end{proof}
+General theory: \wikilink{Hypocoercivity}{}.
+
+\subsubsection{Stochastic methods}
+\begin{proof}[Proof by stochastic methods]\label{proof-couette-stochastic}
+\placeholder{The proof.}
+\end{proof}
+General theory: \wikilink{Stochastic methods}{}.
+
+\subsubsection{Hörmander theory}
+\begin{proof}[Proof by Hörmander theory]\label{proof-couette-hormander}
+\placeholder{The proof.}
+\end{proof}
+General theory: \wikilink{Hörmander theory}{}.
+
+\subsection{What this example teaches}
+\placeholder{What the example shows, and what the general theory keeps of it.}
+
+
+
+\section{Poiseuille flow}\label{page-poiseuille-flow}
+\pagestatus{Page team: to be named · Status: skeleton}
+\zulip[Poiseuille flow]{examples}
+
+\placeholder{Lead: what changes compared with \wikilink{Couette flow}{}, and why.}
+
+\subsection{Setting}
+\placeholder{The flow, the domain, the critical point, what decays.}
+
+\subsection{The result}
+\begin{theorem}[enhanced dissipation for Poiseuille flow]\label{thm-poiseuille}
+\placeholder{The statement.}
+\end{theorem}
+\lean{}
+\begin{idea}
+\placeholder{The key mechanism in a few lines.}
+\end{idea}
+\begin{architecture}
+\placeholder{The proof as a short chain of steps, and its diagram.}
+\end{architecture}
+
+\subsection{What changes compared with Couette flow}
+For each technique: what carries over from \wikilink{Couette flow}{}, what is lost, and the proof for this example.
+
+\subsubsection{Explicit solution}
+\placeholder{What is lost.}
+
+\subsubsection{Spectral methods}
+\begin{proof}[Proof by spectral methods]\label{proof-poiseuille-spectral}
+\placeholder{The proof.}
+\end{proof}
+
+\subsubsection{Hypocoercivity}
+\begin{proof}[Proof by hypocoercivity]\label{proof-poiseuille-hypocoercivity}
+\placeholder{The proof.}
+\end{proof}
+
+\subsubsection{Stochastic methods}
+\begin{proof}[Proof by stochastic methods]\label{proof-poiseuille-stochastic}
+\placeholder{The proof.}
+\end{proof}
+
+\subsubsection{Hörmander theory}
+\begin{proof}[Proof by Hörmander theory]\label{proof-poiseuille-hormander}
+\placeholder{The proof.}
+\end{proof}
+
+
+
+\part{Techniques and general results}
+\section{Spectral methods}\label{page-spectral-methods}
+\pagestatus{Page team: to be named · Status: skeleton}
+\zulip[Spectral methods]{techniques}
+
+\placeholder{Lead: what the method gives, and under which hypotheses.}
+
+\subsection{The method}
+\placeholder{The key mechanism, in a few lines.}
+Worked example: \wikilink{Couette flow\#Spectral methods}{Couette flow}. What changes with a critical point: \wikilink{Poiseuille flow\#Spectral methods}{Poiseuille flow}.
+
+\subsection{General results}
+\placeholder{The theorems, each written as a result (statement, Lean banner, idea, proof architecture, complete proof; see \wikilink{How to contribute\#Anatomy of a result}{How to contribute}); lemmas of general use go to the \emph{Toolkit} (\wikilink{Standard analysis}{}, \wikilink{Enhanced-dissipation tools}{}).}
+
+\subsection{Limitations and comparison}
+\placeholder{What the method does not give, and how it compares with the other techniques.}
+
+
+
+\section{Hypocoercivity}\label{page-hypocoercivity}
+\pagestatus{Page team: to be named · Status: skeleton}
+\zulip[Hypocoercivity]{techniques}
+
+\placeholder{Lead: what the method gives, and under which hypotheses.}
+
+\subsection{The method}
+\placeholder{The key mechanism, in a few lines.}
+Worked example: \wikilink{Couette flow\#Hypocoercivity}{Couette flow}. What changes with a critical point: \wikilink{Poiseuille flow\#Hypocoercivity}{Poiseuille flow}.
+
+\subsection{General results}
+\placeholder{The theorems, each written as a result (statement, Lean banner, idea, proof architecture, complete proof; see \wikilink{How to contribute\#Anatomy of a result}{How to contribute}); lemmas of general use go to the \emph{Toolkit} (\wikilink{Standard analysis}{}, \wikilink{Enhanced-dissipation tools}{}).}
+
+\subsection{Limitations and comparison}
+\placeholder{What the method does not give, and how it compares with the other techniques.}
+
+
+
+\section{Stochastic methods}\label{page-stochastic-methods}
+\pagestatus{Page team: to be named · Status: skeleton}
+\zulip[Stochastic methods]{techniques}
+
+\placeholder{Lead: what the method gives, and under which hypotheses.}
+
+\subsection{The method}
+\placeholder{The key mechanism, in a few lines.}
+Worked example: \wikilink{Couette flow\#Stochastic methods}{Couette flow}. What changes with a critical point: \wikilink{Poiseuille flow\#Stochastic methods}{Poiseuille flow}.
+
+\subsection{General results}
+\placeholder{The theorems, each written as a result (statement, Lean banner, idea, proof architecture, complete proof; see \wikilink{How to contribute\#Anatomy of a result}{How to contribute}); lemmas of general use go to the \emph{Toolkit} (\wikilink{Standard analysis}{}, \wikilink{Enhanced-dissipation tools}{}).}
+
+\subsection{Limitations and comparison}
+\placeholder{What the method does not give, and how it compares with the other techniques.}
+
+
+
+\section{Hörmander theory}\label{page-hormander-theory}
+\pagestatus{Page team: to be named · Status: skeleton}
+\zulip[Hörmander theory]{techniques}
+
+\placeholder{Lead: what the method gives, and under which hypotheses.}
+
+\subsection{The method}
+\placeholder{The key mechanism, in a few lines.}
+Worked example: \wikilink{Couette flow\#Hörmander theory}{Couette flow}. What changes with a critical point: \wikilink{Poiseuille flow\#Hörmander theory}{Poiseuille flow}.
+
+\subsection{General results}
+\placeholder{The theorems, each written as a result (statement, Lean banner, idea, proof architecture, complete proof; see \wikilink{How to contribute\#Anatomy of a result}{How to contribute}); lemmas of general use go to the \emph{Toolkit} (\wikilink{Standard analysis}{}, \wikilink{Enhanced-dissipation tools}{}).}
+
+\subsection{Limitations and comparison}
+\placeholder{What the method does not give, and how it compares with the other techniques.}
+
+
+
+\part{Extensions and recent advances}
+\section{State of the art}\label{page-state-of-the-art}
+\pagestatus{Page team: to be named · Status: skeleton}
+\zulip[State of the art]{advances}
+
+\placeholder{The strongest results available to date, in one table.}
+\begin{wikitable}{6}
+\header{Flow class & Domain & Dissipation time & Sharp & Source & Label}
+\row{— & — & — & — & — & —}
+\end{wikitable}
+
+
+
+
+\section{Related results}\label{page-related-results}
+\pagestatus{Page team: to be named · Status: skeleton}
+\zulip[Related results]{advances}
+
+Results related to enhanced dissipation and not yet part of the established theory. Each entry gives the statement, a label (\published{}, \preprint{} or \raw{}), the date it was added, its source, and where it would go in the established theory.
+
+\subsection{Entries}
+\placeholder{First entries.}
+
+\subsection{How an entry moves}
+\begin{enumerate}
+  \item An entry keeps its label until its status changes: raw data checked and posted becomes \preprint{}, a refereed result \published{}.
+  \item The editorial board moves established results into the part \emph{Techniques and general results}, or into a new page, with a synthesis proof.
+\end{enumerate}
+
+
+
+
+\section{Open problems}\label{page-open-problems}
+\pagestatus{Page team: to be named · Status: skeleton}
+\zulip[Open problems]{advances}
+
+Open problems, each with what is known, the expected answer, and the main difficulty.
+
+\subsection{Problems}
+\placeholder{First problems.}
+
+
+
+
+\section{Raw data}\label{page-raw-data}
+\pagestatus{Page team: to be named · Status: skeleton}
+\zulip[Raw data]{advances}
+
+AI-generated proofs, numerical observations and sketches, labelled \raw{} until a human has checked them. AI-generated text is quoted verbatim, with its source and date; how an entry moves on is explained on \wikilink{Related results\#How an entry moves}{Related results}.
+
+\subsection{Entries}
+\placeholder{First entries.}
+
+\part{Toolkit}
+\section{Notation}\label{page-notation}
+\pagestatus{Page team: to be named · Status: skeleton}
+\zulip[Notation]{toolkit}
+
+The notation and the definitions used throughout the wiki.
+
+\subsection{Notation}
+\placeholder{The scalar, the velocity field, the domains, the Fourier modes, the norms.}
+
+\subsection{Definitions}
+\placeholder{Dissipation time, enhanced dissipation, and the related notions used in the wiki.}
+
+\section{Standard analysis}\label{page-standard-analysis}
+\pagestatus{Page team: to be named · Status: skeleton}
+\zulip[Standard analysis]{toolkit}
+
+Classical facts of analysis used by the proofs. A statement comes to the Toolkit when several proofs use it, or when it holds in more generality than one result; a step used by one proof only is a claim inside that proof. Each statement is given once, with its proof or a reference, and the proofs elsewhere link to it.
+
+\subsection{Inequalities}
+\placeholder{Poincaré and interpolation inequalities, and the other inequalities the proofs use.}
+
+\subsection{Functional analysis}
+\placeholder{Semigroups, spectral theory, and the other facts the proofs use.}
+
+
+
+
+\section{Enhanced-dissipation tools}\label{page-enhanced-dissipation-tools}
+\pagestatus{Page team: to be named · Status: skeleton}
+\zulip[Enhanced-dissipation tools]{toolkit}
+
+Tools specific to enhanced dissipation. A statement comes to the Toolkit when several proofs use it, or when it holds in more generality than one result; a step used by one proof only is a claim inside that proof. Each statement is given once, with its proof or a reference, and the proofs elsewhere link to it.
+
+\subsection{Tools}
+\placeholder{For instance spectral-gap and resolvent lemmas, and the link between mixing and enhanced dissipation.}
+
+
+
+
+\section{Numerical methods}\label{page-numerical-methods}
+\pagestatus{Page team: to be named · Status: skeleton, one record}
+\zulip[Numerical methods]{numerics}
+
+Every computed picture and video of this wiki has a record on this page: what was computed, how, with which parameters and checks, and the code that produced it.
+
+\subsection{How a record works}
+\begin{itemize}
+  \item A record is a section with an anchor \texttt{num-…}; the picture or video links to it with the parameter \texttt{record} of \wikilink{Template:Media}{Media}.
+  \item It gives the equation, the parameters, the method, the checks, the code and how to run it, and its status.
+  \item The code is kept in the project folder, in \texttt{numerics/}, and shown here when it is short. Later: a public repository, with the commit that produced the files.
+\end{itemize}
+
+\subsection{Records}
+\subsubsection{Heat versus shear on the torus}\label{num-heat-vs-shear}
+\begin{levels}
+\lv{Produces}{the video on the \wikilink{Overview}{} (\texttt{heat-vs-shear.mp4}) and the check figure below}
+\lv{Equation}{$\partial_t f+\sin y\,\partial_x f=\nu\Delta f$ on $[0,2\pi)^2$, periodic, and the heat equation $\partial_t f=\nu\Delta f$; same datum $f_0=\cos x$}
+\lv{Parameters}{$\nu=10^{-3}$, times $0\le t\le 100$; video of 20 s at 24 frames per second, time running uniformly (5 time units per second), last frame held 1.5 s}
+\lv{Method}{one Fourier mode in $x$: $f=\operatorname{Re}(g(t,y)e^{ix})$ with $\partial_t g=-i\sin y\,g+\nu(\partial_y^2-1)g$; 512 Fourier modes in $y$; Strang splitting with time step 0.01, transport and diffusion steps solved exactly; heat equation solved exactly}
+\lv{Checks}{with 1024 modes and time step 0.005 the norms agree to a relative $6\cdot10^{-8}$; the energy balance $\|g(t)\|^2+2\nu\int_0^t\|(\partial_y g,g)\|^2ds=\|g(0)\|^2$ holds to $3\cdot10^{-7}$; decay rate of the norm on $[50,100]$: 0.0167, against $\nu^{1/2}\approx0.0316$}
+\lv{Code}{\texttt{numerics/heat-vs-shear/heat\_vs\_shear.py} in the project folder (Python 3, NumPy, Matplotlib, ffmpeg); \texttt{python3 heat\_vs\_shear.py --out ../../wiki/media}, about a minute}
+\lv{Status}{computed by Claude (AI) on 8 November 2026; not yet checked by a human \demo{}}
+\end{levels}
+\media{image}{heat-vs-shear-check.png}{Left: the norms of the two runs and of the heat equation. Right: the relative difference of the two runs and the energy-balance residual.}
+\begin{note}[Code]
+\begin{wikicode}[python]
+#!/usr/bin/env python3
+"""Heat equation versus advection-diffusion by a shear flow on the torus [0, 2pi)^2.
+
+    d_t f + sin(y) d_x f = nu (d_xx + d_yy) f,      f(0, x, y) = cos x,
+
+compared with the heat equation (the same without the transport term), whose solution is
+exp(-nu t) cos x. The initial datum has zero average in x. It is a single Fourier mode in x,
+so f(t, x, y) = Re(g(t, y) e^{ix}) with
+
+    d_t g = -i sin(y) g + nu (d_yy - 1) g,      g(0, y) = 1,
+
+solved by a Fourier method in y with Strang splitting: the transport step is the exact
+multiplication by exp(-i sin(y) dt), the diffusion step is exact in Fourier variables.
+The L2 norm reported is ||f(t)|| / ||f(0)||, that is the root mean square of |g(t, .)|.
+
+Checks (written to heat-vs-shear-check.txt and heat-vs-shear-check.png):
+  * the run is repeated with twice the Fourier modes and half the time step, and the norms are compared;
+  * energy balance: ||g(t)||^2 + 2 nu int_0^t ||(d_y g, g)||^2 ds = ||g(0)||^2 (means over y).
+
+The video lasts --duration seconds; frame s in [0, 1] shows t = T (a s + (1 - a) s^2), a = --slow (default 1:
+time runs uniformly; a < 1 slows down the start); the last frame is held --hold seconds.
+
+Outputs, in --out: heat-vs-shear.mp4 (video), heat-vs-shear-poster.png (one frame of it),
+heat-vs-shear-check.png and heat-vs-shear-check.txt. Needs NumPy, Matplotlib and ffmpeg
+(with the libx264 encoder). Run:  python3 heat_vs_shear.py --out ../../wiki/media
+
+Drafted by Claude (AI) on 8 November 2026 for the wiki "Enhanced dissipation for passive
+scalars"; record: page Numerical methods, section num-heat-vs-shear.
+"""
+import argparse
+import os
+import shutil
+import subprocess
+import tempfile
+
+import numpy as np
+import matplotlib
+
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+
+HEAT_COLOR = "#b4532a"
+SHEAR_COLOR = "#1f4e79"
+
+
+def solve(nu, T, N, dt, frame_times=()):
+    """Times, norms ||f(t)||/||f(0)||, energy-balance residuals, and g(t, y) at frame_times."""
+    y = 2 * np.pi * np.arange(N) / N
+    eta = np.fft.fftfreq(N, d=1.0 / N)              # integer wavenumbers in y
+    symbol = eta ** 2 + 1.0                          # symbol of -(d_yy - 1): mode k = 1 in x
+    half = np.exp(-nu * symbol * dt / 2)
+    transport = np.exp(-1j * np.sin(y) * dt)
+    ghat = np.fft.fft(np.ones(N, dtype=complex))
+    steps = int(round(T / dt))
+    times = dt * np.arange(steps + 1)
+    sq = np.empty(steps + 1)                         # mean over y of |g|^2
+    dissip = np.empty(steps + 1)                     # mean over y of |d_y g|^2 + |g|^2
+    frames, targets, j = [], list(frame_times), 0
+    for n in range(steps + 1):
+        power = np.abs(ghat) ** 2 / N ** 2           # Parseval: means over y
+        sq[n] = power.sum()
+        dissip[n] = (symbol * power).sum()
+        while j < len(targets) and targets[j] <= times[n] + dt / 2:
+            frames.append(np.fft.ifft(ghat))
+            j += 1
+        if n == steps:
+            break
+        ghat *= half
+        ghat = np.fft.fft(np.fft.ifft(ghat) * transport) * half
+    integral = np.concatenate([[0.0], np.cumsum((dissip[1:] + dissip[:-1]) / 2) * dt])
+    residual = np.abs(sq + 2 * nu * integral - 1.0)
+    return times, np.sqrt(sq), residual, frames, y
+
+
+def field(g, nx):
+    """f(x, y) = Re(g(y) e^{ix}) on an nx-by-nx grid (rows: y, columns: x)."""
+    step = max(1, len(g) // nx)
+    x = 2 * np.pi * np.arange(nx) / nx
+    return np.real(g[::step][:, None] * np.exp(1j * x)[None, :])
+
+
+def draw_frame(path, t, g, nu, times, norms, heat, nx, ymin):
+    x = 2 * np.pi * np.arange(nx) / nx
+    f_heat = np.exp(-nu * t) * np.cos(x)[None, :] * np.ones((nx, 1))
+    f_shear = field(g, nx)
+    fig = plt.figure(figsize=(11.2, 7.2), dpi=100)
+    gs = fig.add_gridspec(2, 2, height_ratios=[3.6, 1.15], hspace=0.3, wspace=0.06,
+                          left=0.08, right=0.97, top=0.845, bottom=0.095)
+    for col, (data, title) in enumerate([(f_heat, "Heat equation:  $u = 0$"),
+                                         (f_shear, r"Shear flow:  $u = (\sin y,\, 0)$")]):
+        ax = fig.add_subplot(gs[0, col])
+        ax.imshow(data, origin="lower", extent=[0, 2 * np.pi, 0, 2 * np.pi], cmap="RdBu_r",
+                  vmin=-1, vmax=1, interpolation="bilinear")
+        ax.set_title(title, fontsize=17, pad=8)
+        ax.set_xticks([]); ax.set_yticks([])
+        ax.set_aspect("equal")
+    fig.suptitle(r"Same initial datum $f_0 = \cos x$, same diffusivity $\nu = 10^{-3}$"
+                 + "        t = %d" % round(t), fontsize=17, y=0.975)
+    ax = fig.add_subplot(gs[1, :])
+    k = np.searchsorted(times, t, side="right")
+    ax.semilogy(times, heat, color=HEAT_COLOR, alpha=0.18, lw=2)
+    ax.semilogy(times, norms, color=SHEAR_COLOR, alpha=0.18, lw=2)
+    ax.semilogy(times[:k], heat[:k], color=HEAT_COLOR, lw=2.4, label="heat equation")
+    ax.semilogy(times[:k], norms[:k], color=SHEAR_COLOR, lw=2.4, label="shear flow")
+    ax.axvline(t, color="#888888", lw=1)
+    ax.set_xlim(0, times[-1]); ax.set_ylim(ymin, 1.5)
+    ax.set_yticks([10.0 ** e for e in range(int(np.log10(ymin)), 1)])
+    ax.set_xlabel("time  t", fontsize=13)
+    ax.set_ylabel(r"$\|f(t)\|\,/\,\|f_0\|$", fontsize=14)
+    ax.tick_params(labelsize=11)
+    ax.legend(loc="lower left", fontsize=12, frameon=False, ncol=2)
+    fig.savefig(path)
+    plt.close(fig)
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
+    ap.add_argument("--out", default=".", help="folder for the video and the figures")
+    ap.add_argument("--nu", type=float, default=1e-3)
+    ap.add_argument("--T", type=float, default=100.0)
+    ap.add_argument("--N", type=int, default=512, help="Fourier modes in y")
+    ap.add_argument("--dt", type=float, default=0.01)
+    ap.add_argument("--duration", type=float, default=20.0, help="length of the video in seconds")
+    ap.add_argument("--fps", type=int, default=24)
+    ap.add_argument("--slow", type=float, default=1.0, help="speed of time at the start, relative to the mean (1: uniform)")
+    ap.add_argument("--hold", type=float, default=1.5, help="seconds the last frame is held")
+    ap.add_argument("--nx", type=int, default=256, help="pixels per side of each panel")
+    a = ap.parse_args()
+    os.makedirs(a.out, exist_ok=True)
+    s = np.linspace(0, 1, int(round(a.duration * a.fps)))
+    frame_times = a.T * (a.slow * s + (1 - a.slow) * s ** 2)
+    times, norms, residual, frames, y = solve(a.nu, a.T, a.N, a.dt, frame_times)
+    heat = np.exp(-a.nu * times)
+    # check: the same run with N doubled and dt halved
+    times2, norms2, residual2, _, _ = solve(a.nu, a.T, 2 * a.N, a.dt / 2)
+    diff = np.abs(norms2[::2] - norms) / norms2[::2]
+    ymin = 10 ** np.floor(np.log10(norms.min()))
+    with open(os.path.join(a.out, "heat-vs-shear-check.txt"), "w") as fh:
+        fh.write("nu=%g T=%g N=%d dt=%g frames=%d fps=%d\n" % (a.nu, a.T, a.N, a.dt, len(frame_times), a.fps))
+        fh.write("final norm: shear %.4e, heat %.4e\n" % (norms[-1], heat[-1]))
+        fh.write("max relative difference with (2N, dt/2): %.2e\n" % diff.max())
+        fh.write("max energy-balance residual: %.2e (2N, dt/2: %.2e)\n" % (residual.max(), residual2.max()))
+        fh.write("decay rate of the shear norm on [T/2, T]: %.4f; nu^(1/2) = %.4f\n" % (
+            np.log(norms[len(norms) // 2] / norms[-1]) / (times[-1] - times[len(times) // 2]), np.sqrt(a.nu)))
+    # check figure
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11, 4), dpi=100)
+    ax1.semilogy(times, heat, color=HEAT_COLOR, lw=2, label="heat equation (exact)")
+    ax1.semilogy(times, norms, color=SHEAR_COLOR, lw=2, label="shear flow, N=%d, dt=%g" % (a.N, a.dt))
+    ax1.semilogy(times2, norms2, color="k", lw=1, ls="--", label="shear flow, N=%d, dt=%g" % (2 * a.N, a.dt / 2))
+    ax1.set_xlabel("time t"); ax1.set_ylabel("norm ratio"); ax1.legend(frameon=False, fontsize=9)
+    ax1.set_title("Norms (log scale)")
+    ax2.semilogy(times[1:], diff[1:] + 1e-16, color=SHEAR_COLOR, lw=1.5, label="relative difference of the two runs")
+    ax2.semilogy(times[1:], residual[1:] + 1e-16, color="#6b7280", lw=1.5, label="energy-balance residual")
+    ax2.set_xlabel("time t"); ax2.legend(frameon=False, fontsize=9); ax2.set_title("Checks")
+    fig.tight_layout()
+    fig.savefig(os.path.join(a.out, "heat-vs-shear-check.png"))
+    plt.close(fig)
+    # video
+    with tempfile.TemporaryDirectory() as tmp:
+        for i, (t, g) in enumerate(zip(frame_times, frames)):
+            draw_frame(os.path.join(tmp, "f%04d.png" % i), t, g, a.nu, times, norms, heat, a.nx, ymin)
+        poster = min(range(len(frame_times)), key=lambda i: abs(frame_times[i] - 0.2 * a.T))
+        shutil.copyfile(os.path.join(tmp, "f%04d.png" % poster), os.path.join(a.out, "heat-vs-shear-poster.png"))
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-framerate", str(a.fps),
+                        "-i", os.path.join(tmp, "f%04d.png"), "-vf", "tpad=stop_mode=clone:stop_duration=%g" % a.hold,
+                        "-c:v", "libx264", "-pix_fmt", "yuv420p",
+                        "-crf", "26", "-preset", "slow", "-movflags", "+faststart",
+                        os.path.join(a.out, "heat-vs-shear.mp4")], check=True)
+    print(open(os.path.join(a.out, "heat-vs-shear-check.txt")).read().strip())
+
+
+if __name__ == "__main__":
+    main()
+\end{wikicode}
+\end{note}
+
+\subsection{Solvers}
+\placeholder{The methods used across the records, with their strengths and limits.}
+
+\section{Lean formalization}\label{page-lean-formalization}
+\pagestatus{Page team: to be named · Status: skeleton}
+\zulip[Lean formalization]{lean}
+
+A result of this wiki can carry a machine-checked proof in Lean, its \emph{certificate}. A small banner under each theorem says where it stands. A result not yet formalized:
+\lean{}
+A formalized result, with a link to its certificate:
+\lean{formalized}
+
+\subsection{Certificates}
+\begin{wikitable}{4}
+\header{Result & Status & Certificate & Lean and Mathlib versions}
+\row{— & — & — & —}
+\end{wikitable}
+
+\subsection{How to add a certificate}
+\placeholder{What a certificate contains (repository, commit, versions, the statement as formalized, the axioms used), and how it is checked before its banner turns green.}
+
+\part{About this wiki}
+\section{How to contribute}\label{page-how-to-contribute}
+\pagestatus{Page team: Michele Dolce · Status: proposal, to be agreed with the editorial board · Text: \demo{}}
+\zulip[How to contribute]{contributing}
+
+This wiki is written from the bottom up, the way a journal works: members of the community propose changes, proposals are discussed and reviewed in the open, an associate editor decides, and accepted changes are written into the wiki. The roles, and who holds them, are on \wikilink{Contributors}{}. \demo{}
+
+\subsection{Roles}
+\begin{itemize}
+  \item \textbf{Editorial board}: the scope and the structure of the wiki; appoints the associate editors; settles discussions that end without consensus.
+  \item \textbf{Associate editors}: one or more per part, following its Zulip channel. They run the discussion of each proposal, ask reviewers, decide, and write accepted changes into the wiki.
+  \item \textbf{Reviewers}: check a proposal at the request of an associate editor, in the open, in its Zulip topic.
+  \item \textbf{Community}: propose and discuss. New members are endorsed by an editor or by a member at least two years past the PhD.
+\end{itemize}
+The first line of each page names its team. As the wiki grows, busy parts and pages get more associate editors and reviewers; the roles stay the same.
+
+\subsection{Small corrections}
+Typos, broken links, a missing reference: members of the wiki leave a note on the talk page of the page (tab \emph{Discussion}, then \emph{Add topic}); others write in the Zulip channel \emph{contributing}, naming the page. The editors go through these notes regularly and make the changes. For now the wiki is open only to invited members.
+
+\subsection{Mathematical contributions}
+A new proof, a shorter argument, a correction to a statement, a new result or a new page goes through Zulip.
+\begin{enumerate}
+  \item Download the TeX source of the page: link \emph{TeX source} under the title of every page of the edition, or \emph{Open in Overleaf}. It is a standard LaTeX article that compiles as it is. Change what you want and check that it compiles; then keep only the blocks you changed: a section, or a statement or a proof with its label.
+  \item Open a topic in the Zulip channel of the part, titled \emph{Proposal: short title}. Attach the file and say in a few lines what it changes, why, and which sources it uses.
+  \item For two weeks the community and the reviewers discuss the proposal in its topic.
+  \item Within a week after that, the associate editor decides: accepted, to be revised, or declined. If the discussion ended without consensus, the editorial board decides.
+  \item A script converts the accepted file to the wiki's format, shows the editor exactly what changes on the page, and flags new citations and links. The associate editor writes the change into the wiki, links the Zulip topic in the edit summary, and the page credits its author.
+\end{enumerate}
+A proposal changes only the blocks it contains. A paper that is not yet on \wikilink{Literature}{} is proposed on its own, as a small correction of that page.
+
+\subsection{The TeX format}
+The TeX source of a page is a standard LaTeX article: one file that compiles with pdflatex and nothing else (on Overleaf, or with TeXShop, TeXstudio, ...; typeset twice for the citations). Its preamble is the same for every page and is never changed; a contribution defines no macros, since the wiki has none. Sections and statements are numbered in the PDF only.
+\begin{itemize}
+  \item Statements: theorem, proposition, lemma, corollary, conjecture, definition, example, remark, claim. The optional argument is the name, the label is the anchor: \nowikicode{\textbackslash{}begin\{theorem\}\allowbreak{}[name]\textbackslash{}label\{thm-name\}}. Labels start with thm-, prp-, lem-, cor-, def- or clm-.
+  \item After a statement: \nowikicode{\textbackslash{}lean\{\}} (the Lean banner), the environments idea and architecture, and proofs with an optional title and a label, as in \nowikicode{\textbackslash{}begin\{proof\}\allowbreak{}[Proof by hypocoercivity]\textbackslash{}label\{proof-name\}}. A claim and its proof sit inside the proof that uses them.
+  \item Formulas: \nowikicode{\$...\$}, \nowikicode{\textbackslash{}[ ... \textbackslash{}]} and align*; no numbered equations and no labels on equations; none of the commands that the wiki's renderer rejects (the script lists them).
+  \item Citations: \nowikicode{\textbackslash{}citet\{Key\}} gives \emph{Author (year)} and \nowikicode{\textbackslash{}citep\{Key\}} gives \emph{(Author, year)}, with the keys of \wikilink{Literature}{}. The reference list at the end of the file is generated from the reference catalogue; a new citation is added to it when the proposal is accepted.
+  \item Links: on the same page, \nowikicode{\textbackslash{}hyperref[thm-name]\{the theorem above\}} rather than \nowikicode{\textbackslash{}ref}, since the wiki has no numbers; to another page, \nowikicode{\textbackslash{}wikilink\{Page\textbackslash{}\#\allowbreak{}anchor\}\allowbreak{}\{text\}}.
+  \item Labels: \nowikicode{\textbackslash{}heuristic\{\}}, \nowikicode{\textbackslash{}numerics\{\}}, \nowikicode{\textbackslash{}published\{\}}, \nowikicode{\textbackslash{}preprint\{\}}, \nowikicode{\textbackslash{}raw\{\}}.
+  \item A new block goes after an existing one: put the line \nowikicode{\%\% after: Setting} (a section title or a label) just before it.
+\end{itemize}
+
+\subsection{Anatomy of a result}
+A result is a statement followed by its levels of detail, each folded until the reader opens it:
+\begin{levels}
+\lv{Statement}{in the simplest form, constants hidden}
+\lv{Lean}{a one-line banner: formalized or not yet}
+\lv{Idea}{the key mechanism in a few lines}
+\lv{Architecture}{the proof as a short chain of steps, later with a diagram}
+\lv{Proof}{the complete proof, in steps; a statement used only in this proof is a \emph{claim}, with its own folded proof inside}
+\end{levels}
+A statement that several proofs use, or that holds in more generality than one result, goes to the \emph{Toolkit} (\wikilink{Standard analysis}{} or \wikilink{Enhanced-dissipation tools}{}) and is linked from the proofs. A short proof is written in one piece. The specimen below shows the boxes at work; open the folds to see the nesting.
+
+\subsubsection{Specimen}
+\begin{theorem}[specimen]\label{thm-specimen}
+The statement, in its simplest form.
+\end{theorem}
+\lean{}
+\begin{idea}
+The key mechanism in a few lines, and the heuristic scaling, labelled \heuristic{}.
+\end{idea}
+\begin{architecture}
+\begin{enumerate}
+  \item Step 1 reduces the theorem to a claim.
+  \item Step 2 proves the claim.
+  \item Step 3 concludes with a lemma of the toolkit.
+\end{enumerate}
+\end{architecture}
+\begin{proof}\label{proof-specimen}
+\textbf{Step 1.} The reduction.
+\begin{claim}[specimen]\label{clm-specimen}
+A statement used only in this proof.
+\end{claim}
+\begin{proof}[Proof of the claim]\label{proof-clm-specimen}
+The proof of the claim, folded inside the proof that uses it.
+\end{proof}
+\textbf{Step 2.} The conclusion, with a lemma of the \wikilink{Standard analysis}{toolkit}.
+
+\emph{Sources.} This proof follows ...
+\end{proof}
+
+\subsection{Labels}
+\begin{itemize}
+  \item \demo{}: text drafted by Claude (AI), until a member of the page team replaces or approves it.
+  \item \heuristic{}: a non-rigorous explanation, kept apart from what is proved.
+  \item \numerics{}: a computation, with its record on \wikilink{Numerical methods}{}.
+  \item \published{}, \preprint{}, \raw{}: the status of an entry on \wikilink{Related results}{} and \wikilink{Raw data}{}: refereed; posted but not refereed; neither posted nor checked by a human (an AI-generated proof, a numerical observation, a sketch).
+  \item Grey quote boxes: AI-generated text, quoted verbatim with its source and date.
+\end{itemize}
+
+\subsection{Pictures, videos and numerics}
+A picture, a video or a diagram is one line in the wiki, the template \wikilink{Template:Media}{Media}; in TeX, \nowikicode{\textbackslash{}media\{video\}\allowbreak{}\{file\}\allowbreak{}\{caption\}}. The files are kept in the folder \texttt{wiki/media} of the project; the edition shows them, the wiki shows a box with the caption. Every computed picture or video has a record on \wikilink{Numerical methods}{}, with the method, the parameters, the checks and the code.
+
+\subsection{Lean}
+Under each theorem a one-line banner says whether it is formalized: grey while it is not, green with a link to the certificate once it is. Certificates are listed on \wikilink{Lean formalization}{}.
+
+\subsection{Discussion and conduct}
+Discussion takes place on Zulip: one channel per part, one topic per page, and one topic per proposal. The line under the title of each page links to its topic; talk pages on the wiki are for small corrections.
+\begin{wikitable}{2}
+\header{Part & Zulip channel}
+\row{Overview, Motivation and history & overview}
+\row{Techniques through examples & examples}
+\row{Techniques and general results & techniques}
+\row{Extensions and recent advances & advances}
+\row{Toolkit & toolkit}
+\row{Numerical methods & numerics}
+\row{Lean formalization & lean}
+\row{About this wiki & contributing}
+\end{wikitable}
+Discuss the mathematics, not the people. Associate editors moderate their channel: they can hide messages and, after a warning, ask the editorial board to remove a member; their decisions can be appealed to the board. The Zulip is not set up yet; once it is, its address goes into \wikilink{Template:Zulip host}{} and the links appear on every page.
+
+\subsection{Formulas in the wiki}
+For editors who write the wiki's own format.
+\begin{itemize}
+  \item Inline formulas need \texttt{display="inline"}, displayed ones \texttt{display="block"}; each formula is written on one line. The renderer rejects \texttt{\textbackslash{}newcommand}, \texttt{\textbackslash{}label}, \texttt{\textbackslash{}eqref} and \texttt{\textbackslash{}substack}. No formulas in headings.
+  \item Citations link to the Literature page by the key of the reference catalogue: \nowikicode{[[Literature\#\allowbreak{}BedrossianCotiZelati2017|\allowbreak{}Bedrossian and Coti Zelati (2017)]]}. The section \emph{References} of each page is generated from the catalogue: add the key to its comment line rather than editing the list.
+  \item To link to a result, use the \texttt{id} of its box as the anchor, as in \texttt{Couette flow\#thm-couette}.
+\end{itemize}
+
+\subsection{The edition}
+A static edition of this wiki, with the pictures, the videos and the TeX source of every page, is built from the wiki's text by a script and never edited by hand; its address will be added here.
+
+\section{Contributors}\label{page-contributors}
+\pagestatus{Page team: editorial board · Status: to be filled}
+\zulip[Contributors]{contributing}
+
+The people who write and check this wiki, by role. How they work together is described in \wikilink{How to contribute}{}.
+
+\subsection{Editorial board}
+Decides the scope and the structure of the wiki, appoints the associate editors, and settles a discussion that ends without consensus.
+\placeholder{Names and roles.}
+
+\subsection{Associate editors}
+Each part of the wiki has at least one associate editor, who follows its Zulip channel, runs the discussion of every proposal there, asks reviewers, decides, and writes accepted changes into the wiki. A busy part or page can have several.
+\placeholder{Names, with their parts.}
+
+\subsection{Reviewers}
+Asked by an associate editor to check a proposal: the mathematics, the format, or both. Reviews are posted in the Zulip topic of the proposal. A busy page can have its own reviewers, named in its first line.
+\placeholder{Names.}
+
+\subsection{Community}
+Members of the Zulip, who propose and discuss changes. A new member is endorsed by an editor or by a member at least two years past the PhD. Early-stage researchers (PhD students, and researchers up to two years after the PhD) can choose to be listed as such.
+\placeholder{Names.}
+
+\section{Provenance and AI use}\label{page-provenance-and-ai-use}
+\pagestatus{Page team: Michele Dolce · Text: \demo{}}
+\zulip[Provenance and AI use]{contributing}
+
+This page records where each piece of the wiki comes from and who has checked what. The labels are explained on \wikilink{How to contribute\#Labels}{How to contribute}. \demo{}
+
+\subsection{Rules}
+\begin{itemize}
+  \item Text drafted by Claude (AI) carries \demo{} until a member of the page team replaces or approves it.
+  \item Arguments produced by AI systems appear only as verbatim quotations, with source and date, or as entries labelled \raw{} on \wikilink{Raw data}{}.
+  \item The first line of each page records its team, its status and the checks made. A machine check is recorded as such and never counts as a human check.
+  \item Statements attributed to a paper give its theorem number; synthesis proofs say which papers they follow.
+  \item Every accepted proposal is linked, in the edit summary, to the Zulip topic where it was discussed.
+\end{itemize}
+
+\subsection{This version}
+On 8 November 2026 the wiki was reorganized into the parts drawn on the \wikilink{Overview\#Map of the wiki}{map}, and its pages were reduced to a skeleton, to be filled by the editorial board and contributors. The first version (6 November 2026: Couette flow with three proofs, a hypocoercivity page, the toolkit, the history) is kept in the project folder, in \texttt{archive/2026-11-06-first-version}. The only computed content is the video on the Overview, with its record on \wikilink{Numerical methods}{}, made by Claude (AI) and not yet checked by a human. The TeX source of each page is generated from the wiki by a script.
+
+\subsection{AI-generated documents}
+\begin{wikitable}{4}
+\header{Document & Date & Contents & Checks recorded}
+\row{none & — & — & —}
+\end{wikitable}
+
+\subsection{How a result becomes checked}
+\placeholder{To be agreed with the editorial board: how many readers a proof needs before it loses its label, and whether a page records who read which proof.}
+
+\section{Literature}\label{page-literature}
+\pagestatus{Page team: to be named · Status: generated from the reference catalogue (references/catalog.json, checked 2026-11-05)}
+\zulip[Literature]{contributing}
+
+The papers of the reference catalogue, one line each, grouped by topic. This page is generated by a script from the catalogue; to add or correct an entry, propose the change as a \wikilink{How to contribute\#Small corrections}{small correction}; the catalogue is updated first. Pages cite these entries by their key, for instance \wikilink{Literature\#BedrossianCotiZelati2017}{Bedrossian and Coti Zelati (2017)}. Preprints are listed with their arXiv identifier. The list is a working bibliography, not a survey of the field.
+
+\subsection{Orientation}
+\begin{enumerate}
+  \item \wikianchor{CZCIM2024} M. Coti Zelati, G. Crippa, G. Iyer and A. L. Mazzucato, \emph{Mixing in incompressible flows: transport, dissipation, and their interplay}, Notices of the American Mathematical Society \textbf{71} (2024), 593–604, \href{https://arxiv.org/abs/2308.00358}{arXiv:2308.00358}.
+  \item \wikianchor{MFN2026survey} A. L. Mazzucato, Y. Feng and C. Nobili, \emph{Enhanced dissipation by advection and applications to PDEs}, Applied Mathematical Modelling \textbf{150} (2026), Part A, 116310, \href{https://arxiv.org/abs/2501.17695}{arXiv:2501.17695}.
+\end{enumerate}
+
+\subsection{General mechanisms and rate limitations}
+\begin{enumerate}
+  \item \wikianchor{CKRZ2008} P. Constantin, A. Kiselev, L. Ryzhik and A. Zlatoš, \emph{Diffusion and mixing in fluid flow}, Annals of Mathematics \textbf{168} (2008), 643–674, \href{https://arxiv.org/abs/math/0509663}{arXiv:math/0509663}.
+  \item \wikianchor{CoopermanIyerRowanSon2025} W. Cooperman, G. Iyer, K. Rowan and S. Son, \emph{Exponentially mixing flows with slow enhanced dissipation}, preprint (2025), \href{https://arxiv.org/abs/2507.21305}{arXiv:2507.21305}.
+  \item \wikianchor{CZDE2020} M. Coti Zelati, M. G. Delgadino and T. M. Elgindi, \emph{On the relation between enhanced dissipation timescales and mixing rates}, Communications on Pure and Applied Mathematics \textbf{73} (2020), 1205–1244, \href{https://arxiv.org/abs/1806.03258}{arXiv:1806.03258}.
+  \item \wikianchor{FI2019} Y. Feng and G. Iyer, \emph{Dissipation enhancement by mixing}, Nonlinearity \textbf{32} (2019), 1810–1851, \href{https://arxiv.org/abs/1806.03699}{arXiv:1806.03699}.
+  \item \wikianchor{Seis2023} C. Seis, \emph{Bounds on the rate of enhanced dissipation}, Communications in Mathematical Physics \textbf{399} (2023), 2071–2081, \href{https://arxiv.org/abs/2003.08794}{arXiv:2003.08794}.
+  \item \wikianchor{Wei2021Resolvent} D. Wei, \emph{Diffusion and mixing in fluid flow via the resolvent estimate}, Science China Mathematics \textbf{64} (2021), 507–518, \href{https://arxiv.org/abs/1811.11904}{arXiv:1811.11904}.
+\end{enumerate}
+
+\subsection{Smooth stationary shears}
+\begin{enumerate}
+  \item \wikianchor{AlbrittonBeekieNovack2022} D. Albritton, R. Beekie and M. Novack, \emph{Enhanced dissipation and Hörmander's hypoellipticity}, Journal of Functional Analysis \textbf{283} (2022), 109522, \href{https://arxiv.org/abs/2105.12308}{arXiv:2105.12308}.
+  \item \wikianchor{BedrossianCotiZelati2017} J. Bedrossian and M. Coti Zelati, \emph{Enhanced dissipation, hypoellipticity, and anomalous small noise inviscid limits in shear flows}, Archive for Rational Mechanics and Analysis \textbf{224} (2017), 1161–1204, \href{https://arxiv.org/abs/1510.08098}{arXiv:1510.08098}.
+  \item \wikianchor{CotiZelati2020StableMixing} M. Coti Zelati, \emph{Stable mixing estimates in the infinite Péclet number limit}, Journal of Functional Analysis \textbf{279} (2020), 108562, \href{https://arxiv.org/abs/1909.01310}{arXiv:1909.01310}.
+  \item \wikianchor{CotiZelatiDrivas2021} M. Coti Zelati and T. D. Drivas, \emph{A stochastic approach to enhanced diffusion}, Annali della Scuola Normale Superiore di Pisa, Classe di Scienze \textbf{22} (2021), 811–834, \href{https://arxiv.org/abs/1911.09995}{arXiv:1911.09995}.
+  \item \wikianchor{CotiZelatiGallay2023} M. Coti Zelati and T. Gallay, \emph{Enhanced dissipation and Taylor dispersion in higher-dimensional parallel shear flows}, Journal of the London Mathematical Society \textbf{108} (2023), 1358–1392, \href{https://arxiv.org/abs/2108.11192}{arXiv:2108.11192}.
+\end{enumerate}
+
+\subsection{Circular and Hamiltonian flows and Taylor dispersion}
+\begin{enumerate}
+  \item \wikianchor{BeckChaudharyWayne2015} M. Beck, O. Chaudhary and C. E. Wayne, \emph{Analysis of enhanced diffusion in Taylor dispersion via a model problem}, Hamiltonian Partial Differential Equations and Applications, Fields Institute Communications \textbf{75} (2015), pp. 31–71, \href{https://arxiv.org/abs/1501.05877}{arXiv:1501.05877}.
+  \item \wikianchor{BeckChaudharyWayne2020} M. Beck, O. Chaudhary and C. E. Wayne, \emph{Rigorous justification of Taylor dispersion via center manifolds and hypocoercivity}, Archive for Rational Mechanics and Analysis \textbf{235} (2020), 1105–1149, \href{https://arxiv.org/abs/1804.06916}{arXiv:1804.06916}.
+  \item \wikianchor{BrueCotiZelatiMarconi2024} E. Bruè, M. Coti Zelati and E. Marconi, \emph{Enhanced dissipation for two-dimensional Hamiltonian flows}, Archive for Rational Mechanics and Analysis \textbf{248} (2024), Article 84, \href{https://arxiv.org/abs/2211.14057}{arXiv:2211.14057}.
+  \item \wikianchor{CotiZelatiDolce2020} M. Coti Zelati and M. Dolce, \emph{Separation of time-scales in drift-diffusion equations on R²}, Journal de Mathématiques Pures et Appliquées \textbf{142} (2020), 58–75, \href{https://arxiv.org/abs/1907.04012}{arXiv:1907.04012}.
+  \item \wikianchor{CotiZelatiDolceLo2024} M. Coti Zelati, M. Dolce and C. Lo, \emph{Diffusion enhancement and Taylor dispersion for rotationally symmetric flows in discs and pipes}, Journal of Mathematical Fluid Mechanics \textbf{26} (2024), Article 12, \href{https://arxiv.org/abs/2305.18162}{arXiv:2305.18162}.
+  \item \wikianchor{DolceJohanssonSorella2025} M. Dolce, C. J. P. Johansson and M. Sorella, \emph{Dissipation enhancing properties for a class of Hamiltonian flows with closed streamlines}, Communications in Partial Differential Equations \textbf{50} (2025), 301–352, \href{https://arxiv.org/abs/2407.06884}{arXiv:2407.06884}.
+  \item \wikianchor{FMN2023} Y. Feng, A. L. Mazzucato and C. Nobili, \emph{Enhanced dissipation by circularly symmetric and parallel pipe flows}, Physica D: Nonlinear Phenomena \textbf{445} (2023), 133640, \href{https://doi.org/10.1016/j.physd.2022.133640}{doi:10.1016/j.physd.2022.133640}.
+  \item \wikianchor{IZ2023} G. Iyer and H. Zhou, \emph{Quantifying the dissipation enhancement of cellular flows}, SIAM Journal on Mathematical Analysis \textbf{55} (2023), 6496–6516, \href{https://arxiv.org/abs/2209.11645}{arXiv:2209.11645}.
+  \item \wikianchor{LiZhang2025Unbounded} T. Li and L. Zhang, \emph{Enhanced dissipation and Taylor dispersion by a parallel shear flow in an infinite cylinder with unbounded cross section}, preprint (2025), \href{https://arxiv.org/abs/2510.13097}{arXiv:2510.13097}.
+\end{enumerate}
+
+\subsection{Time dependent shears and localized estimates}
+\begin{enumerate}
+  \item \wikianchor{BedrossianHeIyerWang2025} J. Bedrossian, S. He, S. Iyer and F. Wang, \emph{Pseudo-Gevrey smoothing for the passive scalar equations near Couette}, Journal of Functional Analysis \textbf{289} (2025), 110987, \href{https://arxiv.org/abs/2405.19233}{arXiv:2405.19233}.
+  \item \wikianchor{BenthausCocliteNobili2026} J. Benthaus, G. M. Coclite and C. Nobili, \emph{Mixing and enhanced dissipation in a time-translating shear flow}, preprint (2026), \href{https://arxiv.org/abs/2603.14624}{arXiv:2603.14624}.
+  \item \wikianchor{BenthausNobili2026} J. Benthaus and C. Nobili, \emph{Enhanced dissipation via time-modulated velocity fields}, Evolution Equations and Control Theory \textbf{15} (2026), 21–50, \href{https://arxiv.org/abs/2501.16905}{arXiv:2501.16905}.
+  \item \wikianchor{CobleHe2024} D. Coble and S. He, \emph{A note on enhanced dissipation of time-dependent shear flows}, Communications in Mathematical Sciences \textbf{22} (2024), 1685–1700, \href{https://arxiv.org/abs/2309.15738}{arXiv:2309.15738}.
+  \item \wikianchor{He2026Localized} S. He, \emph{Localized Enhanced Dissipation: A Hypocoercivity Approach}, preprint (2026), \href{https://arxiv.org/abs/2603.14657}{arXiv:2603.14657}.
+\end{enumerate}
+
+\subsection{Deterministic mixing constructions}
+\begin{enumerate}
+  \item \wikianchor{ELM2025} T. M. Elgindi, K. Liss and J. C. Mattingly, \emph{Optimal enhanced dissipation and mixing for a time-periodic, Lipschitz velocity field on T2}, Duke Mathematical Journal \textbf{174} (2025), 1209–1260, \href{https://arxiv.org/abs/2304.05374}{arXiv:2304.05374}.
+\end{enumerate}
+
+\subsection{Rough velocities and generalized diffusion}
+\begin{enumerate}
+  \item \wikianchor{ColomboCotiZelatiWidmayer2021} M. Colombo, M. Coti Zelati and K. Widmayer, \emph{Mixing and diffusion for rough shear flows}, Ars Inveniendi Analytica, Paper No. \textbf{2} (2021), 21 pp., \href{https://arxiv.org/abs/2009.12268}{arXiv:2009.12268}.
+  \item \wikianchor{FM2025} Y. Feng and A. L. Mazzucato, \emph{Dissipation enhancement by shear flows for generalized diffusion operators in high dimension}, Communications in Mathematical Sciences \textbf{23} (2025), 2203–2215, \href{https://doi.org/10.4310/CMS.250930031923}{doi:10.4310/CMS.250930031923}.
+  \item \wikianchor{GaleatiGubinelli2023} L. Galeati and M. Gubinelli, \emph{Mixing for generic rough shear flows}, SIAM Journal on Mathematical Analysis \textbf{55} (2023), 7240–7272, \href{https://arxiv.org/abs/2107.12115}{arXiv:2107.12115}.
+  \item \wikianchor{He2022Fractional} S. He, \emph{Enhanced dissipation, hypoellipticity for passive scalar equations with fractional dissipation}, Journal of Functional Analysis \textbf{282} (2022), 109319, \href{https://arxiv.org/abs/2103.07906}{arXiv:2103.07906}.
+  \item \wikianchor{RomitoRoveri2025} M. Romito and L. Roveri, \emph{Instantaneous Total Enhanced Dissipation For Very Rough Shear Flows}, preprint (2025), \href{https://arxiv.org/abs/2510.27331}{arXiv:2510.27331}.
+\end{enumerate}
+
+\subsection{Random stirring and transport noise}
+\begin{enumerate}
+  \item \wikianchor{BedrossianBlumenthalPunshonSmith2021} J. Bedrossian, A. Blumenthal and S. Punshon-Smith, \emph{Almost-sure enhanced dissipation and uniform-in-diffusivity exponential mixing for advection-diffusion by stochastic Navier-Stokes}, Probability Theory and Related Fields \textbf{179} (2021), 777–834, \href{https://arxiv.org/abs/1911.01561}{arXiv:1911.01561}.
+  \item \wikianchor{BCZG2023} A. Blumenthal, M. Coti Zelati and R. S. Gvalani, \emph{Exponential mixing for random dynamical systems and an example of Pierrehumbert}, Annals of Probability \textbf{51} (2023), 1559–1601, \href{https://arxiv.org/abs/2204.13651}{arXiv:2204.13651}.
+  \item \wikianchor{CoopermanIyerSon2025} W. Cooperman, G. Iyer and S. Son, \emph{A Harris theorem for enhanced dissipation, and an example of Pierrehumbert}, Nonlinearity \textbf{38} (2025), 045027, \href{https://arxiv.org/abs/2403.19858}{arXiv:2403.19858}.
+  \item \wikianchor{CotiZelatiHairerVillringer2025} M. Coti Zelati, M. Hairer and D. Villringer, \emph{A Stochastic RAGE Theorem and Enhanced Dissipation for Transport Noise}, preprint (2025), \href{https://arxiv.org/abs/2507.11422}{arXiv:2507.11422}.
+  \item \wikianchor{DelZottoNualart2026} A. Del Zotto and M. Nualart, \emph{Exponential mixing and enhanced dissipation on the unit sphere with Rossby-Haurwitz flows}, preprint (2026), \href{https://arxiv.org/abs/2606.11055}{arXiv:2606.11055}.
+  \item \wikianchor{FlandoliLuo2026} F. Flandoli and D. Luo, \emph{Enhanced dissipation and Lyapunov exponents for stochastic transport-diffusion equations with small molecular diffusivity and small noise intensity}, Stochastics and Partial Differential Equations: Analysis and Computations \textbf{14} (2026), 1062–1076, \href{https://doi.org/10.1007/s40072-026-00426-y}{doi:10.1007/s40072-026-00426-y}.
+\end{enumerate}
+
+\subsection{Inviscid mixing anomalous dissipation and further lower bounds}
+\begin{enumerate}
+  \item \wikianchor{ACM2019} G. Alberti, G. Crippa and A. L. Mazzucato, \emph{Exponential self-similar mixing by incompressible flows}, Journal of the American Mathematical Society \textbf{32} (2019), 445–490, \href{https://arxiv.org/abs/1605.02090}{arXiv:1605.02090}.
+  \item \wikianchor{CEIM2022} G. Crippa, T. Elgindi, G. Iyer and A. L. Mazzucato, \emph{Growth of Sobolev norms and loss of regularity in transport equations}, Philosophical Transactions of the Royal Society A \textbf{380} (2022), 20210024, \href{https://arxiv.org/abs/2109.14975}{arXiv:2109.14975}.
+  \item \wikianchor{DEIJ2022} T. D. Drivas, T. M. Elgindi, G. Iyer and I. Jeong, \emph{Anomalous dissipation in passive scalar transport}, Archive for Rational Mechanics and Analysis \textbf{243} (2022), 1151–1180, \href{https://arxiv.org/abs/1911.03271}{arXiv:1911.03271}.
+  \item \wikianchor{EZ2019} T. M. Elgindi and A. Zlatoš, \emph{Universal mixers in all dimensions}, Advances in Mathematics \textbf{356} (2019), 106807, \href{https://arxiv.org/abs/1809.09614}{arXiv:1809.09614}.
+  \item \wikianchor{EL2024} T. M. Elgindi and K. Liss, \emph{Norm growth, non-uniqueness, and anomalous dissipation in passive scalars}, Archive for Rational Mechanics and Analysis \textbf{248} (2024), \href{https://arxiv.org/abs/2309.08576}{arXiv:2309.08576}.
+  \item \wikianchor{IKX2014} G. Iyer, A. Kiselev and X. Xu, \emph{Lower bounds on the mix norm of passive scalars advected by incompressible enstrophy-constrained flows}, Nonlinearity \textbf{27} (2014), 973–985, \href{https://arxiv.org/abs/1310.2986}{arXiv:1310.2986}.
+  \item \wikianchor{NP2022} C. Nobili and S. Pottel, \emph{Lower bounds on mixing norms for the advection diffusion equation in Rd}, Nonlinear Differential Equations and Applications NoDEA \textbf{29} (2022), Article 12, \href{https://arxiv.org/abs/2006.04614}{arXiv:2006.04614}.
+\end{enumerate}
+\end{document}

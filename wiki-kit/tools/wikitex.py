@@ -24,6 +24,8 @@ This script writes the TeX sources, converts TeX back to wikitext, and applies a
         what the conversion does not accept: macros, numbered equations, labels on equations,
         \ref, unknown citation keys (with --pages: the keys of the Literature page are known), unknown
         commands, formulas the wiki's renderer rejects
+  book <pages-dir | export.xml> <tex-dir> <out.tex> [--site NAME] [--date YYYY-MM-DD]
+        the whole wiki in one document (a section per page, in the order of the menu), from the page files
   roundtrip <pages-dir>
         page -> TeX -> page on every article: must give back the page
 
@@ -1394,6 +1396,72 @@ def cmd_page2tex(src, out, date='', site=''):
     return 0
 
 
+def sidebar_order(src):
+    """[(part, [page titles])] from MediaWiki:Sidebar (pages dir or XML)."""
+    if os.path.isfile(src) and src.endswith('.xml'):
+        root = ET.parse(src).getroot()
+        ns = {'mw': root.tag.split('}')[0].strip('{')}
+        text = next(((p.find('mw:revision/mw:text', ns).text or '') for p in root.findall('mw:page', ns)
+                     if p.find('mw:title', ns).text == 'MediaWiki:Sidebar'), '')
+    else:
+        text = wikikit.read_pages(src).get('MediaWiki:Sidebar', (0, 0, 0, ''))[3]
+    out = []
+    for line in text.split('\n'):
+        if line.startswith('**') and out:
+            out[-1][1].append(line[2:].split('|')[0].strip())
+        elif line.startswith('*') and line[1:].strip() not in ('SEARCH', 'TOOLBOX', 'LANGUAGES'):
+            out.append((line[1:].strip(), []))
+    return [(p, t) for p, t in out if t]
+
+
+def cmd_book(src, texdir, out, site='', date=''):
+    """All the pages in one document (main.tex): a part per menu section with several pages, a section per page,
+    one reference list at the end. Written from the TeX sources of the pages (page2tex); for reading and
+    compiling the whole wiki, not for proposals (those use the page files)."""
+    demote = [(r'\subsubsection', r'\paragraph'), (r'\subsection', r'\subsubsection'), (r'\section', r'\subsection')]
+    body, bib, seen = [], [], set()
+    for part, titles in sidebar_order(src):
+        several = len(titles) > 1 or titles[0] != part
+        if several:
+            body.append('\\part{' + esc(part) + '}')
+        for title in titles:
+            f = os.path.join(texdir, ('index' if title == 'Overview' else slug(title)) + '.tex')
+            if not os.path.exists(f):
+                continue
+            tex = open(f, encoding='utf-8').read()
+            page = tex.split('\\maketitle\n', 1)[1].rsplit('\\end{document}', 1)[0].rstrip('\n')
+            m = re.search(r'\\begin\{thebibliography\}\{[^}]*\}\n(.*?)\\end\{thebibliography\}\n?', page, re.S)
+            if m:
+                for item in m.group(1).strip('\n').split('\n'):
+                    k = BIBITEM.match(item)
+                    if k and k.group(2) not in seen:
+                        seen.add(k.group(2)); bib.append(item)
+                page = page[:m.start()] + page[m.end():]
+            page = re.sub(r'\\section\*\{References\}\n(%%wiki [^\n]*\n?)*', '', page)
+            lines = []
+            for line in page.split('\n'):
+                for a, b in demote:
+                    if line.startswith(a + '{') or line.startswith(a + '*{'):
+                        line = b + line[len(a):]; break
+                lines.append(re.sub(r'^\\zulip\{', r'\\zulip[' + esc(title).replace('\\', '\\\\') + ']{', line))
+            body.append('\\section{' + esc(title) + '}\\label{page-' + slug(title) + '}')
+            body += lines
+            body.append('')
+    if bib:
+        body += ['\\section*{References}', r'\begin{thebibliography}{}'] + bib + [r'\end{thebibliography}']
+    head = ['% !TEX TS-program = pdflatex', '% !TEX encoding = UTF-8 Unicode',
+            '% The whole wiki{} in one document{}: a section per page, in the order of the menu.'.format(
+                ' "%s"' % site if site else '', ', generated on ' + long_date(date) if date else ''),
+            '% It compiles as it is with pdflatex; typeset twice. The other .tex files of the project are the pages, one',
+            '% file each: a proposal is made on the file of its page (see "How to contribute").']
+    doc = ('\n'.join(head) + '\n' + PREAMBLE + '\n\n\\begin{document}\n\\title{' + esc(site or 'Wiki') + '}\n\\author{}\n\\date{'
+           + long_date(date) + '}\n\\maketitle\n\\tableofcontents\n\n' + '\n'.join(body).rstrip('\n') + '\n\\end{document}\n')
+    open(out, 'w', encoding='utf-8').write(doc)
+    print('book: %d lines -> %s' % (doc.count('\n'), out))
+    return 0
+
+
+
 def cmd_roundtrip(pdir):
     bad = 0
     arts = articles(pdir)
@@ -1440,6 +1508,8 @@ def main(argv):
         return cmd_apply(args[0], args[1], '--write' in args)
     if cmd == 'check':
         return cmd_check(args[0], opt('--pages'))
+    if cmd == 'book':
+        return cmd_book(args[0], args[1], args[2], opt('--site'), opt('--date', datetime.date.today().isoformat()))
     if cmd == 'roundtrip':
         return cmd_roundtrip(args[0])
     print(__doc__); return 2

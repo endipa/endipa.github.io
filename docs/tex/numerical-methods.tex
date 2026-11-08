@@ -104,9 +104,9 @@ Every computed picture and video of this wiki has a record on this page: what wa
 \begin{levels}
 \lv{Produces}{the video on the \wikilink{Overview}{} (\texttt{heat-vs-shear.mp4}) and the check figure below}
 \lv{Equation}{$\partial_t f+\sin y\,\partial_x f=\nu\Delta f$ on $[0,2\pi)^2$, periodic, and the heat equation $\partial_t f=\nu\Delta f$; same datum $f_0=\cos x$}
-\lv{Parameters}{$\nu=10^{-3}$, times $0\le t\le 300$; video of 20 s at 24 frames per second, time running slower at the start (frame $s\in[0,1]$ shows $t=300\,(0.2s+0.8s^2)$), last frame held 1.5 s}
+\lv{Parameters}{$\nu=10^{-3}$, times $0\le t\le 100$; video of 20 s at 24 frames per second, time running uniformly (5 time units per second), last frame held 1.5 s}
 \lv{Method}{one Fourier mode in $x$: $f=\operatorname{Re}(g(t,y)e^{ix})$ with $\partial_t g=-i\sin y\,g+\nu(\partial_y^2-1)g$; 512 Fourier modes in $y$; Strang splitting with time step 0.01, transport and diffusion steps solved exactly; heat equation solved exactly}
-\lv{Checks}{with 1024 modes and time step 0.005 the norms agree to a relative $6\cdot10^{-8}$; the energy balance $\|g(t)\|^2+2\nu\int_0^t\|(\partial_y g,g)\|^2ds=\|g(0)\|^2$ holds to $3\cdot10^{-7}$; late-time decay rate of the norm 0.0167, against $\nu^{1/2}\approx0.0316$}
+\lv{Checks}{with 1024 modes and time step 0.005 the norms agree to a relative $6\cdot10^{-8}$; the energy balance $\|g(t)\|^2+2\nu\int_0^t\|(\partial_y g,g)\|^2ds=\|g(0)\|^2$ holds to $3\cdot10^{-7}$; decay rate of the norm on $[50,100]$: 0.0167, against $\nu^{1/2}\approx0.0316$}
 \lv{Code}{\texttt{numerics/heat-vs-shear/heat\_vs\_shear.py} in the project folder (Python 3, NumPy, Matplotlib, ffmpeg); \texttt{python3 heat\_vs\_shear.py --out ../../wiki/media}, about a minute}
 \lv{Status}{computed by Claude (AI) on 8 November 2026; not yet checked by a human \demo{}}
 \end{levels}
@@ -132,8 +132,8 @@ Checks (written to heat-vs-shear-check.txt and heat-vs-shear-check.png):
   * the run is repeated with twice the Fourier modes and half the time step, and the norms are compared;
   * energy balance: ||g(t)||^2 + 2 nu int_0^t ||(d_y g, g)||^2 ds = ||g(0)||^2 (means over y).
 
-The video lasts --duration seconds; time runs slowly at first, where the mixing happens, and faster
-later: frame s in [0, 1] shows t = T (a s + (1 - a) s^2), a = --slow; the last frame is held --hold seconds.
+The video lasts --duration seconds; frame s in [0, 1] shows t = T (a s + (1 - a) s^2), a = --slow (default 1:
+time runs uniformly; a < 1 slows down the start); the last frame is held --hold seconds.
 
 Outputs, in --out: heat-vs-shear.mp4 (video), heat-vs-shear-poster.png (one frame of it),
 heat-vs-shear-check.png and heat-vs-shear-check.txt. Needs NumPy, Matplotlib and ffmpeg
@@ -232,12 +232,12 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--out", default=".", help="folder for the video and the figures")
     ap.add_argument("--nu", type=float, default=1e-3)
-    ap.add_argument("--T", type=float, default=300.0)
+    ap.add_argument("--T", type=float, default=100.0)
     ap.add_argument("--N", type=int, default=512, help="Fourier modes in y")
     ap.add_argument("--dt", type=float, default=0.01)
     ap.add_argument("--duration", type=float, default=20.0, help="length of the video in seconds")
     ap.add_argument("--fps", type=int, default=24)
-    ap.add_argument("--slow", type=float, default=0.2, help="speed of time at the start, relative to the mean")
+    ap.add_argument("--slow", type=float, default=1.0, help="speed of time at the start, relative to the mean (1: uniform)")
     ap.add_argument("--hold", type=float, default=1.5, help="seconds the last frame is held")
     ap.add_argument("--nx", type=int, default=256, help="pixels per side of each panel")
     a = ap.parse_args()

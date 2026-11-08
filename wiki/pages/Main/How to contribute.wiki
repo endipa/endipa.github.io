@@ -45,7 +45,7 @@ A result is a statement followed by its levels of detail, each folded until the 
 |-
 | Proof || the complete proof, in steps; a statement used only in this proof is a ''claim'', with its own folded proof inside
 |}
-A statement that several proofs use, or that holds in more generality than one result, goes to the [[Toolkit]] and is linked from the proofs. A short proof is written in one piece. The specimen below shows the boxes at work; open the folds to see the nesting.
+A statement that several proofs use, or that holds in more generality than one result, goes to the ''Toolkit'' ([[Standard analysis]] or [[Enhanced-dissipation tools]]) and is linked from the proofs. A short proof is written in one piece. The specimen below shows the boxes at work; open the folds to see the nesting.
 
 === Specimen ===
 {{Theorem start|id=thm-specimen|title=Theorem (specimen).}}
@@ -68,7 +68,7 @@ A statement used only in this proof.
 {{Proof start|id=proof-clm-specimen|title=Proof of the claim}}
 The proof of the claim, folded inside the proof that uses it.
 {{Proof end}}
-'''Step 2.''' The conclusion, with a lemma of the [[Toolkit]].
+'''Step 2.''' The conclusion, with a lemma of the [[Standard analysis|toolkit]].
 
 ''Sources.'' This proof follows ...
 {{Proof end}}
@@ -77,7 +77,7 @@ The proof of the claim, folded inside the proof that uses it.
 * {{Demo}}: text drafted by Claude (AI), until a member of the page team replaces or approves it.
 * {{Heuristic}}: a non-rigorous explanation, kept apart from what is proved.
 * {{Numeric}}: a computation, with its record on [[Numerical methods]].
-* {{Published}}, {{Preprint}}, {{Raw}}: the status of an entry on [[Extensions and recent advances]]: refereed; posted but not refereed; neither posted nor checked by a human (an AI-generated proof, a numerical observation, a sketch).
+* {{Published}}, {{Preprint}}, {{Raw}}: the status of an entry on [[Related results]] and [[Raw data]]: refereed; posted but not refereed; neither posted nor checked by a human (an AI-generated proof, a numerical observation, a sketch).
 * Grey quote boxes: AI-generated text, quoted verbatim with its source and date.
 
 == Pictures, videos and numerics ==

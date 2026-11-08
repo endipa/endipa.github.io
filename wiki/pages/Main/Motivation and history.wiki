@@ -27,7 +27,7 @@
 {{Placeholder start}}Contributions and dates; the general theory is on [[Hörmander theory]].{{Placeholder end}}
 
 === Recent advances ===
-{{Placeholder start}}The latest steps; the details are on [[Extensions and recent advances]].{{Placeholder end}}
+{{Placeholder start}}The latest steps; the details are on [[State of the art]] and [[Related results]].{{Placeholder end}}
 
 == References ==
 <!-- refs-begin: -->

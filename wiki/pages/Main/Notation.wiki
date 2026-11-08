@@ -1,0 +1,11 @@
+<div class="mod-meta">Page team: to be named · Status: skeleton</div>
+{{Discuss|channel=toolkit}}
+
+The notation and the definitions used throughout the wiki.
+
+== Notation ==
+{{Placeholder start}}The scalar, the velocity field, the domains, the Fourier modes, the norms.{{Placeholder end}}
+
+== Definitions ==
+{{Placeholder start}}Dissipation time, enhanced dissipation, and the related notions used in the wiki.{{Placeholder end}}
+

@@ -37,6 +37,8 @@ MEDIA="${MEDIA_DIR:-$(dirname "$XML")/../media}"; MARGS=(); [ -d "$MEDIA" ] && M
 # kit v2.1: the TeX source of every page, linked under its title
 SITE_NAME="$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1])).get("title",""))' "$ED/edition.json" 2>/dev/null || true)"
 python3 "$HERE/wikitex.py" page2tex "$XML" "$ED/tex" --date "$(date -u +%F)" --site "$SITE_NAME" > "$ED/tex-report.txt" || { cat "$ED/tex-report.txt"; exit 1; }
+# the whole wiki in one document, a section per page (opened in Overleaf from the Overview)
+python3 "$HERE/wikitex.py" book "$XML" "$ED/tex" "$ED/tex/whole-wiki.tex" --site "$SITE_NAME" --date "$(date -u +%F)" >> "$ED/tex-report.txt"
 # the PDF of every page, compiled from its TeX source (skipped when pdflatex is missing); images from the media folder
 rm -f "$ED"/tex/*.pdf
 if command -v pdflatex >/dev/null 2>&1; then
@@ -46,6 +48,10 @@ if command -v pdflatex >/dev/null 2>&1; then
       && cp "$T/tex/$b.pdf" "$ED/tex/" || echo "pdflatex failed on $b.tex" >> "$ED/tex-report.txt"
   done; rm -rf "$T"
 fi
+# all the TeX sources in one zip, for "Open in Overleaf" on the Overview: whole-wiki.tex as the main document, every
+# page a file of its own, and the images they show
+rm -f "$ED/tex/all-pages.zip"; T="$(mktemp -d)"; cp "$ED"/tex/*.tex "$T/"; [ -d "$MEDIA" ] && cp "$MEDIA"/*.png "$MEDIA"/*.jpg "$T/" 2>/dev/null || true
+(cd "$T" && zip -q "$ED/tex/all-pages.zip" *); rm -rf "$T"
 python3 "$HERE/wiki2qmd.py" "$XML" "$ED" --date "$(date -u +%F)" "${MARGS[@]}" > "$ED/convert-report.json" || { cat "$ED/convert-report.json"; exit 1; }
 (cd "$ED" && "$Q" render --to html >/tmp/quarto-render.log 2>&1) || { tail -30 /tmp/quarto-render.log; exit 1; }
 sed -i '/polyfill\.min\.js/d' "$ED"/_book/*.html

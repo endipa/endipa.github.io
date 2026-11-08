@@ -1,0 +1,12 @@
+<div class="mod-meta">Page team: to be named · Status: skeleton</div>
+{{Discuss|channel=advances}}
+
+Open problems, each with what is known, the expected answer, and the main difficulty.
+
+== Problems ==
+{{Placeholder start}}First problems.{{Placeholder end}}
+
+
+== References ==
+<!-- refs-begin: -->
+<!-- refs-end -->
