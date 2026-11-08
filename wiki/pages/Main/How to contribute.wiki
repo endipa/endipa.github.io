@@ -9,6 +9,7 @@ This wiki is written from the bottom up, the way a journal works: members of the
 * '''Reviewers''': check a proposal at the request of an associate editor, in the open, in its Zulip topic.
 * '''Community''': propose and discuss. New members are endorsed by an editor or by a member at least two years past the PhD.
 The first line of each page names its team. As the wiki grows, busy parts and pages get more associate editors and reviewers; the roles stay the same.
+On the wiki, everyone with a role is a ''member'' (reads every page and writes on talk pages); the editorial board and the associate editors are also ''editors'' (edit articles and templates); administrators give these rights.
 
 == Small corrections ==
 Typos, broken links, a missing reference: members of the wiki leave a note on the talk page of the page (tab ''Discussion'', then ''Add topic''); others write in the Zulip channel ''contributing'', naming the page. The editors go through these notes regularly and make the changes. For now the wiki is open only to invited members.
