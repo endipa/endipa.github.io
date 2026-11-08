@@ -1,0 +1,2 @@
+<span class="badge-demo">demo text</span><noinclude>
+Label for text drafted by Claude (AI), to be replaced or approved by the page's steward.</noinclude>

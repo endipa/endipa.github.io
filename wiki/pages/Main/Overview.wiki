@@ -1,0 +1,9 @@
+{{Discuss|channel=overview}}
+
+{{Placeholder start}}A short introduction to the topic, written as continuous prose: the phenomenon, the equation, why it matters, and what the reader will find in this wiki.{{Placeholder end}}
+<math display="block">\partial_t f+u\cdot\nabla f=\nu\Delta f,\qquad \nabla\cdot u=0.</math>
+{{Media|kind=video|file=heat-vs-shear.mp4|poster=heat-vs-shear-poster.png|caption=Left: the heat equation. Right: the same initial datum carried by the shear flow <math display="inline">u=(\sin y,0)</math>, with the same diffusivity. Bottom: the size of the two solutions in time, on a logarithmic scale. {{Numeric}}|record=num-heat-vs-shear}}
+{{Placeholder start}}A second simulation: a flow that dissipates on the time scale <math display="inline">|\log\nu|</math>.{{Placeholder end}}
+
+== Map of the wiki ==
+{{Media|kind=diagram|file=wiki-map.svg|caption=The parts of the wiki; click a name to open its page.}}

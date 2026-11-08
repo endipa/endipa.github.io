@@ -1,0 +1,38 @@
+<div class="mod-meta">Page team: to be named · Status: draft · Checks: none recorded yet</div>
+{{Discuss|channel=CHANNEL}}
+
+{{Placeholder start}}Lead: what this page is about, in three lines.{{Placeholder end}}
+
+== Setting ==
+The flow, the domain, what decays.
+
+== Results ==
+{{Theorem start|id=thm-name|title=Theorem (name).}}
+The statement, in its simplest form, with constants hidden.
+{{Theorem end}}
+{{Lean}}
+{{Fold start|kind=idea|title=Idea}}
+The key mechanism in a few lines.
+{{Fold end}}
+{{Fold start|kind=arch|title=Proof architecture}}
+# First step.
+# Second step.
+{{Fold end}}
+{{Proof start|id=proof-name}}
+'''Step 1.''' The first step.
+{{Theorem start|id=clm-name|title=Claim (name).}}
+A statement used only in this proof.
+{{Theorem end}}
+{{Proof start|id=proof-clm-name|title=Proof of the claim}}
+The proof of the claim.
+{{Proof end}}
+'''Step 2.''' The second step, using a lemma of the [[Toolkit]].
+
+''Sources.'' This proof follows …
+{{Proof end}}
+
+== References ==
+<!-- refs-begin: -->
+<!-- refs-end --><noinclude>
+
+Skeleton of a page. To start a new page, open <code>index.php?title=NEW_TITLE&action=edit&preload=Template:Module/Preload</code> on this wiki (replace NEW_TITLE), replace CHANNEL by the Zulip channel of its part, write the page, and ask an administrator to add it to [[MediaWiki:Sidebar]]. The anatomy of a result is explained in [[How to contribute#Anatomy of a result|How to contribute]].</noinclude>

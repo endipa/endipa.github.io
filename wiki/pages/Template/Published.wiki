@@ -1,0 +1,2 @@
+<span class="badge-published">published</span><noinclude>
+Label for a result from a refereed publication (see [[Extensions and recent advances]]).</noinclude>

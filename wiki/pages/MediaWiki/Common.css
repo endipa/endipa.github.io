@@ -1,0 +1,66 @@
+/* Levels, labels, boxes and the navigation tree of the wiki kit (2026). Shared by the
+   pages, the static preview and, in translated form, the Quarto edition (theme.scss). */
+.mod-meta { font-size: 0.88em; color: #54595d; margin: 0.1em 0 0.4em; }
+.discuss-line { font-size: 0.9em; margin: 0 0 1em; }
+.badge-demo { display: inline-block; font-size: 0.78em; line-height: 1.5; padding: 0 0.45em; border: 1px solid #d9b25f; color: #8a5a00; background: #fdf6e7; border-radius: 3px; }
+.thm-box { border: 1px solid #a2a9b1; background: #f8f9fa; padding: 0.6em 1em; margin: 0.8em 0 1.1em; }
+.thm-title { font-weight: bold; }
+.lvl { border-left: 4px solid #36c; background: #f8f9fa; padding: 0.4em 1em 0.6em; margin: 1em 0; }
+.lvl-title { font-weight: bold; margin-bottom: 0.3em; }
+.lvl-idea { border-left-color: #14866d; }
+.lvl-idea > .lvl-title { color: #14866d; }
+.lvl-arch { border-left-color: #1f4e79; }
+.lvl-arch > .lvl-title { color: #1f4e79; }
+.lvl-proof { border-left-color: #54595d; }
+.lvl-formal { font-size: 0.9em; color: #54595d; border-top: 1px dashed #c8ccd1; padding-top: 0.5em; margin-top: 1.2em; }
+.badge-claim { display: inline-block; font-size: 0.78em; line-height: 1.5; padding: 0 0.45em; border: 1px solid #e0a8a8; color: #9b2c2c; background: #fdf2f2; border-radius: 3px; }
+.demo-banner { border-left: 3px solid #d9b25f; background: #fdf9ef; padding: 0.6em 0.9em; margin: 0.4em 0 0.8em; }
+.source-quote { background: #eef1f5; border: 1px solid #c8cfd9; border-radius: 3px; padding: 0.7em 1em 0.4em; margin: 0.6em 0 1em; }
+.quote-head { font-size: 0.85em; font-weight: bold; color: #4a5260; margin-bottom: 0.4em; }
+.placeholder { border: 1px dashed #8aa2c0; border-radius: 3px; padding: 0.6em 0.9em; color: #5b6573; font-style: italic; margin: 0.4em 0 1em; }
+.placeholder a { font-style: normal; }
+.statement-card { border: 1px solid #d5dbe3; border-radius: 4px; padding: 0.7em 1em 0.5em; margin: 0 0 1em; }
+.claim-card { border-color: #e0a8a8; }
+.card-head { margin-bottom: 0.35em; }
+table.levels td { padding: 0.1em 0.9em 0.1em 0; vertical-align: top; }
+table.levels td:first-child { font-weight: bold; font-size: 0.82em; text-transform: uppercase; letter-spacing: 0.05em; color: #1f4e79; }
+.table-note { font-size: 0.85em; color: #54595d; margin: -0.6em 0 1em; }
+.lvl-note { border-left-color: #a2a9b1; }
+.mw-logo-icon { display: none; }
+.badge-heuristic { display: inline-block; font-size: 0.78em; line-height: 1.5; padding: 0 0.45em; border: 1px solid #9fb3c8; color: #2c4a6b; background: #eef3f8; border-radius: 3px; }
+
+/* Navigation tree in the main menu (MediaWiki:Common.js) */
+#vector-main-menu li.navtree-page, #mw-panel li.navtree-page, li.navtree-page { position: relative; padding-left: 1.1em; }
+.navtree-list { list-style: none; margin: 0.15em 0 0.35em 0; padding: 0; font-size: 0.93em; }
+.navtree-list .navtree-list { font-size: 1em; }
+#vector-main-menu .navtree-list li, #mw-panel .navtree-list li, .navtree-list li { position: relative; margin: 0.12em 0; padding: 0 0 0 1.1em; list-style: none; font-size: 1em; line-height: 1.35; }
+.navtree-toggle { position: absolute; left: 0; top: 0.1em; width: 1em; padding: 0; border: 0; background: none; cursor: pointer; color: #54595d; font-size: 0.8em; line-height: 1.6; }
+.navtree-toggle::before { content: "\25B8"; }
+.navtree-open > .navtree-toggle::before { content: "\25BE"; }
+.navtree-closed > .navtree-list { display: none; }
+.navtree-current > a { font-weight: bold; }
+.navtree-result > a { font-style: italic; }
+.navtree-level > a, .navtree-proof > a { color: #54595d; }
+
+/* Label for computations (Template:Numeric) and the central question box (Overview) */
+.badge-numeric { display: inline-block; font-size: 0.78em; line-height: 1.5; padding: 0 0.45em; border: 1px solid #a6c8a0; color: #2f5d27; background: #f0f7ee; border-radius: 3px; }
+.central-question { border-left: 4px solid #1f4e79; background: #f4f7fb; padding: 0.6em 1em; margin: 0.8em 0 1em; font-size: 1.05em; }
+
+/* Enhanced-dissipation wiki: preprint label and the infobox strip (a levels table at the top of a page) */
+.badge-preprint { display: inline-block; font-size: 0.78em; line-height: 1.5; padding: 0 0.45em; border: 1px solid #9fb3c8; color: #1f4e79; background: #eef3f8; border-radius: 3px; }
+table.levels.infobox { border: 1px solid #d5dbe3; border-radius: 4px; padding: 0.4em 0.8em; margin: 0.4em 0 1.2em; background: #fbfcfd; }
+
+/* 8 November 2026: labels of the Frontier part, Lean banner, media boxes, claims, nested folds, code */
+.badge-published { display: inline-block; font-size: 0.78em; line-height: 1.5; padding: 0 0.45em; border: 1px solid #a6c8a0; color: #1e6b34; background: #eef7ef; border-radius: 3px; }
+.badge-raw { display: inline-block; font-size: 0.78em; line-height: 1.5; padding: 0 0.45em; border: 1px solid #e0a8a8; color: #9b2c2c; background: #fdf2f2; border-radius: 3px; }
+.lean-banner { font-size: 0.85em; color: #54595d; margin: -0.7em 0 1em; }
+.lean-banner::before { content: "\25CB\00a0"; }
+.lean-done { color: #1e6b34; }
+.lean-done::before { content: "\2713\00a0"; }
+.media-box { border: 1px solid #c8ccd1; border-radius: 3px; background: #f8f9fa; padding: 0.5em 0.9em; margin: 0.8em 0 1.1em; }
+.media-file { font-size: 0.82em; color: #54595d; margin-bottom: 0.25em; }
+.media-record { font-size: 0.85em; margin-top: 0.3em; }
+.thm-box[id^="clm-"] { background: #fff; border-style: dashed; padding: 0.4em 0.9em; }
+.lvl .lvl { margin: 0.6em 0; }
+.lvl pre { overflow-x: auto; font-size: 0.85em; }
+.navtree-single .vector-menu-heading, .navtree-single > h3 { display: none; }

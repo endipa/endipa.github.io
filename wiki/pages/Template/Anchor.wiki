@@ -1,0 +1,2 @@
+<span id="{{{1}}}"></span><noinclude>
+An anchor for links: <nowiki>{{Anchor|name}}</nowiki> makes a link of the form <nowiki>[[Page#name]]</nowiki> point here. Used by the Literature page (one anchor per catalogue key).</noinclude>

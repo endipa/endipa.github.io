@@ -1,0 +1,14 @@
+site/_book/
+site/.quarto/
+site/*.qmd
+site/_quarto.yml
+site/mathjax/
+site/tex/
+site/media/
+*.zip
+__pycache__/
+.DS_Store
+# old first-version pages kept only in the project folder
+wiki-kit/examples/*.wiki
+wiki-kit/examples/app-preview-landing.html
+wiki-kit/examples/catalog-example.json

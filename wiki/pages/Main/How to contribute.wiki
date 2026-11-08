@@ -1,0 +1,119 @@
+<div class="mod-meta">Page team: Michele Dolce · Status: proposal, to be agreed with the editorial board · Text: {{Demo}}</div>
+{{Discuss|channel=contributing}}
+
+This wiki is written from the bottom up, the way a journal works: members of the community propose changes, proposals are discussed and reviewed in the open, an associate editor decides, and accepted changes are written into the wiki. The roles, and who holds them, are on [[Contributors]]. {{Demo}}
+
+== Roles ==
+* '''Editorial board''': the scope and the structure of the wiki; appoints the associate editors; settles discussions that end without consensus.
+* '''Associate editors''': one or more per part, following its Zulip channel. They run the discussion of each proposal, ask reviewers, decide, and write accepted changes into the wiki.
+* '''Reviewers''': check a proposal at the request of an associate editor, in the open, in its Zulip topic.
+* '''Community''': propose and discuss. New members are endorsed by an editor or by a member at least two years past the PhD.
+The first line of each page names its team. As the wiki grows, busy parts and pages get more associate editors and reviewers; the roles stay the same.
+
+== Small corrections ==
+Typos, broken links, a missing reference: members of the wiki leave a note on the talk page of the page (tab ''Discussion'', then ''Add topic''); others write in the Zulip channel ''contributing'', naming the page. The editors go through these notes regularly and make the changes. For now the wiki is open only to invited members.
+
+== Mathematical contributions ==
+A new proof, a shorter argument, a correction to a statement, a new result or a new page goes through Zulip.
+# Download the TeX source of the page: link ''TeX source'' under the title of every page of the edition, or ''Open in Overleaf''. It is a standard LaTeX article that compiles as it is. Change what you want and check that it compiles; then keep only the blocks you changed: a section, or a statement or a proof with its label.
+# Open a topic in the Zulip channel of the part, titled ''Proposal: short title''. Attach the file and say in a few lines what it changes, why, and which sources it uses.
+# For two weeks the community and the reviewers discuss the proposal in its topic.
+# Within a week after that, the associate editor decides: accepted, to be revised, or declined. If the discussion ended without consensus, the editorial board decides.
+# A script converts the accepted file to the wiki's format, shows the editor exactly what changes on the page, and flags new citations and links. The associate editor writes the change into the wiki, links the Zulip topic in the edit summary, and the page credits its author.
+A proposal changes only the blocks it contains. A paper that is not yet on [[Literature]] is proposed on its own, as a small correction of that page.
+
+== The TeX format ==
+The TeX source of a page is a standard LaTeX article: one file that compiles with pdflatex and nothing else (on Overleaf, or with TeXShop, TeXstudio, ...; typeset twice for the citations). Its preamble is the same for every page and is never changed; a contribution defines no macros, since the wiki has none. Sections and statements are numbered in the PDF only.
+* Statements: theorem, proposition, lemma, corollary, conjecture, definition, example, remark, claim. The optional argument is the name, the label is the anchor: <code><nowiki>\begin{theorem}[name]\label{thm-name}</nowiki></code>. Labels start with thm-, prp-, lem-, cor-, def- or clm-.
+* After a statement: <code><nowiki>\lean{}</nowiki></code> (the Lean banner), the environments idea and architecture, and proofs with an optional title and a label, as in <code><nowiki>\begin{proof}[Proof by hypocoercivity]\label{proof-name}</nowiki></code>. A claim and its proof sit inside the proof that uses them.
+* Formulas: <code><nowiki>$...$</nowiki></code>, <code><nowiki>\[ ... \]</nowiki></code> and align*; no numbered equations and no labels on equations; none of the commands that the wiki's renderer rejects (the script lists them).
+* Citations: <code><nowiki>\citet{Key}</nowiki></code> gives ''Author (year)'' and <code><nowiki>\citep{Key}</nowiki></code> gives ''(Author, year)'', with the keys of [[Literature]]. The reference list at the end of the file is generated from the reference catalogue; a new citation is added to it when the proposal is accepted.
+* Links: on the same page, <code><nowiki>\hyperref[thm-name]{the theorem above}</nowiki></code> rather than <code><nowiki>\ref</nowiki></code>, since the wiki has no numbers; to another page, <code><nowiki>\wikilink{Page\#anchor}{text}</nowiki></code>.
+* Labels: <code><nowiki>\heuristic{}</nowiki></code>, <code><nowiki>\numerics{}</nowiki></code>, <code><nowiki>\published{}</nowiki></code>, <code><nowiki>\preprint{}</nowiki></code>, <code><nowiki>\raw{}</nowiki></code>.
+* A new block goes after an existing one: put the line <code><nowiki>%% after: Setting</nowiki></code> (a section title or a label) just before it.
+
+== Anatomy of a result ==
+A result is a statement followed by its levels of detail, each folded until the reader opens it:
+{| class="levels"
+| Statement || in the simplest form, constants hidden
+|-
+| Lean || a one-line banner: formalized or not yet
+|-
+| Idea || the key mechanism in a few lines
+|-
+| Architecture || the proof as a short chain of steps, later with a diagram
+|-
+| Proof || the complete proof, in steps; a statement used only in this proof is a ''claim'', with its own folded proof inside
+|}
+A statement that several proofs use, or that holds in more generality than one result, goes to the [[Toolkit]] and is linked from the proofs. A short proof is written in one piece. The specimen below shows the boxes at work; open the folds to see the nesting.
+
+=== Specimen ===
+{{Theorem start|id=thm-specimen|title=Theorem (specimen).}}
+The statement, in its simplest form.
+{{Theorem end}}
+{{Lean}}
+{{Fold start|kind=idea|title=Idea}}
+The key mechanism in a few lines, and the heuristic scaling, labelled {{Heuristic}}.
+{{Fold end}}
+{{Fold start|kind=arch|title=Proof architecture}}
+# Step 1 reduces the theorem to a claim.
+# Step 2 proves the claim.
+# Step 3 concludes with a lemma of the toolkit.
+{{Fold end}}
+{{Proof start|id=proof-specimen}}
+'''Step 1.''' The reduction.
+{{Theorem start|id=clm-specimen|title=Claim (specimen).}}
+A statement used only in this proof.
+{{Theorem end}}
+{{Proof start|id=proof-clm-specimen|title=Proof of the claim}}
+The proof of the claim, folded inside the proof that uses it.
+{{Proof end}}
+'''Step 2.''' The conclusion, with a lemma of the [[Toolkit]].
+
+''Sources.'' This proof follows ...
+{{Proof end}}
+
+== Labels ==
+* {{Demo}}: text drafted by Claude (AI), until a member of the page team replaces or approves it.
+* {{Heuristic}}: a non-rigorous explanation, kept apart from what is proved.
+* {{Numeric}}: a computation, with its record on [[Numerical methods]].
+* {{Published}}, {{Preprint}}, {{Raw}}: the status of an entry on [[Extensions and recent advances]]: refereed; posted but not refereed; neither posted nor checked by a human (an AI-generated proof, a numerical observation, a sketch).
+* Grey quote boxes: AI-generated text, quoted verbatim with its source and date.
+
+== Pictures, videos and numerics ==
+A picture, a video or a diagram is one line in the wiki, the template [[Template:Media|Media]]; in TeX, <code><nowiki>\media{video}{file}{caption}</nowiki></code>. The files are kept in the folder <code>wiki/media</code> of the project; the edition shows them, the wiki shows a box with the caption. Every computed picture or video has a record on [[Numerical methods]], with the method, the parameters, the checks and the code.
+
+== Lean ==
+Under each theorem a one-line banner says whether it is formalized: grey while it is not, green with a link to the certificate once it is. Certificates are listed on [[Lean formalization]].
+
+== Discussion and conduct ==
+Discussion takes place on Zulip: one channel per part, one topic per page, and one topic per proposal. The line under the title of each page links to its topic; talk pages on the wiki are for small corrections.
+{| class="wikitable"
+! Part !! Zulip channel
+|-
+| Overview, Motivation and history || overview
+|-
+| Techniques through examples || examples
+|-
+| Techniques and general results || techniques
+|-
+| Extensions and recent advances || advances
+|-
+| Toolkit || toolkit
+|-
+| Numerical methods || numerics
+|-
+| Lean formalization || lean
+|-
+| About this wiki || contributing
+|}
+Discuss the mathematics, not the people. Associate editors moderate their channel: they can hide messages and, after a warning, ask the editorial board to remove a member; their decisions can be appealed to the board. The Zulip is not set up yet; once it is, its address goes into [[Template:Zulip host]] and the links appear on every page.
+
+== Formulas in the wiki ==
+For editors who write the wiki's own format.
+* Inline formulas need <code>display="inline"</code>, displayed ones <code>display="block"</code>; each formula is written on one line. The renderer rejects <code>\newcommand</code>, <code>\label</code>, <code>\eqref</code> and <code>\substack</code>. No formulas in headings.
+* Citations link to the Literature page by the key of the reference catalogue: <code><nowiki>[[Literature#BedrossianCotiZelati2017|Bedrossian and Coti Zelati (2017)]]</nowiki></code>. The section ''References'' of each page is generated from the catalogue: add the key to its comment line rather than editing the list.
+* To link to a result, use the <code>id</code> of its box as the anchor, as in <code>Couette flow#thm-couette</code>.
+
+== The edition ==
+A static edition of this wiki, with the pictures, the videos and the TeX source of every page, is built from the wiki's text by a script and never edited by hand; its address will be added here.

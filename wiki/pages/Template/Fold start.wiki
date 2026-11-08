@@ -1,0 +1,2 @@
+<div class="lvl lvl-{{{kind|note}}} mw-collapsible mw-collapsed"><div class="lvl-title">{{{title}}}</div><div class="mw-collapsible-content"><noinclude>
+Opens a folded box (kind = idea, arch or note).</noinclude>

@@ -1,0 +1,5 @@
+# Netlify rebuilds the site from this repository on every push to main,
+# and builds a preview for every pull request. See netlify-build.sh.
+[build]
+  command = "bash netlify-build.sh"
+  publish = "_book"

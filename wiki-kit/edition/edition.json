@@ -1,0 +1,9 @@
+{
+  "title": "Name of the wiki",
+  "subtitle": "A living review built from the wiki — first version, for the editorial board",
+  "author": "Editorial board, to be listed; first draft by Claude (AI)",
+  "wiki_url": "wiki-preview/",
+  "zulip_host": "",
+  "footer_left": "Built from the wiki by a script, never edited by hand. Text marked 'demo text' was drafted by Claude (AI) and is to be checked by the editorial board. Licence CC BY 4.0.",
+  "footer_right": "Proofs are syntheses of the cited sources; see Provenance and AI use."
+}

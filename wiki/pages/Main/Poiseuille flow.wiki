@@ -1,0 +1,49 @@
+<div class="mod-meta">Page team: to be named · Status: skeleton</div>
+{{Discuss|channel=examples}}
+
+{{Placeholder start}}Lead: what changes compared with [[Couette flow]], and why.{{Placeholder end}}
+
+== Setting ==
+{{Placeholder start}}The flow, the domain, the critical point, what decays.{{Placeholder end}}
+
+== The result ==
+{{Theorem start|id=thm-poiseuille|title=Theorem (enhanced dissipation for Poiseuille flow).}}
+{{Placeholder start}}The statement.{{Placeholder end}}
+{{Theorem end}}
+{{Lean}}
+{{Fold start|kind=idea|title=Idea}}
+{{Placeholder start}}The key mechanism in a few lines.{{Placeholder end}}
+{{Fold end}}
+{{Fold start|kind=arch|title=Proof architecture}}
+{{Placeholder start}}The proof as a short chain of steps, and its diagram.{{Placeholder end}}
+{{Fold end}}
+
+== What changes compared with Couette flow ==
+For each technique: what carries over from [[Couette flow]], what is lost, and the proof for this example.
+
+=== Explicit solution ===
+{{Placeholder start}}What is lost.{{Placeholder end}}
+
+=== Spectral methods ===
+{{Proof start|id=proof-poiseuille-spectral|title=Proof by spectral methods}}
+{{Placeholder start}}The proof.{{Placeholder end}}
+{{Proof end}}
+
+=== Hypocoercivity ===
+{{Proof start|id=proof-poiseuille-hypocoercivity|title=Proof by hypocoercivity}}
+{{Placeholder start}}The proof.{{Placeholder end}}
+{{Proof end}}
+
+=== Stochastic methods ===
+{{Proof start|id=proof-poiseuille-stochastic|title=Proof by stochastic methods}}
+{{Placeholder start}}The proof.{{Placeholder end}}
+{{Proof end}}
+
+=== Hörmander theory ===
+{{Proof start|id=proof-poiseuille-hormander|title=Proof by Hörmander theory}}
+{{Placeholder start}}The proof.{{Placeholder end}}
+{{Proof end}}
+
+== References ==
+<!-- refs-begin: -->
+<!-- refs-end -->

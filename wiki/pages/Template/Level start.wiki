@@ -1,0 +1,2 @@
+<div class="lvl lvl-{{{kind|idea}}}" id="{{{id|{{anchorencode:{{{title|Idea}}}}}}}}"><div class="lvl-title">{{{title|Idea}}}</div><noinclude>
+Opens a level box (kind = idea or arch). The box gets an anchor from its title, or from id=…; the navigation tree links to it.</noinclude>

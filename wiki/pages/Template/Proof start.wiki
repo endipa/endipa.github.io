@@ -1,0 +1,2 @@
+<div class="lvl lvl-proof mw-collapsible mw-collapsed" id="{{{id|Proof}}}"><div class="lvl-title">{{{title|Proof}}}</div><div class="mw-collapsible-content"><noinclude>
+Opens a folded proof; close it with Proof end. Parameters: id (the anchor; Proof by default, give one when a page has several proofs) and title (Proof by default; for instance "Proof by hypocoercivity" or "Proof of the claim"). Proofs can be nested: the proof of a claim sits inside the proof that uses it.</noinclude>

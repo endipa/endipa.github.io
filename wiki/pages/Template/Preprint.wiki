@@ -1,0 +1,2 @@
+<span class="badge-preprint">preprint · to be verified</span><noinclude>
+Label for a statement taken from a preprint that has not been refereed or checked here.</noinclude>

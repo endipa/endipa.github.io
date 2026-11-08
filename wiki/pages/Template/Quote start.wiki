@@ -1,0 +1,2 @@
+<div class="source-quote" id="{{{id|}}}">{{#if:{{{head|}}}|<div class="quote-head">{{{head}}}</div>}}<noinclude>
+Opens a verbatim quote from a source; close it with Quote end. Parameters: head (source and date), id.</noinclude>

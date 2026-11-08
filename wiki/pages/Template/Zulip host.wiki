@@ -1,0 +1,1 @@
+<noinclude>The address of the project's Zulip (for instance edwiki.zulipchat.com), used by [[Template:Discuss]] and by the edition. Empty: there is no Zulip yet. To set it, write the address at the very beginning of this page, before this note, with nothing else.</noinclude>

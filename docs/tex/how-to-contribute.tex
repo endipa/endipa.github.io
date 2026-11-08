@@ -1,0 +1,209 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+% How to contribute: a page of the wiki "Enhanced dissipation for passive scalars", generated from the wiki on 8 November 2026.
+% It compiles as it is with pdflatex (Overleaf, TeXShop, TeXstudio, ...); typeset twice for the citations.
+% To propose a change: keep the preamble and the line \title{...}; keep only the blocks you change
+% (a \section{...} with its content, or a statement or proof with its \label{...}), change them, and post
+% the file in a new topic of the Zulip channel of the part. The rules: page "How to contribute" of the wiki.
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx,tabularx,listings}
+\usepackage[round]{natbib}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{2em}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem*{claim}{Claim}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+%% The commands of the wiki. This preamble is the same for every page: do not change it, and do not
+%% define commands of your own (the wiki has none).
+\makeatletter
+% after a statement: \begin{idea}, \begin{architecture}, \begin{note}[Title] (and \begin{proof}[Title])
+\newcommand{\ed@runin}[1]{\par\topsep6\p@\@plus6\p@\relax\trivlist\item[\hskip\labelsep\itshape#1\@addpunct{.}]\ignorespaces}
+\newenvironment{idea}[1][Idea]{\ed@runin{#1}}{\endtrivlist\@endpefalse}
+\newenvironment{architecture}[1][Proof architecture]{\ed@runin{#1}}{\endtrivlist\@endpefalse}
+\newenvironment{note}[1][Note]{\ed@runin{#1}}{\endtrivlist\@endpefalse}
+% text still to be written; labels of the text; the Lean banner of the statement above
+\newcommand{\placeholder}[1]{\if@inlabel\else\par\noindent\fi\textit{[#1]}\@ifnextchar\end{}{\par}}
+\newcommand{\ed@label}[1]{\mbox{\footnotesize[#1]}}
+\newcommand{\demo}[1]{\ed@label{demo text}}
+\newcommand{\heuristic}[1]{\ed@label{heuristic}}
+\newcommand{\numerics}[1]{\ed@label{numerics}}
+\newcommand{\published}[1]{\ed@label{published}}
+\newcommand{\preprint}[1]{\ed@label{preprint, to be verified}}
+\newcommand{\raw}[1]{\ed@label{raw, unchecked}}
+\def\ed@formalized{formalized}\def\ed@image{image}\def\ed@video{video}\def\ed@diagram{diagram}
+\newcommand{\lean}[2][]{\par{\noindent\footnotesize\def\ed@a{#2}Lean: \ifx\ed@a\ed@formalized formalized\ifx\relax#1\relax\else\
+  (\href{#1}{certificate})\fi\else not yet formalized\fi.\par}}
+% the two lines under the title: the page's team and status, its Zulip topic (default: the title)
+\def\ed@title{}\let\ed@maketitle\maketitle\renewcommand{\maketitle}{\let\ed@title\@title\ed@maketitle}
+\newcommand{\pagestatus}[1]{{\par\centering\small#1\par}}
+\newcommand{\zulip}[2][]{{\par\centering\small Discuss on Zulip: \##2, topic
+  ``\ifx\relax#1\relax\ed@title\else#1\fi''.\par}\medskip}
+% links to other pages of the wiki, anchors, wiki code shown as text
+\newcommand{\wikilink}[2]{\ifx\relax#2\relax#1\else#2\fi}
+\newcommand{\wikianchor}[1]{\phantomsection\label{#1}}
+\newcommand{\nowikicode}[1]{\texttt{\frenchspacing#1}}
+\newcommand{\nowiki}[1]{#1}
+\newcommand{\wikitemplate}[1]{\texttt{\{\{#1\}\}}}
+\newcommand{\wikidiv}[2]{\par#2\par}
+% pictures, videos, diagrams: shown in the online edition; an image next to this file, or in ../media, is shown here
+\newcommand{\ed@picture}[1]{\begin{center}\includegraphics[width=0.8\linewidth]{#1}\end{center}}
+\newcommand{\media}[4][]{\par\medskip\def\ed@a{#2}{\noindent\small\ifx\ed@a\ed@video Video\else\ifx\ed@a\ed@diagram Diagram\else
+  Figure\fi\fi: \texttt{#3}, shown in the online edition.\par}\ifx\ed@a\ed@image\IfFileExists{#3}{\ed@picture{#3}}{\IfFileExists{../media/#3}{%
+  \ed@picture{../media/#3}}{}}\fi{\noindent\small#4\par}\medskip}
+% tables (\lv{label}{text}; \header{a & b}, \row{a & b}) and code
+\newenvironment{levels}[1][]{\par\smallskip\noindent\tabularx{\linewidth}{@{}>{\bfseries\raggedright\arraybackslash}p{0.2\linewidth}X@{}}}{\endtabularx\par\smallskip}
+\newcommand{\lv}[2]{#1 & #2\\[3pt]}
+\newenvironment{wikitable}[1]{\par\smallskip\noindent\tabularx{\linewidth}{|*{#1}{>{\raggedright\arraybackslash}X|}}\hline}{\endtabularx\par\smallskip}
+\newcommand{\header}[1]{#1\\\hline\hline}
+\newcommand{\row}[1]{#1\\\hline}
+\lstnewenvironment{wikicode}[1][]{\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true,columns=fullflexible,
+  keepspaces=true,showstringspaces=false,frame=single}\ifx\relax#1\relax\else\lstset{language=#1}\fi}{}
+% the heading of the reference list is the section References of the page
+\renewcommand{\bibsection}{}
+% characters of the wiki's text that LaTeX does not know
+\DeclareUnicodeCharacter{2192}{\ensuremath{\rightarrow}}\DeclareUnicodeCharacter{203A}{\ensuremath{\rangle}}
+\DeclareUnicodeCharacter{2713}{\ensuremath{\checkmark}}\DeclareUnicodeCharacter{25CB}{\ensuremath{\circ}}
+\DeclareUnicodeCharacter{2248}{\ensuremath{\approx}}\DeclareUnicodeCharacter{2264}{\ensuremath{\leq}}
+\DeclareUnicodeCharacter{2265}{\ensuremath{\geq}}\DeclareUnicodeCharacter{2212}{\ensuremath{-}}
+\makeatother
+
+\begin{document}
+\title{How to contribute}
+\author{Wiki \emph{Enhanced dissipation for passive scalars}}
+\date{8 November 2026}
+\maketitle
+\pagestatus{Page team: Michele Dolce · Status: proposal, to be agreed with the editorial board · Text: \demo{}}
+\zulip{contributing}
+
+This wiki is written from the bottom up, the way a journal works: members of the community propose changes, proposals are discussed and reviewed in the open, an associate editor decides, and accepted changes are written into the wiki. The roles, and who holds them, are on \wikilink{Contributors}{}. \demo{}
+
+\section{Roles}
+\begin{itemize}
+  \item \textbf{Editorial board}: the scope and the structure of the wiki; appoints the associate editors; settles discussions that end without consensus.
+  \item \textbf{Associate editors}: one or more per part, following its Zulip channel. They run the discussion of each proposal, ask reviewers, decide, and write accepted changes into the wiki.
+  \item \textbf{Reviewers}: check a proposal at the request of an associate editor, in the open, in its Zulip topic.
+  \item \textbf{Community}: propose and discuss. New members are endorsed by an editor or by a member at least two years past the PhD.
+\end{itemize}
+The first line of each page names its team. As the wiki grows, busy parts and pages get more associate editors and reviewers; the roles stay the same.
+
+\section{Small corrections}
+Typos, broken links, a missing reference: members of the wiki leave a note on the talk page of the page (tab \emph{Discussion}, then \emph{Add topic}); others write in the Zulip channel \emph{contributing}, naming the page. The editors go through these notes regularly and make the changes. For now the wiki is open only to invited members.
+
+\section{Mathematical contributions}
+A new proof, a shorter argument, a correction to a statement, a new result or a new page goes through Zulip.
+\begin{enumerate}
+  \item Download the TeX source of the page: link \emph{TeX source} under the title of every page of the edition, or \emph{Open in Overleaf}. It is a standard LaTeX article that compiles as it is. Change what you want and check that it compiles; then keep only the blocks you changed: a section, or a statement or a proof with its label.
+  \item Open a topic in the Zulip channel of the part, titled \emph{Proposal: short title}. Attach the file and say in a few lines what it changes, why, and which sources it uses.
+  \item For two weeks the community and the reviewers discuss the proposal in its topic.
+  \item Within a week after that, the associate editor decides: accepted, to be revised, or declined. If the discussion ended without consensus, the editorial board decides.
+  \item A script converts the accepted file to the wiki's format, shows the editor exactly what changes on the page, and flags new citations and links. The associate editor writes the change into the wiki, links the Zulip topic in the edit summary, and the page credits its author.
+\end{enumerate}
+A proposal changes only the blocks it contains. A paper that is not yet on \wikilink{Literature}{} is proposed on its own, as a small correction of that page.
+
+\section{The TeX format}
+The TeX source of a page is a standard LaTeX article: one file that compiles with pdflatex and nothing else (on Overleaf, or with TeXShop, TeXstudio, ...; typeset twice for the citations). Its preamble is the same for every page and is never changed; a contribution defines no macros, since the wiki has none. Sections and statements are numbered in the PDF only.
+\begin{itemize}
+  \item Statements: theorem, proposition, lemma, corollary, conjecture, definition, example, remark, claim. The optional argument is the name, the label is the anchor: \nowikicode{\textbackslash{}begin\{theorem\}\allowbreak{}[name]\textbackslash{}label\{thm-name\}}. Labels start with thm-, prp-, lem-, cor-, def- or clm-.
+  \item After a statement: \nowikicode{\textbackslash{}lean\{\}} (the Lean banner), the environments idea and architecture, and proofs with an optional title and a label, as in \nowikicode{\textbackslash{}begin\{proof\}\allowbreak{}[Proof by hypocoercivity]\textbackslash{}label\{proof-name\}}. A claim and its proof sit inside the proof that uses them.
+  \item Formulas: \nowikicode{\$...\$}, \nowikicode{\textbackslash{}[ ... \textbackslash{}]} and align*; no numbered equations and no labels on equations; none of the commands that the wiki's renderer rejects (the script lists them).
+  \item Citations: \nowikicode{\textbackslash{}citet\{Key\}} gives \emph{Author (year)} and \nowikicode{\textbackslash{}citep\{Key\}} gives \emph{(Author, year)}, with the keys of \wikilink{Literature}{}. The reference list at the end of the file is generated from the reference catalogue; a new citation is added to it when the proposal is accepted.
+  \item Links: on the same page, \nowikicode{\textbackslash{}hyperref[thm-name]\{the theorem above\}} rather than \nowikicode{\textbackslash{}ref}, since the wiki has no numbers; to another page, \nowikicode{\textbackslash{}wikilink\{Page\textbackslash{}\#\allowbreak{}anchor\}\allowbreak{}\{text\}}.
+  \item Labels: \nowikicode{\textbackslash{}heuristic\{\}}, \nowikicode{\textbackslash{}numerics\{\}}, \nowikicode{\textbackslash{}published\{\}}, \nowikicode{\textbackslash{}preprint\{\}}, \nowikicode{\textbackslash{}raw\{\}}.
+  \item A new block goes after an existing one: put the line \nowikicode{\%\% after: Setting} (a section title or a label) just before it.
+\end{itemize}
+
+\section{Anatomy of a result}
+A result is a statement followed by its levels of detail, each folded until the reader opens it:
+\begin{levels}
+\lv{Statement}{in the simplest form, constants hidden}
+\lv{Lean}{a one-line banner: formalized or not yet}
+\lv{Idea}{the key mechanism in a few lines}
+\lv{Architecture}{the proof as a short chain of steps, later with a diagram}
+\lv{Proof}{the complete proof, in steps; a statement used only in this proof is a \emph{claim}, with its own folded proof inside}
+\end{levels}
+A statement that several proofs use, or that holds in more generality than one result, goes to the \wikilink{Toolkit}{} and is linked from the proofs. A short proof is written in one piece. The specimen below shows the boxes at work; open the folds to see the nesting.
+
+\subsection{Specimen}
+\begin{theorem}[specimen]\label{thm-specimen}
+The statement, in its simplest form.
+\end{theorem}
+\lean{}
+\begin{idea}
+The key mechanism in a few lines, and the heuristic scaling, labelled \heuristic{}.
+\end{idea}
+\begin{architecture}
+\begin{enumerate}
+  \item Step 1 reduces the theorem to a claim.
+  \item Step 2 proves the claim.
+  \item Step 3 concludes with a lemma of the toolkit.
+\end{enumerate}
+\end{architecture}
+\begin{proof}\label{proof-specimen}
+\textbf{Step 1.} The reduction.
+\begin{claim}[specimen]\label{clm-specimen}
+A statement used only in this proof.
+\end{claim}
+\begin{proof}[Proof of the claim]\label{proof-clm-specimen}
+The proof of the claim, folded inside the proof that uses it.
+\end{proof}
+\textbf{Step 2.} The conclusion, with a lemma of the \wikilink{Toolkit}{}.
+
+\emph{Sources.} This proof follows ...
+\end{proof}
+
+\section{Labels}
+\begin{itemize}
+  \item \demo{}: text drafted by Claude (AI), until a member of the page team replaces or approves it.
+  \item \heuristic{}: a non-rigorous explanation, kept apart from what is proved.
+  \item \numerics{}: a computation, with its record on \wikilink{Numerical methods}{}.
+  \item \published{}, \preprint{}, \raw{}: the status of an entry on \wikilink{Extensions and recent advances}{}: refereed; posted but not refereed; neither posted nor checked by a human (an AI-generated proof, a numerical observation, a sketch).
+  \item Grey quote boxes: AI-generated text, quoted verbatim with its source and date.
+\end{itemize}
+
+\section{Pictures, videos and numerics}
+A picture, a video or a diagram is one line in the wiki, the template \wikilink{Template:Media}{Media}; in TeX, \nowikicode{\textbackslash{}media\{video\}\allowbreak{}\{file\}\allowbreak{}\{caption\}}. The files are kept in the folder \texttt{wiki/media} of the project; the edition shows them, the wiki shows a box with the caption. Every computed picture or video has a record on \wikilink{Numerical methods}{}, with the method, the parameters, the checks and the code.
+
+\section{Lean}
+Under each theorem a one-line banner says whether it is formalized: grey while it is not, green with a link to the certificate once it is. Certificates are listed on \wikilink{Lean formalization}{}.
+
+\section{Discussion and conduct}
+Discussion takes place on Zulip: one channel per part, one topic per page, and one topic per proposal. The line under the title of each page links to its topic; talk pages on the wiki are for small corrections.
+\begin{wikitable}{2}
+\header{Part & Zulip channel}
+\row{Overview, Motivation and history & overview}
+\row{Techniques through examples & examples}
+\row{Techniques and general results & techniques}
+\row{Extensions and recent advances & advances}
+\row{Toolkit & toolkit}
+\row{Numerical methods & numerics}
+\row{Lean formalization & lean}
+\row{About this wiki & contributing}
+\end{wikitable}
+Discuss the mathematics, not the people. Associate editors moderate their channel: they can hide messages and, after a warning, ask the editorial board to remove a member; their decisions can be appealed to the board. The Zulip is not set up yet; once it is, its address goes into \wikilink{Template:Zulip host}{} and the links appear on every page.
+
+\section{Formulas in the wiki}
+For editors who write the wiki's own format.
+\begin{itemize}
+  \item Inline formulas need \texttt{display="inline"}, displayed ones \texttt{display="block"}; each formula is written on one line. The renderer rejects \texttt{\textbackslash{}newcommand}, \texttt{\textbackslash{}label}, \texttt{\textbackslash{}eqref} and \texttt{\textbackslash{}substack}. No formulas in headings.
+  \item Citations link to the Literature page by the key of the reference catalogue: \nowikicode{[[Literature\#\allowbreak{}BedrossianCotiZelati2017|\allowbreak{}Bedrossian and Coti Zelati (2017)]]}. The section \emph{References} of each page is generated from the catalogue: add the key to its comment line rather than editing the list.
+  \item To link to a result, use the \texttt{id} of its box as the anchor, as in \texttt{Couette flow\#thm-couette}.
+\end{itemize}
+
+\section{The edition}
+A static edition of this wiki, with the pictures, the videos and the TeX source of every page, is built from the wiki's text by a script and never edited by hand; its address will be added here.
+\end{document}

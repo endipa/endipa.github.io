@@ -1,0 +1,17 @@
+<div class="mod-meta">Page team: to be named · Status: skeleton</div>
+{{Discuss|channel=toolkit}}
+
+Classical facts used by the proofs, each stated once with its proof or a reference; the proofs elsewhere link here. A statement comes here when several proofs use it, or when it holds in more generality than one result; a step used by one proof only is a claim inside that proof.
+
+== Notation and definitions ==
+{{Placeholder start}}The notation used throughout the wiki, and the definitions (dissipation time, enhanced dissipation).{{Placeholder end}}
+
+== General analysis ==
+{{Placeholder start}}Inequalities and functional analysis: Poincaré inequality, interpolation, semigroups.{{Placeholder end}}
+
+== Enhanced-dissipation toolkit ==
+{{Placeholder start}}Tools specific to the subject, for instance spectral-gap and resolvent lemmas.{{Placeholder end}}
+
+== References ==
+<!-- refs-begin: -->
+<!-- refs-end -->

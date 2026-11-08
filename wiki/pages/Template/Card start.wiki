@@ -1,0 +1,2 @@
+<div class="statement-card {{{class|}}}"><div class="card-head">{{{head}}}</div><noinclude>
+Opens a statement card on the overview.</noinclude>

@@ -1,0 +1,2 @@
+</div><noinclude>
+Closes a level box.</noinclude>

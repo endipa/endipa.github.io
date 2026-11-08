@@ -1,0 +1,18 @@
+<div class="mod-meta">Page team: to be named · Status: skeleton</div>
+{{Discuss|channel=techniques}}
+
+{{Placeholder start}}Lead: what the method gives, and under which hypotheses.{{Placeholder end}}
+
+== The method ==
+{{Placeholder start}}The key mechanism, in a few lines.{{Placeholder end}}
+Worked example: [[Couette flow#Hypocoercivity|Couette flow]]. What changes with a critical point: [[Poiseuille flow#Hypocoercivity|Poiseuille flow]].
+
+== General results ==
+{{Placeholder start}}The theorems, each written as a result (statement, Lean banner, idea, proof architecture, complete proof; see [[How to contribute#Anatomy of a result|How to contribute]]); lemmas of general use go to the [[Toolkit]].{{Placeholder end}}
+
+== Limitations and comparison ==
+{{Placeholder start}}What the method does not give, and how it compares with the other techniques.{{Placeholder end}}
+
+== References ==
+<!-- refs-begin: -->
+<!-- refs-end -->

@@ -1,0 +1,2 @@
+</div><noinclude>
+Closes a statement card.</noinclude>

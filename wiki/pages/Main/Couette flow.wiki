@@ -1,0 +1,58 @@
+<div class="mod-meta">Page team: to be named · Status: skeleton</div>
+{{Discuss|channel=examples}}
+
+{{Placeholder start}}Lead: what this example shows, in three lines.{{Placeholder end}}
+
+== Setting ==
+{{Placeholder start}}The flow <math display="inline">u=(y,0)</math> on <math display="inline">\mathbb{T}\times\mathbb{R}</math>: the equation, the Fourier modes, what decays.{{Placeholder end}}
+
+== The result ==
+{{Theorem start|id=thm-couette|title=Theorem (enhanced dissipation for Couette flow).}}
+{{Placeholder start}}The statement.{{Placeholder end}}
+{{Theorem end}}
+{{Lean}}
+{{Fold start|kind=idea|title=Idea}}
+{{Placeholder start}}The key mechanism in a few lines.{{Placeholder end}}
+{{Fold end}}
+{{Fold start|kind=arch|title=Proof architecture}}
+{{Placeholder start}}The proof as a short chain of steps, and its diagram.{{Placeholder end}}
+{{Fold end}}
+
+== One example, every technique ==
+Each proof below is written for this example only, to show the mechanism; the general results, with complete proofs, are in the part ''Techniques and general results''.
+
+=== Explicit solution ===
+{{Proof start|id=proof-couette-explicit|title=Proof by the explicit solution}}
+{{Placeholder start}}The proof.{{Placeholder end}}
+{{Proof end}}
+
+=== Spectral methods ===
+{{Proof start|id=proof-couette-spectral|title=Proof by spectral methods}}
+{{Placeholder start}}The proof.{{Placeholder end}}
+{{Proof end}}
+General theory: [[Spectral methods]].
+
+=== Hypocoercivity ===
+{{Proof start|id=proof-couette-hypocoercivity|title=Proof by hypocoercivity}}
+{{Placeholder start}}The proof.{{Placeholder end}}
+{{Proof end}}
+General theory: [[Hypocoercivity]].
+
+=== Stochastic methods ===
+{{Proof start|id=proof-couette-stochastic|title=Proof by stochastic methods}}
+{{Placeholder start}}The proof.{{Placeholder end}}
+{{Proof end}}
+General theory: [[Stochastic methods]].
+
+=== Hörmander theory ===
+{{Proof start|id=proof-couette-hormander|title=Proof by Hörmander theory}}
+{{Placeholder start}}The proof.{{Placeholder end}}
+{{Proof end}}
+General theory: [[Hörmander theory]].
+
+== What this example teaches ==
+{{Placeholder start}}What the example shows, and what the general theory keeps of it.{{Placeholder end}}
+
+== References ==
+<!-- refs-begin: -->
+<!-- refs-end -->

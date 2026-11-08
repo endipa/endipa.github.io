@@ -1,0 +1,2 @@
+<div class="thm-box" id="{{{id|}}}"><span class="thm-title">{{{title}}}</span> <noinclude>
+Opens a theorem box; close it with <nowiki>{{Theorem end}}</nowiki>. Parameters: id (thm-, prp-, lem-, cor-, def- followed by a short name; the anchor used in links) and title, written "Kind (name)." as in "Theorem (uniqueness for bounded data)."</noinclude>

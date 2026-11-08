@@ -1,0 +1,31 @@
+<div class="mod-meta">Page team: to be named · Status: skeleton</div>
+{{Discuss|channel=advances}}
+
+{{Placeholder start}}Lead: what this part records, and how an entry moves into the established theory.{{Placeholder end}}
+
+== State of the art ==
+{{Placeholder start}}The strongest results available to date.{{Placeholder end}}
+{| class="wikitable"
+! Flow class !! Domain !! Dissipation time !! Sharp !! Source !! Label
+|-
+| — || — || — || — || — || —
+|}
+
+== Recent results ==
+Each entry gives the statement, a label ({{Published}}, {{Preprint}} or {{Raw}}), the date it was added, its source, and where it would go in the established theory.
+{{Placeholder start}}First entries.{{Placeholder end}}
+
+== Raw material ==
+AI-generated proofs, numerical observations and sketches, labelled {{Raw}} until a human has checked them. AI-generated text is quoted verbatim, with its source and date.
+{{Placeholder start}}First entries.{{Placeholder end}}
+
+== Open problems ==
+{{Placeholder start}}Open problems, each with what is known and the expected answer.{{Placeholder end}}
+
+== How an entry moves ==
+# An entry keeps its label until its status changes: raw material checked and posted becomes {{Preprint}}, a refereed result {{Published}}.
+# The editorial board moves established results into the part ''Techniques and general results'', or into a new page, with a synthesis proof.
+
+== References ==
+<!-- refs-begin: -->
+<!-- refs-end -->

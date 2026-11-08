@@ -1,0 +1,5 @@
+nu=0.001 T=300 N=512 dt=0.01 frames=480 fps=24
+final norm: shear 3.5090e-03, heat 7.4082e-01
+max relative difference with (2N, dt/2): 5.47e-08
+max energy-balance residual: 2.38e-07 (2N, dt/2: 5.94e-08)
+decay rate of the shear norm on [T/2, T]: 0.0167; nu^(1/2) = 0.0316

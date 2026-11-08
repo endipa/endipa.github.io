@@ -1,0 +1,2 @@
+== How to use this page ==
+Small corrections to [[Motivation and history]] (typos, broken links, a missing reference): start a new section ("Add topic") and sign with <nowiki>~~~~</nowiki>; the editors go through these notes regularly. Mathematical contributions are proposed on Zulip, channel ''#overview'', with the TeX of the blocks they change; see [[How to contribute]].

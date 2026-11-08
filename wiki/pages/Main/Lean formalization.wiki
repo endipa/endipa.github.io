@@ -1,0 +1,17 @@
+<div class="mod-meta">Page team: to be named · Status: skeleton</div>
+{{Discuss|channel=lean}}
+
+A result of this wiki can carry a machine-checked proof in Lean, its ''certificate''. A small banner under each theorem says where it stands. A result not yet formalized:
+{{Lean}}
+A formalized result, with a link to its certificate:
+{{Lean|formalized}}
+
+== Certificates ==
+{| class="wikitable"
+! Result !! Status !! Certificate !! Lean and Mathlib versions
+|-
+| — || — || — || —
+|}
+
+== How to add a certificate ==
+{{Placeholder start}}What a certificate contains (repository, commit, versions, the statement as formalized, the axioms used), and how it is checked before its banner turns green.{{Placeholder end}}

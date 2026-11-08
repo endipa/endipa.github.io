@@ -1,0 +1,27 @@
+* Overview
+** Overview|Overview
+* Motivation and history
+** Motivation and history|Motivation and history
+* Techniques through examples
+** Couette flow|Couette flow
+** Poiseuille flow|Poiseuille flow
+* Techniques and general results
+** Spectral methods|Spectral methods
+** Hypocoercivity|Hypocoercivity
+** Stochastic methods|Stochastic methods
+** Hörmander theory|Hörmander theory
+* Extensions and recent advances
+** Extensions and recent advances|Extensions and recent advances
+* Toolkit
+** Toolkit|Toolkit
+* Numerical methods
+** Numerical methods|Numerical methods
+* Lean formalization
+** Lean formalization|Lean formalization
+* About this wiki
+** How to contribute|How to contribute
+** Contributors|Contributors
+** Provenance and AI use|Provenance and AI use
+** Literature|Literature
+* SEARCH
+* TOOLBOX

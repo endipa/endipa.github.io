@@ -1,0 +1,2 @@
+<span class="badge-heuristic">heuristic</span><noinclude>
+Label for a non-rigorous explanation, kept apart from what is proved.</noinclude>

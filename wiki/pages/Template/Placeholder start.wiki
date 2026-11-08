@@ -1,0 +1,2 @@
+<div class="placeholder"><noinclude>
+Opens a box for text still to be written. Keep the whole placeholder, with Placeholder end, on one line.</noinclude>

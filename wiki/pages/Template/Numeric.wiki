@@ -1,0 +1,2 @@
+<span class="badge-numeric">numerics</span><noinclude>
+Label for computations; each computed picture or video has its record on [[Numerical methods]].</noinclude>

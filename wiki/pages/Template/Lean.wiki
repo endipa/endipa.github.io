@@ -1,0 +1,2 @@
+<div class="lean-banner lean-{{#ifeq:{{{1|}}}|formalized|done|todo}}">{{#ifeq:{{{1|}}}|formalized|Lean: formalized{{#if:{{{2|}}}|&#32;· [{{{2}}} certificate]}}|Lean: not yet formalized · [[Lean formalization|add a certificate]]}}</div><noinclude>
+Formalization status of the result just above, placed right under its statement. <nowiki>{{Lean}}</nowiki>: not yet formalized (grey). <nowiki>{{Lean|formalized|https://…}}</nowiki>: formalized (green), with a link to the certificate. See [[Lean formalization]].</noinclude>

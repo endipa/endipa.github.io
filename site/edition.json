@@ -1,0 +1,28 @@
+{
+  "title": "Enhanced dissipation for passive scalars",
+  "subtitle": "Collection of old and new results",
+  "wiki_url": "https://endipa.miraheze.org/wiki/",
+  "zulip_host": "",
+  "footer_left": "Built from the wiki by a script. Licence CC BY 4.0.",
+  "footer_right": "Under each title: the TeX source of the page, Overleaf, and the page in the wiki.",
+  "contributors": [
+    {
+      "name": "Editorial board",
+      "url": "contributors.html#editorial-board"
+    },
+    {
+      "name": "Associate editors",
+      "url": "contributors.html#associate-editors"
+    },
+    {
+      "name": "Reviewers",
+      "url": "contributors.html#reviewers"
+    },
+    {
+      "name": "Community",
+      "url": "contributors.html#community"
+    }
+  ],
+  "author": "Editorial board, associate editors, reviewers and community",
+  "wiki_note": "members"
+}
