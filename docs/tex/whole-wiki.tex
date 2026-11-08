@@ -93,42 +93,48 @@
 \placeholder{A short introduction to the topic, written as continuous prose: the phenomenon, the equation, why it matters, and what the reader will find in this wiki.}
 \[\partial_t f+u\cdot\nabla f=\nu\Delta f,\qquad \nabla\cdot u=0.\]
 \media[poster=heat-vs-shear-poster.png,record=num-heat-vs-shear]{video}{heat-vs-shear.mp4}{Left: the heat equation. Right: the same initial datum carried by the shear flow $u=(\sin y,0)$, with the same diffusivity. Bottom: the size of the two solutions in time, on a logarithmic scale. \numerics{}}
-\placeholder{A second simulation: a flow that dissipates on the time scale $|\log\nu|$.}
+\media[poster=alternating-shears-poster.png,record=num-alternating-shears]{video}{alternating-shears.mp4}{Left: the shear flow $u=(\sin y,0)$. Right: shears that alternate, horizontal and vertical, each acting for 3 units of time, with random phases. Same initial datum $f_0=\cos x$, same diffusivity $\nu=10^{-4}$; both velocity fields have size at most 1. Bottom: the size of the solutions in time, on a logarithmic scale. \numerics{}}
 
 \subsection{Map of the wiki}
 \media{diagram}{wiki-map.svg}{The parts of the wiki; click a name to open its page.}
 
-\section{Motivation and history}\label{page-motivation-and-history}
+\part{Motivation and history}
+\section{Why it matters}\label{page-why-it-matters}
 \pagestatus{Page team: to be named · Status: skeleton}
-\zulip[Motivation and history]{overview}
+\zulip[Why it matters]{overview}
 
-\subsection{Why it matters}
-\subsubsection{In applications}
-\placeholder{Why the problem matters in practice.}
+\placeholder{Why the problem matters, in mathematics and in applications, written as the introduction of a paper.}
 
-\subsubsection{In mathematics}
-\placeholder{Why the problem is interesting mathematically.}
 
-\subsection{History}
-\placeholder{A short account of the progress, then the history technique by technique.}
 
-\subsubsection{Origins}
+\section{History of the problem}\label{page-history-of-the-problem}
+\pagestatus{Page team: to be named · Status: skeleton}
+\zulip[History of the problem]{overview}
+
+\placeholder{A short account of the progress; then the history technique by technique.}
+
+\subsection{Origins}
 \placeholder{Before the mathematical theory.}
 
-\subsubsection{Spectral methods}
+\subsection{Spectral methods}
 \placeholder{Contributions and dates; the general theory is on \wikilink{Spectral methods}{}.}
 
-\subsubsection{Hypocoercivity}
+\subsection{Hypocoercivity}
 \placeholder{Contributions and dates; the general theory is on \wikilink{Hypocoercivity}{}.}
 
-\subsubsection{Stochastic methods}
+\subsection{Stochastic methods}
 \placeholder{Contributions and dates; the general theory is on \wikilink{Stochastic methods}{}.}
 
-\subsubsection{Hörmander theory}
+\subsection{Hörmander theory}
 \placeholder{Contributions and dates; the general theory is on \wikilink{Hörmander theory}{}.}
 
-\subsubsection{Recent advances}
-\placeholder{The latest steps; the details are on \wikilink{State of the art}{} and \wikilink{Related results}{}.}
+
+
+\section{Recent literature}\label{page-recent-literature}
+\pagestatus{Page team: to be named · Status: skeleton}
+\zulip[Recent literature]{overview}
+
+\placeholder{The latest papers, with what each contributes; their results are collected on \wikilink{State of the art}{} and \wikilink{Related results}{}.}
 
 
 
@@ -416,7 +422,7 @@ Every computed picture and video of this wiki has a record on this page: what wa
 \begin{itemize}
   \item A record is a section with an anchor \texttt{num-…}; the picture or video links to it with the parameter \texttt{record} of \wikilink{Template:Media}{Media}.
   \item It gives the equation, the parameters, the method, the checks, the code and how to run it, and its status.
-  \item The code is kept in the project folder, in \texttt{numerics/}, and shown here when it is short. Later: a public repository, with the commit that produced the files.
+  \item The code is in the folder \texttt{numerics/} of the \href{https://github.com/endipa/endipa.github.io}{repository} of the wiki, one folder per record, with the output of its checks.
 \end{itemize}
 
 \subsection{Records}
@@ -427,7 +433,7 @@ Every computed picture and video of this wiki has a record on this page: what wa
 \lv{Parameters}{$\nu=10^{-3}$, times $0\le t\le 100$; video of 20 s at 24 frames per second, time running uniformly (5 time units per second), last frame held 1.5 s}
 \lv{Method}{one Fourier mode in $x$: $f=\operatorname{Re}(g(t,y)e^{ix})$ with $\partial_t g=-i\sin y\,g+\nu(\partial_y^2-1)g$; 512 Fourier modes in $y$; Strang splitting with time step 0.01, transport and diffusion steps solved exactly; heat equation solved exactly}
 \lv{Checks}{with 1024 modes and time step 0.005 the norms agree to a relative $6\cdot10^{-8}$; the energy balance $\|g(t)\|^2+2\nu\int_0^t\|(\partial_y g,g)\|^2ds=\|g(0)\|^2$ holds to $3\cdot10^{-7}$; decay rate of the norm on $[50,100]$: 0.0167, against $\nu^{1/2}\approx0.0316$}
-\lv{Code}{\texttt{numerics/heat-vs-shear/heat\_vs\_shear.py} in the project folder (Python 3, NumPy, Matplotlib, ffmpeg); \texttt{python3 heat\_vs\_shear.py --out ../../wiki/media}, about a minute}
+\lv{Code}{\href{https://github.com/endipa/endipa.github.io/blob/main/numerics/heat-vs-shear/heat_vs_shear.py}{numerics/heat-vs-shear/heat\_vs\_shear.py} in the repository, also below (Python 3, NumPy, Matplotlib, ffmpeg); \texttt{python3 heat\_vs\_shear.py --out ../../wiki/media}, about a minute}
 \lv{Status}{computed by Claude (AI) on 8 November 2026; not yet checked by a human \demo{}}
 \end{levels}
 \media{image}{heat-vs-shear-check.png}{Left: the norms of the two runs and of the heat equation. Right: the relative difference of the two runs and the energy-balance residual.}
@@ -609,8 +615,23 @@ if __name__ == "__main__":
 \end{wikicode}
 \end{note}
 
+\subsubsection{Alternating shears with random phases}\label{num-alternating-shears}
+\begin{levels}
+\lv{Produces}{the second video on the \wikilink{Overview}{} (\texttt{alternating-shears.mp4}) and the check figure below}
+\lv{Equation}{$\partial_t f+u\cdot\nabla f=\nu\Delta f$ on $[0,2\pi)^2$, periodic, with $f_0=\cos x$ and the alternating shears of Pierrehumbert's model: $u=(\sin(y+\varphi_n),0)$ for $6n\le t<6n+3$ and $u=(0,\sin(x+\psi_n))$ for $6n+3\le t<6n+6$, the phases independent and uniform on $[0,2\pi)$; compared with the steady shear $u=(\sin y,0)$ and with the heat equation. Both velocity fields have size at most 1.}
+\lv{Parameters}{$\nu=10^{-4}$, each shear acting for a time 3, times $0\le t\le 60$, phases from the random generator of NumPy with seed 2026; video of 20 s at 24 frames per second, time running uniformly (3 time units per second), last frame held 1.5 s}
+\lv{Method}{Fourier pseudo-spectral method on a $512\times512$ grid; Strang splitting with time step 0.0125, the transport steps (each row or column shifted, through its Fourier coefficients) and the diffusion steps solved exactly; the steady shear as in the record above}
+\lv{Checks}{with $1024\times1024$ modes and time step 0.00625 the norms agree to a relative $1.2\cdot10^{-6}$; the energy balance $\|f(t)\|^2+2\nu\int_0^t\|\nabla f\|^2ds=\|f_0\|^2$ holds to $3.5\cdot10^{-6}$; time for the norm to halve, for $\nu=10^{-2},10^{-3},10^{-4},10^{-5}$: alternating shears 8.8, 16.3, 23.9, 31.7 (the same with twice the modes), an increase of about 7.6 for each factor 10 in $\nu$; steady shear 8.6, 20.0, 43.9, 94.9; heat equation $\ln 2/\nu$}
+\lv{Context}{Exponential mixing for randomly shifted alternating shears is proved by \citet{BCZG2023}, and dissipation on the time scale $|\log\nu|$, with high probability, by \citet{CoopermanIyerSon2025}; whether the parameters used here satisfy their hypotheses has not been checked}
+\lv{Code}{\href{https://github.com/endipa/endipa.github.io/blob/main/numerics/alternating-shears/alternating_shears.py}{numerics/alternating-shears/alternating\_shears.py} in the repository (Python 3, NumPy, SciPy, Matplotlib, ffmpeg); \texttt{python3 alternating\_shears.py --out ../../wiki/media}, about 15 minutes}
+\lv{Status}{computed by Claude (AI) on 8 November 2026; not yet checked by a human \demo{}}
+\end{levels}
+\media{image}{alternating-shears-check.png}{Left: the norms for $\nu=10^{-4}$, with two resolutions for the alternating shears. Right: the time for the norm to halve, against $1/\nu$, logarithmic scales.}
+
 \subsection{Solvers}
 \placeholder{The methods used across the records, with their strengths and limits.}
+
+
 
 \section{Lean formalization}\label{page-lean-formalization}
 \pagestatus{Page team: to be named · Status: skeleton}
@@ -888,4 +909,10 @@ The papers of the reference catalogue, one line each, grouped by topic. This pag
   \item \wikianchor{IKX2014} G. Iyer, A. Kiselev and X. Xu, \emph{Lower bounds on the mix norm of passive scalars advected by incompressible enstrophy-constrained flows}, Nonlinearity \textbf{27} (2014), 973–985, \href{https://arxiv.org/abs/1310.2986}{arXiv:1310.2986}.
   \item \wikianchor{NP2022} C. Nobili and S. Pottel, \emph{Lower bounds on mixing norms for the advection diffusion equation in Rd}, Nonlinear Differential Equations and Applications NoDEA \textbf{29} (2022), Article 12, \href{https://arxiv.org/abs/2006.04614}{arXiv:2006.04614}.
 \end{enumerate}
+
+\section*{References}
+\begin{thebibliography}{}
+\bibitem[Blumenthal, Coti Zelati and Gvalani(2023)]{BCZG2023} A. Blumenthal, M. Coti Zelati and R. S. Gvalani, \emph{Exponential mixing for random dynamical systems and an example of Pierrehumbert}, Annals of Probability \textbf{51} (2023), 1559–1601, \href{https://arxiv.org/abs/2204.13651}{arXiv:2204.13651}.
+\bibitem[Cooperman, Iyer and Son(2025)]{CoopermanIyerSon2025} W. Cooperman, G. Iyer and S. Son, \emph{A Harris theorem for enhanced dissipation, and an example of Pierrehumbert}, Nonlinearity \textbf{38} (2025), 045027, \href{https://arxiv.org/abs/2403.19858}{arXiv:2403.19858}.
+\end{thebibliography}
 \end{document}

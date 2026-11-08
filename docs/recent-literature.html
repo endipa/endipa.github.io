@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; Motivation and history – Enhanced dissipation for passive scalars</title>
+<title>3&nbsp; Recent literature – Enhanced dissipation for passive scalars</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -37,7 +37,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./couette-flow.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./history-of-the-problem.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -89,7 +89,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./motivation-and-history.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Motivation and history</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./why-it-matters.html">Motivation and history</a></li><li class="breadcrumb-item"><a href="./recent-literature.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Recent literature</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -120,16 +120,10 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Overview</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./motivation-and-history.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Motivation and history</span></span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Techniques through examples</span></a>
+ <span class="menu-text">Motivation and history</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -137,14 +131,20 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./couette-flow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Couette flow</span></span></a>
+  <a href="./why-it-matters.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why it matters</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./poiseuille-flow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Poiseuille flow</span></span></a>
+  <a href="./history-of-the-problem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">History of the problem</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./recent-literature.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Recent literature</span></span></a>
   </div>
 </li>
       </ul>
@@ -152,7 +152,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Techniques and general results</span></a>
+ <span class="menu-text">Techniques through examples</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -160,26 +160,14 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./spectral-methods.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Spectral methods</span></span></a>
+  <a href="./couette-flow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Couette flow</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./hypocoercivity.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Hypocoercivity</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./stochastic-methods.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Stochastic methods</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./hormander-theory.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Hörmander theory</span></span></a>
+  <a href="./poiseuille-flow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Poiseuille flow</span></span></a>
   </div>
 </li>
       </ul>
@@ -187,7 +175,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Extensions and recent advances</span></a>
+ <span class="menu-text">Techniques and general results</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -195,26 +183,26 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./state-of-the-art.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">State of the art</span></span></a>
+  <a href="./spectral-methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Spectral methods</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./related-results.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Related results</span></span></a>
+  <a href="./hypocoercivity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Hypocoercivity</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./open-problems.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Open problems</span></span></a>
+  <a href="./stochastic-methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Stochastic methods</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./raw-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Raw data</span></span></a>
+  <a href="./hormander-theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Hörmander theory</span></span></a>
   </div>
 </li>
       </ul>
@@ -222,7 +210,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Toolkit</span></a>
+ <span class="menu-text">Extensions and recent advances</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -230,40 +218,34 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./notation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Notation</span></span></a>
+  <a href="./state-of-the-art.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">State of the art</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./standard-analysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Standard analysis</span></span></a>
+  <a href="./related-results.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Related results</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./enhanced-dissipation-tools.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Enhanced-dissipation tools</span></span></a>
+  <a href="./open-problems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Open problems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./raw-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Raw data</span></span></a>
   </div>
 </li>
       </ul>
   </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./numerical-methods.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Numerical methods</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./lean-formalization.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Lean formalization</span></span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">About this wiki</span></a>
+ <span class="menu-text">Toolkit</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -271,26 +253,67 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./notation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Notation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./standard-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Standard analysis</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./enhanced-dissipation-tools.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Enhanced-dissipation tools</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./numerical-methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Numerical methods</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lean-formalization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Lean formalization</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">About this wiki</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./how-to-contribute.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">How to contribute</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">How to contribute</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./contributors.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Contributors</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Contributors</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./provenance-and-ai-use.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Provenance and AI use</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Provenance and AI use</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./literature.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Literature</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Literature</span></span></a>
   </div>
 </li>
       </ul>
@@ -305,30 +328,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#why-it-matters" id="toc-why-it-matters" class="nav-link active" data-scroll-target="#why-it-matters"><span class="header-section-number">1.1</span> Why it matters</a>
-  <ul class="collapse">
-  <li><a href="#in-applications" id="toc-in-applications" class="nav-link" data-scroll-target="#in-applications">In applications</a></li>
-  <li><a href="#in-mathematics" id="toc-in-mathematics" class="nav-link" data-scroll-target="#in-mathematics">In mathematics</a></li>
-  </ul></li>
-  <li><a href="#history" id="toc-history" class="nav-link" data-scroll-target="#history"><span class="header-section-number">1.2</span> History</a>
-  <ul class="collapse">
-  <li><a href="#origins" id="toc-origins" class="nav-link" data-scroll-target="#origins">Origins</a></li>
-  <li><a href="#spectral-methods" id="toc-spectral-methods" class="nav-link" data-scroll-target="#spectral-methods">Spectral methods</a></li>
-  <li><a href="#hypocoercivity" id="toc-hypocoercivity" class="nav-link" data-scroll-target="#hypocoercivity">Hypocoercivity</a></li>
-  <li><a href="#stochastic-methods" id="toc-stochastic-methods" class="nav-link" data-scroll-target="#stochastic-methods">Stochastic methods</a></li>
-  <li><a href="#hormander-theory" id="toc-hormander-theory" class="nav-link" data-scroll-target="#hormander-theory">Hörmander theory</a></li>
-  <li><a href="#recent-advances" id="toc-recent-advances" class="nav-link" data-scroll-target="#recent-advances">Recent advances</a></li>
-  </ul></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link active" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./why-it-matters.html">Motivation and history</a></li><li class="breadcrumb-item"><a href="./recent-literature.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Recent literature</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Motivation and history</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Recent literature</span></h1>
 </div>
 
 
@@ -349,65 +358,11 @@ ul.task-list li input[type="checkbox"] {
 <p>Page team: to be named · Status: skeleton</p>
 </div>
 <div class="discuss">
-<a href="https://endipa.miraheze.org/wiki/Motivation_and_history" class="edit-link"><i class="bi bi-pencil-square" aria-hidden="true"></i> This page in the wiki (members)</a> <a href="tex/motivation-and-history.tex" class="edit-link tex-link" download="motivation-and-history.tex"><i class="bi bi-file-earmark-code" aria-hidden="true"></i> TeX source</a> <a href="tex/motivation-and-history.pdf" class="edit-link pdf-link" download="motivation-and-history.pdf"><i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> PDF</a> <span class="discuss-note">Zulip: #overview › Motivation and history (link when the Zulip exists)</span>
+<a href="https://endipa.miraheze.org/wiki/Recent_literature" class="edit-link"><i class="bi bi-pencil-square" aria-hidden="true"></i> This page in the wiki (members)</a> <a href="tex/recent-literature.tex" class="edit-link tex-link" download="recent-literature.tex"><i class="bi bi-file-earmark-code" aria-hidden="true"></i> TeX source</a> <a href="tex/recent-literature.pdf" class="edit-link pdf-link" download="recent-literature.pdf"><i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> PDF</a> <span class="discuss-note">Zulip: #overview › Recent literature (link when the Zulip exists)</span>
 </div>
-<section id="why-it-matters" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="why-it-matters"><span class="header-section-number">1.1</span> Why it matters</h2>
-<section id="in-applications" class="level3">
-<h3 class="anchored" data-anchor-id="in-applications">In applications</h3>
 <div class="placeholder">
-<p>Why the problem matters in practice.</p>
+<p>The latest papers, with what each contributes; their results are collected on <a href="./state-of-the-art.html">State of the art</a> and <a href="./related-results.html">Related results</a>.</p>
 </div>
-</section>
-<section id="in-mathematics" class="level3">
-<h3 class="anchored" data-anchor-id="in-mathematics">In mathematics</h3>
-<div class="placeholder">
-<p>Why the problem is interesting mathematically.</p>
-</div>
-</section>
-</section>
-<section id="history" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="history"><span class="header-section-number">1.2</span> History</h2>
-<div class="placeholder">
-<p>A short account of the progress, then the history technique by technique.</p>
-</div>
-<section id="origins" class="level3">
-<h3 class="anchored" data-anchor-id="origins">Origins</h3>
-<div class="placeholder">
-<p>Before the mathematical theory.</p>
-</div>
-</section>
-<section id="spectral-methods" class="level3">
-<h3 class="anchored" data-anchor-id="spectral-methods">Spectral methods</h3>
-<div class="placeholder">
-<p>Contributions and dates; the general theory is on <a href="./spectral-methods.html">Spectral methods</a>.</p>
-</div>
-</section>
-<section id="hypocoercivity" class="level3">
-<h3 class="anchored" data-anchor-id="hypocoercivity">Hypocoercivity</h3>
-<div class="placeholder">
-<p>Contributions and dates; the general theory is on <a href="./hypocoercivity.html">Hypocoercivity</a>.</p>
-</div>
-</section>
-<section id="stochastic-methods" class="level3">
-<h3 class="anchored" data-anchor-id="stochastic-methods">Stochastic methods</h3>
-<div class="placeholder">
-<p>Contributions and dates; the general theory is on <a href="./stochastic-methods.html">Stochastic methods</a>.</p>
-</div>
-</section>
-<section id="hormander-theory" class="level3">
-<h3 class="anchored" data-anchor-id="hormander-theory">Hörmander theory</h3>
-<div class="placeholder">
-<p>Contributions and dates; the general theory is on <a href="./hormander-theory.html">Hörmander theory</a>.</p>
-</div>
-</section>
-<section id="recent-advances" class="level3">
-<h3 class="anchored" data-anchor-id="recent-advances">Recent advances</h3>
-<div class="placeholder">
-<p>The latest steps; the details are on <a href="./state-of-the-art.html">State of the art</a> and <a href="./related-results.html">Related results</a>.</p>
-</div>
-</section>
-</section>
 <section id="references" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="references">References</h2>
 <!-- refs-begin: -->
@@ -824,13 +779,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Overview">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Overview</span>
+      <a href="./history-of-the-problem.html" class="pagination-link" aria-label="History of the problem">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">History of the problem</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./couette-flow.html" class="pagination-link" aria-label="Couette flow">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Couette flow</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Couette flow</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

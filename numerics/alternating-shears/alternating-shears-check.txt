@@ -1,0 +1,11 @@
+nu=0.0001 h=3 T=60 N=512 dt=0.0125 seed=2026 frames=480 fps=24
+final norm: alternating 5.7244e-02, steady shear 3.8681e-01, heat 9.9402e-01
+T_half: alternating 23.925 (2N, dt/2: 23.925), steady shear 43.863, heat 6931.5
+max relative difference of the norms with (2N, dt/2): 1.19e-06
+max energy-balance residual: 3.47e-06 (2N, dt/2: 8.67e-07)
+dissipation time T_half (same phases, h=3):
+  nu        N     alternating  alternating(2N)  steady shear  heat
+  0.01      128   8.812        8.812            8.64          69.3
+  0.001     256   16.312       16.312           20.00         693.1
+  0.0001    512   23.925       23.925           43.86         6931.5
+  1e-05     1024  31.700       31.700           94.88         69314.7

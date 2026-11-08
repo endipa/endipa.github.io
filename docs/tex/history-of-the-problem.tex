@@ -1,0 +1,113 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+% History of the problem: a page of the wiki "Enhanced dissipation for passive scalars", generated from the wiki on 8 November 2026.
+% It compiles as it is with pdflatex (Overleaf, TeXShop, TeXstudio, ...); typeset twice for the citations.
+% To propose a change: keep the preamble and the line \title{...}; keep only the blocks you change
+% (a \section{...} with its content, or a statement or proof with its \label{...}), change them, and post
+% the file in a new topic of the Zulip channel of the part. The rules: page "How to contribute" of the wiki.
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx,tabularx,listings}
+\usepackage[round]{natbib}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{2em}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem*{claim}{Claim}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+%% The commands of the wiki. This preamble is the same for every page: do not change it, and do not
+%% define commands of your own (the wiki has none).
+\makeatletter
+% after a statement: \begin{idea}, \begin{architecture}, \begin{note}[Title] (and \begin{proof}[Title])
+\newcommand{\ed@runin}[1]{\par\topsep6\p@\@plus6\p@\relax\trivlist\item[\hskip\labelsep\itshape#1\@addpunct{.}]\ignorespaces}
+\newenvironment{idea}[1][Idea]{\ed@runin{#1}}{\endtrivlist\@endpefalse}
+\newenvironment{architecture}[1][Proof architecture]{\ed@runin{#1}}{\endtrivlist\@endpefalse}
+\newenvironment{note}[1][Note]{\ed@runin{#1}}{\endtrivlist\@endpefalse}
+% text still to be written; labels of the text; the Lean banner of the statement above
+\newcommand{\placeholder}[1]{\if@inlabel\else\par\noindent\fi\textit{[#1]}\@ifnextchar\end{}{\par}}
+\newcommand{\ed@label}[1]{\mbox{\footnotesize[#1]}}
+\newcommand{\demo}[1]{\ed@label{demo text}}
+\newcommand{\heuristic}[1]{\ed@label{heuristic}}
+\newcommand{\numerics}[1]{\ed@label{numerics}}
+\newcommand{\published}[1]{\ed@label{published}}
+\newcommand{\preprint}[1]{\ed@label{preprint, to be verified}}
+\newcommand{\raw}[1]{\ed@label{raw, unchecked}}
+\def\ed@formalized{formalized}\def\ed@image{image}\def\ed@video{video}\def\ed@diagram{diagram}
+\newcommand{\lean}[2][]{\par{\noindent\footnotesize\def\ed@a{#2}Lean: \ifx\ed@a\ed@formalized formalized\ifx\relax#1\relax\else\
+  (\href{#1}{certificate})\fi\else not yet formalized\fi.\par}}
+% the two lines under the title: the page's team and status, its Zulip topic (default: the title)
+\def\ed@title{}\let\ed@maketitle\maketitle\renewcommand{\maketitle}{\let\ed@title\@title\ed@maketitle}
+\newcommand{\pagestatus}[1]{{\par\centering\small#1\par}}
+\newcommand{\zulip}[2][]{{\par\centering\small Discuss on Zulip: \##2, topic
+  ``\ifx\relax#1\relax\ed@title\else#1\fi''.\par}\medskip}
+% links to other pages of the wiki, anchors, wiki code shown as text
+\newcommand{\wikilink}[2]{\ifx\relax#2\relax#1\else#2\fi}
+\newcommand{\wikianchor}[1]{\phantomsection\label{#1}}
+\newcommand{\nowikicode}[1]{\texttt{\frenchspacing#1}}
+\newcommand{\nowiki}[1]{#1}
+\newcommand{\wikitemplate}[1]{\texttt{\{\{#1\}\}}}
+\newcommand{\wikidiv}[2]{\par#2\par}
+% pictures, videos, diagrams: shown in the online edition; an image next to this file, or in ../media, is shown here
+\newcommand{\ed@picture}[1]{\begin{center}\includegraphics[width=0.8\linewidth]{#1}\end{center}}
+\newcommand{\media}[4][]{\par\medskip\def\ed@a{#2}{\noindent\small\ifx\ed@a\ed@video Video\else\ifx\ed@a\ed@diagram Diagram\else
+  Figure\fi\fi: \texttt{#3}, shown in the online edition.\par}\ifx\ed@a\ed@image\IfFileExists{#3}{\ed@picture{#3}}{\IfFileExists{../media/#3}{%
+  \ed@picture{../media/#3}}{}}\fi{\noindent\small#4\par}\medskip}
+% tables (\lv{label}{text}; \header{a & b}, \row{a & b}) and code
+\newenvironment{levels}[1][]{\par\smallskip\noindent\tabularx{\linewidth}{@{}>{\bfseries\raggedright\arraybackslash}p{0.2\linewidth}X@{}}}{\endtabularx\par\smallskip}
+\newcommand{\lv}[2]{#1 & #2\\[3pt]}
+\newenvironment{wikitable}[1]{\par\smallskip\noindent\tabularx{\linewidth}{|*{#1}{>{\raggedright\arraybackslash}X|}}\hline}{\endtabularx\par\smallskip}
+\newcommand{\header}[1]{#1\\\hline\hline}
+\newcommand{\row}[1]{#1\\\hline}
+\lstnewenvironment{wikicode}[1][]{\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true,columns=fullflexible,
+  keepspaces=true,showstringspaces=false,frame=single}\ifx\relax#1\relax\else\lstset{language=#1}\fi}{}
+% the heading of the reference list is the section References of the page
+\renewcommand{\bibsection}{}
+% characters of the wiki's text that LaTeX does not know
+\DeclareUnicodeCharacter{2192}{\ensuremath{\rightarrow}}\DeclareUnicodeCharacter{203A}{\ensuremath{\rangle}}
+\DeclareUnicodeCharacter{2713}{\ensuremath{\checkmark}}\DeclareUnicodeCharacter{25CB}{\ensuremath{\circ}}
+\DeclareUnicodeCharacter{2248}{\ensuremath{\approx}}\DeclareUnicodeCharacter{2264}{\ensuremath{\leq}}
+\DeclareUnicodeCharacter{2265}{\ensuremath{\geq}}\DeclareUnicodeCharacter{2212}{\ensuremath{-}}
+\makeatother
+
+\begin{document}
+\title{History of the problem}
+\author{Wiki \emph{Enhanced dissipation for passive scalars}}
+\date{8 November 2026}
+\maketitle
+\pagestatus{Page team: to be named · Status: skeleton}
+\zulip{overview}
+
+\placeholder{A short account of the progress; then the history technique by technique.}
+
+\section{Origins}
+\placeholder{Before the mathematical theory.}
+
+\section{Spectral methods}
+\placeholder{Contributions and dates; the general theory is on \wikilink{Spectral methods}{}.}
+
+\section{Hypocoercivity}
+\placeholder{Contributions and dates; the general theory is on \wikilink{Hypocoercivity}{}.}
+
+\section{Stochastic methods}
+\placeholder{Contributions and dates; the general theory is on \wikilink{Stochastic methods}{}.}
+
+\section{Hörmander theory}
+\placeholder{Contributions and dates; the general theory is on \wikilink{Hörmander theory}{}.}
+
+\section*{References}
+%%wiki <!-- refs-begin: -->
+%%wiki <!-- refs-end -->
+\end{document}

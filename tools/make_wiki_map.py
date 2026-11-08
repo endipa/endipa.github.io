@@ -17,7 +17,7 @@ from xml.sax.saxutils import escape
 # rows of boxes; a box is (part name, description or None, pages, width weight); a part whose only page has
 # its name is one link; a part with several pages lists them (one column up to two pages, then two columns)
 ROWS = [
-    [("Motivation and history", "why the problem matters; its history, technique by technique", ["Motivation and history"], 1)],
+    [("Motivation and history", None, ["Why it matters", "History of the problem", "Recent literature"], 1)],
     [("Techniques through examples", None, ["Couette flow", "Poiseuille flow"], 9),
      ("Techniques and general results", None, ["Spectral methods", "Hypocoercivity", "Stochastic methods", "Hörmander theory"], 11)],
     [("Extensions and recent advances", None, ["State of the art", "Related results", "Open problems", "Raw data"], 1)],

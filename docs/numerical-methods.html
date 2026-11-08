@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>15&nbsp; Numerical methods – Enhanced dissipation for passive scalars</title>
+<title>17&nbsp; Numerical methods – Enhanced dissipation for passive scalars</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -152,7 +152,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./numerical-methods.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Numerical methods</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./numerical-methods.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Numerical methods</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -183,16 +183,10 @@ window.Quarto = {
  <span class="menu-text">Overview</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./motivation-and-history.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Motivation and history</span></span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Techniques through examples</span></a>
+ <span class="menu-text">Motivation and history</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -200,14 +194,20 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./couette-flow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Couette flow</span></span></a>
+  <a href="./why-it-matters.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why it matters</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./poiseuille-flow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Poiseuille flow</span></span></a>
+  <a href="./history-of-the-problem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">History of the problem</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./recent-literature.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Recent literature</span></span></a>
   </div>
 </li>
       </ul>
@@ -215,7 +215,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Techniques and general results</span></a>
+ <span class="menu-text">Techniques through examples</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -223,26 +223,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./spectral-methods.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Spectral methods</span></span></a>
+  <a href="./couette-flow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Couette flow</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./hypocoercivity.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Hypocoercivity</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./stochastic-methods.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Stochastic methods</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./hormander-theory.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Hörmander theory</span></span></a>
+  <a href="./poiseuille-flow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Poiseuille flow</span></span></a>
   </div>
 </li>
       </ul>
@@ -250,7 +238,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Extensions and recent advances</span></a>
+ <span class="menu-text">Techniques and general results</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -258,26 +246,26 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./state-of-the-art.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">State of the art</span></span></a>
+  <a href="./spectral-methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Spectral methods</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./related-results.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Related results</span></span></a>
+  <a href="./hypocoercivity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Hypocoercivity</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./open-problems.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Open problems</span></span></a>
+  <a href="./stochastic-methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Stochastic methods</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./raw-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Raw data</span></span></a>
+  <a href="./hormander-theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Hörmander theory</span></span></a>
   </div>
 </li>
       </ul>
@@ -285,7 +273,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Toolkit</span></a>
+ <span class="menu-text">Extensions and recent advances</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -293,40 +281,34 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./notation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Notation</span></span></a>
+  <a href="./state-of-the-art.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">State of the art</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./standard-analysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Standard analysis</span></span></a>
+  <a href="./related-results.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Related results</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./enhanced-dissipation-tools.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Enhanced-dissipation tools</span></span></a>
+  <a href="./open-problems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Open problems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./raw-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Raw data</span></span></a>
   </div>
 </li>
       </ul>
   </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./numerical-methods.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Numerical methods</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./lean-formalization.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Lean formalization</span></span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">About this wiki</span></a>
+ <span class="menu-text">Toolkit</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -334,26 +316,67 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./notation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Notation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./standard-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Standard analysis</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./enhanced-dissipation-tools.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Enhanced-dissipation tools</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./numerical-methods.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Numerical methods</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lean-formalization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Lean formalization</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">About this wiki</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./how-to-contribute.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">How to contribute</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">How to contribute</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./contributors.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Contributors</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Contributors</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./provenance-and-ai-use.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Provenance and AI use</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Provenance and AI use</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./literature.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Literature</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Literature</span></span></a>
   </div>
 </li>
       </ul>
@@ -368,12 +391,14 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#how-a-record-works" id="toc-how-a-record-works" class="nav-link active" data-scroll-target="#how-a-record-works"><span class="header-section-number">15.1</span> How a record works</a></li>
-  <li><a href="#records" id="toc-records" class="nav-link" data-scroll-target="#records"><span class="header-section-number">15.2</span> Records</a>
+  <li><a href="#how-a-record-works" id="toc-how-a-record-works" class="nav-link active" data-scroll-target="#how-a-record-works"><span class="header-section-number">17.1</span> How a record works</a></li>
+  <li><a href="#records" id="toc-records" class="nav-link" data-scroll-target="#records"><span class="header-section-number">17.2</span> Records</a>
   <ul class="collapse">
   <li><a href="#num-heat-vs-shear" id="toc-num-heat-vs-shear" class="nav-link" data-scroll-target="#num-heat-vs-shear">Heat versus shear on the torus</a></li>
+  <li><a href="#num-alternating-shears" id="toc-num-alternating-shears" class="nav-link" data-scroll-target="#num-alternating-shears">Alternating shears with random phases</a></li>
   </ul></li>
-  <li><a href="#solvers" id="toc-solvers" class="nav-link" data-scroll-target="#solvers"><span class="header-section-number">15.3</span> Solvers</a></li>
+  <li><a href="#solvers" id="toc-solvers" class="nav-link" data-scroll-target="#solvers"><span class="header-section-number">17.3</span> Solvers</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
     </div>
@@ -382,7 +407,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Numerical methods</span></h1>
+<h1 class="title"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Numerical methods</span></h1>
 </div>
 
 
@@ -406,16 +431,16 @@ window.Quarto = {
 <a href="https://endipa.miraheze.org/wiki/Numerical_methods" class="edit-link"><i class="bi bi-pencil-square" aria-hidden="true"></i> This page in the wiki (members)</a> <a href="tex/numerical-methods.tex" class="edit-link tex-link" download="numerical-methods.tex"><i class="bi bi-file-earmark-code" aria-hidden="true"></i> TeX source</a> <a href="tex/numerical-methods.pdf" class="edit-link pdf-link" download="numerical-methods.pdf"><i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> PDF</a> <span class="discuss-note">Zulip: #numerics › Numerical methods (link when the Zulip exists)</span>
 </div>
 <p>Every computed picture and video of this wiki has a record on this page: what was computed, how, with which parameters and checks, and the code that produced it.</p>
-<section id="how-a-record-works" class="level2" data-number="15.1">
-<h2 data-number="15.1" class="anchored" data-anchor-id="how-a-record-works"><span class="header-section-number">15.1</span> How a record works</h2>
+<section id="how-a-record-works" class="level2" data-number="17.1">
+<h2 data-number="17.1" class="anchored" data-anchor-id="how-a-record-works"><span class="header-section-number">17.1</span> How a record works</h2>
 <ul>
 <li>A record is a section with an anchor <code>num-…</code>; the picture or video links to it with the parameter <code>record</code> of <a href="https://endipa.miraheze.org/wiki/Template:Media">Media</a>.</li>
 <li>It gives the equation, the parameters, the method, the checks, the code and how to run it, and its status.</li>
-<li>The code is kept in the project folder, in <code>numerics/</code>, and shown here when it is short. Later: a public repository, with the commit that produced the files.</li>
+<li>The code is in the folder <code>numerics/</code> of the <a href="https://github.com/endipa/endipa.github.io">repository</a> of the wiki, one folder per record, with the output of its checks.</li>
 </ul>
 </section>
-<section id="records" class="level2" data-number="15.2">
-<h2 data-number="15.2" class="anchored" data-anchor-id="records"><span class="header-section-number">15.2</span> Records</h2>
+<section id="records" class="level2" data-number="17.2">
+<h2 data-number="17.2" class="anchored" data-anchor-id="records"><span class="header-section-number">17.2</span> Records</h2>
 <section id="num-heat-vs-shear" class="level3">
 <h3 class="anchored" data-anchor-id="num-heat-vs-shear">Heat versus shear on the torus</h3>
 <div class="levels">
@@ -424,7 +449,7 @@ window.Quarto = {
 <p><span class="lv">Parameters</span> <span class="lv-text"><span class="math inline">\(\nu=10^{-3}\)</span>, times <span class="math inline">\(0\le t\le 100\)</span>; video of 20 s at 24 frames per second, time running uniformly (5 time units per second), last frame held 1.5 s</span></p>
 <p><span class="lv">Method</span> <span class="lv-text">one Fourier mode in <span class="math inline">\(x\)</span>: <span class="math inline">\(f=\operatorname{Re}(g(t,y)e^{ix})\)</span> with <span class="math inline">\(\partial_t g=-i\sin y\,g+\nu(\partial_y^2-1)g\)</span>; 512 Fourier modes in <span class="math inline">\(y\)</span>; Strang splitting with time step 0.01, transport and diffusion steps solved exactly; heat equation solved exactly</span></p>
 <p><span class="lv">Checks</span> <span class="lv-text">with 1024 modes and time step 0.005 the norms agree to a relative <span class="math inline">\(6\cdot10^{-8}\)</span>; the energy balance <span class="math inline">\(\|g(t)\|^2+2\nu\int_0^t\|(\partial_y g,g)\|^2ds=\|g(0)\|^2\)</span> holds to <span class="math inline">\(3\cdot10^{-7}\)</span>; decay rate of the norm on <span class="math inline">\([50,100]\)</span>: 0.0167, against <span class="math inline">\(\nu^{1/2}\approx0.0316\)</span></span></p>
-<p><span class="lv">Code</span> <span class="lv-text"><code>numerics/heat-vs-shear/heat_vs_shear.py</code> in the project folder (Python 3, NumPy, Matplotlib, ffmpeg); <code>python3 heat_vs_shear.py --out ../../wiki/media</code>, about a minute</span></p>
+<p><span class="lv">Code</span> <span class="lv-text"><a href="https://github.com/endipa/endipa.github.io/blob/main/numerics/heat-vs-shear/heat_vs_shear.py">numerics/heat-vs-shear/heat_vs_shear.py</a> in the repository, also below (Python 3, NumPy, Matplotlib, ffmpeg); <code>python3 heat_vs_shear.py --out ../../wiki/media</code>, about a minute</span></p>
 <p><span class="lv">Status</span> <span class="lv-text">computed by Claude (AI) on 8 November 2026; not yet checked by a human <span class="badge-demo">demo text</span></span></p>
 </div>
 <div class="media-figure media-image">
@@ -617,12 +642,40 @@ window.Quarto = {
 </div>
 </div>
 </section>
+<section id="num-alternating-shears" class="level3">
+<h3 class="anchored" data-anchor-id="num-alternating-shears">Alternating shears with random phases</h3>
+<div class="levels">
+<p><span class="lv">Produces</span> <span class="lv-text">the second video on the <a href="./index.html">Overview</a> (<code>alternating-shears.mp4</code>) and the check figure below</span></p>
+<p><span class="lv">Equation</span> <span class="lv-text"><span class="math inline">\(\partial_t f+u\cdot\nabla f=\nu\Delta f\)</span> on <span class="math inline">\([0,2\pi)^2\)</span>, periodic, with <span class="math inline">\(f_0=\cos x\)</span> and the alternating shears of Pierrehumbert’s model: <span class="math inline">\(u=(\sin(y+\varphi_n),0)\)</span> for <span class="math inline">\(6n\le t&lt;6n+3\)</span> and <span class="math inline">\(u=(0,\sin(x+\psi_n))\)</span> for <span class="math inline">\(6n+3\le t&lt;6n+6\)</span>, the phases independent and uniform on <span class="math inline">\([0,2\pi)\)</span>; compared with the steady shear <span class="math inline">\(u=(\sin y,0)\)</span> and with the heat equation. Both velocity fields have size at most 1.</span></p>
+<p><span class="lv">Parameters</span> <span class="lv-text"><span class="math inline">\(\nu=10^{-4}\)</span>, each shear acting for a time 3, times <span class="math inline">\(0\le t\le 60\)</span>, phases from the random generator of NumPy with seed 2026; video of 20 s at 24 frames per second, time running uniformly (3 time units per second), last frame held 1.5 s</span></p>
+<p><span class="lv">Method</span> <span class="lv-text">Fourier pseudo-spectral method on a <span class="math inline">\(512\times512\)</span> grid; Strang splitting with time step 0.0125, the transport steps (each row or column shifted, through its Fourier coefficients) and the diffusion steps solved exactly; the steady shear as in the record above</span></p>
+<p><span class="lv">Checks</span> <span class="lv-text">with <span class="math inline">\(1024\times1024\)</span> modes and time step 0.00625 the norms agree to a relative <span class="math inline">\(1.2\cdot10^{-6}\)</span>; the energy balance <span class="math inline">\(\|f(t)\|^2+2\nu\int_0^t\|\nabla f\|^2ds=\|f_0\|^2\)</span> holds to <span class="math inline">\(3.5\cdot10^{-6}\)</span>; time for the norm to halve, for <span class="math inline">\(\nu=10^{-2},10^{-3},10^{-4},10^{-5}\)</span>: alternating shears 8.8, 16.3, 23.9, 31.7 (the same with twice the modes), an increase of about 7.6 for each factor 10 in <span class="math inline">\(\nu\)</span>; steady shear 8.6, 20.0, 43.9, 94.9; heat equation <span class="math inline">\(\ln 2/\nu\)</span></span></p>
+<p><span class="lv">Context</span> <span class="lv-text">Exponential mixing for randomly shifted alternating shears is proved by <a href="./literature.html#BCZG2023">Blumenthal, Coti Zelati and Gvalani (2023)</a>, and dissipation on the time scale <span class="math inline">\(|\log\nu|\)</span>, with high probability, by <a href="./literature.html#CoopermanIyerSon2025">Cooperman, Iyer and Son (2025)</a>; whether the parameters used here satisfy their hypotheses has not been checked</span></p>
+<p><span class="lv">Code</span> <span class="lv-text"><a href="https://github.com/endipa/endipa.github.io/blob/main/numerics/alternating-shears/alternating_shears.py">numerics/alternating-shears/alternating_shears.py</a> in the repository (Python 3, NumPy, SciPy, Matplotlib, ffmpeg); <code>python3 alternating_shears.py --out ../../wiki/media</code>, about 15 minutes</span></p>
+<p><span class="lv">Status</span> <span class="lv-text">computed by Claude (AI) on 8 November 2026; not yet checked by a human <span class="badge-demo">demo text</span></span></p>
+</div>
+<div class="media-figure media-image">
+<img class="media-img" src="media/alternating-shears-check.png" alt="Left: the norms for \nu=10^{-4}, with two resolutions for the alternating shears. Right: the time for the norm to halve, against 1/\nu, logarithmic scales." loading="lazy">
+<div class="media-caption">
+<p>Left: the norms for <span class="math inline">\(\nu=10^{-4}\)</span>, with two resolutions for the alternating shears. Right: the time for the norm to halve, against <span class="math inline">\(1/\nu\)</span>, logarithmic scales.</p>
+</div>
+</div>
 </section>
-<section id="solvers" class="level2" data-number="15.3">
-<h2 data-number="15.3" class="anchored" data-anchor-id="solvers"><span class="header-section-number">15.3</span> Solvers</h2>
+</section>
+<section id="solvers" class="level2" data-number="17.3">
+<h2 data-number="17.3" class="anchored" data-anchor-id="solvers"><span class="header-section-number">17.3</span> Solvers</h2>
 <div class="placeholder">
 <p>The methods used across the records, with their strengths and limits.</p>
 </div>
+</section>
+<section id="references" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="references">References</h2>
+<!-- refs-begin: BCZG2023 CoopermanIyerSon2025 -->
+<ol type="1">
+<li>A. Blumenthal, M. Coti Zelati and R. S. Gvalani, <em>Exponential mixing for random dynamical systems and an example of Pierrehumbert</em>, Annals of Probability <strong>51</strong> (2023), 1559–1601, <a href="https://arxiv.org/abs/2204.13651">arXiv:2204.13651</a>.</li>
+<li>W. Cooperman, G. Iyer and S. Son, <em>A Harris theorem for enhanced dissipation, and an example of Pierrehumbert</em>, Nonlinearity <strong>38</strong> (2025), 045027, <a href="https://arxiv.org/abs/2403.19858">arXiv:2403.19858</a>.</li>
+</ol>
+<!-- refs-end -->
 
 
 </section>
@@ -1036,12 +1089,12 @@ window.Quarto = {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./enhanced-dissipation-tools.html" class="pagination-link" aria-label="Enhanced-dissipation tools">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Enhanced-dissipation tools</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Enhanced-dissipation tools</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./lean-formalization.html" class="pagination-link" aria-label="Lean formalization">
-        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Lean formalization</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Lean formalization</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

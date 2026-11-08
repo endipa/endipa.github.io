@@ -1,7 +1,9 @@
 * Overview
 ** Overview|Overview
 * Motivation and history
-** Motivation and history|Motivation and history
+** Why it matters|Why it matters
+** History of the problem|History of the problem
+** Recent literature|Recent literature
 * Techniques through examples
 ** Couette flow|Couette flow
 ** Poiseuille flow|Poiseuille flow

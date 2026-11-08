@@ -1,0 +1,23 @@
+<div class="mod-meta">Page team: to be named · Status: skeleton</div>
+{{Discuss|channel=overview}}
+
+{{Placeholder start}}A short account of the progress; then the history technique by technique.{{Placeholder end}}
+
+== Origins ==
+{{Placeholder start}}Before the mathematical theory.{{Placeholder end}}
+
+== Spectral methods ==
+{{Placeholder start}}Contributions and dates; the general theory is on [[Spectral methods]].{{Placeholder end}}
+
+== Hypocoercivity ==
+{{Placeholder start}}Contributions and dates; the general theory is on [[Hypocoercivity]].{{Placeholder end}}
+
+== Stochastic methods ==
+{{Placeholder start}}Contributions and dates; the general theory is on [[Stochastic methods]].{{Placeholder end}}
+
+== Hörmander theory ==
+{{Placeholder start}}Contributions and dates; the general theory is on [[Hörmander theory]].{{Placeholder end}}
+
+== References ==
+<!-- refs-begin: -->
+<!-- refs-end -->

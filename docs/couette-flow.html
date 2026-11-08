@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; Couette flow – Enhanced dissipation for passive scalars</title>
+<title>4&nbsp; Couette flow – Enhanced dissipation for passive scalars</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -37,7 +37,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./poiseuille-flow.html" rel="next">
-<link href="./motivation-and-history.html" rel="prev">
+<link href="./recent-literature.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -117,7 +117,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./couette-flow.html">Techniques through examples</a></li><li class="breadcrumb-item"><a href="./couette-flow.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Couette flow</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./couette-flow.html">Techniques through examples</a></li><li class="breadcrumb-item"><a href="./couette-flow.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Couette flow</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -148,16 +148,10 @@ window.Quarto = {
  <span class="menu-text">Overview</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./motivation-and-history.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Motivation and history</span></span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Techniques through examples</span></a>
+ <span class="menu-text">Motivation and history</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -165,14 +159,20 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./couette-flow.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Couette flow</span></span></a>
+  <a href="./why-it-matters.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why it matters</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./poiseuille-flow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Poiseuille flow</span></span></a>
+  <a href="./history-of-the-problem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">History of the problem</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./recent-literature.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Recent literature</span></span></a>
   </div>
 </li>
       </ul>
@@ -180,7 +180,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Techniques and general results</span></a>
+ <span class="menu-text">Techniques through examples</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -188,26 +188,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./spectral-methods.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Spectral methods</span></span></a>
+  <a href="./couette-flow.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Couette flow</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./hypocoercivity.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Hypocoercivity</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./stochastic-methods.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Stochastic methods</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./hormander-theory.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Hörmander theory</span></span></a>
+  <a href="./poiseuille-flow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Poiseuille flow</span></span></a>
   </div>
 </li>
       </ul>
@@ -215,7 +203,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Extensions and recent advances</span></a>
+ <span class="menu-text">Techniques and general results</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -223,26 +211,26 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./state-of-the-art.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">State of the art</span></span></a>
+  <a href="./spectral-methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Spectral methods</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./related-results.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Related results</span></span></a>
+  <a href="./hypocoercivity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Hypocoercivity</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./open-problems.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Open problems</span></span></a>
+  <a href="./stochastic-methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Stochastic methods</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./raw-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Raw data</span></span></a>
+  <a href="./hormander-theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Hörmander theory</span></span></a>
   </div>
 </li>
       </ul>
@@ -250,7 +238,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Toolkit</span></a>
+ <span class="menu-text">Extensions and recent advances</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -258,40 +246,34 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./notation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Notation</span></span></a>
+  <a href="./state-of-the-art.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">State of the art</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./standard-analysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Standard analysis</span></span></a>
+  <a href="./related-results.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Related results</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./enhanced-dissipation-tools.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Enhanced-dissipation tools</span></span></a>
+  <a href="./open-problems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Open problems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./raw-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Raw data</span></span></a>
   </div>
 </li>
       </ul>
   </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./numerical-methods.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Numerical methods</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./lean-formalization.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Lean formalization</span></span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">About this wiki</span></a>
+ <span class="menu-text">Toolkit</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -299,26 +281,67 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./notation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Notation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./standard-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Standard analysis</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./enhanced-dissipation-tools.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Enhanced-dissipation tools</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./numerical-methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Numerical methods</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lean-formalization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Lean formalization</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">About this wiki</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./how-to-contribute.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">How to contribute</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">How to contribute</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./contributors.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Contributors</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Contributors</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./provenance-and-ai-use.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Provenance and AI use</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Provenance and AI use</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./literature.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Literature</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Literature</span></span></a>
   </div>
 </li>
       </ul>
@@ -333,9 +356,9 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#setting" id="toc-setting" class="nav-link active" data-scroll-target="#setting"><span class="header-section-number">2.1</span> Setting</a></li>
-  <li><a href="#the-result" id="toc-the-result" class="nav-link" data-scroll-target="#the-result"><span class="header-section-number">2.2</span> The result</a></li>
-  <li><a href="#one-example-every-technique" id="toc-one-example-every-technique" class="nav-link" data-scroll-target="#one-example-every-technique"><span class="header-section-number">2.3</span> One example, every technique</a>
+  <li><a href="#setting" id="toc-setting" class="nav-link active" data-scroll-target="#setting"><span class="header-section-number">4.1</span> Setting</a></li>
+  <li><a href="#the-result" id="toc-the-result" class="nav-link" data-scroll-target="#the-result"><span class="header-section-number">4.2</span> The result</a></li>
+  <li><a href="#one-example-every-technique" id="toc-one-example-every-technique" class="nav-link" data-scroll-target="#one-example-every-technique"><span class="header-section-number">4.3</span> One example, every technique</a>
   <ul class="collapse">
   <li><a href="#explicit-solution" id="toc-explicit-solution" class="nav-link" data-scroll-target="#explicit-solution">Explicit solution</a></li>
   <li><a href="#spectral-methods" id="toc-spectral-methods" class="nav-link" data-scroll-target="#spectral-methods">Spectral methods</a></li>
@@ -343,7 +366,7 @@ window.Quarto = {
   <li><a href="#stochastic-methods" id="toc-stochastic-methods" class="nav-link" data-scroll-target="#stochastic-methods">Stochastic methods</a></li>
   <li><a href="#hormander-theory" id="toc-hormander-theory" class="nav-link" data-scroll-target="#hormander-theory">Hörmander theory</a></li>
   </ul></li>
-  <li><a href="#what-this-example-teaches" id="toc-what-this-example-teaches" class="nav-link" data-scroll-target="#what-this-example-teaches"><span class="header-section-number">2.4</span> What this example teaches</a></li>
+  <li><a href="#what-this-example-teaches" id="toc-what-this-example-teaches" class="nav-link" data-scroll-target="#what-this-example-teaches"><span class="header-section-number">4.4</span> What this example teaches</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
@@ -351,9 +374,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./couette-flow.html">Techniques through examples</a></li><li class="breadcrumb-item"><a href="./couette-flow.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Couette flow</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./couette-flow.html">Techniques through examples</a></li><li class="breadcrumb-item"><a href="./couette-flow.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Couette flow</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Couette flow</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Couette flow</span></h1>
 </div>
 
 
@@ -379,16 +402,16 @@ window.Quarto = {
 <div class="placeholder">
 <p>Lead: what this example shows, in three lines.</p>
 </div>
-<section id="setting" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="setting"><span class="header-section-number">2.1</span> Setting</h2>
+<section id="setting" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="setting"><span class="header-section-number">4.1</span> Setting</h2>
 <div class="placeholder">
 <p>The flow <span class="math inline">\(u=(y,0)\)</span> on <span class="math inline">\(\mathbb{T}\times\mathbb{R}\)</span>: the equation, the Fourier modes, what decays.</p>
 </div>
 </section>
-<section id="the-result" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="the-result"><span class="header-section-number">2.2</span> The result</h2>
+<section id="the-result" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="the-result"><span class="header-section-number">4.2</span> The result</h2>
 <div id="thm-couette" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 2.1 (enhanced dissipation for Couette flow)</strong></span> &nbsp;</p>
+<p><span class="theorem-title"><strong>Theorem 4.1 (enhanced dissipation for Couette flow)</strong></span> &nbsp;</p>
 <div class="placeholder">
 <p>The statement.</p>
 </div>
@@ -433,8 +456,8 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="one-example-every-technique" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="one-example-every-technique"><span class="header-section-number">2.3</span> One example, every technique</h2>
+<section id="one-example-every-technique" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="one-example-every-technique"><span class="header-section-number">4.3</span> One example, every technique</h2>
 <p>Each proof below is written for this example only, to show the mechanism; the general results, with complete proofs, are in the part <em>Techniques and general results</em>.</p>
 <section id="explicit-solution" class="level3">
 <h3 class="anchored" data-anchor-id="explicit-solution">Explicit solution</h3>
@@ -546,8 +569,8 @@ window.Quarto = {
 <p>General theory: <a href="./hormander-theory.html">Hörmander theory</a>.</p>
 </section>
 </section>
-<section id="what-this-example-teaches" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="what-this-example-teaches"><span class="header-section-number">2.4</span> What this example teaches</h2>
+<section id="what-this-example-teaches" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="what-this-example-teaches"><span class="header-section-number">4.4</span> What this example teaches</h2>
 <div class="placeholder">
 <p>What the example shows, and what the general theory keeps of it.</p>
 </div>
@@ -968,13 +991,13 @@ window.Quarto = {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./motivation-and-history.html" class="pagination-link" aria-label="Motivation and history">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Motivation and history</span></span>
+      <a href="./recent-literature.html" class="pagination-link" aria-label="Recent literature">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Recent literature</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./poiseuille-flow.html" class="pagination-link" aria-label="Poiseuille flow">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Poiseuille flow</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Poiseuille flow</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

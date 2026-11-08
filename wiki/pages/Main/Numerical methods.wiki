@@ -6,7 +6,7 @@ Every computed picture and video of this wiki has a record on this page: what wa
 == How a record works ==
 * A record is a section with an anchor <code>num-…</code>; the picture or video links to it with the parameter <code>record</code> of [[Template:Media|Media]].
 * It gives the equation, the parameters, the method, the checks, the code and how to run it, and its status.
-* The code is kept in the project folder, in <code>numerics/</code>, and shown here when it is short. Later: a public repository, with the commit that produced the files.
+* The code is in the folder <code>numerics/</code> of the [https://github.com/endipa/endipa.github.io repository] of the wiki, one folder per record, with the output of its checks.
 
 == Records ==
 === Heat versus shear on the torus {{Anchor|num-heat-vs-shear}} ===
@@ -21,7 +21,7 @@ Every computed picture and video of this wiki has a record on this page: what wa
 |-
 | Checks || with 1024 modes and time step 0.005 the norms agree to a relative <math display="inline">6\cdot10^{-8}</math>; the energy balance <math display="inline">\|g(t)\|^2+2\nu\int_0^t\|(\partial_y g,g)\|^2ds=\|g(0)\|^2</math> holds to <math display="inline">3\cdot10^{-7}</math>; decay rate of the norm on <math display="inline">[50,100]</math>: 0.0167, against <math display="inline">\nu^{1/2}\approx0.0316</math>
 |-
-| Code || <code>numerics/heat-vs-shear/heat_vs_shear.py</code> in the project folder (Python 3, NumPy, Matplotlib, ffmpeg); <code>python3 heat_vs_shear.py --out ../../wiki/media</code>, about a minute
+| Code || [https://github.com/endipa/endipa.github.io/blob/main/numerics/heat-vs-shear/heat_vs_shear.py numerics/heat-vs-shear/heat_vs_shear.py] in the repository, also below (Python 3, NumPy, Matplotlib, ffmpeg); <code>python3 heat_vs_shear.py --out ../../wiki/media</code>, about a minute
 |-
 | Status || computed by Claude (AI) on 8 November 2026; not yet checked by a human {{Demo}}
 |}
@@ -204,5 +204,31 @@ if __name__ == "__main__":
 </pre>
 {{Fold end}}
 
+=== Alternating shears with random phases {{Anchor|num-alternating-shears}} ===
+{| class="levels"
+| Produces || the second video on the [[Overview]] (<code>alternating-shears.mp4</code>) and the check figure below
+|-
+| Equation || <math display="inline">\partial_t f+u\cdot\nabla f=\nu\Delta f</math> on <math display="inline">[0,2\pi)^2</math>, periodic, with <math display="inline">f_0=\cos x</math> and the alternating shears of Pierrehumbert's model: <math display="inline">u=(\sin(y+\varphi_n),0)</math> for <math display="inline">6n\le t<6n+3</math> and <math display="inline">u=(0,\sin(x+\psi_n))</math> for <math display="inline">6n+3\le t<6n+6</math>, the phases independent and uniform on <math display="inline">[0,2\pi)</math>; compared with the steady shear <math display="inline">u=(\sin y,0)</math> and with the heat equation. Both velocity fields have size at most 1.
+|-
+| Parameters || <math display="inline">\nu=10^{-4}</math>, each shear acting for a time 3, times <math display="inline">0\le t\le 60</math>, phases from the random generator of NumPy with seed 2026; video of 20 s at 24 frames per second, time running uniformly (3 time units per second), last frame held 1.5 s
+|-
+| Method || Fourier pseudo-spectral method on a <math display="inline">512\times512</math> grid; Strang splitting with time step 0.0125, the transport steps (each row or column shifted, through its Fourier coefficients) and the diffusion steps solved exactly; the steady shear as in the record above
+|-
+| Checks || with <math display="inline">1024\times1024</math> modes and time step 0.00625 the norms agree to a relative <math display="inline">1.2\cdot10^{-6}</math>; the energy balance <math display="inline">\|f(t)\|^2+2\nu\int_0^t\|\nabla f\|^2ds=\|f_0\|^2</math> holds to <math display="inline">3.5\cdot10^{-6}</math>; time for the norm to halve, for <math display="inline">\nu=10^{-2},10^{-3},10^{-4},10^{-5}</math>: alternating shears 8.8, 16.3, 23.9, 31.7 (the same with twice the modes), an increase of about 7.6 for each factor 10 in <math display="inline">\nu</math>; steady shear 8.6, 20.0, 43.9, 94.9; heat equation <math display="inline">\ln 2/\nu</math>
+|-
+| Context || Exponential mixing for randomly shifted alternating shears is proved by [[Literature#BCZG2023|Blumenthal, Coti Zelati and Gvalani (2023)]], and dissipation on the time scale <math display="inline">|\log\nu|</math>, with high probability, by [[Literature#CoopermanIyerSon2025|Cooperman, Iyer and Son (2025)]]; whether the parameters used here satisfy their hypotheses has not been checked
+|-
+| Code || [https://github.com/endipa/endipa.github.io/blob/main/numerics/alternating-shears/alternating_shears.py numerics/alternating-shears/alternating_shears.py] in the repository (Python 3, NumPy, SciPy, Matplotlib, ffmpeg); <code>python3 alternating_shears.py --out ../../wiki/media</code>, about 15 minutes
+|-
+| Status || computed by Claude (AI) on 8 November 2026; not yet checked by a human {{Demo}}
+|}
+{{Media|kind=image|file=alternating-shears-check.png|caption=Left: the norms for <math display="inline">\nu=10^{-4}</math>, with two resolutions for the alternating shears. Right: the time for the norm to halve, against <math display="inline">1/\nu</math>, logarithmic scales.}}
+
 == Solvers ==
 {{Placeholder start}}The methods used across the records, with their strengths and limits.{{Placeholder end}}
+
+== References ==
+<!-- refs-begin: BCZG2023 CoopermanIyerSon2025 -->
+# A. Blumenthal, M. Coti Zelati and R. S. Gvalani, ''Exponential mixing for random dynamical systems and an example of Pierrehumbert'', Annals of Probability '''51''' (2023), 1559–1601, [https://arxiv.org/abs/2204.13651 arXiv:2204.13651].
+# W. Cooperman, G. Iyer and S. Son, ''A Harris theorem for enhanced dissipation, and an example of Pierrehumbert'', Nonlinearity '''38''' (2025), 045027, [https://arxiv.org/abs/2403.19858 arXiv:2403.19858].
+<!-- refs-end -->
