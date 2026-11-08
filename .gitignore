@@ -5,7 +5,9 @@ site/_quarto.yml
 site/mathjax/
 site/tex/
 site/media/
+# zips are not kept, except the Overleaf project of the website
 *.zip
+!docs/tex/all-pages.zip
 __pycache__/
 .DS_Store
 # old first-version pages kept only in the project folder
