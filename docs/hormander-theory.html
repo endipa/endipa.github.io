@@ -361,15 +361,17 @@ ul.task-list li input[type="checkbox"] {
 <p>Page team: to be named · Status: skeleton</p>
 </div>
 <div class="discuss">
-<a href="https://endipa.miraheze.org/wiki/H%C3%B6rmander_theory" class="edit-link"><i class="bi bi-pencil-square" aria-hidden="true"></i> This page in the wiki (members)</a> <a href="tex/hormander-theory.tex" class="edit-link tex-link" download="hormander-theory.tex"><i class="bi bi-file-earmark-code" aria-hidden="true"></i> TeX source</a> <a href="tex/hormander-theory.pdf" class="edit-link pdf-link" download="hormander-theory.pdf"><i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> PDF</a> <a href="tex/hormander-theory.zip" class="edit-link overleaf-link" data-zip="tex/hormander-theory.zip" data-main="hormander-theory.tex" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i> Open in Overleaf</a> <span class="discuss-note">Zulip: #techniques › Hörmander theory (link when the Zulip exists)</span>
+<a href="https://endipa.zulipchat.com/#narrow/channel/653114-techniques/topic/H.C3.B6rmander.20theory" class="zulip-btn"><i class="bi bi-chat-left-text" aria-hidden="true"></i> Discuss or propose a change on Zulip</a> <span class="discuss-note">For project members: the Zulip and the wiki are by invitation.</span> <a href="https://endipa.miraheze.org/wiki/H%C3%B6rmander_theory" class="edit-link"><i class="bi bi-pencil-square" aria-hidden="true"></i> This page in the wiki (members)</a> <a href="tex/hormander-theory.tex" class="edit-link tex-link" download="hormander-theory.tex"><i class="bi bi-file-earmark-code" aria-hidden="true"></i> TeX source</a> <a href="tex/hormander-theory.pdf" class="edit-link pdf-link" download="hormander-theory.pdf"><i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> PDF</a>
 </div>
 <div class="placeholder">
 <p>Lead: what the method gives, and under which hypotheses.</p>
+<p><a href="https://endipa.zulipchat.com/#narrow/channel/653114-techniques/topic/H.C3.B6rmander.20theory" class="propose">Propose a text on Zulip →</a></p>
 </div>
 <section id="the-method" class="level2" data-number="9.1">
 <h2 data-number="9.1" class="anchored" data-anchor-id="the-method"><span class="header-section-number">9.1</span> The method</h2>
 <div class="placeholder">
 <p>The key mechanism, in a few lines.</p>
+<p><a href="https://endipa.zulipchat.com/#narrow/channel/653114-techniques/topic/H.C3.B6rmander.20theory" class="propose">Propose a text on Zulip →</a></p>
 </div>
 <p>Worked example: <a href="./couette-flow.html#hormander-theory">Couette flow</a>. What changes with a critical point: <a href="./poiseuille-flow.html#hormander-theory">Poiseuille flow</a>.</p>
 </section>
@@ -377,12 +379,14 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="9.2" class="anchored" data-anchor-id="general-results"><span class="header-section-number">9.2</span> General results</h2>
 <div class="placeholder">
 <p>The theorems, each written as a result (statement, Lean banner, idea, proof architecture, complete proof; see <a href="./how-to-contribute.html#anatomy-of-a-result">How to contribute</a>); lemmas of general use go to the <em>Toolkit</em> (<a href="./standard-analysis.html">Standard analysis</a>, <a href="./enhanced-dissipation-tools.html">Enhanced-dissipation tools</a>).</p>
+<p><a href="https://endipa.zulipchat.com/#narrow/channel/653114-techniques/topic/H.C3.B6rmander.20theory" class="propose">Propose a text on Zulip →</a></p>
 </div>
 </section>
 <section id="limitations-and-comparison" class="level2" data-number="9.3">
 <h2 data-number="9.3" class="anchored" data-anchor-id="limitations-and-comparison"><span class="header-section-number">9.3</span> Limitations and comparison</h2>
 <div class="placeholder">
 <p>What the method does not give, and how it compares with the other techniques.</p>
+<p><a href="https://endipa.zulipchat.com/#narrow/channel/653114-techniques/topic/H.C3.B6rmander.20theory" class="propose">Propose a text on Zulip →</a></p>
 </div>
 </section>
 <section id="references" class="level2 unnumbered">
@@ -390,18 +394,6 @@ ul.task-list li input[type="checkbox"] {
 <!-- refs-begin: -->
 <!-- refs-end -->
 
-
-<script>
-(function () {
-  // Open in Overleaf: a new project from a zip (tex/<page>.zip: the page and its pictures; tex/all-pages.zip: the whole
-  // wiki, whole-wiki.tex as main document). Overleaf downloads the zip itself, so this works on the public site only.
-  document.querySelectorAll('a.overleaf-link').forEach(function (a) {
-    var zip = new URL(a.getAttribute('data-zip'), window.location.href).href;
-    a.href = 'https://www.overleaf.com/docs?engine=pdflatex&main_document=' + encodeURIComponent(a.getAttribute('data-main'))
-      + '&snip_uri=' + encodeURIComponent(zip);
-  });
-})();
-</script>
 
 </section>
 
@@ -833,7 +825,7 @@ ul.task-list li input[type="checkbox"] {
       &nbsp;
     </div>
     <div class="nav-footer-right">
-<p>Under each title: the TeX source of the page, Overleaf, and the page in the wiki.</p>
+<p>Under each title: the Zulip topic of the page, the page in the wiki, its TeX source and its PDF.</p>
 </div>
   </div>
 </footer>

@@ -358,10 +358,11 @@ ul.task-list li input[type="checkbox"] {
 <p>Page team: to be named · Status: skeleton</p>
 </div>
 <div class="discuss">
-<a href="https://endipa.miraheze.org/wiki/State_of_the_art" class="edit-link"><i class="bi bi-pencil-square" aria-hidden="true"></i> This page in the wiki (members)</a> <a href="tex/state-of-the-art.tex" class="edit-link tex-link" download="state-of-the-art.tex"><i class="bi bi-file-earmark-code" aria-hidden="true"></i> TeX source</a> <a href="tex/state-of-the-art.pdf" class="edit-link pdf-link" download="state-of-the-art.pdf"><i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> PDF</a> <a href="tex/state-of-the-art.zip" class="edit-link overleaf-link" data-zip="tex/state-of-the-art.zip" data-main="state-of-the-art.tex" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i> Open in Overleaf</a> <span class="discuss-note">Zulip: #advances › State of the art (link when the Zulip exists)</span>
+<a href="https://endipa.zulipchat.com/#narrow/channel/653115-advances/topic/State.20of.20the.20art" class="zulip-btn"><i class="bi bi-chat-left-text" aria-hidden="true"></i> Discuss or propose a change on Zulip</a> <span class="discuss-note">For project members: the Zulip and the wiki are by invitation.</span> <a href="https://endipa.miraheze.org/wiki/State_of_the_art" class="edit-link"><i class="bi bi-pencil-square" aria-hidden="true"></i> This page in the wiki (members)</a> <a href="tex/state-of-the-art.tex" class="edit-link tex-link" download="state-of-the-art.tex"><i class="bi bi-file-earmark-code" aria-hidden="true"></i> TeX source</a> <a href="tex/state-of-the-art.pdf" class="edit-link pdf-link" download="state-of-the-art.pdf"><i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> PDF</a>
 </div>
 <div class="placeholder">
 <p>The strongest results available to date, in one table.</p>
+<p><a href="https://endipa.zulipchat.com/#narrow/channel/653115-advances/topic/State.20of.20the.20art" class="propose">Propose a text on Zulip →</a></p>
 </div>
 <table class="caption-top table">
 <thead>
@@ -390,18 +391,6 @@ ul.task-list li input[type="checkbox"] {
 <!-- refs-begin: -->
 <!-- refs-end -->
 
-
-<script>
-(function () {
-  // Open in Overleaf: a new project from a zip (tex/<page>.zip: the page and its pictures; tex/all-pages.zip: the whole
-  // wiki, whole-wiki.tex as main document). Overleaf downloads the zip itself, so this works on the public site only.
-  document.querySelectorAll('a.overleaf-link').forEach(function (a) {
-    var zip = new URL(a.getAttribute('data-zip'), window.location.href).href;
-    a.href = 'https://www.overleaf.com/docs?engine=pdflatex&main_document=' + encodeURIComponent(a.getAttribute('data-main'))
-      + '&snip_uri=' + encodeURIComponent(zip);
-  });
-})();
-</script>
 
 </section>
 
@@ -833,7 +822,7 @@ ul.task-list li input[type="checkbox"] {
       &nbsp;
     </div>
     <div class="nav-footer-right">
-<p>Under each title: the TeX source of the page, Overleaf, and the page in the wiki.</p>
+<p>Under each title: the Zulip topic of the page, the page in the wiki, its TeX source and its PDF.</p>
 </div>
   </div>
 </footer>

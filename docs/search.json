@@ -46,7 +46,7 @@
     "href": "history-of-the-problem.html#origins",
     "title": "2  History of the problem",
     "section": "",
-    "text": "Before the mathematical theory.",
+    "text": "Before the mathematical theory.\nPropose a text on Zulip →",
     "crumbs": [
       "Motivation and history",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>History of the problem</span>"
@@ -57,7 +57,7 @@
     "href": "history-of-the-problem.html#spectral-methods",
     "title": "2  History of the problem",
     "section": "2.2 Spectral methods",
-    "text": "2.2 Spectral methods\n\nContributions and dates; the general theory is on Spectral methods.",
+    "text": "2.2 Spectral methods\n\nContributions and dates; the general theory is on Spectral methods.\nPropose a text on Zulip →",
     "crumbs": [
       "Motivation and history",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>History of the problem</span>"
@@ -68,7 +68,7 @@
     "href": "history-of-the-problem.html#hypocoercivity",
     "title": "2  History of the problem",
     "section": "2.3 Hypocoercivity",
-    "text": "2.3 Hypocoercivity\n\nContributions and dates; the general theory is on Hypocoercivity.",
+    "text": "2.3 Hypocoercivity\n\nContributions and dates; the general theory is on Hypocoercivity.\nPropose a text on Zulip →",
     "crumbs": [
       "Motivation and history",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>History of the problem</span>"
@@ -79,7 +79,7 @@
     "href": "history-of-the-problem.html#stochastic-methods",
     "title": "2  History of the problem",
     "section": "2.4 Stochastic methods",
-    "text": "2.4 Stochastic methods\n\nContributions and dates; the general theory is on Stochastic methods.",
+    "text": "2.4 Stochastic methods\n\nContributions and dates; the general theory is on Stochastic methods.\nPropose a text on Zulip →",
     "crumbs": [
       "Motivation and history",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>History of the problem</span>"
@@ -90,7 +90,7 @@
     "href": "history-of-the-problem.html#hormander-theory",
     "title": "2  History of the problem",
     "section": "2.5 Hörmander theory",
-    "text": "2.5 Hörmander theory\n\nContributions and dates; the general theory is on Hörmander theory.",
+    "text": "2.5 Hörmander theory\n\nContributions and dates; the general theory is on Hörmander theory.\nPropose a text on Zulip →",
     "crumbs": [
       "Motivation and history",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>History of the problem</span>"
@@ -134,7 +134,7 @@
     "href": "couette-flow.html#setting",
     "title": "4  Couette flow",
     "section": "",
-    "text": "The flow \\(u=(y,0)\\) on \\(\\mathbb{T}\\times\\mathbb{R}\\): the equation, the Fourier modes, what decays.",
+    "text": "The flow \\(u=(y,0)\\) on \\(\\mathbb{T}\\times\\mathbb{R}\\): the equation, the Fourier modes, what decays.\nPropose a text on Zulip →",
     "crumbs": [
       "Techniques through examples",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Couette flow</span>"
@@ -145,7 +145,7 @@
     "href": "couette-flow.html#the-result",
     "title": "4  Couette flow",
     "section": "4.2 The result",
-    "text": "4.2 The result\n\nTheorem 4.1 (enhanced dissipation for Couette flow)  \n\nThe statement.\n\n\n\nLean: not yet formalized · add a certificate\n\n\n\n\n\n\n\nTipIdea\n\n\n\n\n\n\nThe key mechanism in a few lines.\n\n\n\n\n\n\n\n\n\n\nNoteProof architecture\n\n\n\n\n\n\nThe proof as a short chain of steps, and its diagram.",
+    "text": "4.2 The result\n\nTheorem 4.1 (enhanced dissipation for Couette flow)  \n\nThe statement.\nPropose a text on Zulip →\n\n\n\nLean: not yet formalized · add a certificate\n\n\n\n\n\n\n\nTipIdea\n\n\n\n\n\n\nThe key mechanism in a few lines.\nPropose a text on Zulip →\n\n\n\n\n\n\n\n\n\n\nNoteProof architecture\n\n\n\n\n\n\nThe proof as a short chain of steps, and its diagram.\nPropose a text on Zulip →",
     "crumbs": [
       "Techniques through examples",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Couette flow</span>"
@@ -156,7 +156,7 @@
     "href": "couette-flow.html#one-example-every-technique",
     "title": "4  Couette flow",
     "section": "4.3 One example, every technique",
-    "text": "4.3 One example, every technique\nEach proof below is written for this example only, to show the mechanism; the general results, with complete proofs, are in the part Techniques and general results.\n\nExplicit solution\n\n\n\n\n\n\nNoteProof by the explicit solution\n\n\n\n\n\n\nThe proof.\n\n\n\n\n\n\nSpectral methods\n\n\n\n\n\n\nNoteProof by spectral methods\n\n\n\n\n\n\nThe proof.\n\n\n\n\nGeneral theory: Spectral methods.\n\n\nHypocoercivity\n\n\n\n\n\n\nNoteProof by hypocoercivity\n\n\n\n\n\n\nThe proof.\n\n\n\n\nGeneral theory: Hypocoercivity.\n\n\nStochastic methods\n\n\n\n\n\n\nNoteProof by stochastic methods\n\n\n\n\n\n\nThe proof.\n\n\n\n\nGeneral theory: Stochastic methods.\n\n\nHörmander theory\n\n\n\n\n\n\nNoteProof by Hörmander theory\n\n\n\n\n\n\nThe proof.\n\n\n\n\nGeneral theory: Hörmander theory.",
+    "text": "4.3 One example, every technique\nEach proof below is written for this example only, to show the mechanism; the general results, with complete proofs, are in the part Techniques and general results.\n\nExplicit solution\n\n\n\n\n\n\nNoteProof by the explicit solution\n\n\n\n\n\n\nThe proof.\nPropose a text on Zulip →\n\n\n\n\n\n\nSpectral methods\n\n\n\n\n\n\nNoteProof by spectral methods\n\n\n\n\n\n\nThe proof.\nPropose a text on Zulip →\n\n\n\n\nGeneral theory: Spectral methods.\n\n\nHypocoercivity\n\n\n\n\n\n\nNoteProof by hypocoercivity\n\n\n\n\n\n\nThe proof.\nPropose a text on Zulip →\n\n\n\n\nGeneral theory: Hypocoercivity.\n\n\nStochastic methods\n\n\n\n\n\n\nNoteProof by stochastic methods\n\n\n\n\n\n\nThe proof.\nPropose a text on Zulip →\n\n\n\n\nGeneral theory: Stochastic methods.\n\n\nHörmander theory\n\n\n\n\n\n\nNoteProof by Hörmander theory\n\n\n\n\n\n\nThe proof.\nPropose a text on Zulip →\n\n\n\n\nGeneral theory: Hörmander theory.",
     "crumbs": [
       "Techniques through examples",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Couette flow</span>"
@@ -167,7 +167,7 @@
     "href": "couette-flow.html#what-this-example-teaches",
     "title": "4  Couette flow",
     "section": "4.4 What this example teaches",
-    "text": "4.4 What this example teaches\n\nWhat the example shows, and what the general theory keeps of it.",
+    "text": "4.4 What this example teaches\n\nWhat the example shows, and what the general theory keeps of it.\nPropose a text on Zulip →",
     "crumbs": [
       "Techniques through examples",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Couette flow</span>"
@@ -200,7 +200,7 @@
     "href": "poiseuille-flow.html#setting",
     "title": "5  Poiseuille flow",
     "section": "",
-    "text": "The flow, the domain, the critical point, what decays.",
+    "text": "The flow, the domain, the critical point, what decays.\nPropose a text on Zulip →",
     "crumbs": [
       "Techniques through examples",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Poiseuille flow</span>"
@@ -211,7 +211,7 @@
     "href": "poiseuille-flow.html#the-result",
     "title": "5  Poiseuille flow",
     "section": "5.2 The result",
-    "text": "5.2 The result\n\nTheorem 5.1 (enhanced dissipation for Poiseuille flow)  \n\nThe statement.\n\n\n\nLean: not yet formalized · add a certificate\n\n\n\n\n\n\n\nTipIdea\n\n\n\n\n\n\nThe key mechanism in a few lines.\n\n\n\n\n\n\n\n\n\n\nNoteProof architecture\n\n\n\n\n\n\nThe proof as a short chain of steps, and its diagram.",
+    "text": "5.2 The result\n\nTheorem 5.1 (enhanced dissipation for Poiseuille flow)  \n\nThe statement.\nPropose a text on Zulip →\n\n\n\nLean: not yet formalized · add a certificate\n\n\n\n\n\n\n\nTipIdea\n\n\n\n\n\n\nThe key mechanism in a few lines.\nPropose a text on Zulip →\n\n\n\n\n\n\n\n\n\n\nNoteProof architecture\n\n\n\n\n\n\nThe proof as a short chain of steps, and its diagram.\nPropose a text on Zulip →",
     "crumbs": [
       "Techniques through examples",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Poiseuille flow</span>"
@@ -222,7 +222,7 @@
     "href": "poiseuille-flow.html#what-changes-compared-with-couette-flow",
     "title": "5  Poiseuille flow",
     "section": "5.3 What changes compared with Couette flow",
-    "text": "5.3 What changes compared with Couette flow\nFor each technique: what carries over from Couette flow, what is lost, and the proof for this example.\n\nExplicit solution\n\nWhat is lost.\n\n\n\nSpectral methods\n\n\n\n\n\n\nNoteProof by spectral methods\n\n\n\n\n\n\nThe proof.\n\n\n\n\n\n\nHypocoercivity\n\n\n\n\n\n\nNoteProof by hypocoercivity\n\n\n\n\n\n\nThe proof.\n\n\n\n\n\n\nStochastic methods\n\n\n\n\n\n\nNoteProof by stochastic methods\n\n\n\n\n\n\nThe proof.\n\n\n\n\n\n\nHörmander theory\n\n\n\n\n\n\nNoteProof by Hörmander theory\n\n\n\n\n\n\nThe proof.",
+    "text": "5.3 What changes compared with Couette flow\nFor each technique: what carries over from Couette flow, what is lost, and the proof for this example.\n\nExplicit solution\n\nWhat is lost.\nPropose a text on Zulip →\n\n\n\nSpectral methods\n\n\n\n\n\n\nNoteProof by spectral methods\n\n\n\n\n\n\nThe proof.\nPropose a text on Zulip →\n\n\n\n\n\n\nHypocoercivity\n\n\n\n\n\n\nNoteProof by hypocoercivity\n\n\n\n\n\n\nThe proof.\nPropose a text on Zulip →\n\n\n\n\n\n\nStochastic methods\n\n\n\n\n\n\nNoteProof by stochastic methods\n\n\n\n\n\n\nThe proof.\nPropose a text on Zulip →\n\n\n\n\n\n\nHörmander theory\n\n\n\n\n\n\nNoteProof by Hörmander theory\n\n\n\n\n\n\nThe proof.\nPropose a text on Zulip →",
     "crumbs": [
       "Techniques through examples",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Poiseuille flow</span>"
@@ -255,7 +255,7 @@
     "href": "spectral-methods.html#the-method",
     "title": "6  Spectral methods",
     "section": "",
-    "text": "The key mechanism, in a few lines.",
+    "text": "The key mechanism, in a few lines.\nPropose a text on Zulip →",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Spectral methods</span>"
@@ -266,7 +266,7 @@
     "href": "spectral-methods.html#general-results",
     "title": "6  Spectral methods",
     "section": "6.2 General results",
-    "text": "6.2 General results\n\nThe theorems, each written as a result (statement, Lean banner, idea, proof architecture, complete proof; see How to contribute); lemmas of general use go to the Toolkit (Standard analysis, Enhanced-dissipation tools).",
+    "text": "6.2 General results\n\nThe theorems, each written as a result (statement, Lean banner, idea, proof architecture, complete proof; see How to contribute); lemmas of general use go to the Toolkit (Standard analysis, Enhanced-dissipation tools).\nPropose a text on Zulip →",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Spectral methods</span>"
@@ -277,7 +277,7 @@
     "href": "spectral-methods.html#limitations-and-comparison",
     "title": "6  Spectral methods",
     "section": "6.3 Limitations and comparison",
-    "text": "6.3 Limitations and comparison\n\nWhat the method does not give, and how it compares with the other techniques.",
+    "text": "6.3 Limitations and comparison\n\nWhat the method does not give, and how it compares with the other techniques.\nPropose a text on Zulip →",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Spectral methods</span>"
@@ -310,7 +310,7 @@
     "href": "hypocoercivity.html#the-method",
     "title": "7  Hypocoercivity",
     "section": "",
-    "text": "The key mechanism, in a few lines.",
+    "text": "The key mechanism, in a few lines.\nPropose a text on Zulip →",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Hypocoercivity</span>"
@@ -321,7 +321,7 @@
     "href": "hypocoercivity.html#general-results",
     "title": "7  Hypocoercivity",
     "section": "7.2 General results",
-    "text": "7.2 General results\n\nThe theorems, each written as a result (statement, Lean banner, idea, proof architecture, complete proof; see How to contribute); lemmas of general use go to the Toolkit (Standard analysis, Enhanced-dissipation tools).",
+    "text": "7.2 General results\n\nThe theorems, each written as a result (statement, Lean banner, idea, proof architecture, complete proof; see How to contribute); lemmas of general use go to the Toolkit (Standard analysis, Enhanced-dissipation tools).\nPropose a text on Zulip →",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Hypocoercivity</span>"
@@ -332,7 +332,7 @@
     "href": "hypocoercivity.html#limitations-and-comparison",
     "title": "7  Hypocoercivity",
     "section": "7.3 Limitations and comparison",
-    "text": "7.3 Limitations and comparison\n\nWhat the method does not give, and how it compares with the other techniques.",
+    "text": "7.3 Limitations and comparison\n\nWhat the method does not give, and how it compares with the other techniques.\nPropose a text on Zulip →",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Hypocoercivity</span>"
@@ -365,7 +365,7 @@
     "href": "stochastic-methods.html#the-method",
     "title": "8  Stochastic methods",
     "section": "",
-    "text": "The key mechanism, in a few lines.",
+    "text": "The key mechanism, in a few lines.\nPropose a text on Zulip →",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Stochastic methods</span>"
@@ -376,7 +376,7 @@
     "href": "stochastic-methods.html#general-results",
     "title": "8  Stochastic methods",
     "section": "8.2 General results",
-    "text": "8.2 General results\n\nThe theorems, each written as a result (statement, Lean banner, idea, proof architecture, complete proof; see How to contribute); lemmas of general use go to the Toolkit (Standard analysis, Enhanced-dissipation tools).",
+    "text": "8.2 General results\n\nThe theorems, each written as a result (statement, Lean banner, idea, proof architecture, complete proof; see How to contribute); lemmas of general use go to the Toolkit (Standard analysis, Enhanced-dissipation tools).\nPropose a text on Zulip →",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Stochastic methods</span>"
@@ -387,7 +387,7 @@
     "href": "stochastic-methods.html#limitations-and-comparison",
     "title": "8  Stochastic methods",
     "section": "8.3 Limitations and comparison",
-    "text": "8.3 Limitations and comparison\n\nWhat the method does not give, and how it compares with the other techniques.",
+    "text": "8.3 Limitations and comparison\n\nWhat the method does not give, and how it compares with the other techniques.\nPropose a text on Zulip →",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Stochastic methods</span>"
@@ -420,7 +420,7 @@
     "href": "hormander-theory.html#the-method",
     "title": "9  Hörmander theory",
     "section": "",
-    "text": "The key mechanism, in a few lines.",
+    "text": "The key mechanism, in a few lines.\nPropose a text on Zulip →",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Hörmander theory</span>"
@@ -431,7 +431,7 @@
     "href": "hormander-theory.html#general-results",
     "title": "9  Hörmander theory",
     "section": "9.2 General results",
-    "text": "9.2 General results\n\nThe theorems, each written as a result (statement, Lean banner, idea, proof architecture, complete proof; see How to contribute); lemmas of general use go to the Toolkit (Standard analysis, Enhanced-dissipation tools).",
+    "text": "9.2 General results\n\nThe theorems, each written as a result (statement, Lean banner, idea, proof architecture, complete proof; see How to contribute); lemmas of general use go to the Toolkit (Standard analysis, Enhanced-dissipation tools).\nPropose a text on Zulip →",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Hörmander theory</span>"
@@ -442,7 +442,7 @@
     "href": "hormander-theory.html#limitations-and-comparison",
     "title": "9  Hörmander theory",
     "section": "9.3 Limitations and comparison",
-    "text": "9.3 Limitations and comparison\n\nWhat the method does not give, and how it compares with the other techniques.",
+    "text": "9.3 Limitations and comparison\n\nWhat the method does not give, and how it compares with the other techniques.\nPropose a text on Zulip →",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Hörmander theory</span>"
@@ -486,7 +486,7 @@
     "href": "related-results.html#entries",
     "title": "11  Related results",
     "section": "",
-    "text": "First entries.",
+    "text": "First entries.\nPropose a text on Zulip →",
     "crumbs": [
       "Extensions and recent advances",
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>Related results</span>"
@@ -530,7 +530,7 @@
     "href": "open-problems.html#problems",
     "title": "12  Open problems",
     "section": "",
-    "text": "First problems.",
+    "text": "First problems.\nPropose a text on Zulip →",
     "crumbs": [
       "Extensions and recent advances",
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>Open problems</span>"
@@ -563,7 +563,7 @@
     "href": "raw-data.html#entries",
     "title": "13  Raw data",
     "section": "",
-    "text": "First entries.",
+    "text": "First entries.\nPropose a text on Zulip →",
     "crumbs": [
       "Extensions and recent advances",
       "<span class='chapter-number'>13</span>  <span class='chapter-title'>Raw data</span>"
@@ -585,7 +585,7 @@
     "href": "notation.html#notation",
     "title": "14  Notation",
     "section": "",
-    "text": "The scalar, the velocity field, the domains, the Fourier modes, the norms.",
+    "text": "The scalar, the velocity field, the domains, the Fourier modes, the norms.\nPropose a text on Zulip →",
     "crumbs": [
       "Toolkit",
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>Notation</span>"
@@ -596,7 +596,7 @@
     "href": "notation.html#definitions",
     "title": "14  Notation",
     "section": "14.2 Definitions",
-    "text": "14.2 Definitions\n\nDissipation time, enhanced dissipation, and the related notions used in the wiki.",
+    "text": "14.2 Definitions\n\nDissipation time, enhanced dissipation, and the related notions used in the wiki.\nPropose a text on Zulip →",
     "crumbs": [
       "Toolkit",
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>Notation</span>"
@@ -618,7 +618,7 @@
     "href": "standard-analysis.html#inequalities",
     "title": "15  Standard analysis",
     "section": "",
-    "text": "Poincaré and interpolation inequalities, and the other inequalities the proofs use.",
+    "text": "Poincaré and interpolation inequalities, and the other inequalities the proofs use.\nPropose a text on Zulip →",
     "crumbs": [
       "Toolkit",
       "<span class='chapter-number'>15</span>  <span class='chapter-title'>Standard analysis</span>"
@@ -629,7 +629,7 @@
     "href": "standard-analysis.html#functional-analysis",
     "title": "15  Standard analysis",
     "section": "15.2 Functional analysis",
-    "text": "15.2 Functional analysis\n\nSemigroups, spectral theory, and the other facts the proofs use.",
+    "text": "15.2 Functional analysis\n\nSemigroups, spectral theory, and the other facts the proofs use.\nPropose a text on Zulip →",
     "crumbs": [
       "Toolkit",
       "<span class='chapter-number'>15</span>  <span class='chapter-title'>Standard analysis</span>"
@@ -662,7 +662,7 @@
     "href": "enhanced-dissipation-tools.html#tools",
     "title": "16  Enhanced-dissipation tools",
     "section": "",
-    "text": "For instance spectral-gap and resolvent lemmas, and the link between mixing and enhanced dissipation.",
+    "text": "For instance spectral-gap and resolvent lemmas, and the link between mixing and enhanced dissipation.\nPropose a text on Zulip →",
     "crumbs": [
       "Toolkit",
       "<span class='chapter-number'>16</span>  <span class='chapter-title'>Enhanced-dissipation tools</span>"
@@ -714,7 +714,7 @@
     "href": "numerical-methods.html#solvers",
     "title": "17  Numerical methods",
     "section": "17.3 Solvers",
-    "text": "17.3 Solvers\n\nThe methods used across the records, with their strengths and limits.",
+    "text": "17.3 Solvers\n\nThe methods used across the records, with their strengths and limits.\nPropose a text on Zulip →",
     "crumbs": [
       "<span class='chapter-number'>17</span>  <span class='chapter-title'>Numerical methods</span>"
     ]
@@ -754,7 +754,7 @@
     "href": "lean-formalization.html#how-to-add-a-certificate",
     "title": "18  Lean formalization",
     "section": "18.2 How to add a certificate",
-    "text": "18.2 How to add a certificate\n\nWhat a certificate contains (repository, commit, versions, the statement as formalized, the axioms used), and how it is checked before its banner turns green.",
+    "text": "18.2 How to add a certificate\n\nWhat a certificate contains (repository, commit, versions, the statement as formalized, the axioms used), and how it is checked before its banner turns green.\nPropose a text on Zulip →",
     "crumbs": [
       "<span class='chapter-number'>18</span>  <span class='chapter-title'>Lean formalization</span>"
     ]
@@ -797,7 +797,7 @@
     "href": "how-to-contribute.html#mathematical-contributions",
     "title": "19  How to contribute",
     "section": "19.3 Mathematical contributions",
-    "text": "19.3 Mathematical contributions\nA new proof, a shorter argument, a correction to a statement, a new result or a new page goes through Zulip.\n\nDownload the TeX source of the page: link TeX source under the title of every page of the edition, or Open in Overleaf. It is a standard LaTeX article that compiles as it is. Change what you want and check that it compiles; then keep only the blocks you changed: a section, or a statement or a proof with its label.\nOpen a topic in the Zulip channel of the part, titled Proposal: short title. Attach the file and say in a few lines what it changes, why, and which sources it uses.\nFor two weeks the community and the reviewers discuss the proposal in its topic.\nWithin a week after that, the associate editor decides: accepted, to be revised, or declined. If the discussion ended without consensus, the editorial board decides.\nA script converts the accepted file to the wiki’s format, shows the editor exactly what changes on the page, and flags new citations and links. The associate editor writes the change into the wiki, links the Zulip topic in the edit summary, and the page credits its author.\n\nA proposal changes only the blocks it contains. A paper that is not yet on Literature is proposed on its own, as a small correction of that page.",
+    "text": "19.3 Mathematical contributions\nA new proof, a shorter argument, a correction to a statement, a new result or a new page goes through Zulip.\n\nDownload the TeX source of the page: link TeX source under the title of every page of the edition (with the figures, in a zip, when the page has some). It is a standard LaTeX article that compiles as it is. In the Overleaf project of the whole wiki (Open the whole wiki in Overleaf, on the Overview) every page is a file of the folder pages, which can be proposed in the same way. Change what you want and check that it compiles; then keep only the blocks you changed: a section, or a statement or a proof with its label.\nOpen a topic in the Zulip channel of the part, titled Proposal: short title. Attach the file and say in a few lines what it changes, why, and which sources it uses.\nFor two weeks the community and the reviewers discuss the proposal in its topic.\nWithin a week after that, the associate editor decides: accepted, to be revised, or declined. If the discussion ended without consensus, the editorial board decides.\nA script converts the accepted file to the wiki’s format, shows the editor exactly what changes on the page, and flags new citations and links. The associate editor writes the change into the wiki, links the Zulip topic in the edit summary, and the page credits its author.\n\nA proposal changes only the blocks it contains. A paper that is not yet on Literature is proposed on its own, as a small correction of that page.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>19</span>  <span class='chapter-title'>How to contribute</span>"
@@ -863,7 +863,7 @@
     "href": "how-to-contribute.html#discussion-and-conduct",
     "title": "19  How to contribute",
     "section": "19.9 Discussion and conduct",
-    "text": "19.9 Discussion and conduct\nDiscussion takes place on Zulip: one channel per part, one topic per page, and one topic per proposal. The line under the title of each page links to its topic; talk pages on the wiki are for small corrections.\n\n\n\nPart\nZulip channel\n\n\n\n\nOverview, Motivation and history\noverview\n\n\nTechniques through examples\nexamples\n\n\nTechniques and general results\ntechniques\n\n\nExtensions and recent advances\nadvances\n\n\nToolkit\ntoolkit\n\n\nNumerical methods\nnumerics\n\n\nLean formalization\nlean\n\n\nAbout this wiki\ncontributing\n\n\n\nDiscuss the mathematics, not the people. Associate editors moderate their channel: they can hide messages and, after a warning, ask the editorial board to remove a member; their decisions can be appealed to the board. The Zulip is not set up yet; once it is, its address goes into Template:Zulip host and the links appear on every page.",
+    "text": "19.9 Discussion and conduct\nDiscussion takes place on Zulip: one channel per part, one topic per page, and one topic per proposal. The line under the title of each page links to its topic; talk pages on the wiki are for small corrections.\n\n\n\nPart\nZulip channel\n\n\n\n\nOverview, Motivation and history\noverview\n\n\nTechniques through examples\nexamples\n\n\nTechniques and general results\ntechniques\n\n\nExtensions and recent advances\nadvances\n\n\nToolkit\ntoolkit\n\n\nNumerical methods\nnumerics\n\n\nLean formalization\nlean\n\n\nAbout this wiki\ncontributing\n\n\n\nDiscuss the mathematics, not the people. Associate editors moderate their channel: they can hide messages and, after a warning, ask the editorial board to remove a member; their decisions can be appealed to the board. The Zulip is endipa.zulipchat.com, by invitation; its administrators invite new members and create channels.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>19</span>  <span class='chapter-title'>How to contribute</span>"
@@ -885,7 +885,7 @@
     "href": "how-to-contribute.html#the-edition",
     "title": "19  How to contribute",
     "section": "19.11 The edition",
-    "text": "19.11 The edition\nA static edition of this wiki, with the pictures, the videos and the TeX source of every page, is built from the wiki’s text by a script and never edited by hand; its address will be added here.",
+    "text": "19.11 The edition\nA static edition of this wiki, with the pictures, the videos and the TeX source of every page, is built from the wiki’s text by a script and never edited by hand: endipa.github.io.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>19</span>  <span class='chapter-title'>How to contribute</span>"
@@ -907,7 +907,7 @@
     "href": "contributors.html#editorial-board",
     "title": "20  Contributors",
     "section": "",
-    "text": "Names and roles.",
+    "text": "Names and roles.\nPropose a text on Zulip →",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>20</span>  <span class='chapter-title'>Contributors</span>"
@@ -918,7 +918,7 @@
     "href": "contributors.html#associate-editors",
     "title": "20  Contributors",
     "section": "20.2 Associate editors",
-    "text": "20.2 Associate editors\nEach part of the wiki has at least one associate editor, who follows its Zulip channel, runs the discussion of every proposal there, asks reviewers, decides, and writes accepted changes into the wiki. A busy part or page can have several.\n\nNames, with their parts.",
+    "text": "20.2 Associate editors\nEach part of the wiki has at least one associate editor, who follows its Zulip channel, runs the discussion of every proposal there, asks reviewers, decides, and writes accepted changes into the wiki. A busy part or page can have several.\n\nNames, with their parts.\nPropose a text on Zulip →",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>20</span>  <span class='chapter-title'>Contributors</span>"
@@ -929,7 +929,7 @@
     "href": "contributors.html#reviewers",
     "title": "20  Contributors",
     "section": "20.3 Reviewers",
-    "text": "20.3 Reviewers\nAsked by an associate editor to check a proposal: the mathematics, the format, or both. Reviews are posted in the Zulip topic of the proposal. A busy page can have its own reviewers, named in its first line.\n\nNames.",
+    "text": "20.3 Reviewers\nAsked by an associate editor to check a proposal: the mathematics, the format, or both. Reviews are posted in the Zulip topic of the proposal. A busy page can have its own reviewers, named in its first line.\n\nNames.\nPropose a text on Zulip →",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>20</span>  <span class='chapter-title'>Contributors</span>"
@@ -940,7 +940,7 @@
     "href": "contributors.html#community",
     "title": "20  Contributors",
     "section": "20.4 Community",
-    "text": "20.4 Community\nMembers of the Zulip, who propose and discuss changes. A new member is endorsed by an editor or by a member at least two years past the PhD. Early-stage researchers (PhD students, and researchers up to two years after the PhD) can choose to be listed as such.\n\nNames.",
+    "text": "20.4 Community\nMembers of the Zulip, who propose and discuss changes. A new member is endorsed by an editor or by a member at least two years past the PhD. Early-stage researchers (PhD students, and researchers up to two years after the PhD) can choose to be listed as such.\n\nNames.\nPropose a text on Zulip →",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>20</span>  <span class='chapter-title'>Contributors</span>"
@@ -995,7 +995,7 @@
     "href": "provenance-and-ai-use.html#how-a-result-becomes-checked",
     "title": "21  Provenance and AI use",
     "section": "21.4 How a result becomes checked",
-    "text": "21.4 How a result becomes checked\n\nTo be agreed with the editorial board: how many readers a proof needs before it loses its label, and whether a page records who read which proof.",
+    "text": "21.4 How a result becomes checked\n\nTo be agreed with the editorial board: how many readers a proof needs before it loses its label, and whether a page records who read which proof.\nPropose a text on Zulip →",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>21</span>  <span class='chapter-title'>Provenance and AI use</span>"

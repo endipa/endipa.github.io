@@ -16,7 +16,7 @@ Typos, broken links, a missing reference: members of the wiki leave a note on th
 
 == Mathematical contributions ==
 A new proof, a shorter argument, a correction to a statement, a new result or a new page goes through Zulip.
-# Download the TeX source of the page: link ''TeX source'' under the title of every page of the edition, or ''Open in Overleaf''. It is a standard LaTeX article that compiles as it is. Change what you want and check that it compiles; then keep only the blocks you changed: a section, or a statement or a proof with its label.
+# Download the TeX source of the page: link ''TeX source'' under the title of every page of the edition (with the figures, in a zip, when the page has some). It is a standard LaTeX article that compiles as it is. In the Overleaf project of the whole wiki (''Open the whole wiki in Overleaf'', on the Overview) every page is a file of the folder ''pages'', which can be proposed in the same way. Change what you want and check that it compiles; then keep only the blocks you changed: a section, or a statement or a proof with its label.
 # Open a topic in the Zulip channel of the part, titled ''Proposal: short title''. Attach the file and say in a few lines what it changes, why, and which sources it uses.
 # For two weeks the community and the reviewers discuss the proposal in its topic.
 # Within a week after that, the associate editor decides: accepted, to be revised, or declined. If the discussion ended without consensus, the editorial board decides.
@@ -108,7 +108,7 @@ Discussion takes place on Zulip: one channel per part, one topic per page, and o
 |-
 | About this wiki || contributing
 |}
-Discuss the mathematics, not the people. Associate editors moderate their channel: they can hide messages and, after a warning, ask the editorial board to remove a member; their decisions can be appealed to the board. The Zulip is not set up yet; once it is, its address goes into [[Template:Zulip host]] and the links appear on every page.
+Discuss the mathematics, not the people. Associate editors moderate their channel: they can hide messages and, after a warning, ask the editorial board to remove a member; their decisions can be appealed to the board. The Zulip is [https://endipa.zulipchat.com endipa.zulipchat.com], by invitation; its administrators invite new members and create channels.
 
 == Formulas in the wiki ==
 For editors who write the wiki's own format.
@@ -117,4 +117,4 @@ For editors who write the wiki's own format.
 * To link to a result, use the <code>id</code> of its box as the anchor, as in <code>Couette flow#thm-couette</code>.
 
 == The edition ==
-A static edition of this wiki, with the pictures, the videos and the TeX source of every page, is built from the wiki's text by a script and never edited by hand; its address will be added here.
+A static edition of this wiki, with the pictures, the videos and the TeX source of every page, is built from the wiki's text by a script and never edited by hand: [https://endipa.github.io endipa.github.io].

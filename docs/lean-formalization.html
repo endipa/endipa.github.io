@@ -359,7 +359,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Page team: to be named · Status: skeleton</p>
 </div>
 <div class="discuss">
-<a href="https://endipa.miraheze.org/wiki/Lean_formalization" class="edit-link"><i class="bi bi-pencil-square" aria-hidden="true"></i> This page in the wiki (members)</a> <a href="tex/lean-formalization.tex" class="edit-link tex-link" download="lean-formalization.tex"><i class="bi bi-file-earmark-code" aria-hidden="true"></i> TeX source</a> <a href="tex/lean-formalization.pdf" class="edit-link pdf-link" download="lean-formalization.pdf"><i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> PDF</a> <a href="tex/lean-formalization.zip" class="edit-link overleaf-link" data-zip="tex/lean-formalization.zip" data-main="lean-formalization.tex" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i> Open in Overleaf</a> <span class="discuss-note">Zulip: #lean › Lean formalization (link when the Zulip exists)</span>
+<a href="https://endipa.zulipchat.com/#narrow/channel/653118-lean/topic/Lean.20formalization" class="zulip-btn"><i class="bi bi-chat-left-text" aria-hidden="true"></i> Discuss or propose a change on Zulip</a> <span class="discuss-note">For project members: the Zulip and the wiki are by invitation.</span> <a href="https://endipa.miraheze.org/wiki/Lean_formalization" class="edit-link"><i class="bi bi-pencil-square" aria-hidden="true"></i> This page in the wiki (members)</a> <a href="tex/lean-formalization.tex" class="edit-link tex-link" download="lean-formalization.tex"><i class="bi bi-file-earmark-code" aria-hidden="true"></i> TeX source</a> <a href="tex/lean-formalization.pdf" class="edit-link pdf-link" download="lean-formalization.pdf"><i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> PDF</a>
 </div>
 <p>A result of this wiki can carry a machine-checked proof in Lean, its <em>certificate</em>. A small banner under each theorem says where it stands. A result not yet formalized:</p>
 <div class="lean-banner lean-todo">
@@ -394,20 +394,9 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="18.2" class="anchored" data-anchor-id="how-to-add-a-certificate"><span class="header-section-number">18.2</span> How to add a certificate</h2>
 <div class="placeholder">
 <p>What a certificate contains (repository, commit, versions, the statement as formalized, the axioms used), and how it is checked before its banner turns green.</p>
+<p><a href="https://endipa.zulipchat.com/#narrow/channel/653118-lean/topic/Lean.20formalization" class="propose">Propose a text on Zulip →</a></p>
 </div>
 
-
-<script>
-(function () {
-  // Open in Overleaf: a new project from a zip (tex/<page>.zip: the page and its pictures; tex/all-pages.zip: the whole
-  // wiki, whole-wiki.tex as main document). Overleaf downloads the zip itself, so this works on the public site only.
-  document.querySelectorAll('a.overleaf-link').forEach(function (a) {
-    var zip = new URL(a.getAttribute('data-zip'), window.location.href).href;
-    a.href = 'https://www.overleaf.com/docs?engine=pdflatex&main_document=' + encodeURIComponent(a.getAttribute('data-main'))
-      + '&snip_uri=' + encodeURIComponent(zip);
-  });
-})();
-</script>
 
 </section>
 
@@ -839,7 +828,7 @@ ul.task-list li input[type="checkbox"] {
       &nbsp;
     </div>
     <div class="nav-footer-right">
-<p>Under each title: the TeX source of the page, Overleaf, and the page in the wiki.</p>
+<p>Under each title: the Zulip topic of the page, the page in the wiki, its TeX source and its PDF.</p>
 </div>
   </div>
 </footer>

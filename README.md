@@ -6,7 +6,7 @@ $\partial_t f + u\cdot\nabla f = \nu\Delta f$ with a prescribed incompressible v
 - **Website** (built from the wiki, never edited by hand): https://endipa.github.io/
 - **Wiki** (where the text is written; for now open to invited members only): https://endipa.miraheze.org
 - **How to contribute**: the page [How to contribute](https://endipa.github.io/how-to-contribute.html). Every page can be downloaded as a TeX source
-  (a standard LaTeX article that compiles as it is) and as a PDF, or opened in Overleaf with its pictures; printing a page from the browser gives the website's layout with every fold open; mathematical contributions are proposed on Zulip with the TeX of the blocks they change.
+  (a standard LaTeX article that compiles as it is) and as a PDF (a page with figures comes as a zip, the .tex and its figures); the whole wiki opens in Overleaf as one project; printing a page from the browser gives the website's layout with every fold open; mathematical contributions are proposed on Zulip with the TeX of the blocks they change.
 
 The project is a work in progress: most pages are still a skeleton.
 

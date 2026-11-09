@@ -1,6 +1,6 @@
 % !TEX TS-program = pdflatex
 % !TEX encoding = UTF-8 Unicode
-% Standard analysis: a page of the wiki "Enhanced dissipation for passive scalars", generated from the wiki on 8 November 2026.
+% Standard analysis: a page of the wiki "Enhanced dissipation for passive scalars", generated from the wiki on 9 November 2026.
 % It compiles as it is with pdflatex (Overleaf, TeXShop, TeXstudio, ...); typeset twice for the citations.
 % To propose a change: keep the preamble and the line \title{...}; keep only the blocks you change
 % (a \section{...} with its content, or a statement or proof with its \label{...}), change them, and post
@@ -60,6 +60,7 @@
 % links to other pages of the wiki, anchors, wiki code shown as text
 \newcommand{\wikilink}[2]{\ifx\relax#2\relax#1\else#2\fi}
 \newcommand{\wikianchor}[1]{\phantomsection\label{#1}}
+\newcommand{\wikipage}[1]{}% the first line of a page file of the whole-wiki project (pages/<page>.tex): the page's title
 \newcommand{\nowikicode}[1]{\texttt{\frenchspacing#1}}
 \newcommand{\nowiki}[1]{#1}
 \newcommand{\wikitemplate}[1]{\texttt{\{\{#1\}\}}}
@@ -67,12 +68,12 @@
 % \begin{quote}: a sentence set apart, such as the central question of the Overview; centred, in italics
 \renewenvironment{quote}{\list{}{\rightmargin\leftmargin}\item\relax\centering\itshape}{\endlist}
 % pictures, videos, diagrams: a grey panel with the picture and its caption. The picture (for a video, its poster image)
-% is shown when its file, or a .pdf or .png file of the same name, is next to this file, in media/ or in ../media
+% is shown when its file, or a .pdf or .png file of the same name, is next to this file, in figures/ or in ../media
 \tcbset{ed@media/.style={enhanced,colback=black!4,frame hidden,arc=2pt,left=3mm,right=3mm,top=2.5mm,bottom=2mm,
   before skip=3mm plus 1mm,after skip=3mm plus 1mm}}
 \def\ed@poster{}\def\ed@record{}\def\ed@svg{svg}
 \define@key{ed@media}{poster}{\def\ed@poster{#1}}\define@key{ed@media}{record}{\def\ed@record{#1}}\define@key{ed@media}{id}{}
-\newcommand{\ed@find}[1]{\IfFileExists{#1}{\edef\ed@found{#1}}{\IfFileExists{media/#1}{\edef\ed@found{media/#1}}{%
+\newcommand{\ed@find}[1]{\IfFileExists{#1}{\edef\ed@found{#1}}{\IfFileExists{figures/#1}{\edef\ed@found{figures/#1}}{%
   \IfFileExists{../media/#1}{\edef\ed@found{../media/#1}}{}}}}
 \newcommand{\ed@picturefile}[1]{\def\ed@found{}\edef\ed@b{#1}\ifx\ed@b\@empty\else\filename@parse{\ed@b}\edef\ed@base{\filename@base}%
   \edef\ed@ext{\filename@ext}\ifx\ed@ext\ed@svg\else\ed@find{\ed@b}\fi
@@ -107,7 +108,7 @@
 \begin{document}
 \title{Standard analysis}
 \author{Wiki \emph{Enhanced dissipation for passive scalars}}
-\date{8 November 2026}
+\date{9 November 2026}
 \maketitle
 \pagestatus{Page team: to be named · Status: skeleton}
 \zulip{toolkit}

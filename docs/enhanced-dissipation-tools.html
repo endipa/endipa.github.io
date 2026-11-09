@@ -359,13 +359,14 @@ ul.task-list li input[type="checkbox"] {
 <p>Page team: to be named · Status: skeleton</p>
 </div>
 <div class="discuss">
-<a href="https://endipa.miraheze.org/wiki/Enhanced-dissipation_tools" class="edit-link"><i class="bi bi-pencil-square" aria-hidden="true"></i> This page in the wiki (members)</a> <a href="tex/enhanced-dissipation-tools.tex" class="edit-link tex-link" download="enhanced-dissipation-tools.tex"><i class="bi bi-file-earmark-code" aria-hidden="true"></i> TeX source</a> <a href="tex/enhanced-dissipation-tools.pdf" class="edit-link pdf-link" download="enhanced-dissipation-tools.pdf"><i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> PDF</a> <a href="tex/enhanced-dissipation-tools.zip" class="edit-link overleaf-link" data-zip="tex/enhanced-dissipation-tools.zip" data-main="enhanced-dissipation-tools.tex" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i> Open in Overleaf</a> <span class="discuss-note">Zulip: #toolkit › Enhanced-dissipation tools (link when the Zulip exists)</span>
+<a href="https://endipa.zulipchat.com/#narrow/channel/653116-toolkit/topic/Enhanced-dissipation.20tools" class="zulip-btn"><i class="bi bi-chat-left-text" aria-hidden="true"></i> Discuss or propose a change on Zulip</a> <span class="discuss-note">For project members: the Zulip and the wiki are by invitation.</span> <a href="https://endipa.miraheze.org/wiki/Enhanced-dissipation_tools" class="edit-link"><i class="bi bi-pencil-square" aria-hidden="true"></i> This page in the wiki (members)</a> <a href="tex/enhanced-dissipation-tools.tex" class="edit-link tex-link" download="enhanced-dissipation-tools.tex"><i class="bi bi-file-earmark-code" aria-hidden="true"></i> TeX source</a> <a href="tex/enhanced-dissipation-tools.pdf" class="edit-link pdf-link" download="enhanced-dissipation-tools.pdf"><i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> PDF</a>
 </div>
 <p>Tools specific to enhanced dissipation. A statement comes to the Toolkit when several proofs use it, or when it holds in more generality than one result; a step used by one proof only is a claim inside that proof. Each statement is given once, with its proof or a reference, and the proofs elsewhere link to it.</p>
 <section id="tools" class="level2" data-number="16.1">
 <h2 data-number="16.1" class="anchored" data-anchor-id="tools"><span class="header-section-number">16.1</span> Tools</h2>
 <div class="placeholder">
 <p>For instance spectral-gap and resolvent lemmas, and the link between mixing and enhanced dissipation.</p>
+<p><a href="https://endipa.zulipchat.com/#narrow/channel/653116-toolkit/topic/Enhanced-dissipation.20tools" class="propose">Propose a text on Zulip →</a></p>
 </div>
 </section>
 <section id="references" class="level2 unnumbered">
@@ -373,18 +374,6 @@ ul.task-list li input[type="checkbox"] {
 <!-- refs-begin: -->
 <!-- refs-end -->
 
-
-<script>
-(function () {
-  // Open in Overleaf: a new project from a zip (tex/<page>.zip: the page and its pictures; tex/all-pages.zip: the whole
-  // wiki, whole-wiki.tex as main document). Overleaf downloads the zip itself, so this works on the public site only.
-  document.querySelectorAll('a.overleaf-link').forEach(function (a) {
-    var zip = new URL(a.getAttribute('data-zip'), window.location.href).href;
-    a.href = 'https://www.overleaf.com/docs?engine=pdflatex&main_document=' + encodeURIComponent(a.getAttribute('data-main'))
-      + '&snip_uri=' + encodeURIComponent(zip);
-  });
-})();
-</script>
 
 </section>
 
@@ -816,7 +805,7 @@ ul.task-list li input[type="checkbox"] {
       &nbsp;
     </div>
     <div class="nav-footer-right">
-<p>Under each title: the TeX source of the page, Overleaf, and the page in the wiki.</p>
+<p>Under each title: the Zulip topic of the page, the page in the wiki, its TeX source and its PDF.</p>
 </div>
   </div>
 </footer>

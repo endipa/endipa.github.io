@@ -24,13 +24,14 @@ This script writes the TeX sources, converts TeX back to wikitext, and applies a
         what the conversion does not accept: macros, numbered equations, labels on equations,
         \ref, unknown citation keys (with --pages: the keys of the Literature page are known), unknown
         commands, formulas the wiki's renderer rejects
-  book <pages-dir | export.xml> <tex-dir> <out.tex> [--site NAME] [--date YYYY-MM-DD]
-        the whole wiki in one document (a section per page, in the order of the menu), from the page files
+  book <pages-dir | export.xml> <tex-dir> <out-dir> [--site NAME] [--date YYYY-MM-DD]
+        the whole wiki as a LaTeX project: <out-dir>/main.tex (preamble, title, contents, references) reads the
+        pages from <out-dir>/pages/<page>.tex, in the order of the menu; the pictures go in <out-dir>/figures
   roundtrip <pages-dir>
         page -> TeX -> page on every article: must give back the page
   zips <tex-dir> [<pictures-dir>]
-        <page>.zip next to every <page>.tex, with the pictures the page shows (from <pictures-dir>):
-        the project that "Open in Overleaf" opens
+        <page>.zip next to <page>.tex for every page that shows pictures: the page and its pictures (from
+        <pictures-dir>) in the folder figures/
 
 Correspondence (wiki -> TeX): [[Literature#Key|Names (year)]] -> \citet{Key} and ([[Literature#Key|Names,
 year]]) -> \citep{Key}, when Key is in the page's reference list; [[#label|text]] -> \hyperref[label]{text},
@@ -560,6 +561,7 @@ PREAMBLE = r"""\documentclass[11pt]{article}
 % links to other pages of the wiki, anchors, wiki code shown as text
 \newcommand{\wikilink}[2]{\ifx\relax#2\relax#1\else#2\fi}
 \newcommand{\wikianchor}[1]{\phantomsection\label{#1}}
+\newcommand{\wikipage}[1]{}% the first line of a page file of the whole-wiki project (pages/<page>.tex): the page's title
 \newcommand{\nowikicode}[1]{\texttt{\frenchspacing#1}}
 \newcommand{\nowiki}[1]{#1}
 \newcommand{\wikitemplate}[1]{\texttt{\{\{#1\}\}}}
@@ -567,12 +569,12 @@ PREAMBLE = r"""\documentclass[11pt]{article}
 % \begin{quote}: a sentence set apart, such as the central question of the Overview; centred, in italics
 \renewenvironment{quote}{\list{}{\rightmargin\leftmargin}\item\relax\centering\itshape}{\endlist}
 % pictures, videos, diagrams: a grey panel with the picture and its caption. The picture (for a video, its poster image)
-% is shown when its file, or a .pdf or .png file of the same name, is next to this file, in media/ or in ../media
+% is shown when its file, or a .pdf or .png file of the same name, is next to this file, in figures/ or in ../media
 \tcbset{ed@media/.style={enhanced,colback=black!4,frame hidden,arc=2pt,left=3mm,right=3mm,top=2.5mm,bottom=2mm,
   before skip=3mm plus 1mm,after skip=3mm plus 1mm}}
 \def\ed@poster{}\def\ed@record{}\def\ed@svg{svg}
 \define@key{ed@media}{poster}{\def\ed@poster{#1}}\define@key{ed@media}{record}{\def\ed@record{#1}}\define@key{ed@media}{id}{}
-\newcommand{\ed@find}[1]{\IfFileExists{#1}{\edef\ed@found{#1}}{\IfFileExists{media/#1}{\edef\ed@found{media/#1}}{%
+\newcommand{\ed@find}[1]{\IfFileExists{#1}{\edef\ed@found{#1}}{\IfFileExists{figures/#1}{\edef\ed@found{figures/#1}}{%
   \IfFileExists{../media/#1}{\edef\ed@found{../media/#1}}{}}}}
 \newcommand{\ed@picturefile}[1]{\def\ed@found{}\edef\ed@b{#1}\ifx\ed@b\@empty\else\filename@parse{\ed@b}\edef\ed@base{\filename@base}%
   \edef\ed@ext{\filename@ext}\ifx\ed@ext\ed@svg\else\ed@find{\ed@b}\fi
@@ -1457,11 +1459,17 @@ def sidebar_order(src):
 
 
 def cmd_book(src, texdir, out, site='', date=''):
-    """All the pages in one document (main.tex): a part per menu section with several pages, a section per page,
-    one reference list at the end. Written from the TeX sources of the pages (page2tex); for reading and
-    compiling the whole wiki, not for proposals (those use the page files)."""
-    demote = [(r'\subsubsection', r'\paragraph'), (r'\subsection', r'\subsubsection'), (r'\section', r'\subsection')]
-    body, bib, seen = [], [], set()
+    r"""The whole wiki as a LaTeX project in the folder out: main.tex (the preamble, the title, the table of contents, a
+    part per menu section with several pages, one reference list) reads every page from pages/<page>.tex with
+    \inputpage, in the order of the menu; the pictures go in figures/ (build-site.sh copies them). A page file is the
+    page's TeX source without its preamble and its reference list, after the line \wikipage{Title}: it compiles inside
+    main.tex, and it is also a proposal for apply."""
+    pdir = os.path.join(out, 'pages')
+    os.makedirs(pdir, exist_ok=True)
+    for f in os.listdir(pdir):
+        if f.endswith('.tex'):
+            os.remove(os.path.join(pdir, f))
+    body, bib, seen, n = [], [], set(), 0
     for part, titles in sidebar_order(src):
         several = len(titles) > 1 or titles[0] != part
         if several:
@@ -1479,29 +1487,31 @@ def cmd_book(src, texdir, out, site='', date=''):
                     if k and k.group(2) not in seen:
                         seen.add(k.group(2)); bib.append(item)
                 page = page[:m.start()] + page[m.end():]
-            page = re.sub(r'\\section\*\{References\}\n(%%wiki [^\n]*\n?)*', '', page)
-            lines = []
-            for line in page.split('\n'):
-                for a, b in demote:
-                    if line.startswith(a + '{') or line.startswith(a + '*{'):
-                        line = b + line[len(a):]; break
-                lines.append(re.sub(r'^\\zulip\{', r'\\zulip[' + esc(title).replace('\\', '\\\\') + ']{', line))
-            body.append('\\section{' + esc(title) + '}\\label{page-' + slug(title) + '}')
-            body += lines
-            body.append('')
+            page = re.sub(r'\\section\*\{References\}\n(%%wiki [^\n]*\n?)*', '', page).rstrip('\n')
+            open(os.path.join(pdir, slug(title) + '.tex'), 'w', encoding='utf-8').write(
+                '\\wikipage{' + esc(title) + '}\n' + page + '\n')
+            body.append('\\inputpage{' + esc(title) + '}{' + slug(title) + '}')
+            n += 1
     if bib:
-        body += ['\\section*{References}', r'\begin{thebibliography}{}'] + bib + [r'\end{thebibliography}']
+        body += ['', '\\section*{References}', r'\begin{thebibliography}{}'] + bib + [r'\end{thebibliography}']
     head = ['% !TEX TS-program = pdflatex', '% !TEX encoding = UTF-8 Unicode',
-            '% The whole wiki{} in one document{}: a section per page, in the order of the menu.'.format(
+            '% The whole wiki{}{}. This file has the preamble (the packages and the commands of the wiki), the title, the'.format(
                 ' "%s"' % site if site else '', ', generated on ' + long_date(date) if date else ''),
-            '% It compiles as it is with pdflatex; typeset twice. The other .tex files of the project are the pages, one',
-            '% file each: a proposal is made on the file of its page (see "How to contribute").']
-    doc = ('\n'.join(head) + '\n' + PREAMBLE + '\n\n\\begin{document}\n\\title{' + esc(site or 'Wiki') + '}\n\\author{}\n\\date{'
-           + long_date(date) + '}\n\\maketitle\n\\tableofcontents\n\n' + '\n'.join(body).rstrip('\n') + '\n\\end{document}\n')
-    open(out, 'w', encoding='utf-8').write(doc)
-    print('book: %d lines -> %s' % (doc.count('\n'), out))
+            '% table of contents and the reference list; it reads every page from the folder pages/ (one file per page, in the',
+            '% order of the menu) and the pictures from the folder figures/. It compiles with pdflatex; typeset twice.',
+            '% A file of pages/ is also a proposal: change it, keep its first line \\wikipage{...}, and post it as the page',
+            '% "How to contribute" explains.']
+    cmds = [r'% \inputpage{Title}{file}: a page of the wiki, read from pages/<file>.tex, as a section of this document (its own',
+            r'% sections one level down; the Zulip topic of the page is its title)',
+            r'\makeatletter',
+            r'\newcommand{\inputpage}[2]{\section{#1}\label{page-#2}\begingroup\def\ed@title{#1}\let\section\subsection',
+            r'  \let\subsection\subsubsection\let\subsubsection\paragraph\input{pages/#2}\endgroup}',
+            r'\makeatother']
+    doc = ('\n'.join(head) + '\n' + PREAMBLE + '\n' + '\n'.join(cmds) + '\n\n\\begin{document}\n\\title{' + esc(site or 'Wiki')
+           + '}\n\\author{}\n\\date{' + long_date(date) + '}\n\\maketitle\n\\tableofcontents\n\n' + '\n'.join(body) + '\n\\end{document}\n')
+    open(os.path.join(out, 'main.tex'), 'w', encoding='utf-8').write(doc)
+    print('book: main.tex and %d pages -> %s' % (n, out))
     return 0
-
 
 
 PICTURE_EXT = ('.pdf', '.png', '.jpg', '.jpeg')
@@ -1524,19 +1534,23 @@ def media_pictures(tex, media):
 
 
 def cmd_zips(texdir, media=''):
-    """For "Open in Overleaf": <page>.zip next to every <page>.tex, with the page and the pictures it shows."""
+    """For every page that shows pictures: <page>.zip next to <page>.tex, with the page's TeX source and its pictures in
+    the folder figures/ (the website's "TeX source" link then downloads the zip)."""
     import zipfile
     n = 0
     for f in sorted(os.listdir(texdir)):
-        if not f.endswith('.tex') or f == 'whole-wiki.tex':
+        if not f.endswith('.tex'):
             continue
         tex = open(os.path.join(texdir, f), encoding='utf-8').read()
+        pics = media_pictures(tex, media) if media else []
+        if not pics:
+            continue
         with zipfile.ZipFile(os.path.join(texdir, f[:-4] + '.zip'), 'w', zipfile.ZIP_DEFLATED) as z:
             z.write(os.path.join(texdir, f), f)
-            for pic in (media_pictures(tex, media) if media else []):
-                z.write(os.path.join(media, pic), pic)
+            for pic in pics:
+                z.write(os.path.join(media, pic), 'figures/' + pic)
         n += 1
-    print('%d Overleaf projects (zip) -> %s' % (n, texdir))
+    print('%d TeX sources with figures (zip) -> %s' % (n, texdir))
     return 0
 
 

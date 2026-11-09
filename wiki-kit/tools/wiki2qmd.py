@@ -723,11 +723,10 @@ def main():
         fm.append('wiki-page: ' + yaml_str(title))
         tex = 'tex/' + slug(title) + '.tex'   # the TeX source is named after the page (overview.tex, couette-flow.tex)
         if os.path.exists(os.path.join(OUT, tex)):
-            fm.append('tex-source: ' + yaml_str(tex))
+            z = tex[:-4] + '.zip'   # a page with pictures: its TeX source and the pictures, in one zip (build-site.sh)
+            fm.append('tex-source: ' + yaml_str(z if os.path.exists(os.path.join(OUT, z)) else tex))
             if os.path.exists(os.path.join(OUT, tex[:-4] + '.pdf')):   # compiled by build-site.sh when pdflatex exists
                 fm.append('pdf-source: ' + yaml_str(tex[:-4] + '.pdf'))
-            if os.path.exists(os.path.join(OUT, tex[:-4] + '.zip')):   # the page and its pictures, for "Open in Overleaf"
-                fm.append('overleaf-zip: ' + yaml_str(tex[:-4] + '.zip'))
             if title == 'Overview':   # the whole wiki: one document (and its PDF), and the Overleaf project of all pages
                 for k, f in (('book-tex', 'tex/whole-wiki.tex'), ('book-pdf', 'tex/whole-wiki.pdf'), ('book-zip', 'tex/all-pages.zip')):
                     if os.path.exists(os.path.join(OUT, f)):

@@ -4,7 +4,7 @@
   "wiki_url": "https://endipa.miraheze.org/wiki/",
   "zulip_host": "",
   "footer_left": "Built from the wiki by a script. Licence CC BY 4.0.",
-  "footer_right": "Under each title: the TeX source of the page, Overleaf, and the page in the wiki.",
+  "footer_right": "Under each title: the Zulip topic of the page, the page in the wiki, its TeX source and its PDF.",
   "contributors": [
     {
       "name": "Editorial board",
@@ -24,5 +24,15 @@
     }
   ],
   "author": "Editorial board, associate editors, reviewers and community",
-  "wiki_note": "members"
+  "wiki_note": "members",
+  "zulip_channels": {
+    "overview": "653112-overview",
+    "examples": "653113-examples",
+    "techniques": "653114-techniques",
+    "advances": "653115-advances",
+    "toolkit": "653116-toolkit",
+    "numerics": "653117-numerics",
+    "lean": "653118-lean",
+    "contributing": "653119-contributing"
+  }
 }

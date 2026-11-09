@@ -1,6 +1,6 @@
 % !TEX TS-program = pdflatex
 % !TEX encoding = UTF-8 Unicode
-% How to contribute: a page of the wiki "Enhanced dissipation for passive scalars", generated from the wiki on 8 November 2026.
+% How to contribute: a page of the wiki "Enhanced dissipation for passive scalars", generated from the wiki on 9 November 2026.
 % It compiles as it is with pdflatex (Overleaf, TeXShop, TeXstudio, ...); typeset twice for the citations.
 % To propose a change: keep the preamble and the line \title{...}; keep only the blocks you change
 % (a \section{...} with its content, or a statement or proof with its \label{...}), change them, and post
@@ -60,6 +60,7 @@
 % links to other pages of the wiki, anchors, wiki code shown as text
 \newcommand{\wikilink}[2]{\ifx\relax#2\relax#1\else#2\fi}
 \newcommand{\wikianchor}[1]{\phantomsection\label{#1}}
+\newcommand{\wikipage}[1]{}% the first line of a page file of the whole-wiki project (pages/<page>.tex): the page's title
 \newcommand{\nowikicode}[1]{\texttt{\frenchspacing#1}}
 \newcommand{\nowiki}[1]{#1}
 \newcommand{\wikitemplate}[1]{\texttt{\{\{#1\}\}}}
@@ -67,12 +68,12 @@
 % \begin{quote}: a sentence set apart, such as the central question of the Overview; centred, in italics
 \renewenvironment{quote}{\list{}{\rightmargin\leftmargin}\item\relax\centering\itshape}{\endlist}
 % pictures, videos, diagrams: a grey panel with the picture and its caption. The picture (for a video, its poster image)
-% is shown when its file, or a .pdf or .png file of the same name, is next to this file, in media/ or in ../media
+% is shown when its file, or a .pdf or .png file of the same name, is next to this file, in figures/ or in ../media
 \tcbset{ed@media/.style={enhanced,colback=black!4,frame hidden,arc=2pt,left=3mm,right=3mm,top=2.5mm,bottom=2mm,
   before skip=3mm plus 1mm,after skip=3mm plus 1mm}}
 \def\ed@poster{}\def\ed@record{}\def\ed@svg{svg}
 \define@key{ed@media}{poster}{\def\ed@poster{#1}}\define@key{ed@media}{record}{\def\ed@record{#1}}\define@key{ed@media}{id}{}
-\newcommand{\ed@find}[1]{\IfFileExists{#1}{\edef\ed@found{#1}}{\IfFileExists{media/#1}{\edef\ed@found{media/#1}}{%
+\newcommand{\ed@find}[1]{\IfFileExists{#1}{\edef\ed@found{#1}}{\IfFileExists{figures/#1}{\edef\ed@found{figures/#1}}{%
   \IfFileExists{../media/#1}{\edef\ed@found{../media/#1}}{}}}}
 \newcommand{\ed@picturefile}[1]{\def\ed@found{}\edef\ed@b{#1}\ifx\ed@b\@empty\else\filename@parse{\ed@b}\edef\ed@base{\filename@base}%
   \edef\ed@ext{\filename@ext}\ifx\ed@ext\ed@svg\else\ed@find{\ed@b}\fi
@@ -107,7 +108,7 @@
 \begin{document}
 \title{How to contribute}
 \author{Wiki \emph{Enhanced dissipation for passive scalars}}
-\date{8 November 2026}
+\date{9 November 2026}
 \maketitle
 \pagestatus{Page team: Michele Dolce · Status: proposal, to be agreed with the editorial board · Text: \demo{}}
 \zulip{contributing}
@@ -130,7 +131,7 @@ Typos, broken links, a missing reference: members of the wiki leave a note on th
 \section{Mathematical contributions}
 A new proof, a shorter argument, a correction to a statement, a new result or a new page goes through Zulip.
 \begin{enumerate}
-  \item Download the TeX source of the page: link \emph{TeX source} under the title of every page of the edition, or \emph{Open in Overleaf}. It is a standard LaTeX article that compiles as it is. Change what you want and check that it compiles; then keep only the blocks you changed: a section, or a statement or a proof with its label.
+  \item Download the TeX source of the page: link \emph{TeX source} under the title of every page of the edition (with the figures, in a zip, when the page has some). It is a standard LaTeX article that compiles as it is. In the Overleaf project of the whole wiki (\emph{Open the whole wiki in Overleaf}, on the Overview) every page is a file of the folder \emph{pages}, which can be proposed in the same way. Change what you want and check that it compiles; then keep only the blocks you changed: a section, or a statement or a proof with its label.
   \item Open a topic in the Zulip channel of the part, titled \emph{Proposal: short title}. Attach the file and say in a few lines what it changes, why, and which sources it uses.
   \item For two weeks the community and the reviewers discuss the proposal in its topic.
   \item Within a week after that, the associate editor decides: accepted, to be revised, or declined. If the discussion ended without consensus, the editorial board decides.
@@ -217,7 +218,7 @@ Discussion takes place on Zulip: one channel per part, one topic per page, and o
 \row{Lean formalization & lean}
 \row{About this wiki & contributing}
 \end{wikitable}
-Discuss the mathematics, not the people. Associate editors moderate their channel: they can hide messages and, after a warning, ask the editorial board to remove a member; their decisions can be appealed to the board. The Zulip is not set up yet; once it is, its address goes into \wikilink{Template:Zulip host}{} and the links appear on every page.
+Discuss the mathematics, not the people. Associate editors moderate their channel: they can hide messages and, after a warning, ask the editorial board to remove a member; their decisions can be appealed to the board. The Zulip is \href{https://endipa.zulipchat.com}{endipa.zulipchat.com}, by invitation; its administrators invite new members and create channels.
 
 \section{Formulas in the wiki}
 For editors who write the wiki's own format.
@@ -228,5 +229,5 @@ For editors who write the wiki's own format.
 \end{itemize}
 
 \section{The edition}
-A static edition of this wiki, with the pictures, the videos and the TeX source of every page, is built from the wiki's text by a script and never edited by hand; its address will be added here.
+A static edition of this wiki, with the pictures, the videos and the TeX source of every page, is built from the wiki's text by a script and never edited by hand: \href{https://endipa.github.io}{endipa.github.io}.
 \end{document}
