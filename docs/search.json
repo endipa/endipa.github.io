@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Enhanced dissipation for passive scalars",
     "section": "",
-    "text": "Overview\nA passive scalar is a quantity carried by a fluid without acting on it, such as heat, a dye in water or a pollutant in the air. If \\(f\\) is its concentration, \\(u\\) the velocity of an incompressible flow, and \\(\\nu&gt;0\\) the molecular diffusivity, then \\(f\\) solves the advection–diffusion equation \\[\\partial_t f+u\\cdot\\nabla f=\\nu\\Delta f,\\qquad \\nabla\\cdot u=0.\\] Diffusion alone dissipates the scalar on a time scale of order \\(1/\\nu\\), which is very long when \\(\\nu\\) is small. The flow, on the other hand, dissipates nothing: it only rearranges the scalar. In doing so, it can transfer large-scale structures to small scales, for instance by stretching the scalar into thin filaments, and at small scales diffusion is much more efficient. The result is that \\(f\\) decays on a time scale much shorter than \\(1/\\nu\\): this is enhanced dissipation.\nThe two videos below show the phenomenon in the simplest setting, a periodic box in two dimensions. In the first, a steady shear flow significantly accelerates the dissipation of vertical stripes, orthogonal to its streamlines.\nThe second video compares two flows of the same size. A steady shear stretches the scalar only along its own streamlines. Shears that alternate in direction, with random phases (the model of Pierrehumbert), stretch and fold the scalar, which then dissipates much faster and more uniformly in space.\nQuantifying the time scale of enhanced dissipation is the subject of this wiki. Laminar flows, such as shear flows, typically dissipate the scalar on time scales of order \\(\\nu^{-a}\\) with \\(0&lt;a&lt;1\\), whereas mixing flows, such as the alternating shears, can dissipate it on time scales of order \\(|\\log\\nu|\\). The questions are which time scales are possible, which flows achieve them, and how one proves it.",
+    "text": "Overview",
     "crumbs": [
       "Overview"
     ]
@@ -14,7 +14,7 @@
     "href": "index.html#map-of-the-wiki",
     "title": "Enhanced dissipation for passive scalars",
     "section": "Map of the wiki",
-    "text": "Map of the wiki\n\nMotivation and history: why the problem matters and where it comes from.\nTechniques through examples: enhanced dissipation for two flows, Couette and Poiseuille, proved once with each method, so that the methods can be compared on the same example.\nTechniques and general results: the general theorem behind each method, with its proof, for spectral methods, hypocoercivity, stochastic methods and Hörmander theory.\nExtensions and recent advances: the state of the art, related results and open problems.\nToolkit: the notation and the standard analysis that the proofs use.\nNumerical methods: the codes behind the pictures.\nLean formalization: the statements checked by a proof assistant.\nAbout this wiki: how to contribute and who did what.\n\n\nMotivation and historyWhy it mattersWhy it mattersHistory of the problemHistory of the problemRecent literatureRecent literatureTechniques through examplesCouette flowCouette flowPoiseuille flowPoiseuille flowTechniques and general resultsSpectral methodsSpectral methodsHypocoercivityHypocoercivityStochastic methodsStochastic methodsHörmander theoryHörmander theoryExtensions and recent advancesState of the artState of the artRelated resultsRelated resultsOpen problemsOpen problemsRaw dataRaw dataToolkitNotationNotationStandard analysisStandard analysisEnhanced-dissipation toolsEnhanced-dissipation toolsNumerical methodsNumerical methodsthe code of the figuresLean formalizationLean formalizationcertificates\n\nThe parts of the wiki; click a name to open its page.",
+    "text": "Map of the wiki\n\nMotivation and historyWhy it mattersWhy it mattersHistory of the problemHistory of the problemRecent literatureRecent literatureTechniques through examplesCouette flowCouette flowPoiseuille flowPoiseuille flowTechniques and general resultsSpectral methodsSpectral methodsHypocoercivityHypocoercivityStochastic methodsStochastic methodsHörmander theoryHörmander theoryExtensions and recent advancesState of the artState of the artRelated resultsRelated resultsOpen problemsOpen problemsRaw dataRaw dataToolkitNotationNotationStandard analysisStandard analysisEnhanced-dissipation toolsEnhanced-dissipation toolsNumerical methodsNumerical methodsthe code of the figuresLean formalizationLean formalizationcertificates\n\nThe parts of the wiki; click a name to open its page.\n\n\n\n\nMotivation and history: why the problem matters and where it comes from.\nTechniques through examples: enhanced dissipation for two flows, Couette and Poiseuille, proved once with each method, so that the methods can be compared on the same example.\nTechniques and general results: the general theorem behind each method, with its proof, for spectral methods, hypocoercivity, stochastic methods and Hörmander theory.\nExtensions and recent advances: the state of the art, related results and open problems.\nToolkit: the notation and the standard analysis that the proofs use.\nNumerical methods: the codes behind the pictures.\nLean formalization: the statements checked by a proof assistant.\nAbout this wiki: how to contribute and who did what.",
     "crumbs": [
       "Overview"
     ]
@@ -46,7 +46,7 @@
     "href": "history-of-the-problem.html#origins",
     "title": "2  History of the problem",
     "section": "",
-    "text": "Before the mathematical theory.\nPropose a text on Zulip →",
+    "text": "Before the mathematical theory.\nPropose a text →",
     "crumbs": [
       "Motivation and history",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>History of the problem</span>"
@@ -57,7 +57,7 @@
     "href": "history-of-the-problem.html#spectral-methods",
     "title": "2  History of the problem",
     "section": "2.2 Spectral methods",
-    "text": "2.2 Spectral methods\n\nContributions and dates; the general theory is on Spectral methods.\nPropose a text on Zulip →",
+    "text": "2.2 Spectral methods\n\nContributions and dates; the general theory is on Spectral methods.\nPropose a text →",
     "crumbs": [
       "Motivation and history",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>History of the problem</span>"
@@ -68,7 +68,7 @@
     "href": "history-of-the-problem.html#hypocoercivity",
     "title": "2  History of the problem",
     "section": "2.3 Hypocoercivity",
-    "text": "2.3 Hypocoercivity\n\nContributions and dates; the general theory is on Hypocoercivity.\nPropose a text on Zulip →",
+    "text": "2.3 Hypocoercivity\n\nContributions and dates; the general theory is on Hypocoercivity.\nPropose a text →",
     "crumbs": [
       "Motivation and history",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>History of the problem</span>"
@@ -79,7 +79,7 @@
     "href": "history-of-the-problem.html#stochastic-methods",
     "title": "2  History of the problem",
     "section": "2.4 Stochastic methods",
-    "text": "2.4 Stochastic methods\n\nContributions and dates; the general theory is on Stochastic methods.\nPropose a text on Zulip →",
+    "text": "2.4 Stochastic methods\n\nContributions and dates; the general theory is on Stochastic methods.\nPropose a text →",
     "crumbs": [
       "Motivation and history",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>History of the problem</span>"
@@ -90,7 +90,7 @@
     "href": "history-of-the-problem.html#hormander-theory",
     "title": "2  History of the problem",
     "section": "2.5 Hörmander theory",
-    "text": "2.5 Hörmander theory\n\nContributions and dates; the general theory is on Hörmander theory.\nPropose a text on Zulip →",
+    "text": "2.5 Hörmander theory\n\nContributions and dates; the general theory is on Hörmander theory.\nPropose a text →",
     "crumbs": [
       "Motivation and history",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>History of the problem</span>"
@@ -134,7 +134,7 @@
     "href": "couette-flow.html#setting",
     "title": "4  Couette flow",
     "section": "",
-    "text": "The flow \\(u=(y,0)\\) on \\(\\mathbb{T}\\times\\mathbb{R}\\): the equation, the Fourier modes, what decays.\nPropose a text on Zulip →",
+    "text": "The flow \\(u=(y,0)\\) on \\(\\mathbb{T}\\times\\mathbb{R}\\): the equation, the Fourier modes, what decays.\nPropose a text →",
     "crumbs": [
       "Techniques through examples",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Couette flow</span>"
@@ -145,7 +145,7 @@
     "href": "couette-flow.html#the-result",
     "title": "4  Couette flow",
     "section": "4.2 The result",
-    "text": "4.2 The result\n\nTheorem 4.1 (enhanced dissipation for Couette flow)  \n\nThe statement.\nPropose a text on Zulip →\n\n\n\nLean: not yet formalized · add a certificate\n\n\n\n\n\n\n\nTipIdea\n\n\n\n\n\n\nThe key mechanism in a few lines.\nPropose a text on Zulip →\n\n\n\n\n\n\n\n\n\n\nNoteProof architecture\n\n\n\n\n\n\nThe proof as a short chain of steps, and its diagram.\nPropose a text on Zulip →",
+    "text": "4.2 The result\n\nTheorem 4.1 (enhanced dissipation for Couette flow)  \n\nThe statement.\nPropose a text →\n\n\n\nLean: not yet formalized · add a certificate\n\n\n\n\n\n\n\nTipIdea\n\n\n\n\n\n\nThe key mechanism in a few lines.\nPropose a text →\n\n\n\n\n\n\n\n\n\n\nNoteProof architecture\n\n\n\n\n\n\nThe proof as a short chain of steps, and its diagram.\nPropose a text →",
     "crumbs": [
       "Techniques through examples",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Couette flow</span>"
@@ -156,7 +156,7 @@
     "href": "couette-flow.html#one-example-every-technique",
     "title": "4  Couette flow",
     "section": "4.3 One example, every technique",
-    "text": "4.3 One example, every technique\nEach proof below is written for this example only, to show the mechanism; the general results, with complete proofs, are in the part Techniques and general results.\n\nExplicit solution\n\n\n\n\n\n\nNoteProof by the explicit solution\n\n\n\n\n\n\nThe proof.\nPropose a text on Zulip →\n\n\n\n\n\n\nSpectral methods\n\n\n\n\n\n\nNoteProof by spectral methods\n\n\n\n\n\n\nThe proof.\nPropose a text on Zulip →\n\n\n\n\nGeneral theory: Spectral methods.\n\n\nHypocoercivity\n\n\n\n\n\n\nNoteProof by hypocoercivity\n\n\n\n\n\n\nThe proof.\nPropose a text on Zulip →\n\n\n\n\nGeneral theory: Hypocoercivity.\n\n\nStochastic methods\n\n\n\n\n\n\nNoteProof by stochastic methods\n\n\n\n\n\n\nThe proof.\nPropose a text on Zulip →\n\n\n\n\nGeneral theory: Stochastic methods.\n\n\nHörmander theory\n\n\n\n\n\n\nNoteProof by Hörmander theory\n\n\n\n\n\n\nThe proof.\nPropose a text on Zulip →\n\n\n\n\nGeneral theory: Hörmander theory.",
+    "text": "4.3 One example, every technique\n\nEach proof below is written for this example only, to show the mechanism; the general results, with complete proofs, are in the part Techniques and general results.\n\n\nExplicit solution\n\n\n\n\n\n\nNoteProof by the explicit solution\n\n\n\n\n\n\nThe proof.\nPropose a text →\n\n\n\n\n\n\nSpectral methods\n\n\n\n\n\n\nNoteProof by spectral methods\n\n\n\n\n\n\nThe proof.\nPropose a text →\n\n\n\n\n\nGeneral theory: Spectral methods.\n\n\n\nHypocoercivity\n\n\n\n\n\n\nNoteProof by hypocoercivity\n\n\n\n\n\n\nThe proof.\nPropose a text →\n\n\n\n\n\nGeneral theory: Hypocoercivity.\n\n\n\nStochastic methods\n\n\n\n\n\n\nNoteProof by stochastic methods\n\n\n\n\n\n\nThe proof.\nPropose a text →\n\n\n\n\n\nGeneral theory: Stochastic methods.\n\n\n\nHörmander theory\n\n\n\n\n\n\nNoteProof by Hörmander theory\n\n\n\n\n\n\nThe proof.\nPropose a text →\n\n\n\n\n\nGeneral theory: Hörmander theory.",
     "crumbs": [
       "Techniques through examples",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Couette flow</span>"
@@ -167,7 +167,7 @@
     "href": "couette-flow.html#what-this-example-teaches",
     "title": "4  Couette flow",
     "section": "4.4 What this example teaches",
-    "text": "4.4 What this example teaches\n\nWhat the example shows, and what the general theory keeps of it.\nPropose a text on Zulip →",
+    "text": "4.4 What this example teaches\n\nWhat the example shows, and what the general theory keeps of it.\nPropose a text →",
     "crumbs": [
       "Techniques through examples",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Couette flow</span>"
@@ -200,7 +200,7 @@
     "href": "poiseuille-flow.html#setting",
     "title": "5  Poiseuille flow",
     "section": "",
-    "text": "The flow, the domain, the critical point, what decays.\nPropose a text on Zulip →",
+    "text": "The flow, the domain, the critical point, what decays.\nPropose a text →",
     "crumbs": [
       "Techniques through examples",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Poiseuille flow</span>"
@@ -211,7 +211,7 @@
     "href": "poiseuille-flow.html#the-result",
     "title": "5  Poiseuille flow",
     "section": "5.2 The result",
-    "text": "5.2 The result\n\nTheorem 5.1 (enhanced dissipation for Poiseuille flow)  \n\nThe statement.\nPropose a text on Zulip →\n\n\n\nLean: not yet formalized · add a certificate\n\n\n\n\n\n\n\nTipIdea\n\n\n\n\n\n\nThe key mechanism in a few lines.\nPropose a text on Zulip →\n\n\n\n\n\n\n\n\n\n\nNoteProof architecture\n\n\n\n\n\n\nThe proof as a short chain of steps, and its diagram.\nPropose a text on Zulip →",
+    "text": "5.2 The result\n\nTheorem 5.1 (enhanced dissipation for Poiseuille flow)  \n\nThe statement.\nPropose a text →\n\n\n\nLean: not yet formalized · add a certificate\n\n\n\n\n\n\n\nTipIdea\n\n\n\n\n\n\nThe key mechanism in a few lines.\nPropose a text →\n\n\n\n\n\n\n\n\n\n\nNoteProof architecture\n\n\n\n\n\n\nThe proof as a short chain of steps, and its diagram.\nPropose a text →",
     "crumbs": [
       "Techniques through examples",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Poiseuille flow</span>"
@@ -222,7 +222,7 @@
     "href": "poiseuille-flow.html#what-changes-compared-with-couette-flow",
     "title": "5  Poiseuille flow",
     "section": "5.3 What changes compared with Couette flow",
-    "text": "5.3 What changes compared with Couette flow\nFor each technique: what carries over from Couette flow, what is lost, and the proof for this example.\n\nExplicit solution\n\nWhat is lost.\nPropose a text on Zulip →\n\n\n\nSpectral methods\n\n\n\n\n\n\nNoteProof by spectral methods\n\n\n\n\n\n\nThe proof.\nPropose a text on Zulip →\n\n\n\n\n\n\nHypocoercivity\n\n\n\n\n\n\nNoteProof by hypocoercivity\n\n\n\n\n\n\nThe proof.\nPropose a text on Zulip →\n\n\n\n\n\n\nStochastic methods\n\n\n\n\n\n\nNoteProof by stochastic methods\n\n\n\n\n\n\nThe proof.\nPropose a text on Zulip →\n\n\n\n\n\n\nHörmander theory\n\n\n\n\n\n\nNoteProof by Hörmander theory\n\n\n\n\n\n\nThe proof.\nPropose a text on Zulip →",
+    "text": "5.3 What changes compared with Couette flow\n\nFor each technique: what carries over from Couette flow, what is lost, and the proof for this example.\n\n\nExplicit solution\n\nWhat is lost.\nPropose a text →\n\n\n\nSpectral methods\n\n\n\n\n\n\nNoteProof by spectral methods\n\n\n\n\n\n\nThe proof.\nPropose a text →\n\n\n\n\n\n\nHypocoercivity\n\n\n\n\n\n\nNoteProof by hypocoercivity\n\n\n\n\n\n\nThe proof.\nPropose a text →\n\n\n\n\n\n\nStochastic methods\n\n\n\n\n\n\nNoteProof by stochastic methods\n\n\n\n\n\n\nThe proof.\nPropose a text →\n\n\n\n\n\n\nHörmander theory\n\n\n\n\n\n\nNoteProof by Hörmander theory\n\n\n\n\n\n\nThe proof.\nPropose a text →",
     "crumbs": [
       "Techniques through examples",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Poiseuille flow</span>"
@@ -244,7 +244,7 @@
     "href": "spectral-methods.html",
     "title": "6  Spectral methods",
     "section": "",
-    "text": "6.1 The method\nWorked example: Couette flow. What changes with a critical point: Poiseuille flow.",
+    "text": "6.1 The method",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Spectral methods</span>"
@@ -255,7 +255,7 @@
     "href": "spectral-methods.html#the-method",
     "title": "6  Spectral methods",
     "section": "",
-    "text": "The key mechanism, in a few lines.\nPropose a text on Zulip →",
+    "text": "The key mechanism, in a few lines.\nPropose a text →\n\n\nWorked example: Couette flow. What changes with a critical point: Poiseuille flow.",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Spectral methods</span>"
@@ -266,7 +266,7 @@
     "href": "spectral-methods.html#general-results",
     "title": "6  Spectral methods",
     "section": "6.2 General results",
-    "text": "6.2 General results\n\nThe theorems, each written as a result (statement, Lean banner, idea, proof architecture, complete proof; see How to contribute); lemmas of general use go to the Toolkit (Standard analysis, Enhanced-dissipation tools).\nPropose a text on Zulip →",
+    "text": "6.2 General results\n\nThe theorems, each written as a result (statement, Lean banner, idea, proof architecture, complete proof; see How to contribute); lemmas of general use go to the Toolkit (Standard analysis, Enhanced-dissipation tools).\nPropose a text →",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Spectral methods</span>"
@@ -277,7 +277,7 @@
     "href": "spectral-methods.html#limitations-and-comparison",
     "title": "6  Spectral methods",
     "section": "6.3 Limitations and comparison",
-    "text": "6.3 Limitations and comparison\n\nWhat the method does not give, and how it compares with the other techniques.\nPropose a text on Zulip →",
+    "text": "6.3 Limitations and comparison\n\nWhat the method does not give, and how it compares with the other techniques.\nPropose a text →",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Spectral methods</span>"
@@ -299,7 +299,7 @@
     "href": "hypocoercivity.html",
     "title": "7  Hypocoercivity",
     "section": "",
-    "text": "7.1 The method\nWorked example: Couette flow. What changes with a critical point: Poiseuille flow.",
+    "text": "7.1 The method",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Hypocoercivity</span>"
@@ -310,7 +310,7 @@
     "href": "hypocoercivity.html#the-method",
     "title": "7  Hypocoercivity",
     "section": "",
-    "text": "The key mechanism, in a few lines.\nPropose a text on Zulip →",
+    "text": "The key mechanism, in a few lines.\nPropose a text →\n\n\nWorked example: Couette flow. What changes with a critical point: Poiseuille flow.",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Hypocoercivity</span>"
@@ -321,7 +321,7 @@
     "href": "hypocoercivity.html#general-results",
     "title": "7  Hypocoercivity",
     "section": "7.2 General results",
-    "text": "7.2 General results\n\nThe theorems, each written as a result (statement, Lean banner, idea, proof architecture, complete proof; see How to contribute); lemmas of general use go to the Toolkit (Standard analysis, Enhanced-dissipation tools).\nPropose a text on Zulip →",
+    "text": "7.2 General results\n\nThe theorems, each written as a result (statement, Lean banner, idea, proof architecture, complete proof; see How to contribute); lemmas of general use go to the Toolkit (Standard analysis, Enhanced-dissipation tools).\nPropose a text →",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Hypocoercivity</span>"
@@ -332,7 +332,7 @@
     "href": "hypocoercivity.html#limitations-and-comparison",
     "title": "7  Hypocoercivity",
     "section": "7.3 Limitations and comparison",
-    "text": "7.3 Limitations and comparison\n\nWhat the method does not give, and how it compares with the other techniques.\nPropose a text on Zulip →",
+    "text": "7.3 Limitations and comparison\n\nWhat the method does not give, and how it compares with the other techniques.\nPropose a text →",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Hypocoercivity</span>"
@@ -354,7 +354,7 @@
     "href": "stochastic-methods.html",
     "title": "8  Stochastic methods",
     "section": "",
-    "text": "8.1 The method\nWorked example: Couette flow. What changes with a critical point: Poiseuille flow.",
+    "text": "8.1 The method",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Stochastic methods</span>"
@@ -365,7 +365,7 @@
     "href": "stochastic-methods.html#the-method",
     "title": "8  Stochastic methods",
     "section": "",
-    "text": "The key mechanism, in a few lines.\nPropose a text on Zulip →",
+    "text": "The key mechanism, in a few lines.\nPropose a text →\n\n\nWorked example: Couette flow. What changes with a critical point: Poiseuille flow.",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Stochastic methods</span>"
@@ -376,7 +376,7 @@
     "href": "stochastic-methods.html#general-results",
     "title": "8  Stochastic methods",
     "section": "8.2 General results",
-    "text": "8.2 General results\n\nThe theorems, each written as a result (statement, Lean banner, idea, proof architecture, complete proof; see How to contribute); lemmas of general use go to the Toolkit (Standard analysis, Enhanced-dissipation tools).\nPropose a text on Zulip →",
+    "text": "8.2 General results\n\nThe theorems, each written as a result (statement, Lean banner, idea, proof architecture, complete proof; see How to contribute); lemmas of general use go to the Toolkit (Standard analysis, Enhanced-dissipation tools).\nPropose a text →",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Stochastic methods</span>"
@@ -387,7 +387,7 @@
     "href": "stochastic-methods.html#limitations-and-comparison",
     "title": "8  Stochastic methods",
     "section": "8.3 Limitations and comparison",
-    "text": "8.3 Limitations and comparison\n\nWhat the method does not give, and how it compares with the other techniques.\nPropose a text on Zulip →",
+    "text": "8.3 Limitations and comparison\n\nWhat the method does not give, and how it compares with the other techniques.\nPropose a text →",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Stochastic methods</span>"
@@ -409,7 +409,7 @@
     "href": "hormander-theory.html",
     "title": "9  Hörmander theory",
     "section": "",
-    "text": "9.1 The method\nWorked example: Couette flow. What changes with a critical point: Poiseuille flow.",
+    "text": "9.1 The method",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Hörmander theory</span>"
@@ -420,7 +420,7 @@
     "href": "hormander-theory.html#the-method",
     "title": "9  Hörmander theory",
     "section": "",
-    "text": "The key mechanism, in a few lines.\nPropose a text on Zulip →",
+    "text": "The key mechanism, in a few lines.\nPropose a text →\n\n\nWorked example: Couette flow. What changes with a critical point: Poiseuille flow.",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Hörmander theory</span>"
@@ -431,7 +431,7 @@
     "href": "hormander-theory.html#general-results",
     "title": "9  Hörmander theory",
     "section": "9.2 General results",
-    "text": "9.2 General results\n\nThe theorems, each written as a result (statement, Lean banner, idea, proof architecture, complete proof; see How to contribute); lemmas of general use go to the Toolkit (Standard analysis, Enhanced-dissipation tools).\nPropose a text on Zulip →",
+    "text": "9.2 General results\n\nThe theorems, each written as a result (statement, Lean banner, idea, proof architecture, complete proof; see How to contribute); lemmas of general use go to the Toolkit (Standard analysis, Enhanced-dissipation tools).\nPropose a text →",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Hörmander theory</span>"
@@ -442,7 +442,7 @@
     "href": "hormander-theory.html#limitations-and-comparison",
     "title": "9  Hörmander theory",
     "section": "9.3 Limitations and comparison",
-    "text": "9.3 Limitations and comparison\n\nWhat the method does not give, and how it compares with the other techniques.\nPropose a text on Zulip →",
+    "text": "9.3 Limitations and comparison\n\nWhat the method does not give, and how it compares with the other techniques.\nPropose a text →",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Hörmander theory</span>"
@@ -475,7 +475,7 @@
     "href": "related-results.html",
     "title": "11  Related results",
     "section": "",
-    "text": "11.1 Entries\nResults related to enhanced dissipation and not yet part of the established theory. Each entry gives the statement, a label (published, preprint · to be verified or raw · unchecked), the date it was added, its source, and where it would go in the established theory.",
+    "text": "11.1 Entries",
     "crumbs": [
       "Extensions and recent advances",
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>Related results</span>"
@@ -486,7 +486,7 @@
     "href": "related-results.html#entries",
     "title": "11  Related results",
     "section": "",
-    "text": "First entries.\nPropose a text on Zulip →",
+    "text": "First entries.\nPropose a text →",
     "crumbs": [
       "Extensions and recent advances",
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>Related results</span>"
@@ -497,7 +497,7 @@
     "href": "related-results.html#how-an-entry-moves",
     "title": "11  Related results",
     "section": "11.2 How an entry moves",
-    "text": "11.2 How an entry moves\n\nAn entry keeps its label until its status changes: raw data checked and posted becomes preprint · to be verified, a refereed result published.\nThe editorial board moves established results into the part Techniques and general results, or into a new page, with a synthesis proof.",
+    "text": "11.2 How an entry moves\n\n\nAn entry keeps its label until its status changes: raw data checked and posted becomes preprint · to be verified, a refereed result published.\nThe editorial board moves established results into the part Techniques and general results, or into a new page, with a synthesis proof.",
     "crumbs": [
       "Extensions and recent advances",
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>Related results</span>"
@@ -519,7 +519,7 @@
     "href": "open-problems.html",
     "title": "12  Open problems",
     "section": "",
-    "text": "12.1 Problems\nOpen problems, each with what is known, the expected answer, and the main difficulty.",
+    "text": "12.1 Problems",
     "crumbs": [
       "Extensions and recent advances",
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>Open problems</span>"
@@ -530,7 +530,7 @@
     "href": "open-problems.html#problems",
     "title": "12  Open problems",
     "section": "",
-    "text": "First problems.\nPropose a text on Zulip →",
+    "text": "First problems.\nPropose a text →",
     "crumbs": [
       "Extensions and recent advances",
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>Open problems</span>"
@@ -552,7 +552,7 @@
     "href": "raw-data.html",
     "title": "13  Raw data",
     "section": "",
-    "text": "13.1 Entries\nAI-generated proofs, numerical observations and sketches, labelled raw · unchecked until a human has checked them. AI-generated text is quoted verbatim, with its source and date; how an entry moves on is explained on Related results.",
+    "text": "13.1 Entries",
     "crumbs": [
       "Extensions and recent advances",
       "<span class='chapter-number'>13</span>  <span class='chapter-title'>Raw data</span>"
@@ -563,7 +563,7 @@
     "href": "raw-data.html#entries",
     "title": "13  Raw data",
     "section": "",
-    "text": "First entries.\nPropose a text on Zulip →",
+    "text": "First entries.\nPropose a text →",
     "crumbs": [
       "Extensions and recent advances",
       "<span class='chapter-number'>13</span>  <span class='chapter-title'>Raw data</span>"
@@ -574,7 +574,7 @@
     "href": "notation.html",
     "title": "14  Notation",
     "section": "",
-    "text": "14.1 Notation\nThe notation and the definitions used throughout the wiki.",
+    "text": "14.1 Notation",
     "crumbs": [
       "Toolkit",
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>Notation</span>"
@@ -585,7 +585,7 @@
     "href": "notation.html#notation",
     "title": "14  Notation",
     "section": "",
-    "text": "The scalar, the velocity field, the domains, the Fourier modes, the norms.\nPropose a text on Zulip →",
+    "text": "The scalar, the velocity field, the domains, the Fourier modes, the norms.\nPropose a text →",
     "crumbs": [
       "Toolkit",
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>Notation</span>"
@@ -596,7 +596,7 @@
     "href": "notation.html#definitions",
     "title": "14  Notation",
     "section": "14.2 Definitions",
-    "text": "14.2 Definitions\n\nDissipation time, enhanced dissipation, and the related notions used in the wiki.\nPropose a text on Zulip →",
+    "text": "14.2 Definitions\n\nDissipation time, enhanced dissipation, and the related notions used in the wiki.\nPropose a text →",
     "crumbs": [
       "Toolkit",
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>Notation</span>"
@@ -607,7 +607,7 @@
     "href": "standard-analysis.html",
     "title": "15  Standard analysis",
     "section": "",
-    "text": "15.1 Inequalities\nClassical facts of analysis used by the proofs. A statement comes to the Toolkit when several proofs use it, or when it holds in more generality than one result; a step used by one proof only is a claim inside that proof. Each statement is given once, with its proof or a reference, and the proofs elsewhere link to it.",
+    "text": "15.1 Inequalities",
     "crumbs": [
       "Toolkit",
       "<span class='chapter-number'>15</span>  <span class='chapter-title'>Standard analysis</span>"
@@ -618,7 +618,7 @@
     "href": "standard-analysis.html#inequalities",
     "title": "15  Standard analysis",
     "section": "",
-    "text": "Poincaré and interpolation inequalities, and the other inequalities the proofs use.\nPropose a text on Zulip →",
+    "text": "Poincaré and interpolation inequalities, and the other inequalities the proofs use.\nPropose a text →",
     "crumbs": [
       "Toolkit",
       "<span class='chapter-number'>15</span>  <span class='chapter-title'>Standard analysis</span>"
@@ -629,7 +629,7 @@
     "href": "standard-analysis.html#functional-analysis",
     "title": "15  Standard analysis",
     "section": "15.2 Functional analysis",
-    "text": "15.2 Functional analysis\n\nSemigroups, spectral theory, and the other facts the proofs use.\nPropose a text on Zulip →",
+    "text": "15.2 Functional analysis\n\nSemigroups, spectral theory, and the other facts the proofs use.\nPropose a text →",
     "crumbs": [
       "Toolkit",
       "<span class='chapter-number'>15</span>  <span class='chapter-title'>Standard analysis</span>"
@@ -651,7 +651,7 @@
     "href": "enhanced-dissipation-tools.html",
     "title": "16  Enhanced-dissipation tools",
     "section": "",
-    "text": "16.1 Tools\nTools specific to enhanced dissipation. A statement comes to the Toolkit when several proofs use it, or when it holds in more generality than one result; a step used by one proof only is a claim inside that proof. Each statement is given once, with its proof or a reference, and the proofs elsewhere link to it.",
+    "text": "16.1 Tools",
     "crumbs": [
       "Toolkit",
       "<span class='chapter-number'>16</span>  <span class='chapter-title'>Enhanced-dissipation tools</span>"
@@ -662,7 +662,7 @@
     "href": "enhanced-dissipation-tools.html#tools",
     "title": "16  Enhanced-dissipation tools",
     "section": "",
-    "text": "For instance spectral-gap and resolvent lemmas, and the link between mixing and enhanced dissipation.\nPropose a text on Zulip →",
+    "text": "For instance spectral-gap and resolvent lemmas, and the link between mixing and enhanced dissipation.\nPropose a text →",
     "crumbs": [
       "Toolkit",
       "<span class='chapter-number'>16</span>  <span class='chapter-title'>Enhanced-dissipation tools</span>"
@@ -684,7 +684,7 @@
     "href": "numerical-methods.html",
     "title": "17  Numerical methods",
     "section": "",
-    "text": "17.1 How a record works\nEvery computed picture and video of this wiki has a record on this page: what was computed, how, with which parameters and checks, and the code that produced it.",
+    "text": "17.1 How a record works",
     "crumbs": [
       "<span class='chapter-number'>17</span>  <span class='chapter-title'>Numerical methods</span>"
     ]
@@ -714,7 +714,7 @@
     "href": "numerical-methods.html#solvers",
     "title": "17  Numerical methods",
     "section": "17.3 Solvers",
-    "text": "17.3 Solvers\n\nThe methods used across the records, with their strengths and limits.\nPropose a text on Zulip →",
+    "text": "17.3 Solvers\n\nThe methods used across the records, with their strengths and limits.\nPropose a text →",
     "crumbs": [
       "<span class='chapter-number'>17</span>  <span class='chapter-title'>Numerical methods</span>"
     ]
@@ -734,7 +734,7 @@
     "href": "lean-formalization.html",
     "title": "18  Lean formalization",
     "section": "",
-    "text": "18.1 Certificates\nA result of this wiki can carry a machine-checked proof in Lean, its certificate. A small banner under each theorem says where it stands. A result not yet formalized:\nA formalized result, with a link to its certificate:",
+    "text": "18.1 Certificates",
     "crumbs": [
       "<span class='chapter-number'>18</span>  <span class='chapter-title'>Lean formalization</span>"
     ]
@@ -754,7 +754,7 @@
     "href": "lean-formalization.html#how-to-add-a-certificate",
     "title": "18  Lean formalization",
     "section": "18.2 How to add a certificate",
-    "text": "18.2 How to add a certificate\n\nWhat a certificate contains (repository, commit, versions, the statement as formalized, the axioms used), and how it is checked before its banner turns green.\nPropose a text on Zulip →",
+    "text": "18.2 How to add a certificate\n\nWhat a certificate contains (repository, commit, versions, the statement as formalized, the axioms used), and how it is checked before its banner turns green.\nPropose a text →",
     "crumbs": [
       "<span class='chapter-number'>18</span>  <span class='chapter-title'>Lean formalization</span>"
     ]
@@ -764,7 +764,7 @@
     "href": "how-to-contribute.html",
     "title": "19  How to contribute",
     "section": "",
-    "text": "19.1 Roles\nThis wiki is written from the bottom up, the way a journal works: members of the community propose changes, proposals are discussed and reviewed in the open, an associate editor decides, and accepted changes are written into the wiki. The roles, and who holds them, are on Contributors. demo text\nThe first line of each page names its team. As the wiki grows, busy parts and pages get more associate editors and reviewers; the roles stay the same. On the wiki, everyone with a role is a member (reads every page and writes on talk pages); the editorial board and the associate editors are also editors (edit articles and templates); administrators give these rights.",
+    "text": "19.1 Roles",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>19</span>  <span class='chapter-title'>How to contribute</span>"
@@ -775,29 +775,18 @@
     "href": "how-to-contribute.html#roles",
     "title": "19  How to contribute",
     "section": "",
-    "text": "Editorial board: the scope and the structure of the wiki; appoints the associate editors; settles discussions that end without consensus.\nAssociate editors: one or more per part, following its Zulip channel. They run the discussion of each proposal, ask reviewers, decide, and write accepted changes into the wiki.\nReviewers: check a proposal at the request of an associate editor, in the open, in its Zulip topic.\nCommunity: propose and discuss. New members are endorsed by an editor or by a member at least two years past the PhD.",
+    "text": "Editorial board: the scope and the structure of the wiki; appoints the associate editors; settles discussions that end without consensus.\nAssociate editors: one or more per part, following the talk pages of its pages and its Zulip channel. They run the discussion of each proposal, ask reviewers, and decide.\nReviewers: check a proposal at the request of an associate editor, in the open, on the talk page where it was made.\nCommunity: propose and discuss. New members are endorsed by an editor or by a member at least two years past the PhD.\n\nThe first line of each page names its team. As the wiki grows, busy parts and pages get more associate editors and reviewers; the roles stay the same. On the wiki, everyone with a role is a member (reads every page and writes on talk pages); the editorial board and the associate editors are also editors (edit articles and templates, and write accepted proposals into the pages); administrators give these rights.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>19</span>  <span class='chapter-title'>How to contribute</span>"
     ]
   },
   {
-    "objectID": "how-to-contribute.html#small-corrections",
-    "href": "how-to-contribute.html#small-corrections",
+    "objectID": "how-to-contribute.html#proposing-a-change",
+    "href": "how-to-contribute.html#proposing-a-change",
     "title": "19  How to contribute",
-    "section": "19.2 Small corrections",
-    "text": "19.2 Small corrections\nTypos, broken links, a missing reference: members of the wiki leave a note on the talk page of the page (tab Discussion, then Add topic); others write in the Zulip channel contributing, naming the page. The editors go through these notes regularly and make the changes. For now the wiki is open only to invited members.",
-    "crumbs": [
-      "About this wiki",
-      "<span class='chapter-number'>19</span>  <span class='chapter-title'>How to contribute</span>"
-    ]
-  },
-  {
-    "objectID": "how-to-contribute.html#mathematical-contributions",
-    "href": "how-to-contribute.html#mathematical-contributions",
-    "title": "19  How to contribute",
-    "section": "19.3 Mathematical contributions",
-    "text": "19.3 Mathematical contributions\nA new proof, a shorter argument, a correction to a statement, a new result or a new page goes through Zulip.\n\nDownload the TeX source of the page: link TeX source under the title of every page of the edition (with the figures, in a zip, when the page has some). It is a standard LaTeX article that compiles as it is. In the Overleaf project of the whole wiki (Open the whole wiki in Overleaf, on the Overview) every page is a file of the folder pages, which can be proposed in the same way. Change what you want and check that it compiles; then keep only the blocks you changed: a section, or a statement or a proof with its label.\nOpen a topic in the Zulip channel of the part, titled Proposal: short title. Attach the file and say in a few lines what it changes, why, and which sources it uses.\nFor two weeks the community and the reviewers discuss the proposal in its topic.\nWithin a week after that, the associate editor decides: accepted, to be revised, or declined. If the discussion ended without consensus, the editorial board decides.\nA script converts the accepted file to the wiki’s format, shows the editor exactly what changes on the page, and flags new citations and links. The associate editor writes the change into the wiki, links the Zulip topic in the edit summary, and the page credits its author.\n\nA proposal changes only the blocks it contains. A paper that is not yet on Literature is proposed on its own, as a small correction of that page.",
+    "section": "19.2 Proposing a change",
+    "text": "19.2 Proposing a change\n\nEvery change to a page, from a typo to a new proof, is a proposal: a topic on the talk page of the page (tab Discussion), which members of the wiki open and discuss. There are two ways to open one.\n\nOne paragraph (a typo, a sentence, a formula, a shorter argument): in the edition, the pencil button next to a paragraph shows its TeX. Change it, say why, and open the proposal: the wiki shows a new topic on the talk page, already filled in, to be saved.\nLarger changes (a section, a statement, a proof, a new section): the link new proposal under the title of the page in the wiki (Propose a change in the edition) opens a new topic with a short form. Download the TeX source of the page: link TeX source under the title of every page of the edition (with the figures, in a zip, when the page has some). It is a standard LaTeX article that compiles as it is. In the Overleaf project of the whole wiki (Open the whole wiki in Overleaf, on the Overview) every page is a file of the folder pages, which can be proposed in the same way. Change what you want and check that it compiles; then paste in the form only the blocks you changed (a section, or a statement or a proof with its label), and say what they change, why, and which sources they use.\n\nThose who are not yet members of the wiki write in the Zulip channel contributing, naming the page.\n\n\nHow a proposal is decided\n\n\nThe community and the reviewers discuss the proposal in its topic, with replies that start with Support or Oppose, give a reason, and are signed. The author may revise the proposed text in place; the history of the talk page keeps every version.\nWhen the discussion has settled, an associate editor of the part decides: in the box at the top of the topic they change status=open to status=accepted, or to status=declined, and sign a reply that says why. There is no deadline. If the discussion ends without consensus, the editorial board decides.\nAn editor writes the accepted proposal into the page with a script. The script converts the TeX to the wiki’s format, refuses a paragraph that has changed since the proposal was made, shows exactly what changes on the page, and flags new citations and links. The edit summary links the topic and credits its author, and the box of the topic becomes applied, with a link to the change.\n\nSmall corrections (a typo, a broken link, a missing reference) go the same way, and are usually accepted without discussion. Open and accepted proposals are listed in :Category:Open proposals and :Category:Accepted proposals. A proposal changes only the blocks it contains. A paper that is not yet on Literature is proposed on its own, on the talk page of the Literature page.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>19</span>  <span class='chapter-title'>How to contribute</span>"
@@ -807,8 +796,8 @@
     "objectID": "how-to-contribute.html#the-tex-format",
     "href": "how-to-contribute.html#the-tex-format",
     "title": "19  How to contribute",
-    "section": "19.4 The TeX format",
-    "text": "19.4 The TeX format\nThe TeX source of a page is a standard LaTeX article: one file that compiles with pdflatex and nothing else (on Overleaf, or with TeXShop, TeXstudio, …; typeset twice for the citations). Its preamble is the same for every page and is never changed; a contribution defines no macros, since the wiki has none. Sections and statements are numbered in the PDF only.\n\nStatements: theorem, proposition, lemma, corollary, conjecture, definition, example, remark, claim. The optional argument is the name, the label is the anchor: \\begin{theorem}[name]\\label{thm-name}. Labels start with thm-, prp-, lem-, cor-, def- or clm-.\nAfter a statement: \\lean{} (the Lean banner), the environments idea and architecture, and proofs with an optional title and a label, as in \\begin{proof}[Proof by hypocoercivity]\\label{proof-name}. A claim and its proof sit inside the proof that uses them.\nFormulas: $...$, \\[ ... \\] and align*; no numbered equations and no labels on equations; none of the commands that the wiki’s renderer rejects (the script lists them).\nCitations: \\citet{Key} gives Author (year) and \\citep{Key} gives (Author, year), with the keys of Literature. The reference list at the end of the file is generated from the reference catalogue; a new citation is added to it when the proposal is accepted.\nLinks: on the same page, \\hyperref[thm-name]{the theorem above} rather than \\ref, since the wiki has no numbers; to another page, \\wikilink{Page\\#anchor}{text}.\nLabels: \\heuristic{}, \\numerics{}, \\published{}, \\preprint{}, \\raw{}.\nA new block goes after an existing one: put the line %% after: Setting (a section title or a label) just before it.",
+    "section": "19.3 The TeX format",
+    "text": "19.3 The TeX format\n\nThe TeX source of a page is a standard LaTeX article: one file that compiles with pdflatex and nothing else (on Overleaf, or with TeXShop, TeXstudio, …; typeset twice for the citations). Its preamble is the same for every page and is never changed; a contribution defines no macros, since the wiki has none. Sections and statements are numbered in the PDF only.\n\nStatements: theorem, proposition, lemma, corollary, conjecture, definition, example, remark, claim. The optional argument is the name, the label is the anchor: \\begin{theorem}[name]\\label{thm-name}. Labels start with thm-, prp-, lem-, cor-, def- or clm-.\nAfter a statement: \\lean{} (the Lean banner), the environments idea and architecture, and proofs with an optional title and a label, as in \\begin{proof}[Proof by hypocoercivity]\\label{proof-name}. A claim and its proof sit inside the proof that uses them.\nFormulas: $...$, \\[ ... \\] and align*; no numbered equations and no labels on equations; none of the commands that the wiki’s renderer rejects (the script lists them).\nCitations: \\citet{Key} gives Author (year) and \\citep{Key} gives (Author, year), with the keys of Literature. The reference list at the end of the file is generated from the reference catalogue; a new citation is added to it when the proposal is accepted.\nLinks: on the same page, \\hyperref[thm-name]{the theorem above} rather than \\ref, since the wiki has no numbers; to another page, \\wikilink{Page\\#anchor}{text}.\nLabels: \\heuristic{}, \\numerics{}, \\published{}, \\preprint{}, \\raw{}.\nA new block goes after an existing one: put the line %% after: Setting (a section title or a label) just before it.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>19</span>  <span class='chapter-title'>How to contribute</span>"
@@ -818,8 +807,8 @@
     "objectID": "how-to-contribute.html#anatomy-of-a-result",
     "href": "how-to-contribute.html#anatomy-of-a-result",
     "title": "19  How to contribute",
-    "section": "19.5 Anatomy of a result",
-    "text": "19.5 Anatomy of a result\nA result is a statement followed by its levels of detail, each folded until the reader opens it:\n\nStatement in the simplest form, constants hidden\nLean a one-line banner: formalized or not yet\nIdea the key mechanism in a few lines\nArchitecture the proof as a short chain of steps, later with a diagram\nProof the complete proof, in steps; a statement used only in this proof is a claim, with its own folded proof inside\n\nA statement that several proofs use, or that holds in more generality than one result, goes to the Toolkit (Standard analysis or Enhanced-dissipation tools) and is linked from the proofs. A short proof is written in one piece. The specimen below shows the boxes at work; open the folds to see the nesting.\n\nSpecimen\n\nTheorem 19.1 (specimen) The statement, in its simplest form.\n\n\nLean: not yet formalized · add a certificate\n\n\n\n\n\n\n\nTipIdea\n\n\n\n\n\nThe key mechanism in a few lines, and the heuristic scaling, labelled heuristic.\n\n\n\n\n\n\n\n\n\nNoteProof architecture\n\n\n\n\n\n\nStep 1 reduces the theorem to a claim.\nStep 2 proves the claim.\nStep 3 concludes with a lemma of the toolkit.\n\n\n\n\n\n\n\n\n\n\nNoteProof\n\n\n\n\n\nStep 1. The reduction.\n\nClaim (specimen).\nA statement used only in this proof.\n\n\n\n\n\n\n\nNoteProof of the claim\n\n\n\n\n\nThe proof of the claim, folded inside the proof that uses it.\n\n\n\nStep 2. The conclusion, with a lemma of the toolkit.\nSources. This proof follows …",
+    "section": "19.4 Anatomy of a result",
+    "text": "19.4 Anatomy of a result\n\nA result is a statement followed by its levels of detail, each folded until the reader opens it:\n\n\nStatement in the simplest form, constants hidden\nLean a one-line banner: formalized or not yet\nIdea the key mechanism in a few lines\nArchitecture the proof as a short chain of steps, later with a diagram\nProof the complete proof, in steps; a statement used only in this proof is a claim, with its own folded proof inside\n\n\nA statement that several proofs use, or that holds in more generality than one result, goes to the Toolkit (Standard analysis or Enhanced-dissipation tools) and is linked from the proofs. A short proof is written in one piece. The specimen below shows the boxes at work; open the folds to see the nesting.\n\n\nSpecimen\n\nTheorem 19.1 (specimen)  \n\nThe statement, in its simplest form.\n\n\n\nLean: not yet formalized · add a certificate\n\n\n\n\n\n\n\nTipIdea\n\n\n\n\n\n\nThe key mechanism in a few lines, and the heuristic scaling, labelled heuristic.\n\n\n\n\n\n\n\n\n\n\nNoteProof architecture\n\n\n\n\n\n\n\nStep 1 reduces the theorem to a claim.\nStep 2 proves the claim.\nStep 3 concludes with a lemma of the toolkit.\n\n\n\n\n\n\n\n\n\n\n\nNoteProof\n\n\n\n\n\n\nStep 1. The reduction.\n\n\nClaim (specimen).\n\nA statement used only in this proof.\n\n\n\n\n\n\n\n\nNoteProof of the claim\n\n\n\n\n\n\nThe proof of the claim, folded inside the proof that uses it.\n\n\n\n\n\nStep 2. The conclusion, with a lemma of the toolkit.\n\n\nSources. This proof follows …",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>19</span>  <span class='chapter-title'>How to contribute</span>"
@@ -829,8 +818,8 @@
     "objectID": "how-to-contribute.html#labels",
     "href": "how-to-contribute.html#labels",
     "title": "19  How to contribute",
-    "section": "19.6 Labels",
-    "text": "19.6 Labels\n\ndemo text: text drafted by Claude (AI), until a member of the page team replaces or approves it.\nheuristic: a non-rigorous explanation, kept apart from what is proved.\nnumerics: a computation, with its record on Numerical methods.\npublished, preprint · to be verified, raw · unchecked: the status of an entry on Related results and Raw data: refereed; posted but not refereed; neither posted nor checked by a human (an AI-generated proof, a numerical observation, a sketch).\nGrey quote boxes: AI-generated text, quoted verbatim with its source and date.",
+    "section": "19.5 Labels",
+    "text": "19.5 Labels\n\n\ndemo text: text drafted by Claude (AI), until a member of the page team replaces or approves it.\nheuristic: a non-rigorous explanation, kept apart from what is proved.\nnumerics: a computation, with its record on Numerical methods.\npublished, preprint · to be verified, raw · unchecked: the status of an entry on Related results and Raw data: refereed; posted but not refereed; neither posted nor checked by a human (an AI-generated proof, a numerical observation, a sketch).\nGrey quote boxes: AI-generated text, quoted verbatim with its source and date.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>19</span>  <span class='chapter-title'>How to contribute</span>"
@@ -840,8 +829,8 @@
     "objectID": "how-to-contribute.html#pictures-videos-and-numerics",
     "href": "how-to-contribute.html#pictures-videos-and-numerics",
     "title": "19  How to contribute",
-    "section": "19.7 Pictures, videos and numerics",
-    "text": "19.7 Pictures, videos and numerics\nA picture, a video or a diagram is one line in the wiki, the template Media; in TeX, \\media{video}{file}{caption}. The files are kept in the folder wiki/media of the project; the edition shows them, the wiki shows a box with the caption. Every computed picture or video has a record on Numerical methods, with the method, the parameters, the checks and the code.",
+    "section": "19.6 Pictures, videos and numerics",
+    "text": "19.6 Pictures, videos and numerics\n\nA picture, a video or a diagram is one line in the wiki, the template Media; in TeX, \\media{video}{file}{caption}. The files are kept in the folder wiki/media of the project; the edition shows them, the wiki shows a box with the caption. Every computed picture or video has a record on Numerical methods, with the method, the parameters, the checks and the code.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>19</span>  <span class='chapter-title'>How to contribute</span>"
@@ -851,8 +840,8 @@
     "objectID": "how-to-contribute.html#lean",
     "href": "how-to-contribute.html#lean",
     "title": "19  How to contribute",
-    "section": "19.8 Lean",
-    "text": "19.8 Lean\nUnder each theorem a one-line banner says whether it is formalized: grey while it is not, green with a link to the certificate once it is. Certificates are listed on Lean formalization.",
+    "section": "19.7 Lean",
+    "text": "19.7 Lean\n\nUnder each theorem a one-line banner says whether it is formalized: grey while it is not, green with a link to the certificate once it is. Certificates are listed on Lean formalization.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>19</span>  <span class='chapter-title'>How to contribute</span>"
@@ -862,8 +851,8 @@
     "objectID": "how-to-contribute.html#discussion-and-conduct",
     "href": "how-to-contribute.html#discussion-and-conduct",
     "title": "19  How to contribute",
-    "section": "19.9 Discussion and conduct",
-    "text": "19.9 Discussion and conduct\nDiscussion takes place on Zulip: one channel per part, one topic per page, and one topic per proposal. The line under the title of each page links to its topic; talk pages on the wiki are for small corrections.\n\n\n\nPart\nZulip channel\n\n\n\n\nOverview, Motivation and history\noverview\n\n\nTechniques through examples\nexamples\n\n\nTechniques and general results\ntechniques\n\n\nExtensions and recent advances\nadvances\n\n\nToolkit\ntoolkit\n\n\nNumerical methods\nnumerics\n\n\nLean formalization\nlean\n\n\nAbout this wiki\ncontributing\n\n\n\nDiscuss the mathematics, not the people. Associate editors moderate their channel: they can hide messages and, after a warning, ask the editorial board to remove a member; their decisions can be appealed to the board. The Zulip is endipa.zulipchat.com, by invitation; its administrators invite new members and create channels.",
+    "section": "19.8 Discussion and conduct",
+    "text": "19.8 Discussion and conduct\n\nProposals are discussed on the talk page of the page they change, so that the discussion stays next to the text and in its history. Zulip is for everything else: questions, ideas for new results or new pages, announcements. It has one channel per part and one topic per page; the line under the title of each page links to its topic.\n\n\n\n\nPart\nZulip channel\n\n\n\n\nOverview, Motivation and history\noverview\n\n\nTechniques through examples\nexamples\n\n\nTechniques and general results\ntechniques\n\n\nExtensions and recent advances\nadvances\n\n\nToolkit\ntoolkit\n\n\nNumerical methods\nnumerics\n\n\nLean formalization\nlean\n\n\nAbout this wiki\ncontributing\n\n\n\n\nDiscuss the mathematics, not the people. Associate editors moderate the channel and the talk pages of their part: they can hide messages and, after a warning, ask the editorial board to remove a member; their decisions can be appealed to the board. The Zulip is endipa.zulipchat.com, by invitation; its administrators invite new members and create channels.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>19</span>  <span class='chapter-title'>How to contribute</span>"
@@ -873,8 +862,8 @@
     "objectID": "how-to-contribute.html#formulas-in-the-wiki",
     "href": "how-to-contribute.html#formulas-in-the-wiki",
     "title": "19  How to contribute",
-    "section": "19.10 Formulas in the wiki",
-    "text": "19.10 Formulas in the wiki\nFor editors who write the wiki’s own format.\n\nInline formulas need display=\"inline\", displayed ones display=\"block\"; each formula is written on one line. The renderer rejects \\newcommand, \\label, \\eqref and \\substack. No formulas in headings.\nCitations link to the Literature page by the key of the reference catalogue: [[Literature#BedrossianCotiZelati2017|Bedrossian and Coti Zelati (2017)]]. The section References of each page is generated from the catalogue: add the key to its comment line rather than editing the list.\nTo link to a result, use the id of its box as the anchor, as in Couette flow#thm-couette.",
+    "section": "19.9 Formulas in the wiki",
+    "text": "19.9 Formulas in the wiki\n\nFor editors who write the wiki’s own format.\n\nInline formulas need display=\"inline\", displayed ones display=\"block\"; each formula is written on one line. The renderer rejects \\newcommand, \\label, \\eqref and \\substack. No formulas in headings.\nCitations link to the Literature page by the key of the reference catalogue: [[Literature#BedrossianCotiZelati2017|Bedrossian and Coti Zelati (2017)]]. The section References of each page is generated from the catalogue: add the key to its comment line rather than editing the list.\nTo link to a result, use the id of its box as the anchor, as in Couette flow#thm-couette.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>19</span>  <span class='chapter-title'>How to contribute</span>"
@@ -884,8 +873,8 @@
     "objectID": "how-to-contribute.html#the-edition",
     "href": "how-to-contribute.html#the-edition",
     "title": "19  How to contribute",
-    "section": "19.11 The edition",
-    "text": "19.11 The edition\nA static edition of this wiki, with the pictures, the videos and the TeX source of every page, is built from the wiki’s text by a script and never edited by hand: endipa.github.io.",
+    "section": "19.10 The edition",
+    "text": "19.10 The edition\n\nA static edition of this wiki, with the pictures, the videos and the TeX source of every page, is built from the wiki’s text by a script and never edited by hand: endipa.github.io.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>19</span>  <span class='chapter-title'>How to contribute</span>"
@@ -896,7 +885,7 @@
     "href": "contributors.html",
     "title": "20  Contributors",
     "section": "",
-    "text": "20.1 Editorial board\nThe people who write and check this wiki, by role. How they work together is described in How to contribute.\nDecides the scope and the structure of the wiki, appoints the associate editors, and settles a discussion that ends without consensus.",
+    "text": "20.1 Editorial board",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>20</span>  <span class='chapter-title'>Contributors</span>"
@@ -907,7 +896,7 @@
     "href": "contributors.html#editorial-board",
     "title": "20  Contributors",
     "section": "",
-    "text": "Names and roles.\nPropose a text on Zulip →",
+    "text": "Decides the scope and the structure of the wiki, appoints the associate editors, and settles a discussion that ends without consensus.\n\n\nNames and roles.\nPropose a text →",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>20</span>  <span class='chapter-title'>Contributors</span>"
@@ -918,7 +907,7 @@
     "href": "contributors.html#associate-editors",
     "title": "20  Contributors",
     "section": "20.2 Associate editors",
-    "text": "20.2 Associate editors\nEach part of the wiki has at least one associate editor, who follows its Zulip channel, runs the discussion of every proposal there, asks reviewers, decides, and writes accepted changes into the wiki. A busy part or page can have several.\n\nNames, with their parts.\nPropose a text on Zulip →",
+    "text": "20.2 Associate editors\n\nEach part of the wiki has at least one associate editor, who follows its Zulip channel, runs the discussion of every proposal there, asks reviewers, decides, and writes accepted changes into the wiki. A busy part or page can have several.\n\n\nNames, with their parts.\nPropose a text →",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>20</span>  <span class='chapter-title'>Contributors</span>"
@@ -929,7 +918,7 @@
     "href": "contributors.html#reviewers",
     "title": "20  Contributors",
     "section": "20.3 Reviewers",
-    "text": "20.3 Reviewers\nAsked by an associate editor to check a proposal: the mathematics, the format, or both. Reviews are posted in the Zulip topic of the proposal. A busy page can have its own reviewers, named in its first line.\n\nNames.\nPropose a text on Zulip →",
+    "text": "20.3 Reviewers\n\nAsked by an associate editor to check a proposal: the mathematics, the format, or both. Reviews are posted in the Zulip topic of the proposal. A busy page can have its own reviewers, named in its first line.\n\n\nNames.\nPropose a text →",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>20</span>  <span class='chapter-title'>Contributors</span>"
@@ -940,7 +929,7 @@
     "href": "contributors.html#community",
     "title": "20  Contributors",
     "section": "20.4 Community",
-    "text": "20.4 Community\nMembers of the Zulip, who propose and discuss changes. A new member is endorsed by an editor or by a member at least two years past the PhD. Early-stage researchers (PhD students, and researchers up to two years after the PhD) can choose to be listed as such.\n\nNames.\nPropose a text on Zulip →",
+    "text": "20.4 Community\n\nMembers of the Zulip, who propose and discuss changes. A new member is endorsed by an editor or by a member at least two years past the PhD. Early-stage researchers (PhD students, and researchers up to two years after the PhD) can choose to be listed as such.\n\n\nNames.\nPropose a text →",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>20</span>  <span class='chapter-title'>Contributors</span>"
@@ -951,7 +940,7 @@
     "href": "provenance-and-ai-use.html",
     "title": "21  Provenance and AI use",
     "section": "",
-    "text": "21.1 Rules\nThis page records where each piece of the wiki comes from and who has checked what. The labels are explained on How to contribute. demo text",
+    "text": "21.1 Rules",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>21</span>  <span class='chapter-title'>Provenance and AI use</span>"
@@ -973,7 +962,7 @@
     "href": "provenance-and-ai-use.html#this-version",
     "title": "21  Provenance and AI use",
     "section": "21.2 This version",
-    "text": "21.2 This version\nOn 8 November 2026 the wiki was reorganized into the parts drawn on the map, and its pages were reduced to a skeleton, to be filled by the editorial board and contributors. The first version (6 November 2026: Couette flow with three proofs, a hypocoercivity page, the toolkit, the history) is kept in the project folder, in archive/2026-11-06-first-version. The only computed content is the video on the Overview, with its record on Numerical methods, made by Claude (AI) and not yet checked by a human. The TeX source of each page is generated from the wiki by a script.",
+    "text": "21.2 This version\n\nOn 8 November 2026 the wiki was reorganized into the parts drawn on the map, and its pages were reduced to a skeleton, to be filled by the editorial board and contributors. The first version (6 November 2026: Couette flow with three proofs, a hypocoercivity page, the toolkit, the history) is kept in the project folder, in archive/2026-11-06-first-version. The only computed content is the video on the Overview, with its record on Numerical methods, made by Claude (AI) and not yet checked by a human. The TeX source of each page is generated from the wiki by a script.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>21</span>  <span class='chapter-title'>Provenance and AI use</span>"
@@ -995,7 +984,7 @@
     "href": "provenance-and-ai-use.html#how-a-result-becomes-checked",
     "title": "21  Provenance and AI use",
     "section": "21.4 How a result becomes checked",
-    "text": "21.4 How a result becomes checked\n\nTo be agreed with the editorial board: how many readers a proof needs before it loses its label, and whether a page records who read which proof.\nPropose a text on Zulip →",
+    "text": "21.4 How a result becomes checked\n\nTo be agreed with the editorial board: how many readers a proof needs before it loses its label, and whether a page records who read which proof.\nPropose a text →",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>21</span>  <span class='chapter-title'>Provenance and AI use</span>"
@@ -1006,7 +995,7 @@
     "href": "literature.html",
     "title": "22  Literature",
     "section": "",
-    "text": "22.1 Orientation\nThe papers of the reference catalogue, one line each, grouped by topic. This page is generated by a script from the catalogue; to add or correct an entry, propose the change as a small correction; the catalogue is updated first. Pages cite these entries by their key, for instance Bedrossian and Coti Zelati (2017). Preprints are listed with their arXiv identifier. The list is a working bibliography, not a survey of the field.",
+    "text": "22.1 Orientation",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>22</span>  <span class='chapter-title'>Literature</span>"
@@ -1028,7 +1017,7 @@
     "href": "literature.html#general-mechanisms-and-rate-limitations",
     "title": "22  Literature",
     "section": "22.2 General mechanisms and rate limitations",
-    "text": "22.2 General mechanisms and rate limitations\n\n P. Constantin, A. Kiselev, L. Ryzhik and A. Zlatoš, Diffusion and mixing in fluid flow, Annals of Mathematics 168 (2008), 643–674, arXiv:math/0509663.\n W. Cooperman, G. Iyer, K. Rowan and S. Son, Exponentially mixing flows with slow enhanced dissipation, preprint (2025), arXiv:2507.21305.\n M. Coti Zelati, M. G. Delgadino and T. M. Elgindi, On the relation between enhanced dissipation timescales and mixing rates, Communications on Pure and Applied Mathematics 73 (2020), 1205–1244, arXiv:1806.03258.\n Y. Feng and G. Iyer, Dissipation enhancement by mixing, Nonlinearity 32 (2019), 1810–1851, arXiv:1806.03699.\n C. Seis, Bounds on the rate of enhanced dissipation, Communications in Mathematical Physics 399 (2023), 2071–2081, arXiv:2003.08794.\n D. Wei, Diffusion and mixing in fluid flow via the resolvent estimate, Science China Mathematics 64 (2021), 507–518, arXiv:1811.11904.",
+    "text": "22.2 General mechanisms and rate limitations\n\n\n P. Constantin, A. Kiselev, L. Ryzhik and A. Zlatoš, Diffusion and mixing in fluid flow, Annals of Mathematics 168 (2008), 643–674, arXiv:math/0509663.\n W. Cooperman, G. Iyer, K. Rowan and S. Son, Exponentially mixing flows with slow enhanced dissipation, preprint (2025), arXiv:2507.21305.\n M. Coti Zelati, M. G. Delgadino and T. M. Elgindi, On the relation between enhanced dissipation timescales and mixing rates, Communications on Pure and Applied Mathematics 73 (2020), 1205–1244, arXiv:1806.03258.\n Y. Feng and G. Iyer, Dissipation enhancement by mixing, Nonlinearity 32 (2019), 1810–1851, arXiv:1806.03699.\n C. Seis, Bounds on the rate of enhanced dissipation, Communications in Mathematical Physics 399 (2023), 2071–2081, arXiv:2003.08794.\n D. Wei, Diffusion and mixing in fluid flow via the resolvent estimate, Science China Mathematics 64 (2021), 507–518, arXiv:1811.11904.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>22</span>  <span class='chapter-title'>Literature</span>"
@@ -1039,7 +1028,7 @@
     "href": "literature.html#smooth-stationary-shears",
     "title": "22  Literature",
     "section": "22.3 Smooth stationary shears",
-    "text": "22.3 Smooth stationary shears\n\n D. Albritton, R. Beekie and M. Novack, Enhanced dissipation and Hörmander’s hypoellipticity, Journal of Functional Analysis 283 (2022), 109522, arXiv:2105.12308.\n J. Bedrossian and M. Coti Zelati, Enhanced dissipation, hypoellipticity, and anomalous small noise inviscid limits in shear flows, Archive for Rational Mechanics and Analysis 224 (2017), 1161–1204, arXiv:1510.08098.\n M. Coti Zelati, Stable mixing estimates in the infinite Péclet number limit, Journal of Functional Analysis 279 (2020), 108562, arXiv:1909.01310.\n M. Coti Zelati and T. D. Drivas, A stochastic approach to enhanced diffusion, Annali della Scuola Normale Superiore di Pisa, Classe di Scienze 22 (2021), 811–834, arXiv:1911.09995.\n M. Coti Zelati and T. Gallay, Enhanced dissipation and Taylor dispersion in higher-dimensional parallel shear flows, Journal of the London Mathematical Society 108 (2023), 1358–1392, arXiv:2108.11192.",
+    "text": "22.3 Smooth stationary shears\n\n\n D. Albritton, R. Beekie and M. Novack, Enhanced dissipation and Hörmander’s hypoellipticity, Journal of Functional Analysis 283 (2022), 109522, arXiv:2105.12308.\n J. Bedrossian and M. Coti Zelati, Enhanced dissipation, hypoellipticity, and anomalous small noise inviscid limits in shear flows, Archive for Rational Mechanics and Analysis 224 (2017), 1161–1204, arXiv:1510.08098.\n M. Coti Zelati, Stable mixing estimates in the infinite Péclet number limit, Journal of Functional Analysis 279 (2020), 108562, arXiv:1909.01310.\n M. Coti Zelati and T. D. Drivas, A stochastic approach to enhanced diffusion, Annali della Scuola Normale Superiore di Pisa, Classe di Scienze 22 (2021), 811–834, arXiv:1911.09995.\n M. Coti Zelati and T. Gallay, Enhanced dissipation and Taylor dispersion in higher-dimensional parallel shear flows, Journal of the London Mathematical Society 108 (2023), 1358–1392, arXiv:2108.11192.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>22</span>  <span class='chapter-title'>Literature</span>"
@@ -1050,7 +1039,7 @@
     "href": "literature.html#circular-and-hamiltonian-flows-and-taylor-dispersion",
     "title": "22  Literature",
     "section": "22.4 Circular and Hamiltonian flows and Taylor dispersion",
-    "text": "22.4 Circular and Hamiltonian flows and Taylor dispersion\n\n M. Beck, O. Chaudhary and C. E. Wayne, Analysis of enhanced diffusion in Taylor dispersion via a model problem, Hamiltonian Partial Differential Equations and Applications, Fields Institute Communications 75 (2015), pp. 31–71, arXiv:1501.05877.\n M. Beck, O. Chaudhary and C. E. Wayne, Rigorous justification of Taylor dispersion via center manifolds and hypocoercivity, Archive for Rational Mechanics and Analysis 235 (2020), 1105–1149, arXiv:1804.06916.\n E. Bruè, M. Coti Zelati and E. Marconi, Enhanced dissipation for two-dimensional Hamiltonian flows, Archive for Rational Mechanics and Analysis 248 (2024), Article 84, arXiv:2211.14057.\n M. Coti Zelati and M. Dolce, Separation of time-scales in drift-diffusion equations on R², Journal de Mathématiques Pures et Appliquées 142 (2020), 58–75, arXiv:1907.04012.\n M. Coti Zelati, M. Dolce and C. Lo, Diffusion enhancement and Taylor dispersion for rotationally symmetric flows in discs and pipes, Journal of Mathematical Fluid Mechanics 26 (2024), Article 12, arXiv:2305.18162.\n M. Dolce, C. J. P. Johansson and M. Sorella, Dissipation enhancing properties for a class of Hamiltonian flows with closed streamlines, Communications in Partial Differential Equations 50 (2025), 301–352, arXiv:2407.06884.\n Y. Feng, A. L. Mazzucato and C. Nobili, Enhanced dissipation by circularly symmetric and parallel pipe flows, Physica D: Nonlinear Phenomena 445 (2023), 133640, doi:10.1016/j.physd.2022.133640.\n G. Iyer and H. Zhou, Quantifying the dissipation enhancement of cellular flows, SIAM Journal on Mathematical Analysis 55 (2023), 6496–6516, arXiv:2209.11645.\n T. Li and L. Zhang, Enhanced dissipation and Taylor dispersion by a parallel shear flow in an infinite cylinder with unbounded cross section, preprint (2025), arXiv:2510.13097.",
+    "text": "22.4 Circular and Hamiltonian flows and Taylor dispersion\n\n\n M. Beck, O. Chaudhary and C. E. Wayne, Analysis of enhanced diffusion in Taylor dispersion via a model problem, Hamiltonian Partial Differential Equations and Applications, Fields Institute Communications 75 (2015), pp. 31–71, arXiv:1501.05877.\n M. Beck, O. Chaudhary and C. E. Wayne, Rigorous justification of Taylor dispersion via center manifolds and hypocoercivity, Archive for Rational Mechanics and Analysis 235 (2020), 1105–1149, arXiv:1804.06916.\n E. Bruè, M. Coti Zelati and E. Marconi, Enhanced dissipation for two-dimensional Hamiltonian flows, Archive for Rational Mechanics and Analysis 248 (2024), Article 84, arXiv:2211.14057.\n M. Coti Zelati and M. Dolce, Separation of time-scales in drift-diffusion equations on R², Journal de Mathématiques Pures et Appliquées 142 (2020), 58–75, arXiv:1907.04012.\n M. Coti Zelati, M. Dolce and C. Lo, Diffusion enhancement and Taylor dispersion for rotationally symmetric flows in discs and pipes, Journal of Mathematical Fluid Mechanics 26 (2024), Article 12, arXiv:2305.18162.\n M. Dolce, C. J. P. Johansson and M. Sorella, Dissipation enhancing properties for a class of Hamiltonian flows with closed streamlines, Communications in Partial Differential Equations 50 (2025), 301–352, arXiv:2407.06884.\n Y. Feng, A. L. Mazzucato and C. Nobili, Enhanced dissipation by circularly symmetric and parallel pipe flows, Physica D: Nonlinear Phenomena 445 (2023), 133640, doi:10.1016/j.physd.2022.133640.\n G. Iyer and H. Zhou, Quantifying the dissipation enhancement of cellular flows, SIAM Journal on Mathematical Analysis 55 (2023), 6496–6516, arXiv:2209.11645.\n T. Li and L. Zhang, Enhanced dissipation and Taylor dispersion by a parallel shear flow in an infinite cylinder with unbounded cross section, preprint (2025), arXiv:2510.13097.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>22</span>  <span class='chapter-title'>Literature</span>"
@@ -1061,7 +1050,7 @@
     "href": "literature.html#time-dependent-shears-and-localized-estimates",
     "title": "22  Literature",
     "section": "22.5 Time dependent shears and localized estimates",
-    "text": "22.5 Time dependent shears and localized estimates\n\n J. Bedrossian, S. He, S. Iyer and F. Wang, Pseudo-Gevrey smoothing for the passive scalar equations near Couette, Journal of Functional Analysis 289 (2025), 110987, arXiv:2405.19233.\n J. Benthaus, G. M. Coclite and C. Nobili, Mixing and enhanced dissipation in a time-translating shear flow, preprint (2026), arXiv:2603.14624.\n J. Benthaus and C. Nobili, Enhanced dissipation via time-modulated velocity fields, Evolution Equations and Control Theory 15 (2026), 21–50, arXiv:2501.16905.\n D. Coble and S. He, A note on enhanced dissipation of time-dependent shear flows, Communications in Mathematical Sciences 22 (2024), 1685–1700, arXiv:2309.15738.\n S. He, Localized Enhanced Dissipation: A Hypocoercivity Approach, preprint (2026), arXiv:2603.14657.",
+    "text": "22.5 Time dependent shears and localized estimates\n\n\n J. Bedrossian, S. He, S. Iyer and F. Wang, Pseudo-Gevrey smoothing for the passive scalar equations near Couette, Journal of Functional Analysis 289 (2025), 110987, arXiv:2405.19233.\n J. Benthaus, G. M. Coclite and C. Nobili, Mixing and enhanced dissipation in a time-translating shear flow, preprint (2026), arXiv:2603.14624.\n J. Benthaus and C. Nobili, Enhanced dissipation via time-modulated velocity fields, Evolution Equations and Control Theory 15 (2026), 21–50, arXiv:2501.16905.\n D. Coble and S. He, A note on enhanced dissipation of time-dependent shear flows, Communications in Mathematical Sciences 22 (2024), 1685–1700, arXiv:2309.15738.\n S. He, Localized Enhanced Dissipation: A Hypocoercivity Approach, preprint (2026), arXiv:2603.14657.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>22</span>  <span class='chapter-title'>Literature</span>"
@@ -1072,7 +1061,7 @@
     "href": "literature.html#deterministic-mixing-constructions",
     "title": "22  Literature",
     "section": "22.6 Deterministic mixing constructions",
-    "text": "22.6 Deterministic mixing constructions\n\n T. M. Elgindi, K. Liss and J. C. Mattingly, Optimal enhanced dissipation and mixing for a time-periodic, Lipschitz velocity field on T2, Duke Mathematical Journal 174 (2025), 1209–1260, arXiv:2304.05374.",
+    "text": "22.6 Deterministic mixing constructions\n\n\n T. M. Elgindi, K. Liss and J. C. Mattingly, Optimal enhanced dissipation and mixing for a time-periodic, Lipschitz velocity field on T2, Duke Mathematical Journal 174 (2025), 1209–1260, arXiv:2304.05374.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>22</span>  <span class='chapter-title'>Literature</span>"
@@ -1083,7 +1072,7 @@
     "href": "literature.html#rough-velocities-and-generalized-diffusion",
     "title": "22  Literature",
     "section": "22.7 Rough velocities and generalized diffusion",
-    "text": "22.7 Rough velocities and generalized diffusion\n\n M. Colombo, M. Coti Zelati and K. Widmayer, Mixing and diffusion for rough shear flows, Ars Inveniendi Analytica, Paper No. 2 (2021), 21 pp., arXiv:2009.12268.\n Y. Feng and A. L. Mazzucato, Dissipation enhancement by shear flows for generalized diffusion operators in high dimension, Communications in Mathematical Sciences 23 (2025), 2203–2215, doi:10.4310/CMS.250930031923.\n L. Galeati and M. Gubinelli, Mixing for generic rough shear flows, SIAM Journal on Mathematical Analysis 55 (2023), 7240–7272, arXiv:2107.12115.\n S. He, Enhanced dissipation, hypoellipticity for passive scalar equations with fractional dissipation, Journal of Functional Analysis 282 (2022), 109319, arXiv:2103.07906.\n M. Romito and L. Roveri, Instantaneous Total Enhanced Dissipation For Very Rough Shear Flows, preprint (2025), arXiv:2510.27331.",
+    "text": "22.7 Rough velocities and generalized diffusion\n\n\n M. Colombo, M. Coti Zelati and K. Widmayer, Mixing and diffusion for rough shear flows, Ars Inveniendi Analytica, Paper No. 2 (2021), 21 pp., arXiv:2009.12268.\n Y. Feng and A. L. Mazzucato, Dissipation enhancement by shear flows for generalized diffusion operators in high dimension, Communications in Mathematical Sciences 23 (2025), 2203–2215, doi:10.4310/CMS.250930031923.\n L. Galeati and M. Gubinelli, Mixing for generic rough shear flows, SIAM Journal on Mathematical Analysis 55 (2023), 7240–7272, arXiv:2107.12115.\n S. He, Enhanced dissipation, hypoellipticity for passive scalar equations with fractional dissipation, Journal of Functional Analysis 282 (2022), 109319, arXiv:2103.07906.\n M. Romito and L. Roveri, Instantaneous Total Enhanced Dissipation For Very Rough Shear Flows, preprint (2025), arXiv:2510.27331.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>22</span>  <span class='chapter-title'>Literature</span>"
@@ -1094,7 +1083,7 @@
     "href": "literature.html#random-stirring-and-transport-noise",
     "title": "22  Literature",
     "section": "22.8 Random stirring and transport noise",
-    "text": "22.8 Random stirring and transport noise\n\n J. Bedrossian, A. Blumenthal and S. Punshon-Smith, Almost-sure enhanced dissipation and uniform-in-diffusivity exponential mixing for advection-diffusion by stochastic Navier-Stokes, Probability Theory and Related Fields 179 (2021), 777–834, arXiv:1911.01561.\n A. Blumenthal, M. Coti Zelati and R. S. Gvalani, Exponential mixing for random dynamical systems and an example of Pierrehumbert, Annals of Probability 51 (2023), 1559–1601, arXiv:2204.13651.\n W. Cooperman, G. Iyer and S. Son, A Harris theorem for enhanced dissipation, and an example of Pierrehumbert, Nonlinearity 38 (2025), 045027, arXiv:2403.19858.\n M. Coti Zelati, M. Hairer and D. Villringer, A Stochastic RAGE Theorem and Enhanced Dissipation for Transport Noise, preprint (2025), arXiv:2507.11422.\n A. Del Zotto and M. Nualart, Exponential mixing and enhanced dissipation on the unit sphere with Rossby-Haurwitz flows, preprint (2026), arXiv:2606.11055.\n F. Flandoli and D. Luo, Enhanced dissipation and Lyapunov exponents for stochastic transport-diffusion equations with small molecular diffusivity and small noise intensity, Stochastics and Partial Differential Equations: Analysis and Computations 14 (2026), 1062–1076, doi:10.1007/s40072-026-00426-y.",
+    "text": "22.8 Random stirring and transport noise\n\n\n J. Bedrossian, A. Blumenthal and S. Punshon-Smith, Almost-sure enhanced dissipation and uniform-in-diffusivity exponential mixing for advection-diffusion by stochastic Navier-Stokes, Probability Theory and Related Fields 179 (2021), 777–834, arXiv:1911.01561.\n A. Blumenthal, M. Coti Zelati and R. S. Gvalani, Exponential mixing for random dynamical systems and an example of Pierrehumbert, Annals of Probability 51 (2023), 1559–1601, arXiv:2204.13651.\n W. Cooperman, G. Iyer and S. Son, A Harris theorem for enhanced dissipation, and an example of Pierrehumbert, Nonlinearity 38 (2025), 045027, arXiv:2403.19858.\n M. Coti Zelati, M. Hairer and D. Villringer, A Stochastic RAGE Theorem and Enhanced Dissipation for Transport Noise, preprint (2025), arXiv:2507.11422.\n A. Del Zotto and M. Nualart, Exponential mixing and enhanced dissipation on the unit sphere with Rossby-Haurwitz flows, preprint (2026), arXiv:2606.11055.\n F. Flandoli and D. Luo, Enhanced dissipation and Lyapunov exponents for stochastic transport-diffusion equations with small molecular diffusivity and small noise intensity, Stochastics and Partial Differential Equations: Analysis and Computations 14 (2026), 1062–1076, doi:10.1007/s40072-026-00426-y.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>22</span>  <span class='chapter-title'>Literature</span>"
@@ -1105,7 +1094,7 @@
     "href": "literature.html#inviscid-mixing-anomalous-dissipation-and-further-lower-bounds",
     "title": "22  Literature",
     "section": "22.9 Inviscid mixing anomalous dissipation and further lower bounds",
-    "text": "22.9 Inviscid mixing anomalous dissipation and further lower bounds\n\n G. Alberti, G. Crippa and A. L. Mazzucato, Exponential self-similar mixing by incompressible flows, Journal of the American Mathematical Society 32 (2019), 445–490, arXiv:1605.02090.\n G. Crippa, T. Elgindi, G. Iyer and A. L. Mazzucato, Growth of Sobolev norms and loss of regularity in transport equations, Philosophical Transactions of the Royal Society A 380 (2022), 20210024, arXiv:2109.14975.\n T. D. Drivas, T. M. Elgindi, G. Iyer and I. Jeong, Anomalous dissipation in passive scalar transport, Archive for Rational Mechanics and Analysis 243 (2022), 1151–1180, arXiv:1911.03271.\n T. M. Elgindi and A. Zlatoš, Universal mixers in all dimensions, Advances in Mathematics 356 (2019), 106807, arXiv:1809.09614.\n T. M. Elgindi and K. Liss, Norm growth, non-uniqueness, and anomalous dissipation in passive scalars, Archive for Rational Mechanics and Analysis 248 (2024), arXiv:2309.08576.\n G. Iyer, A. Kiselev and X. Xu, Lower bounds on the mix norm of passive scalars advected by incompressible enstrophy-constrained flows, Nonlinearity 27 (2014), 973–985, arXiv:1310.2986.\n C. Nobili and S. Pottel, Lower bounds on mixing norms for the advection diffusion equation in Rd, Nonlinear Differential Equations and Applications NoDEA 29 (2022), Article 12, arXiv:2006.04614.",
+    "text": "22.9 Inviscid mixing anomalous dissipation and further lower bounds\n\n\n G. Alberti, G. Crippa and A. L. Mazzucato, Exponential self-similar mixing by incompressible flows, Journal of the American Mathematical Society 32 (2019), 445–490, arXiv:1605.02090.\n G. Crippa, T. Elgindi, G. Iyer and A. L. Mazzucato, Growth of Sobolev norms and loss of regularity in transport equations, Philosophical Transactions of the Royal Society A 380 (2022), 20210024, arXiv:2109.14975.\n T. D. Drivas, T. M. Elgindi, G. Iyer and I. Jeong, Anomalous dissipation in passive scalar transport, Archive for Rational Mechanics and Analysis 243 (2022), 1151–1180, arXiv:1911.03271.\n T. M. Elgindi and A. Zlatoš, Universal mixers in all dimensions, Advances in Mathematics 356 (2019), 106807, arXiv:1809.09614.\n T. M. Elgindi and K. Liss, Norm growth, non-uniqueness, and anomalous dissipation in passive scalars, Archive for Rational Mechanics and Analysis 248 (2024), arXiv:2309.08576.\n G. Iyer, A. Kiselev and X. Xu, Lower bounds on the mix norm of passive scalars advected by incompressible enstrophy-constrained flows, Nonlinearity 27 (2014), 973–985, arXiv:1310.2986.\n C. Nobili and S. Pottel, Lower bounds on mixing norms for the advection diffusion equation in Rd, Nonlinear Differential Equations and Applications NoDEA 29 (2022), Article 12, arXiv:2006.04614.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>22</span>  <span class='chapter-title'>Literature</span>"

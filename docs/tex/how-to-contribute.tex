@@ -113,31 +113,34 @@
 \pagestatus{Page team: Michele Dolce · Status: proposal, to be agreed with the editorial board · Text: \demo{}}
 \zulip{contributing}
 
-This wiki is written from the bottom up, the way a journal works: members of the community propose changes, proposals are discussed and reviewed in the open, an associate editor decides, and accepted changes are written into the wiki. The roles, and who holds them, are on \wikilink{Contributors}{}. \demo{}
+This wiki is written from the bottom up, the way a journal works: members of the community propose changes on the talk page of the page they change, proposals are discussed and reviewed there in the open, an associate editor decides, and accepted changes are written into the wiki. The roles, and who holds them, are on \wikilink{Contributors}{}. \demo{}
 
 \section{Roles}
 \begin{itemize}
   \item \textbf{Editorial board}: the scope and the structure of the wiki; appoints the associate editors; settles discussions that end without consensus.
-  \item \textbf{Associate editors}: one or more per part, following its Zulip channel. They run the discussion of each proposal, ask reviewers, decide, and write accepted changes into the wiki.
-  \item \textbf{Reviewers}: check a proposal at the request of an associate editor, in the open, in its Zulip topic.
+  \item \textbf{Associate editors}: one or more per part, following the talk pages of its pages and its Zulip channel. They run the discussion of each proposal, ask reviewers, and decide.
+  \item \textbf{Reviewers}: check a proposal at the request of an associate editor, in the open, on the talk page where it was made.
   \item \textbf{Community}: propose and discuss. New members are endorsed by an editor or by a member at least two years past the PhD.
 \end{itemize}
 The first line of each page names its team. As the wiki grows, busy parts and pages get more associate editors and reviewers; the roles stay the same.
-On the wiki, everyone with a role is a \emph{member} (reads every page and writes on talk pages); the editorial board and the associate editors are also \emph{editors} (edit articles and templates); administrators give these rights.
+On the wiki, everyone with a role is a \emph{member} (reads every page and writes on talk pages); the editorial board and the associate editors are also \emph{editors} (edit articles and templates, and write accepted proposals into the pages); administrators give these rights.
 
-\section{Small corrections}
-Typos, broken links, a missing reference: members of the wiki leave a note on the talk page of the page (tab \emph{Discussion}, then \emph{Add topic}); others write in the Zulip channel \emph{contributing}, naming the page. The editors go through these notes regularly and make the changes. For now the wiki is open only to invited members.
+\section{Proposing a change}
+Every change to a page, from a typo to a new proof, is a \emph{proposal}: a topic on the talk page of the page (tab \emph{Discussion}), which members of the wiki open and discuss. There are two ways to open one.
+\begin{itemize}
+  \item \emph{One paragraph} (a typo, a sentence, a formula, a shorter argument): in the \href{https://endipa.github.io}{edition}, the pencil button next to a paragraph shows its TeX. Change it, say why, and open the proposal: the wiki shows a new topic on the talk page, already filled in, to be saved.
+  \item \emph{Larger changes} (a section, a statement, a proof, a new section): the link \emph{new proposal} under the title of the page in the wiki (\emph{Propose a change} in the edition) opens a new topic with a short form. Download the TeX source of the page: link \emph{TeX source} under the title of every page of the edition (with the figures, in a zip, when the page has some). It is a standard LaTeX article that compiles as it is. In the Overleaf project of the whole wiki (\emph{Open the whole wiki in Overleaf}, on the Overview) every page is a file of the folder \emph{pages}, which can be proposed in the same way. Change what you want and check that it compiles; then paste in the form only the blocks you changed (a section, or a statement or a proof with its label), and say what they change, why, and which sources they use.
+\end{itemize}
+Those who are not yet members of the wiki write in the Zulip channel \emph{contributing}, naming the page.
 
-\section{Mathematical contributions}
-A new proof, a shorter argument, a correction to a statement, a new result or a new page goes through Zulip.
+\subsection{How a proposal is decided}
 \begin{enumerate}
-  \item Download the TeX source of the page: link \emph{TeX source} under the title of every page of the edition (with the figures, in a zip, when the page has some). It is a standard LaTeX article that compiles as it is. In the Overleaf project of the whole wiki (\emph{Open the whole wiki in Overleaf}, on the Overview) every page is a file of the folder \emph{pages}, which can be proposed in the same way. Change what you want and check that it compiles; then keep only the blocks you changed: a section, or a statement or a proof with its label.
-  \item Open a topic in the Zulip channel of the part, titled \emph{Proposal: short title}. Attach the file and say in a few lines what it changes, why, and which sources it uses.
-  \item For two weeks the community and the reviewers discuss the proposal in its topic.
-  \item Within a week after that, the associate editor decides: accepted, to be revised, or declined. If the discussion ended without consensus, the editorial board decides.
-  \item A script converts the accepted file to the wiki's format, shows the editor exactly what changes on the page, and flags new citations and links. The associate editor writes the change into the wiki, links the Zulip topic in the edit summary, and the page credits its author.
+  \item The community and the reviewers discuss the proposal in its topic, with replies that start with \emph{Support} or \emph{Oppose}, give a reason, and are signed. The author may revise the proposed text in place; the history of the talk page keeps every version.
+  \item When the discussion has settled, an associate editor of the part decides: in the box at the top of the topic they change \texttt{status=open} to \texttt{status=accepted}, or to \texttt{status=declined}, and sign a reply that says why. There is no deadline. If the discussion ends without consensus, the editorial board decides.
+  \item An editor writes the accepted proposal into the page with a script. The script converts the TeX to the wiki's format, refuses a paragraph that has changed since the proposal was made, shows exactly what changes on the page, and flags new citations and links. The edit summary links the topic and credits its author, and the box of the topic becomes \emph{applied}, with a link to the change.
 \end{enumerate}
-A proposal changes only the blocks it contains. A paper that is not yet on \wikilink{Literature}{} is proposed on its own, as a small correction of that page.
+Small corrections (a typo, a broken link, a missing reference) go the same way, and are usually accepted without discussion. Open and accepted proposals are listed in \wikilink{:Category:Open proposals}{} and \wikilink{:Category:Accepted proposals}{}.
+A proposal changes only the blocks it contains. A paper that is not yet on \wikilink{Literature}{} is proposed on its own, on the talk page of the Literature page.
 
 \section{The TeX format}
 The TeX source of a page is a standard LaTeX article: one file that compiles with pdflatex and nothing else (on Overleaf, or with TeXShop, TeXstudio, ...; typeset twice for the citations). Its preamble is the same for every page and is never changed; a contribution defines no macros, since the wiki has none. Sections and statements are numbered in the PDF only.
@@ -206,7 +209,7 @@ A picture, a video or a diagram is one line in the wiki, the template \wikilink{
 Under each theorem a one-line banner says whether it is formalized: grey while it is not, green with a link to the certificate once it is. Certificates are listed on \wikilink{Lean formalization}{}.
 
 \section{Discussion and conduct}
-Discussion takes place on Zulip: one channel per part, one topic per page, and one topic per proposal. The line under the title of each page links to its topic; talk pages on the wiki are for small corrections.
+Proposals are discussed on the talk page of the page they change, so that the discussion stays next to the text and in its history. Zulip is for everything else: questions, ideas for new results or new pages, announcements. It has one channel per part and one topic per page; the line under the title of each page links to its topic.
 \begin{wikitable}{2}
 \header{Part & Zulip channel}
 \row{Overview, Motivation and history & overview}
@@ -218,7 +221,7 @@ Discussion takes place on Zulip: one channel per part, one topic per page, and o
 \row{Lean formalization & lean}
 \row{About this wiki & contributing}
 \end{wikitable}
-Discuss the mathematics, not the people. Associate editors moderate their channel: they can hide messages and, after a warning, ask the editorial board to remove a member; their decisions can be appealed to the board. The Zulip is \href{https://endipa.zulipchat.com}{endipa.zulipchat.com}, by invitation; its administrators invite new members and create channels.
+Discuss the mathematics, not the people. Associate editors moderate the channel and the talk pages of their part: they can hide messages and, after a warning, ask the editorial board to remove a member; their decisions can be appealed to the board. The Zulip is \href{https://endipa.zulipchat.com}{endipa.zulipchat.com}, by invitation; its administrators invite new members and create channels.
 
 \section{Formulas in the wiki}
 For editors who write the wiki's own format.

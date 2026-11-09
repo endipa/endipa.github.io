@@ -64,3 +64,8 @@ table.levels.infobox { border: 1px solid #d5dbe3; border-radius: 4px; padding: 0
 .lvl .lvl { margin: 0.6em 0; }
 .lvl pre { overflow-x: auto; font-size: 0.85em; }
 .navtree-single .vector-menu-heading, .navtree-single > h3 { display: none; }
+.proposal-box { border: 1px solid #c8ccd1; border-left: 4px solid #36c; border-radius: 3px; background: #f3f6fc; padding: 0.5em 0.9em; margin: 0.3em 0 0.9em; }
+.proposal-accepted { border-left-color: #14866d; background: #eff8f5; }
+.proposal-applied { border-left-color: #72777d; background: #f8f9fa; }
+.proposal-declined { border-left-color: #b32424; background: #fdf3f3; }
+.proposal-meta { font-size: 0.88em; color: #54595d; margin-top: 0.3em; }

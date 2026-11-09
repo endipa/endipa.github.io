@@ -116,10 +116,6 @@ A passive scalar is a quantity carried by a fluid without acting on it, such as 
 \[\partial_t f+u\cdot\nabla f=\nu\Delta f,\qquad \nabla\cdot u=0.\]
 Diffusion alone dissipates the scalar on a time scale of order $1/\nu$, which is very long when $\nu$ is small. The flow, on the other hand, dissipates nothing: it only rearranges the scalar. In doing so, it can transfer large-scale structures to small scales, for instance by stretching the scalar into thin filaments, and at small scales diffusion is much more efficient. The result is that $f$ decays on a time scale much shorter than $1/\nu$: this is \emph{enhanced dissipation}.
 
-\begin{note}[Beyond passive scalars]
-The same mechanism, acting on the vorticity of a two-dimensional fluid, helps keep shear flows stable at large Reynolds numbers, against perturbations that are small enough in terms of the Reynolds number; the page \wikilink{Why it matters}{} expands on this.
-\end{note}
-
 \begin{quote}
 How, and by how much, does an incompressible velocity field speed up the dissipation of a diffusing scalar?
 \end{quote}
@@ -134,20 +130,24 @@ Quantifying the time scale of enhanced dissipation is the subject of this wiki. 
 When $\nu=0$ the equation is pure transport: the flow conserves every $L^p$ norm of $f$ and dissipates nothing. It can still \emph{mix}, that is, move the scalar to ever smaller scales, so that $f$ converges weakly to its mean while its $L^2$ norm stays constant. The speed of mixing can be measured by the decay of a negative Sobolev norm, such as $\|f\|_{H^{-1}}$. Mixing is a field of its own, with its own questions and methods; this wiki covers only its relation to enhanced dissipation.
 \end{note}
 
+\begin{note}[Beyond passive scalars]
+The same mechanism, acting on the vorticity of a two-dimensional fluid, helps keep shear flows stable at large Reynolds numbers, against perturbations that are small enough in terms of the Reynolds number; the page \wikilink{Why it matters}{} expands on this.
+\end{note}
+
 \begin{note}[The setting, made precise]
 In most of the wiki, the domains without boundary are the torus $\mathbb{T}^2$ and the periodic strip $\mathbb{T}\times\mathbb{R}$; some problems are set in the whole plane $\mathbb{R}^2$. The domains with boundary are the disk and the periodic channel $\mathbb{T}\times[0,1]$; the boundary conditions are stated where they are used. The initial datum $f_0$ is in $L^2$ and has mean zero; for shear and circular flows, it also has zero average along each streamline, since the flow does not act on that average. The size of a solution is its $L^2$ norm. One definition of the dissipation time of a flow is the time it needs to reduce every initial datum by a fixed factor, say one half; the flow enhances dissipation when this time is much shorter than $1/\nu$. Definitions and notation are collected in \wikilink{Notation}{}.
 \end{note}
 
 \section{Map of the wiki}
+\media{diagram}{wiki-map.svg}{The parts of the wiki; click a name to open its page.}
 \begin{itemize}
   \item \emph{Motivation and history}: \wikilink{Why it matters}{why the problem matters} and \wikilink{History of the problem}{where it comes from}.
   \item \emph{Techniques through examples}: enhanced dissipation for two flows, \wikilink{Couette flow}{Couette} and \wikilink{Poiseuille flow}{Poiseuille}, proved once with each method, so that the methods can be compared on the same example.
-  \item \emph{Techniques and general results}: the general theorem behind each method, with its proof, for \wikilink{Spectral methods}{spectral methods}, \wikilink{Hypocoercivity}{hypocoercivity}, \wikilink{Stochastic methods}{stochastic methods} and \wikilink{Hörmander theory}{}.
-  \item \emph{Extensions and recent advances}: the \wikilink{State of the art}{state of the art}, \wikilink{Related results}{related results} and \wikilink{Open problems}{open problems}.
-  \item \emph{Toolkit}: the \wikilink{Notation}{notation} and the \wikilink{Standard analysis}{standard analysis} that the proofs use.
+  \item \emph{Techniques and general results}: the general theorem behind each method, with its proof, for \wikilink{spectral methods}{}, \wikilink{hypocoercivity}{}, \wikilink{stochastic methods}{} and \wikilink{Hörmander theory}{}.
+  \item \emph{Extensions and recent advances}: the \wikilink{state of the art}{}, \wikilink{related results}{} and \wikilink{open problems}{}.
+  \item \emph{Toolkit}: the \wikilink{notation}{} and the \wikilink{standard analysis}{} that the proofs use.
   \item \emph{Numerical methods}: \wikilink{Numerical methods}{the codes behind the pictures}.
   \item \emph{Lean formalization}: \wikilink{Lean formalization}{the statements checked by a proof assistant}.
-  \item \emph{About this wiki}: \wikilink{How to contribute}{how to contribute} and \wikilink{Contributors}{who did what}.
+  \item \emph{About this wiki}: \wikilink{how to contribute}{} and \wikilink{Contributors}{who did what}.
 \end{itemize}
-\media{diagram}{wiki-map.svg}{The parts of the wiki; click a name to open its page.}
 \end{document}

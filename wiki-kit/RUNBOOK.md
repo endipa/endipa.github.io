@@ -15,17 +15,18 @@ K = `wiki-kit/tools`. The wiki https://endipa.miraheze.org is the source of trut
 - A text written in TeX by an editor goes to the wiki as a proposal: `check`, then `apply --write` on `wiki/pages`, then the new page text into the wiki (API from the logged-in browser, `postWithEditToken` with `basetimestamp`; compare the SHA-1 of the saved page with the local file), then rebuild the website.
 
 ## Zulip
-https://endipa.zulipchat.com (set up on 9 November 2026): one channel per part of the wiki, as on *How to contribute* (overview, examples, techniques, advances, toolkit, numerics, lean, contributing), all public inside the organization and joined by new members, plus general; one topic per page (the line under each page's title links to it) and one per proposal. Messages need a topic; only administrators invite members and create channels. The address is in `Template:Zulip host` (wiki); the channel ids, for the website's links, in `site/edition.json` (`zulip_channels`).
+https://endipa.zulipchat.com (set up on 9 November 2026): one channel per part of the wiki, as on *How to contribute* (overview, examples, techniques, advances, toolkit, numerics, lean, contributing), all public inside the organization and joined by new members, plus general; one topic per page (the line under each page's title links to it), for questions, ideas for new results or pages, and announcements; proposals to change a page go to its talk page in the wiki. Messages need a topic; only administrators invite members and create channels. The address is in `Template:Zulip host` (wiki); the channel ids, for the website's links, in `site/edition.json` (`zulip_channels`).
 
-## A mathematical proposal (from Zulip)
-1. The contributor posts the page's TeX source reduced to the blocks they change (a `\section{...}` with its content, or a statement or proof with its `\label`), keeping the preamble and `\title{Page}`; a new block is preceded by `%% after: <section title or label>`.
-2. `python3 $K/wikitex.py check proposal.tex --pages wiki/pages`: macros, preamble changes, numbered equations, `\ref`, footnotes, unknown citation keys, formulas the wiki rejects.
-3. `python3 $K/wikitex.py apply wiki/pages proposal.tex`: replaced / inserted / unchanged blocks, problems, new citations (added to the page's reference list), new and removed links, the author named in `\author`, and the diff. Post the report in the Zulip topic. Flag any new citation or link the proposal did not announce.
-4. After acceptance: `--write`, then put the new page text into the wiki (edit summary: "Proposal <title> by <name>, accepted by <associate editor>, Zulip: <link>"), credit the author, rebuild the website.
-5. A paper not yet in `references/catalog.json` is a separate proposal; then `python3 tools/refs_from_catalog.py literature references/catalog.json wiki/pages` and `... apply ...`.
-
-## Small corrections
-Members: talk pages of the wiki; others: Zulip #contributing. Draft the fixes as a list (page, old, new), an editor approves, apply, answer where they were posted.
+## Proposals (talk pages; 9 November 2026)
+Every change to a page is a topic on its talk page, opened with `Template:Proposal/Preload` (the pencil button of a paragraph in the edition: `{{Proposal|status=open|paragraph=<id>}}`, the reason, the proposed and the current TeX) or `Template:Proposal/Preload-block` (link *new proposal* under the title in the wiki, *Propose a change* in the edition: `{{Proposal|status=open}}`, the blocks of TeX in `<pre>`). The box `{{Proposal}}` shows the status (open, accepted, applied, declined) and files the talk page in *Category:Open proposals*, *Accepted proposals*, ... An associate editor accepts by changing `status=open` to `status=accepted` and signing a reply. No deadlines.
+To apply the accepted proposals (when Michele asks):
+1. In the browser pane on the wiki (logged in): run `tools/proposals.js`, then `await Proposals.list('accepted')`. For each proposal: `eligible` must be true (the user who changed the status to accepted is in the group editor, sysop or bureaucrat); flag `selfAccepted`.
+2. Copy the topic's wikitext (`text`) to `wiki/build/proposals/<talk>--<n>.wiki` on the computer and check its SHA-1 against `sha1`. Refresh the snapshot of the page first (its SHA-1 on the wiki must be that of `wiki/pages`).
+3. `python3 $K/wikitex.py apply-proposal wiki/pages "<page>" <topic.wiki>`: a paragraph proposal is refused if the paragraph changed since (then apply by hand, or ask the author to redo it from the edition); a block proposal reports replaced / inserted / unchanged blocks, problems, new citations and links. Then `--write` (refused unless the status is accepted), `wikikit.py lint`.
+4. `await Proposals.save(page, newText, sha1OfNewText, Proposals.summary(p))`: the summary links the topic and credits author and acceptor. Then `await Proposals.markApplied(p.talk, p.heading, revid)`. Mirror the page file to the root `wiki/pages`, rebuild the website.
+Talk pages are not mirrored after each discussion: the wiki is their home (Special:Export or the Miraheze dump for a backup).
+5. A paper not yet in `references/catalog.json` is a proposal on *Talk:Literature*; then `python3 tools/refs_from_catalog.py literature references/catalog.json wiki/pages`.
+Proposals sent as a TeX file (Zulip, email) still go through `wikitex.py check` and `wikitex.py apply`, as before.
 
 ## Media and numerics
 Files in `wiki/media/`. Each computed item has a record on *Numerical methods* and its code in `numerics/<name>/`. The map of the wiki: `python3 tools/make_wiki_map.py wiki/media/wiki-map.svg` (names = menu names).

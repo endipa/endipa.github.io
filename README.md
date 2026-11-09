@@ -35,9 +35,11 @@ The wiki is the source. The website and the TeX sources are generated from it:
 Checks before publishing: `python3 wiki-kit/tools/wikikit.py lint wiki/pages` (0 errors), `python3 wiki-kit/tools/wikitex.py roundtrip wiki/pages`
 (every page ok), pdflatex on the files of `docs/tex/`.
 
-A mathematical proposal (a TeX file) is turned into a change of the wiki with
-`python3 wiki-kit/tools/wikitex.py apply wiki/pages proposal.tex`: it prints exactly which blocks change, the new citations and links,
-and the problems; `--write` saves the new page.
+Changes to a page are proposed on its talk page in the wiki (the pencil button next to a paragraph of the website, or
+"Propose a change" under each title), discussed there, and accepted by an associate editor. An accepted proposal is turned into
+a change of the page with `python3 wiki-kit/tools/wikitex.py apply-proposal wiki/pages <page> <topic.wiki>`: it prints exactly
+what changes, the new citations and links, and the problems; `--write` saves the new page. A TeX file sent otherwise goes through
+`wikitex.py apply wiki/pages proposal.tex` in the same way.
 
 ## Building it with Claude
 
@@ -45,7 +47,7 @@ The tools were written with Claude (Anthropic's AI model), and Claude can run th
 connected to Claude (desktop app, Cowork), ask for instance:
 
 - *"Rebuild the website from the wiki"*: Claude exports the pages through your browser (the wiki is private), builds, checks, and writes `docs/`; you review and push.
-- *"Here is a proposal for the page Couette flow (TeX attached): show me the report"*: Claude runs `wikitex.py apply` and shows the diff; after acceptance it writes the change into the wiki and rebuilds the website.
+- *"Apply the accepted proposals"*: Claude lists them on the wiki (`wiki-kit/tools/proposals.js`), checks that an editor accepted each, runs `wikitex.py apply-proposal`, writes the changes into the wiki with the author credited, marks the proposals applied, and rebuilds the website.
 
 The procedures are in `wiki-kit/RUNBOOK.md`. Claude asks before anything visible to others (editing the wiki, publishing); no text drafted by Claude goes into the wiki without the label *demo text* until a person approves it.
 

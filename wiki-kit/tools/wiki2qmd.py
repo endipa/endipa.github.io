@@ -71,15 +71,18 @@ THEOREM_TITLE = re.compile(r'^(Theorem|Lemma|Proposition|Corollary|Definition)\s
 UNNUMBERED_TITLE = re.compile(r'^(Claim|Remark|Conjecture|Example)\s*(?:\((.*)\))?\.?$', re.S)   # boxes Quarto does not number
 ZULIP_CHANNELS = CONFIG.get('zulip_channels', {})   # short name -> "<id>-<name>" once the Zulip exists (optional)
 # Edit buttons (kit, November 2026): with "edit_paragraphs": {"preload": "Template:Proposal/Preload"} in edition.json,
+# (and "preload_block": "Template:Proposal/Preload-block": the "Propose a change" link under each title, page-links.lua)
 # every paragraph of a page has a button that shows its TeX in a popup; the reader changes it and opens a new topic on
 # the page's talk page in the wiki, filled in by the preload page ($1 page, $2 paragraph id, $3 current TeX, $4 proposed
-# TeX, $5 reason). The proposal is saved only when the reader saves it in the wiki; wikitex.py apply-unit applies it.
+# TeX, $5 reason, $6 the change in a few words). The proposal is saved only when the reader saves it in the wiki;
+# wikitex.py apply-proposal applies it.
 EDIT = CONFIG.get('edit_paragraphs')
 EDIT_SCRIPT = r"""<style>
 .edit-unit { position: relative; }
 .edit-unit > .edit-btn { position: absolute; top: 0.1rem; right: -2.1rem; width: 1.7rem; height: 1.7rem; padding: 0; border: 1px solid #c9cfd8;
   border-radius: 4px; background: #fff; color: #1f4e79; font-size: 0.85rem; line-height: 1; opacity: 0; transition: opacity .15s; cursor: pointer; }
 .edit-unit:hover > .edit-btn, .edit-unit > .edit-btn:focus { opacity: 1; }
+.callout .edit-unit > .edit-btn { right: -0.4rem; top: -0.5rem; }
 @media (hover: none), (max-width: 767px) { .edit-unit > .edit-btn { right: 0; top: -0.3rem; opacity: 0.55; } }
 .edit-overlay { position: fixed; inset: 0; z-index: 3000; background: rgba(20, 28, 40, 0.38); display: flex; align-items: center;
   justify-content: center; padding: 1rem; }
@@ -114,6 +117,16 @@ EDIT_SCRIPT = r"""<style>
          .replace(/\\(numerics|heuristic|demo|preprint|published|raw)\{\}/g, '[$1]')
          .replace(/---/g, '&mdash;').replace(/--/g, '&ndash;').replace(/\n\s*\n/g, '<br><br>');
     return h.replace(/\$([^$]+)\$/g, '\\($1\\)');
+  }
+  // the change in a few words, for the talk page: "… such as <del>heat,</del> <ins>temperature,</ins> a dye in …"
+  function change(a, b) {
+    var x = a.split(/\s+/), y = b.split(/\s+/), p = 0, s = 0;
+    while (p < x.length && p < y.length && x[p] === y[p]) p++;
+    while (s < x.length - p && s < y.length - p && x[x.length - 1 - s] === y[y.length - 1 - s]) s++;
+    function nw(w) { w = w.join(' '); return w ? '<nowiki>' + (w.length > 400 ? w.slice(0, 400) + ' …' : w) + '</nowiki>' : ''; }
+    var del = x.slice(p, x.length - s), ins = y.slice(p, y.length - s);
+    return (p > 4 ? '… ' : '') + nw(x.slice(Math.max(0, p - 4), p)) + (del.length ? ' <del>' + nw(del) + '</del>' : '')
+      + (ins.length ? ' <ins>' + nw(ins) + '</ins>' : '') + ' ' + nw(x.slice(x.length - s, x.length - s + 4)) + (s > 4 ? ' …' : '');
   }
   function open(id) {
     var old = data.units[id];
@@ -150,8 +163,8 @@ EDIT_SCRIPT = r"""<style>
     ov.querySelector('.edit-send').onclick = function () {
       var neu = ta.value.replace(/\s+$/, '');
       if (neu === old.replace(/\s+$/, '')) { status.textContent = 'Nothing has changed.'; return; }
-      var words = neu.replace(/\\[a-zA-Z]+|[{}$\\]/g, ' ').replace(/\s+/g, ' ').trim().split(' ').slice(0, 6).join(' ');
-      var params = [data.page, id, old, neu, reason.value.trim() || '(none given)'];
+      var words = neu.replace(/\$[^$]*\$/g, ' ').replace(/\\[a-zA-Z]+|[{}$\\]/g, ' ').replace(/\s+/g, ' ').trim().split(' ').slice(0, 6).join(' ');
+      var params = [data.page, id, old, neu, reason.value.trim() || '(none given)', change(old, neu)];
       function link(p) {
         return data.edit + encodeURIComponent(data.talk.replace(/ /g, '_')) + '?action=edit&section=new'
           + '&preloadtitle=' + encodeURIComponent('Proposal: ' + words + '…')
@@ -934,6 +947,8 @@ def main():
                         **{k: yaml_str(CONFIG[k]) for k in ('wiki_url', 'title', 'subtitle', 'footer_left', 'footer_right')})
     if CONFIG.get('wiki_note'):   # kit v2.1: e.g. "members", shown after the link to the real wiki
         yml = yml.replace('\nwiki-url: ', '\nwiki-note: ' + yaml_str(CONFIG['wiki_note']) + '\nwiki-url: ', 1)
+    if EDIT and EDIT.get('preload_block') and not WIKI_IS_PREVIEW:   # the "Propose a change" link of page-links.lua
+        yml = yml.replace('\nwiki-url: ', '\npropose-preload: ' + yaml_str(EDIT['preload_block']) + '\nwiki-url: ', 1)
     open(os.path.join(OUT, '_quarto.yml'), 'w').write(yml)
     print(json.dumps({'pages': report, 'statements': sorted(statements), 'media': sorted(MEDIA_USED), 'formula_mismatches': mismatches,
                       'problems': sorted(set(problems))}, indent=1, ensure_ascii=False))

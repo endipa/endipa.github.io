@@ -12,7 +12,7 @@
 --
 -- The filter adds, after the page's module-meta block (or inside an empty `::: {.discuss}` div
 -- on pages without one):
---   * a "Discuss or propose a change on Zulip" button, when the page has a Zulip topic,
+--   * a "Discuss on Zulip" button, when the page has a Zulip topic,
 --   * a "This page in the wiki" link: the wiki is where the text is edited; this edition is
 --     rebuilt from it by a script and never edited by hand (wiki-note, from edition.json, is added
 --     in brackets when the link goes to the real wiki, e.g. "members" for a wiki by invitation),
@@ -20,10 +20,13 @@
 --     matter), a "PDF" link to the PDF compiled from it (pdf-source), and, on the Overview only, "PDF of the whole wiki" and "Open the whole wiki in Overleaf": a new
 --     project with main.tex as main document and every page as a file of pages/ (Overleaf fetches tex/all-pages.zip:
 --     public site only); on a page with pictures, "TeX source" downloads a zip (the .tex and the folder figures/),
--- and a "Propose a text on Zulip" link at the end of every placeholder (pages with a Zulip topic).
+--   * (November 2026) a "Propose a change" link, when _quarto.yml sets propose-preload (edition.json, edit_paragraphs.preload_block)
+--     and the wiki is the real one: a new topic on the page's talk page, filled in with that preload page,
+-- and a "Propose a text" link at the end of every placeholder: the same new topic, or the Zulip topic when there is none.
 
 local zulip, related, wiki, tex, pdf, wiki_note, wiki_real = nil, nil, nil, nil, nil, nil, false
 local book_pdf, book_zip = nil, nil
+local propose_preload, propose = nil, nil
 
 local OVERLEAF_SCRIPT = [=[
 <script>
@@ -53,12 +56,17 @@ local function read_meta(m)
   if m["book-zip"] then book_zip = pandoc.utils.stringify(m["book-zip"]) end
   if m["pdf-source"] then pdf = pandoc.utils.stringify(m["pdf-source"]) end
   if m["wiki-note"] then wiki_note = pandoc.utils.stringify(m["wiki-note"]) end
+  if m["propose-preload"] then propose_preload = pandoc.utils.stringify(m["propose-preload"]) end
   if m["wiki-url"] then
     local base = pandoc.utils.stringify(m["wiki-url"])
     if m["wiki-page"] and base:match("^https?://") then
       -- the real wiki: link to the page by its title
       wiki = base .. wiki_title(pandoc.utils.stringify(m["wiki-page"]))
       wiki_real = true
+      if propose_preload then
+        propose = base .. "Talk:" .. wiki_title(pandoc.utils.stringify(m["wiki-page"]))
+          .. "?action=edit&section=new&preload=" .. wiki_title(propose_preload) .. "&preloadtitle=Proposal%3A+"
+      end
     elseif quarto and quarto.doc and quarto.doc.input_file then
       -- a static preview of the wiki: link to the file of the same name
       local stem = pandoc.path.split_extension(pandoc.path.filename(quarto.doc.input_file))
@@ -75,7 +83,7 @@ local function links_row()
   local inlines = {}
   if zulip then
     local icon = pandoc.RawInline("html", '<i class="bi bi-chat-left-text" aria-hidden="true"></i>')
-    table.insert(inlines, pandoc.Link({icon, pandoc.Space(), pandoc.Str("Discuss or propose a change on Zulip")},
+    table.insert(inlines, pandoc.Link({icon, pandoc.Space(), pandoc.Str("Discuss on Zulip")},
                                       zulip, "", pandoc.Attr("", {"zulip-btn"})))
     table.insert(inlines, pandoc.Space())
     table.insert(inlines, note({pandoc.Str("For project members: the Zulip and the wiki are by invitation.")}))
@@ -87,6 +95,13 @@ local function links_row()
     if wiki_real and wiki_note and wiki_note ~= "" then label = label .. " (" .. wiki_note .. ")" end
     table.insert(inlines, pandoc.Link({icon, pandoc.Space(), pandoc.Str(label)},
                                       wiki, "", pandoc.Attr("", {"edit-link"})))
+  end
+  if propose then
+    local iconp = pandoc.RawInline("html", '<i class="bi bi-journal-plus" aria-hidden="true"></i>')
+    table.insert(inlines, pandoc.Space())
+    table.insert(inlines, pandoc.Link({iconp, pandoc.Space(), pandoc.Str("Propose a change")}, propose,
+                                      "A new proposal on the talk page of this page in the wiki (members)",
+                                      pandoc.Attr("", {"edit-link", "propose-link"})))
   end
   if tex then
     local icon = pandoc.RawInline("html", '<i class="bi bi-file-earmark-code" aria-hidden="true"></i>')
@@ -129,9 +144,10 @@ local function div(el)
     return {el, links_row()}
   elseif el.classes:includes("discuss") and #el.content == 0 then
     return links_row()
-  elseif el.classes:includes("placeholder") and zulip then
+  elseif el.classes:includes("placeholder") and (propose or zulip) then
     el.content:insert(pandoc.Para({
-      pandoc.Link({pandoc.Str("Propose a text on Zulip →")}, zulip, "", pandoc.Attr("", {"propose"}))
+      pandoc.Link({pandoc.Str(propose and "Propose a text →" or "Propose a text on Zulip →")}, propose or zulip, "",
+                  pandoc.Attr("", {"propose"}))
     }))
     return el
   end

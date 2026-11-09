@@ -4,7 +4,7 @@
   "wiki_url": "https://endipa.miraheze.org/wiki/",
   "zulip_host": "",
   "footer_left": "Built from the wiki by a script. Licence CC BY 4.0.",
-  "footer_right": "Under each title: the Zulip topic of the page, the page in the wiki, its TeX source and its PDF.",
+  "footer_right": "Under each title: the Zulip topic of the page, the page in the wiki, its TeX source, its PDF, and the link to propose a change.",
   "contributors": [
     {
       "name": "Editorial board",
@@ -34,5 +34,9 @@
     "numerics": "653117-numerics",
     "lean": "653118-lean",
     "contributing": "653119-contributing"
+  },
+  "edit_paragraphs": {
+    "preload": "Template:Proposal/Preload",
+    "preload_block": "Template:Proposal/Preload-block"
   }
 }

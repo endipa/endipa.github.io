@@ -1,0 +1,13 @@
+{{Proposal|status=open}}
+''What it changes, and why:'' 
+
+''Sources:'' 
+
+'''Proposed text''' (TeX). The blocks that change, copied from the TeX source of the page and edited: a section with its title, or a statement or a proof with its label. A new block goes after an existing one: put the line <code>%% after: title or label</code> just before it.
+<pre>
+\section{Title of the section}
+The new text of the section.
+</pre>
+
+~~<includeonly>~~</includeonly><noinclude>
+The form of a new proposal, opened by the link ''new proposal'' under the title of a page (and ''Propose a change'' in the edition). Once the proposal is accepted, an editor applies it with <code>wikitex.py apply-proposal</code>, which reads the blocks in the box ''Proposed text''. The split signature at the end becomes four tildes in the new topic. See [[How to contribute#Proposing a change|How to contribute]].</noinclude>

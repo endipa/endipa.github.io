@@ -32,6 +32,11 @@ This script writes the TeX sources, converts TeX back to wikitext, and applies a
   apply-unit <pages-dir> <page> <paragraph-id> <new.tex> [--write]
         a proposal made from the website for one paragraph (its id, shown in the proposal on the talk page, and its
         new TeX): replaces the paragraph if it has not changed since, and prints the diff
+  apply-proposal <pages-dir> <page> <topic.wiki> [--write]
+        a proposal from the talk page of <page>: the wikitext of its topic, which starts with {{Proposal|...}} and
+        contains '''Proposed text''' followed by <pre>...</pre>. With paragraph=<id> in the box (made with the edit
+        button of the website) it is applied as apply-unit; otherwise the TeX in <pre> is a set of blocks, applied as
+        apply (\title{<page>} is added if missing). --write refuses a proposal whose status is not "accepted"
   units <pages-dir>
         check the editable paragraphs of every page (TeX -> wiki must give back each paragraph)
   zips <tex-dir> [<pictures-dir>]
@@ -1202,13 +1207,16 @@ def articles(src):
 
 
 def normalize(text):
-    """Adjacent text lines form one paragraph (MediaWiki joins them); join them, as the TeX does."""
+    """Adjacent text lines form one paragraph (MediaWiki joins them); join them, as the TeX does. A list item is written
+    with one space after its marker ("*''A''" and "* ''A''" are the same item)."""
     out = []
     block = re.compile(r'^(\{\{|<div|<pre|</pre|<!--|\{\||\||!|=|\*|#|<math display="block">)')
     in_pre = False
     for line in text.rstrip('\n').split('\n'):
         if line.startswith('<pre'):
             in_pre = True
+        if not in_pre:
+            line = re.sub(r'^([*#]+)[ \t]*(?=\S)', r'\1 ', line)
         if not in_pre and out and line.strip() and out[-1].strip() and not block.match(line.strip()) \
                 and not block.match(out[-1].strip()):
             out[-1] = out[-1].rstrip() + ' ' + line.strip()
@@ -1526,6 +1534,45 @@ def cmd_apply_unit(pdir, title, uid, tex_path, write=False):
     return 1 if problems else 0
 
 
+def proposal_parts(topic):
+    """The parameters of the {{Proposal}} box of a topic of a talk page, and its proposed TeX (None if missing)."""
+    params = {}
+    m = re.search(r'\{\{\s*Proposal\s*\|([^{}]*)\}\}', topic)
+    if m:
+        for x in m.group(1).split('|'):
+            k, _, v = x.partition('=')
+            params[k.strip().lower()] = v.strip()
+    m = re.search(r"'''Proposed text'''.*?<pre>(.*?)</pre>", topic, re.S)
+    return params, (m.group(1).strip('\n') if m else None)
+
+
+def cmd_apply_proposal(pdir, title, topic_path, write=False):
+    """A proposal from a talk page: one paragraph (paragraph=<id> in its box) or blocks of TeX."""
+    params, tex = proposal_parts(open(topic_path, encoding='utf-8').read())
+    if not tex or not tex.strip():
+        sys.exit("no proposed text: the topic must contain '''Proposed text''' followed by <pre>...</pre>")
+    status = params.get('status', 'open').lower()
+    if status != 'accepted':
+        if write:
+            sys.exit('the status of the proposal is "%s": only an accepted proposal is written into the page' % status)
+        print('warning: the status of the proposal is "%s", not "accepted"' % status)
+    uid = params.get('paragraph', '')
+    if not uid:
+        m = re.search(r'\\title\{([^}]*)\}', tex)
+        if m and m.group(1).strip() != title:
+            sys.exit('the proposal names the page %r, not %r' % (m.group(1).strip(), title))
+        if not m:
+            tex = '\\title{%s}\n%s' % (title, tex)
+    path = topic_path + '.proposal.tex'
+    open(path, 'w', encoding='utf-8', newline='\n').write(tex + '\n')
+    try:
+        if uid:
+            return cmd_apply_unit(pdir, title, uid, path, write)
+        return cmd_apply(pdir, path, write)
+    finally:
+        os.remove(path)
+
+
 def cmd_units(pdir):
     """Check the editable paragraphs of every page: TeX -> wikitext must give back each paragraph."""
     pages = wikikit.read_pages(pdir)
@@ -1735,6 +1782,8 @@ def main(argv):
         return cmd_apply_unit(args[0], args[1], args[2], args[3], '--write' in args)
     if cmd == 'units':
         return cmd_units(args[0])
+    if cmd == 'apply-proposal':
+        return cmd_apply_proposal(args[0], args[1], args[2], '--write' in args)
     print(__doc__); return 2
 
 
