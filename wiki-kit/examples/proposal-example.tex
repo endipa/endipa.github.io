@@ -10,6 +10,7 @@
 \usepackage[a4paper,margin=2.5cm]{geometry}
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{graphicx,tabularx,listings}
+\usepackage[skins,breakable]{tcolorbox}
 \usepackage[round]{natbib}
 \usepackage[hidelinks]{hyperref}
 \setlength{\emergencystretch}{2em}
@@ -33,7 +34,10 @@
 \newcommand{\ed@runin}[1]{\par\topsep6\p@\@plus6\p@\relax\trivlist\item[\hskip\labelsep\itshape#1\@addpunct{.}]\ignorespaces}
 \newenvironment{idea}[1][Idea]{\ed@runin{#1}}{\endtrivlist\@endpefalse}
 \newenvironment{architecture}[1][Proof architecture]{\ed@runin{#1}}{\endtrivlist\@endpefalse}
-\newenvironment{note}[1][Note]{\ed@runin{#1}}{\endtrivlist\@endpefalse}
+% \begin{note}[Title]: an aside, in a dashed box; its title in italics at the start of the text
+\tcbset{ed@note/.style={enhanced jigsaw,breakable,frame hidden,interior hidden,arc=2pt,borderline={0.5pt}{0pt}{black!50,dash pattern=on 3pt off 2pt},
+  left=3mm,right=3mm,top=2mm,bottom=2mm,before skip=3mm plus 1mm,after skip=3mm plus 1mm}}
+\newenvironment{note}[1][Note]{\begin{tcolorbox}[ed@note]\noindent{\itshape#1\@addpunct{.}}\enspace\ignorespaces}{\end{tcolorbox}}
 % text still to be written; labels of the text; the Lean banner of the statement above
 \newcommand{\placeholder}[1]{\if@inlabel\else\par\noindent\fi\textit{[#1]}\@ifnextchar\end{}{\par}}
 \newcommand{\ed@label}[1]{\mbox{\footnotesize[#1]}}
@@ -58,11 +62,29 @@
 \newcommand{\nowiki}[1]{#1}
 \newcommand{\wikitemplate}[1]{\texttt{\{\{#1\}\}}}
 \newcommand{\wikidiv}[2]{\par#2\par}
-% pictures, videos, diagrams: shown in the online edition; an image next to this file, or in ../media, is shown here
-\newcommand{\ed@picture}[1]{\begin{center}\includegraphics[width=0.8\linewidth]{#1}\end{center}}
-\newcommand{\media}[4][]{\par\medskip\def\ed@a{#2}{\noindent\small\ifx\ed@a\ed@video Video\else\ifx\ed@a\ed@diagram Diagram\else
-  Figure\fi\fi: \texttt{#3}, shown in the online edition.\par}\ifx\ed@a\ed@image\IfFileExists{#3}{\ed@picture{#3}}{\IfFileExists{../media/#3}{%
-  \ed@picture{../media/#3}}{}}\fi{\noindent\small#4\par}\medskip}
+% \begin{quote}: a sentence set apart, such as the central question of the Overview; centred, in italics
+\renewenvironment{quote}{\list{}{\rightmargin\leftmargin}\item\relax\centering\itshape}{\endlist}
+% pictures, videos, diagrams: a grey panel with the picture and its caption. The picture (for a video, its poster image)
+% is shown when its file, or a .pdf or .png file of the same name, is next to this file, in media/ or in ../media
+\tcbset{ed@media/.style={enhanced,colback=black!4,frame hidden,arc=2pt,left=3mm,right=3mm,top=2.5mm,bottom=2mm,
+  before skip=3mm plus 1mm,after skip=3mm plus 1mm}}
+\def\ed@poster{}\def\ed@record{}\def\ed@svg{svg}
+\define@key{ed@media}{poster}{\def\ed@poster{#1}}\define@key{ed@media}{record}{\def\ed@record{#1}}\define@key{ed@media}{id}{}
+\newcommand{\ed@find}[1]{\IfFileExists{#1}{\edef\ed@found{#1}}{\IfFileExists{media/#1}{\edef\ed@found{media/#1}}{%
+  \IfFileExists{../media/#1}{\edef\ed@found{../media/#1}}{}}}}
+\newcommand{\ed@picturefile}[1]{\def\ed@found{}\edef\ed@b{#1}\ifx\ed@b\@empty\else\filename@parse{\ed@b}\edef\ed@base{\filename@base}%
+  \edef\ed@ext{\filename@ext}\ifx\ed@ext\ed@svg\else\ed@find{\ed@b}\fi
+  \ifx\ed@found\@empty\ed@find{\ed@base.pdf}\fi\ifx\ed@found\@empty\ed@find{\ed@base.png}\fi\fi}
+\newcommand{\ed@panel}[2]{\begin{tcolorbox}[ed@media,#1]\ifx\ed@found\@empty\else{\centering\includegraphics[width=\linewidth,
+  height=0.35\textheight,keepaspectratio]{\ed@found}\par}\smallskip\fi{\small\textbf{\ifx\ed@a\ed@video Video\else\ifx\ed@a\ed@diagram
+  Diagram\else Figure\fi\fi.}\enspace#2\par}{\footnotesize\itshape\ifx\ed@a\ed@video The video plays in the online edition of this page.\fi
+  \ifx\ed@record\@empty\else\ifx\ed@a\ed@video\ \fi How it was made: page Numerical methods, record \texttt{\ed@record}.\fi\par}
+  \end{tcolorbox}}
+% in the text, the panel is a figure (it floats to where it fits); inside a box (a note, a table), it stays in place
+\renewcommand{\topfraction}{0.85}\renewcommand{\bottomfraction}{0.6}\renewcommand{\textfraction}{0.1}\renewcommand{\floatpagefraction}{0.8}
+\newcommand{\media}[4][]{\par\def\ed@poster{}\def\ed@record{}\setkeys{ed@media}{#1}\def\ed@a{#2}%
+  \ifx\ed@a\ed@video\ed@picturefile{\ed@poster}\else\ed@picturefile{#3}\fi
+  \ifinner\ed@panel{}{#4}\else\begin{figure}[htbp]\ed@panel{before skip=0pt,after skip=0pt}{#4}\end{figure}\fi}
 % tables (\lv{label}{text}; \header{a & b}, \row{a & b}) and code
 \newenvironment{levels}[1][]{\par\smallskip\noindent\tabularx{\linewidth}{@{}>{\bfseries\raggedright\arraybackslash}p{0.2\linewidth}X@{}}}{\endtabularx\par\smallskip}
 \newcommand{\lv}[2]{#1 & #2\\[3pt]}

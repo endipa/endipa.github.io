@@ -1,0 +1,152 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+% Overview: a page of the wiki "Enhanced dissipation for passive scalars", generated from the wiki on 8 November 2026.
+% It compiles as it is with pdflatex (Overleaf, TeXShop, TeXstudio, ...); typeset twice for the citations.
+% To propose a change: keep the preamble and the line \title{...}; keep only the blocks you change
+% (a \section{...} with its content, or a statement or proof with its \label{...}), change them, and post
+% the file in a new topic of the Zulip channel of the part. The rules: page "How to contribute" of the wiki.
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx,tabularx,listings}
+\usepackage[skins,breakable]{tcolorbox}
+\usepackage[round]{natbib}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{2em}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem*{claim}{Claim}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+%% The commands of the wiki. This preamble is the same for every page: do not change it, and do not
+%% define commands of your own (the wiki has none).
+\makeatletter
+% after a statement: \begin{idea}, \begin{architecture}, \begin{note}[Title] (and \begin{proof}[Title])
+\newcommand{\ed@runin}[1]{\par\topsep6\p@\@plus6\p@\relax\trivlist\item[\hskip\labelsep\itshape#1\@addpunct{.}]\ignorespaces}
+\newenvironment{idea}[1][Idea]{\ed@runin{#1}}{\endtrivlist\@endpefalse}
+\newenvironment{architecture}[1][Proof architecture]{\ed@runin{#1}}{\endtrivlist\@endpefalse}
+% \begin{note}[Title]: an aside, in a dashed box; its title in italics at the start of the text
+\tcbset{ed@note/.style={enhanced jigsaw,breakable,frame hidden,interior hidden,arc=2pt,borderline={0.5pt}{0pt}{black!50,dash pattern=on 3pt off 2pt},
+  left=3mm,right=3mm,top=2mm,bottom=2mm,before skip=3mm plus 1mm,after skip=3mm plus 1mm}}
+\newenvironment{note}[1][Note]{\begin{tcolorbox}[ed@note]\noindent{\itshape#1\@addpunct{.}}\enspace\ignorespaces}{\end{tcolorbox}}
+% text still to be written; labels of the text; the Lean banner of the statement above
+\newcommand{\placeholder}[1]{\if@inlabel\else\par\noindent\fi\textit{[#1]}\@ifnextchar\end{}{\par}}
+\newcommand{\ed@label}[1]{\mbox{\footnotesize[#1]}}
+\newcommand{\demo}[1]{\ed@label{demo text}}
+\newcommand{\heuristic}[1]{\ed@label{heuristic}}
+\newcommand{\numerics}[1]{\ed@label{numerics}}
+\newcommand{\published}[1]{\ed@label{published}}
+\newcommand{\preprint}[1]{\ed@label{preprint, to be verified}}
+\newcommand{\raw}[1]{\ed@label{raw, unchecked}}
+\def\ed@formalized{formalized}\def\ed@image{image}\def\ed@video{video}\def\ed@diagram{diagram}
+\newcommand{\lean}[2][]{\par{\noindent\footnotesize\def\ed@a{#2}Lean: \ifx\ed@a\ed@formalized formalized\ifx\relax#1\relax\else\
+  (\href{#1}{certificate})\fi\else not yet formalized\fi.\par}}
+% the two lines under the title: the page's team and status, its Zulip topic (default: the title)
+\def\ed@title{}\let\ed@maketitle\maketitle\renewcommand{\maketitle}{\let\ed@title\@title\ed@maketitle}
+\newcommand{\pagestatus}[1]{{\par\centering\small#1\par}}
+\newcommand{\zulip}[2][]{{\par\centering\small Discuss on Zulip: \##2, topic
+  ``\ifx\relax#1\relax\ed@title\else#1\fi''.\par}\medskip}
+% links to other pages of the wiki, anchors, wiki code shown as text
+\newcommand{\wikilink}[2]{\ifx\relax#2\relax#1\else#2\fi}
+\newcommand{\wikianchor}[1]{\phantomsection\label{#1}}
+\newcommand{\nowikicode}[1]{\texttt{\frenchspacing#1}}
+\newcommand{\nowiki}[1]{#1}
+\newcommand{\wikitemplate}[1]{\texttt{\{\{#1\}\}}}
+\newcommand{\wikidiv}[2]{\par#2\par}
+% \begin{quote}: a sentence set apart, such as the central question of the Overview; centred, in italics
+\renewenvironment{quote}{\list{}{\rightmargin\leftmargin}\item\relax\centering\itshape}{\endlist}
+% pictures, videos, diagrams: a grey panel with the picture and its caption. The picture (for a video, its poster image)
+% is shown when its file, or a .pdf or .png file of the same name, is next to this file, in media/ or in ../media
+\tcbset{ed@media/.style={enhanced,colback=black!4,frame hidden,arc=2pt,left=3mm,right=3mm,top=2.5mm,bottom=2mm,
+  before skip=3mm plus 1mm,after skip=3mm plus 1mm}}
+\def\ed@poster{}\def\ed@record{}\def\ed@svg{svg}
+\define@key{ed@media}{poster}{\def\ed@poster{#1}}\define@key{ed@media}{record}{\def\ed@record{#1}}\define@key{ed@media}{id}{}
+\newcommand{\ed@find}[1]{\IfFileExists{#1}{\edef\ed@found{#1}}{\IfFileExists{media/#1}{\edef\ed@found{media/#1}}{%
+  \IfFileExists{../media/#1}{\edef\ed@found{../media/#1}}{}}}}
+\newcommand{\ed@picturefile}[1]{\def\ed@found{}\edef\ed@b{#1}\ifx\ed@b\@empty\else\filename@parse{\ed@b}\edef\ed@base{\filename@base}%
+  \edef\ed@ext{\filename@ext}\ifx\ed@ext\ed@svg\else\ed@find{\ed@b}\fi
+  \ifx\ed@found\@empty\ed@find{\ed@base.pdf}\fi\ifx\ed@found\@empty\ed@find{\ed@base.png}\fi\fi}
+\newcommand{\ed@panel}[2]{\begin{tcolorbox}[ed@media,#1]\ifx\ed@found\@empty\else{\centering\includegraphics[width=\linewidth,
+  height=0.35\textheight,keepaspectratio]{\ed@found}\par}\smallskip\fi{\small\textbf{\ifx\ed@a\ed@video Video\else\ifx\ed@a\ed@diagram
+  Diagram\else Figure\fi\fi.}\enspace#2\par}{\footnotesize\itshape\ifx\ed@a\ed@video The video plays in the online edition of this page.\fi
+  \ifx\ed@record\@empty\else\ifx\ed@a\ed@video\ \fi How it was made: page Numerical methods, record \texttt{\ed@record}.\fi\par}
+  \end{tcolorbox}}
+% in the text, the panel is a figure (it floats to where it fits); inside a box (a note, a table), it stays in place
+\renewcommand{\topfraction}{0.85}\renewcommand{\bottomfraction}{0.6}\renewcommand{\textfraction}{0.1}\renewcommand{\floatpagefraction}{0.8}
+\newcommand{\media}[4][]{\par\def\ed@poster{}\def\ed@record{}\setkeys{ed@media}{#1}\def\ed@a{#2}%
+  \ifx\ed@a\ed@video\ed@picturefile{\ed@poster}\else\ed@picturefile{#3}\fi
+  \ifinner\ed@panel{}{#4}\else\begin{figure}[htbp]\ed@panel{before skip=0pt,after skip=0pt}{#4}\end{figure}\fi}
+% tables (\lv{label}{text}; \header{a & b}, \row{a & b}) and code
+\newenvironment{levels}[1][]{\par\smallskip\noindent\tabularx{\linewidth}{@{}>{\bfseries\raggedright\arraybackslash}p{0.2\linewidth}X@{}}}{\endtabularx\par\smallskip}
+\newcommand{\lv}[2]{#1 & #2\\[3pt]}
+\newenvironment{wikitable}[1]{\par\smallskip\noindent\tabularx{\linewidth}{|*{#1}{>{\raggedright\arraybackslash}X|}}\hline}{\endtabularx\par\smallskip}
+\newcommand{\header}[1]{#1\\\hline\hline}
+\newcommand{\row}[1]{#1\\\hline}
+\lstnewenvironment{wikicode}[1][]{\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true,columns=fullflexible,
+  keepspaces=true,showstringspaces=false,frame=single}\ifx\relax#1\relax\else\lstset{language=#1}\fi}{}
+% the heading of the reference list is the section References of the page
+\renewcommand{\bibsection}{}
+% characters of the wiki's text that LaTeX does not know
+\DeclareUnicodeCharacter{2192}{\ensuremath{\rightarrow}}\DeclareUnicodeCharacter{203A}{\ensuremath{\rangle}}
+\DeclareUnicodeCharacter{2713}{\ensuremath{\checkmark}}\DeclareUnicodeCharacter{25CB}{\ensuremath{\circ}}
+\DeclareUnicodeCharacter{2248}{\ensuremath{\approx}}\DeclareUnicodeCharacter{2264}{\ensuremath{\leq}}
+\DeclareUnicodeCharacter{2265}{\ensuremath{\geq}}\DeclareUnicodeCharacter{2212}{\ensuremath{-}}
+\makeatother
+
+\begin{document}
+\title{Overview}
+\author{Wiki \emph{Enhanced dissipation for passive scalars}}
+\date{8 November 2026}
+\maketitle
+\zulip{overview}
+
+A passive scalar is a quantity carried by a fluid without acting on it, such as heat, a dye in water or a pollutant in the air. If $f$ is its concentration, $u$ the velocity of an incompressible flow, and $\nu>0$ the molecular diffusivity, then $f$ solves the advection–diffusion equation
+\[\partial_t f+u\cdot\nabla f=\nu\Delta f,\qquad \nabla\cdot u=0.\]
+Diffusion alone dissipates the scalar on a time scale of order $1/\nu$, which is very long when $\nu$ is small. The flow, on the other hand, dissipates nothing: it only rearranges the scalar. In doing so, it can transfer large-scale structures to small scales, for instance by stretching the scalar into thin filaments, and at small scales diffusion is much more efficient. The result is that $f$ decays on a time scale much shorter than $1/\nu$: this is \emph{enhanced dissipation}.
+
+\begin{note}[Beyond passive scalars]
+The same mechanism, acting on the vorticity of a two-dimensional fluid, helps keep shear flows stable at large Reynolds numbers, against perturbations that are small enough in terms of the Reynolds number; the page \wikilink{Why it matters}{} expands on this.
+\end{note}
+
+\begin{quote}
+How, and by how much, does an incompressible velocity field speed up the dissipation of a diffusing scalar?
+\end{quote}
+
+The two videos below show the phenomenon in the simplest setting, a periodic box in two dimensions. In the first, a steady shear flow significantly accelerates the dissipation of vertical stripes, orthogonal to its streamlines.
+\media[poster=heat-vs-shear-poster.png,record=num-heat-vs-shear]{video}{heat-vs-shear.mp4}{Left: the heat equation. Right: the same initial datum carried by the shear flow $u=(\sin y,0)$, with the same diffusivity. Bottom: the size of the two solutions in time, on a logarithmic scale. \numerics{}}
+The second video compares two flows of the same size. A steady shear stretches the scalar only along its own streamlines. Shears that alternate in direction, with random phases (the model of Pierrehumbert), stretch and fold the scalar, which then dissipates much faster and more uniformly in space.
+\media[poster=alternating-shears-poster.png,record=num-alternating-shears]{video}{alternating-shears.mp4}{Left: the shear flow $u=(\sin y,0)$. Right: shears that alternate, horizontal and vertical, each acting for 3 units of time, with random phases. Same initial datum $f_0=\cos x$, same diffusivity $\nu=10^{-4}$; both velocity fields have size at most 1. Bottom: the size of the solutions in time, on a logarithmic scale. \numerics{}}
+Quantifying the time scale of enhanced dissipation is the subject of this wiki. Laminar flows, such as shear flows, typically dissipate the scalar on time scales of order $\nu^{-a}$ with $0<a<1$, whereas \emph{mixing} flows, such as the alternating shears, can dissipate it on time scales of order $|\log\nu|$. The questions are which time scales are possible, which flows achieve them, and how one proves it.
+
+\begin{note}[Mixing: the problem without diffusion]
+When $\nu=0$ the equation is pure transport: the flow conserves every $L^p$ norm of $f$ and dissipates nothing. It can still \emph{mix}, that is, move the scalar to ever smaller scales, so that $f$ converges weakly to its mean while its $L^2$ norm stays constant. The speed of mixing can be measured by the decay of a negative Sobolev norm, such as $\|f\|_{H^{-1}}$. Mixing is a field of its own, with its own questions and methods; this wiki covers only its relation to enhanced dissipation.
+\end{note}
+
+\begin{note}[The setting, made precise]
+In most of the wiki, the domains without boundary are the torus $\mathbb{T}^2$ and the periodic strip $\mathbb{T}\times\mathbb{R}$; some problems are set in the whole plane $\mathbb{R}^2$. The domains with boundary are the disk and the periodic channel $\mathbb{T}\times[0,1]$; the boundary conditions are stated where they are used. The initial datum $f_0$ is in $L^2$ and has mean zero; for shear and circular flows, it also has zero average along each streamline, since the flow does not act on that average. The size of a solution is its $L^2$ norm. One definition of the dissipation time of a flow is the time it needs to reduce every initial datum by a fixed factor, say one half; the flow enhances dissipation when this time is much shorter than $1/\nu$. Definitions and notation are collected in \wikilink{Notation}{}.
+\end{note}
+
+\section{Map of the wiki}
+\begin{itemize}
+  \item \emph{Motivation and history}: \wikilink{Why it matters}{why the problem matters} and \wikilink{History of the problem}{where it comes from}.
+  \item \emph{Techniques through examples}: enhanced dissipation for two flows, \wikilink{Couette flow}{Couette} and \wikilink{Poiseuille flow}{Poiseuille}, proved once with each method, so that the methods can be compared on the same example.
+  \item \emph{Techniques and general results}: the general theorem behind each method, with its proof, for \wikilink{Spectral methods}{spectral methods}, \wikilink{Hypocoercivity}{hypocoercivity}, \wikilink{Stochastic methods}{stochastic methods} and \wikilink{Hörmander theory}{}.
+  \item \emph{Extensions and recent advances}: the \wikilink{State of the art}{state of the art}, \wikilink{Related results}{related results} and \wikilink{Open problems}{open problems}.
+  \item \emph{Toolkit}: the \wikilink{Notation}{notation} and the \wikilink{Standard analysis}{standard analysis} that the proofs use.
+  \item \emph{Numerical methods}: \wikilink{Numerical methods}{the codes behind the pictures}.
+  \item \emph{Lean formalization}: \wikilink{Lean formalization}{the statements checked by a proof assistant}.
+  \item \emph{About this wiki}: \wikilink{How to contribute}{how to contribute} and \wikilink{Contributors}{who did what}.
+\end{itemize}
+\media{diagram}{wiki-map.svg}{The parts of the wiki; click a name to open its page.}
+\end{document}

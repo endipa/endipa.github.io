@@ -28,6 +28,9 @@ This script writes the TeX sources, converts TeX back to wikitext, and applies a
         the whole wiki in one document (a section per page, in the order of the menu), from the page files
   roundtrip <pages-dir>
         page -> TeX -> page on every article: must give back the page
+  zips <tex-dir> [<pictures-dir>]
+        <page>.zip next to every <page>.tex, with the pictures the page shows (from <pictures-dir>):
+        the project that "Open in Overleaf" opens
 
 Correspondence (wiki -> TeX): [[Literature#Key|Names (year)]] -> \citet{Key} and ([[Literature#Key|Names,
 year]]) -> \citep{Key}, when Key is in the page's reference list; [[#label|text]] -> \hyperref[label]{text},
@@ -366,6 +369,8 @@ class W2T:
             if m:
                 if m.group(1) == 'mod-meta':
                     out.append(r'\pagestatus{' + self.inline(m.group(2)) + '}')
+                elif m.group(1) == 'central-question':   # a sentence set apart: the quote environment
+                    out += [r'\begin{quote}', self.inline(m.group(2)), r'\end{quote}']
                 else:
                     out.append(r'\wikidiv{' + m.group(1) + '}{' + self.inline(m.group(2)) + '}')
                 i += 1; continue
@@ -507,6 +512,7 @@ PREAMBLE = r"""\documentclass[11pt]{article}
 \usepackage[a4paper,margin=2.5cm]{geometry}
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{graphicx,tabularx,listings}
+\usepackage[skins,breakable]{tcolorbox}
 \usepackage[round]{natbib}
 \usepackage[hidelinks]{hyperref}
 \setlength{\emergencystretch}{2em}
@@ -530,7 +536,10 @@ PREAMBLE = r"""\documentclass[11pt]{article}
 \newcommand{\ed@runin}[1]{\par\topsep6\p@\@plus6\p@\relax\trivlist\item[\hskip\labelsep\itshape#1\@addpunct{.}]\ignorespaces}
 \newenvironment{idea}[1][Idea]{\ed@runin{#1}}{\endtrivlist\@endpefalse}
 \newenvironment{architecture}[1][Proof architecture]{\ed@runin{#1}}{\endtrivlist\@endpefalse}
-\newenvironment{note}[1][Note]{\ed@runin{#1}}{\endtrivlist\@endpefalse}
+% \begin{note}[Title]: an aside, in a dashed box; its title in italics at the start of the text
+\tcbset{ed@note/.style={enhanced jigsaw,breakable,frame hidden,interior hidden,arc=2pt,borderline={0.5pt}{0pt}{black!50,dash pattern=on 3pt off 2pt},
+  left=3mm,right=3mm,top=2mm,bottom=2mm,before skip=3mm plus 1mm,after skip=3mm plus 1mm}}
+\newenvironment{note}[1][Note]{\begin{tcolorbox}[ed@note]\noindent{\itshape#1\@addpunct{.}}\enspace\ignorespaces}{\end{tcolorbox}}
 % text still to be written; labels of the text; the Lean banner of the statement above
 \newcommand{\placeholder}[1]{\if@inlabel\else\par\noindent\fi\textit{[#1]}\@ifnextchar\end{}{\par}}
 \newcommand{\ed@label}[1]{\mbox{\footnotesize[#1]}}
@@ -555,11 +564,29 @@ PREAMBLE = r"""\documentclass[11pt]{article}
 \newcommand{\nowiki}[1]{#1}
 \newcommand{\wikitemplate}[1]{\texttt{\{\{#1\}\}}}
 \newcommand{\wikidiv}[2]{\par#2\par}
-% pictures, videos, diagrams: shown in the online edition; an image next to this file, or in ../media, is shown here
-\newcommand{\ed@picture}[1]{\begin{center}\includegraphics[width=0.8\linewidth]{#1}\end{center}}
-\newcommand{\media}[4][]{\par\medskip\def\ed@a{#2}{\noindent\small\ifx\ed@a\ed@video Video\else\ifx\ed@a\ed@diagram Diagram\else
-  Figure\fi\fi: \texttt{#3}, shown in the online edition.\par}\ifx\ed@a\ed@image\IfFileExists{#3}{\ed@picture{#3}}{\IfFileExists{../media/#3}{%
-  \ed@picture{../media/#3}}{}}\fi{\noindent\small#4\par}\medskip}
+% \begin{quote}: a sentence set apart, such as the central question of the Overview; centred, in italics
+\renewenvironment{quote}{\list{}{\rightmargin\leftmargin}\item\relax\centering\itshape}{\endlist}
+% pictures, videos, diagrams: a grey panel with the picture and its caption. The picture (for a video, its poster image)
+% is shown when its file, or a .pdf or .png file of the same name, is next to this file, in media/ or in ../media
+\tcbset{ed@media/.style={enhanced,colback=black!4,frame hidden,arc=2pt,left=3mm,right=3mm,top=2.5mm,bottom=2mm,
+  before skip=3mm plus 1mm,after skip=3mm plus 1mm}}
+\def\ed@poster{}\def\ed@record{}\def\ed@svg{svg}
+\define@key{ed@media}{poster}{\def\ed@poster{#1}}\define@key{ed@media}{record}{\def\ed@record{#1}}\define@key{ed@media}{id}{}
+\newcommand{\ed@find}[1]{\IfFileExists{#1}{\edef\ed@found{#1}}{\IfFileExists{media/#1}{\edef\ed@found{media/#1}}{%
+  \IfFileExists{../media/#1}{\edef\ed@found{../media/#1}}{}}}}
+\newcommand{\ed@picturefile}[1]{\def\ed@found{}\edef\ed@b{#1}\ifx\ed@b\@empty\else\filename@parse{\ed@b}\edef\ed@base{\filename@base}%
+  \edef\ed@ext{\filename@ext}\ifx\ed@ext\ed@svg\else\ed@find{\ed@b}\fi
+  \ifx\ed@found\@empty\ed@find{\ed@base.pdf}\fi\ifx\ed@found\@empty\ed@find{\ed@base.png}\fi\fi}
+\newcommand{\ed@panel}[2]{\begin{tcolorbox}[ed@media,#1]\ifx\ed@found\@empty\else{\centering\includegraphics[width=\linewidth,
+  height=0.35\textheight,keepaspectratio]{\ed@found}\par}\smallskip\fi{\small\textbf{\ifx\ed@a\ed@video Video\else\ifx\ed@a\ed@diagram
+  Diagram\else Figure\fi\fi.}\enspace#2\par}{\footnotesize\itshape\ifx\ed@a\ed@video The video plays in the online edition of this page.\fi
+  \ifx\ed@record\@empty\else\ifx\ed@a\ed@video\ \fi How it was made: page Numerical methods, record \texttt{\ed@record}.\fi\par}
+  \end{tcolorbox}}
+% in the text, the panel is a figure (it floats to where it fits); inside a box (a note, a table), it stays in place
+\renewcommand{\topfraction}{0.85}\renewcommand{\bottomfraction}{0.6}\renewcommand{\textfraction}{0.1}\renewcommand{\floatpagefraction}{0.8}
+\newcommand{\media}[4][]{\par\def\ed@poster{}\def\ed@record{}\setkeys{ed@media}{#1}\def\ed@a{#2}%
+  \ifx\ed@a\ed@video\ed@picturefile{\ed@poster}\else\ed@picturefile{#3}\fi
+  \ifinner\ed@panel{}{#4}\else\begin{figure}[htbp]\ed@panel{before skip=0pt,after skip=0pt}{#4}\end{figure}\fi}
 % tables (\lv{label}{text}; \header{a & b}, \row{a & b}) and code
 \newenvironment{levels}[1][]{\par\smallskip\noindent\tabularx{\linewidth}{@{}>{\bfseries\raggedright\arraybackslash}p{0.2\linewidth}X@{}}}{\endtabularx\par\smallskip}
 \newcommand{\lv}[2]{#1 & #2\\[3pt]}
@@ -1002,6 +1029,19 @@ class T2W:
                 a, _ = read_group(m.group(1), 0)
                 out.append('{{Placeholder start}}' + self.inline(a) + '{{Placeholder end}}')
                 i += 1; continue
+            m = re.match(r'^\\begin\{quote\}\s*(.*)$', s)
+            if m:                                # a sentence set apart (the central question): one paragraph
+                flush(); end_lists()
+                body, rest = [], m.group(1)
+                while r'\end{quote}' not in rest and i + 1 < n:
+                    body.append(rest); i += 1; rest = strip_comment(lines[i]).strip()
+                if r'\end{quote}' not in rest:
+                    self.problems.append('\\begin{quote} without \\end{quote}')
+                body.append(rest.split(r'\end{quote}')[0])
+                if any(not x.strip() for x in body[1:-1]):
+                    self.problems.append('a quote is one paragraph: no blank line between \\begin{quote} and \\end{quote}')
+                out.append('<div class="central-question">' + self.inline(' '.join(x.strip() for x in body if x.strip())) + '</div>')
+                i += 1; continue
             m = re.match(r'^\\wikidiv\{([^}]*)\}(\{.*)$', s)
             if m:
                 flush()
@@ -1228,6 +1268,8 @@ def proposal_blocks(tex):
         m = re.match(r'^%%\s*after:\s*(.+)$', s)
         if m:
             after = m.group(1).strip(); i += 1; continue
+        if not s and not blocks and after is None and lead:   # a blank line in the lead: a paragraph break
+            lead.append(''); i += 1; continue
         if not s or (s.startswith('%') and not s.startswith('%%wiki')) or s == r'\maketitle' \
                 or re.match(r'^\\(wikipage|title|author|date|pagestatus|zulip)\b', s):
             i += 1; continue
@@ -1389,7 +1431,7 @@ def cmd_page2tex(src, out, date='', site=''):
         conv = W2T(lit)
         tex = conv.page(title, text, date, site)
         problems += ['%s: %s' % (title, p) for p in conv.problems]
-        open(os.path.join(out, ('index' if title == 'Overview' else slug(title)) + '.tex'), 'w', encoding='utf-8').write(tex)
+        open(os.path.join(out, slug(title) + '.tex'), 'w', encoding='utf-8').write(tex)
     print('%d TeX sources -> %s' % (len(arts), out))
     for p in problems:
         print('note  ' + p)
@@ -1425,7 +1467,7 @@ def cmd_book(src, texdir, out, site='', date=''):
         if several:
             body.append('\\part{' + esc(part) + '}')
         for title in titles:
-            f = os.path.join(texdir, ('index' if title == 'Overview' else slug(title)) + '.tex')
+            f = os.path.join(texdir, slug(title) + '.tex')
             if not os.path.exists(f):
                 continue
             tex = open(f, encoding='utf-8').read()
@@ -1460,6 +1502,42 @@ def cmd_book(src, texdir, out, site='', date=''):
     print('book: %d lines -> %s' % (doc.count('\n'), out))
     return 0
 
+
+
+PICTURE_EXT = ('.pdf', '.png', '.jpg', '.jpeg')
+
+
+def media_pictures(tex, media):
+    """The files of the folder media that the \\media lines of a TeX source show, as the macro \\media finds them: the
+    picture of an image or a diagram (for an SVG, a .pdf or .png file of the same name), the poster of a video."""
+    out = []
+    for m in re.finditer(r'\\media(?:\[([^\]]*)\])?\{([^}]*)\}\{([^}]*)\}', tex):
+        opts = dict(kv.split('=', 1) for kv in (m.group(1) or '').split(',') if '=' in kv)
+        f = opts.get('poster', '') if m.group(2) == 'video' else m.group(3)
+        if not f:
+            continue
+        base, ext = os.path.splitext(f)
+        for c in ([f] if ext.lower() in PICTURE_EXT else []) + [base + '.pdf', base + '.png']:
+            if os.path.isfile(os.path.join(media, c)):
+                out.append(c); break
+    return list(dict.fromkeys(out))
+
+
+def cmd_zips(texdir, media=''):
+    """For "Open in Overleaf": <page>.zip next to every <page>.tex, with the page and the pictures it shows."""
+    import zipfile
+    n = 0
+    for f in sorted(os.listdir(texdir)):
+        if not f.endswith('.tex') or f == 'whole-wiki.tex':
+            continue
+        tex = open(os.path.join(texdir, f), encoding='utf-8').read()
+        with zipfile.ZipFile(os.path.join(texdir, f[:-4] + '.zip'), 'w', zipfile.ZIP_DEFLATED) as z:
+            z.write(os.path.join(texdir, f), f)
+            for pic in (media_pictures(tex, media) if media else []):
+                z.write(os.path.join(media, pic), pic)
+        n += 1
+    print('%d Overleaf projects (zip) -> %s' % (n, texdir))
+    return 0
 
 
 def cmd_roundtrip(pdir):
@@ -1512,6 +1590,8 @@ def main(argv):
         return cmd_book(args[0], args[1], args[2], opt('--site'), opt('--date', datetime.date.today().isoformat()))
     if cmd == 'roundtrip':
         return cmd_roundtrip(args[0])
+    if cmd == 'zips':
+        return cmd_zips(args[0], args[1] if len(args) > 1 else '')
     print(__doc__); return 2
 
 

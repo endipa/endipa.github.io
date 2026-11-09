@@ -42,9 +42,9 @@ table.levels td:first-child { font-weight: bold; font-size: 0.82em; text-transfo
 .navtree-result > a { font-style: italic; }
 .navtree-level > a, .navtree-proof > a { color: #54595d; }
 
-/* Label for computations (Template:Numeric) and the central question box (Overview) */
+/* Label for computations (Template:Numeric) and the central question (Overview): centred, in italics */
 .badge-numeric { display: inline-block; font-size: 0.78em; line-height: 1.5; padding: 0 0.45em; border: 1px solid #a6c8a0; color: #2f5d27; background: #f0f7ee; border-radius: 3px; }
-.central-question { border-left: 4px solid #1f4e79; background: #f4f7fb; padding: 0.6em 1em; margin: 0.8em 0 1em; font-size: 1.05em; }
+.central-question { text-align: center; font-style: italic; font-size: 1.05em; max-width: 34em; margin: 1.2em auto; }
 
 /* Enhanced-dissipation wiki: preprint label and the infobox strip (a levels table at the top of a page) */
 .badge-preprint { display: inline-block; font-size: 0.78em; line-height: 1.5; padding: 0 0.45em; border: 1px solid #9fb3c8; color: #1f4e79; background: #eef3f8; border-radius: 3px; }

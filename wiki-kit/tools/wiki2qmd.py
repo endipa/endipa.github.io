@@ -721,11 +721,13 @@ def main():
             if k in meta:
                 fm.append(f'{k}: ' + yaml_str(meta[k]))
         fm.append('wiki-page: ' + yaml_str(title))
-        tex = 'tex/' + qmd_name(title)[:-4] + '.tex'
+        tex = 'tex/' + slug(title) + '.tex'   # the TeX source is named after the page (overview.tex, couette-flow.tex)
         if os.path.exists(os.path.join(OUT, tex)):
             fm.append('tex-source: ' + yaml_str(tex))
             if os.path.exists(os.path.join(OUT, tex[:-4] + '.pdf')):   # compiled by build-site.sh when pdflatex exists
                 fm.append('pdf-source: ' + yaml_str(tex[:-4] + '.pdf'))
+            if os.path.exists(os.path.join(OUT, tex[:-4] + '.zip')):   # the page and its pictures, for "Open in Overleaf"
+                fm.append('overleaf-zip: ' + yaml_str(tex[:-4] + '.zip'))
             if title == 'Overview':   # the whole wiki: one document (and its PDF), and the Overleaf project of all pages
                 for k, f in (('book-tex', 'tex/whole-wiki.tex'), ('book-pdf', 'tex/whole-wiki.pdf'), ('book-zip', 'tex/all-pages.zip')):
                     if os.path.exists(os.path.join(OUT, f)):
@@ -798,7 +800,7 @@ def main():
     else:
         author = ' ' + yaml_str(CONFIG['author'])
     if os.path.isdir(os.path.join(OUT, 'tex')):   # TeX sources written by wikitex.py page2tex
-        QUARTO = QUARTO.replace('    - robots.txt\n', '    - robots.txt\n    - tex/*.tex\n    - tex/*.pdf\n    - tex/all-pages.zip\n', 1)
+        QUARTO = QUARTO.replace('    - robots.txt\n', '    - robots.txt\n    - tex/*.tex\n    - tex/*.pdf\n    - tex/*.zip\n', 1)
     yml = QUARTO.format(source=os.path.basename(XML), date=DATE or datetime.date.today().isoformat(), chapters='\n'.join(ch), author=author,
                         **{k: yaml_str(CONFIG[k]) for k in ('wiki_url', 'title', 'subtitle', 'footer_left', 'footer_right')})
     if CONFIG.get('wiki_note'):   # kit v2.1: e.g. "members", shown after the link to the real wiki

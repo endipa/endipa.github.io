@@ -47,7 +47,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-17888a1159294d3eb470f19f6f52f5a5.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-b380a80906d51110b67d4571f224eb3e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-49efdb24aa45fedfbd0fdcec59357f9d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -359,7 +359,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Page team: to be named · Status: skeleton</p>
 </div>
 <div class="discuss">
-<a href="https://endipa.miraheze.org/wiki/Enhanced-dissipation_tools" class="edit-link"><i class="bi bi-pencil-square" aria-hidden="true"></i> This page in the wiki (members)</a> <a href="tex/enhanced-dissipation-tools.tex" class="edit-link tex-link" download="enhanced-dissipation-tools.tex"><i class="bi bi-file-earmark-code" aria-hidden="true"></i> TeX source</a> <a href="tex/enhanced-dissipation-tools.pdf" class="edit-link pdf-link" download="enhanced-dissipation-tools.pdf"><i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> PDF</a> <span class="discuss-note">Zulip: #toolkit › Enhanced-dissipation tools (link when the Zulip exists)</span>
+<a href="https://endipa.miraheze.org/wiki/Enhanced-dissipation_tools" class="edit-link"><i class="bi bi-pencil-square" aria-hidden="true"></i> This page in the wiki (members)</a> <a href="tex/enhanced-dissipation-tools.tex" class="edit-link tex-link" download="enhanced-dissipation-tools.tex"><i class="bi bi-file-earmark-code" aria-hidden="true"></i> TeX source</a> <a href="tex/enhanced-dissipation-tools.pdf" class="edit-link pdf-link" download="enhanced-dissipation-tools.pdf"><i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> PDF</a> <a href="tex/enhanced-dissipation-tools.zip" class="edit-link overleaf-link" data-zip="tex/enhanced-dissipation-tools.zip" data-main="enhanced-dissipation-tools.tex" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i> Open in Overleaf</a> <span class="discuss-note">Zulip: #toolkit › Enhanced-dissipation tools (link when the Zulip exists)</span>
 </div>
 <p>Tools specific to enhanced dissipation. A statement comes to the Toolkit when several proofs use it, or when it holds in more generality than one result; a step used by one proof only is a claim inside that proof. Each statement is given once, with its proof or a reference, and the proofs elsewhere link to it.</p>
 <section id="tools" class="level2" data-number="16.1">
@@ -373,6 +373,18 @@ ul.task-list li input[type="checkbox"] {
 <!-- refs-begin: -->
 <!-- refs-end -->
 
+
+<script>
+(function () {
+  // Open in Overleaf: a new project from a zip (tex/<page>.zip: the page and its pictures; tex/all-pages.zip: the whole
+  // wiki, whole-wiki.tex as main document). Overleaf downloads the zip itself, so this works on the public site only.
+  document.querySelectorAll('a.overleaf-link').forEach(function (a) {
+    var zip = new URL(a.getAttribute('data-zip'), window.location.href).href;
+    a.href = 'https://www.overleaf.com/docs?engine=pdflatex&main_document=' + encodeURIComponent(a.getAttribute('data-main'))
+      + '&snip_uri=' + encodeURIComponent(zip);
+  });
+})();
+</script>
 
 </section>
 

@@ -47,7 +47,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-17888a1159294d3eb470f19f6f52f5a5.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-b380a80906d51110b67d4571f224eb3e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-49efdb24aa45fedfbd0fdcec59357f9d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -358,7 +358,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Page team: to be named · Status: skeleton</p>
 </div>
 <div class="discuss">
-<a href="https://endipa.miraheze.org/wiki/Recent_literature" class="edit-link"><i class="bi bi-pencil-square" aria-hidden="true"></i> This page in the wiki (members)</a> <a href="tex/recent-literature.tex" class="edit-link tex-link" download="recent-literature.tex"><i class="bi bi-file-earmark-code" aria-hidden="true"></i> TeX source</a> <a href="tex/recent-literature.pdf" class="edit-link pdf-link" download="recent-literature.pdf"><i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> PDF</a> <span class="discuss-note">Zulip: #overview › Recent literature (link when the Zulip exists)</span>
+<a href="https://endipa.miraheze.org/wiki/Recent_literature" class="edit-link"><i class="bi bi-pencil-square" aria-hidden="true"></i> This page in the wiki (members)</a> <a href="tex/recent-literature.tex" class="edit-link tex-link" download="recent-literature.tex"><i class="bi bi-file-earmark-code" aria-hidden="true"></i> TeX source</a> <a href="tex/recent-literature.pdf" class="edit-link pdf-link" download="recent-literature.pdf"><i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> PDF</a> <a href="tex/recent-literature.zip" class="edit-link overleaf-link" data-zip="tex/recent-literature.zip" data-main="recent-literature.tex" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i> Open in Overleaf</a> <span class="discuss-note">Zulip: #overview › Recent literature (link when the Zulip exists)</span>
 </div>
 <div class="placeholder">
 <p>The latest papers, with what each contributes; their results are collected on <a href="./state-of-the-art.html">State of the art</a> and <a href="./related-results.html">Related results</a>.</p>
@@ -368,6 +368,18 @@ ul.task-list li input[type="checkbox"] {
 <!-- refs-begin: -->
 <!-- refs-end -->
 
+
+<script>
+(function () {
+  // Open in Overleaf: a new project from a zip (tex/<page>.zip: the page and its pictures; tex/all-pages.zip: the whole
+  // wiki, whole-wiki.tex as main document). Overleaf downloads the zip itself, so this works on the public site only.
+  document.querySelectorAll('a.overleaf-link').forEach(function (a) {
+    var zip = new URL(a.getAttribute('data-zip'), window.location.href).href;
+    a.href = 'https://www.overleaf.com/docs?engine=pdflatex&main_document=' + encodeURIComponent(a.getAttribute('data-main'))
+      + '&snip_uri=' + encodeURIComponent(zip);
+  });
+})();
+</script>
 
 </section>
 

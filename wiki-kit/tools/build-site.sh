@@ -39,19 +39,31 @@ SITE_NAME="$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1])).get
 python3 "$HERE/wikitex.py" page2tex "$XML" "$ED/tex" --date "$(date -u +%F)" --site "$SITE_NAME" > "$ED/tex-report.txt" || { cat "$ED/tex-report.txt"; exit 1; }
 # the whole wiki in one document, a section per page (opened in Overleaf from the Overview)
 python3 "$HERE/wikitex.py" book "$XML" "$ED/tex" "$ED/tex/whole-wiki.tex" --site "$SITE_NAME" --date "$(date -u +%F)" >> "$ED/tex-report.txt"
-# the PDF of every page, compiled from its TeX source (skipped when pdflatex is missing); images from the media folder
-rm -f "$ED"/tex/*.pdf
+# the pictures of the TeX sources: the pictures of the media folder, and a PDF copy of every SVG (pdflatex cannot read
+# SVG; made with rsvg-convert, when present)
+PICS="$(mktemp -d)"
+if [ -d "$MEDIA" ]; then
+  for f in "$MEDIA"/*.png "$MEDIA"/*.jpg "$MEDIA"/*.jpeg "$MEDIA"/*.pdf; do if [ -e "$f" ]; then cp "$f" "$PICS/"; fi; done
+  for f in "$MEDIA"/*.svg; do
+    if [ -e "$f" ] && [ ! -e "$PICS/$(basename "$f" .svg).pdf" ] && command -v rsvg-convert >/dev/null 2>&1; then
+      rsvg-convert -f pdf -o "$PICS/$(basename "$f" .svg).pdf" "$f" || true; fi
+  done
+fi
+# the PDF of every page, compiled from its TeX source (skipped when pdflatex is missing), with the pictures in ../media
+rm -f "$ED"/tex/*.pdf "$ED"/tex/*.zip
 if command -v pdflatex >/dev/null 2>&1; then
-  T="$(mktemp -d)"; mkdir -p "$T/tex"; cp "$ED"/tex/*.tex "$T/tex/"; [ -d "$MEDIA" ] && cp -r "$MEDIA" "$T/media"
+  T="$(mktemp -d)"; mkdir -p "$T/tex"; cp "$ED"/tex/*.tex "$T/tex/"; cp -r "$PICS" "$T/media"
   for f in "$T"/tex/*.tex; do b="$(basename "$f" .tex)"
     (cd "$T/tex" && pdflatex -interaction=nonstopmode -halt-on-error "$b.tex" >/dev/null 2>&1 && pdflatex -interaction=nonstopmode -halt-on-error "$b.tex" >/dev/null 2>&1) \
       && cp "$T/tex/$b.pdf" "$ED/tex/" || echo "pdflatex failed on $b.tex" >> "$ED/tex-report.txt"
   done; rm -rf "$T"
 fi
-# all the TeX sources in one zip, for "Open in Overleaf" on the Overview: whole-wiki.tex as the main document, every
-# page a file of its own, and the images they show
-rm -f "$ED/tex/all-pages.zip"; T="$(mktemp -d)"; cp "$ED"/tex/*.tex "$T/"; [ -d "$MEDIA" ] && cp "$MEDIA"/*.png "$MEDIA"/*.jpg "$T/" 2>/dev/null || true
-(cd "$T" && zip -q "$ED/tex/all-pages.zip" *); rm -rf "$T"
+# "Open in Overleaf" on every page: <page>.zip, the page's TeX source and the pictures it shows
+python3 "$HERE/wikitex.py" zips "$ED/tex" "$PICS" >> "$ED/tex-report.txt"
+# all the TeX sources in one zip, for "Open the whole wiki in Overleaf" on the Overview: whole-wiki.tex as the main
+# document, every page a file of its own, and the pictures
+T="$(mktemp -d)"; cp "$ED"/tex/*.tex "$T/"; cp -r "$PICS"/. "$T/"
+(cd "$T" && zip -q "$ED/tex/all-pages.zip" *); rm -rf "$T" "$PICS"
 python3 "$HERE/wiki2qmd.py" "$XML" "$ED" --date "$(date -u +%F)" "${MARGS[@]}" > "$ED/convert-report.json" || { cat "$ED/convert-report.json"; exit 1; }
 (cd "$ED" && "$Q" render --to html >/tmp/quarto-render.log 2>&1) || { tail -30 /tmp/quarto-render.log; exit 1; }
 sed -i '/polyfill\.min\.js/d' "$ED"/_book/*.html

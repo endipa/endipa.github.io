@@ -1,9 +1,36 @@
 {{Discuss|channel=overview}}
 
-{{Placeholder start}}A short introduction to the topic, written as continuous prose: the phenomenon, the equation, why it matters, and what the reader will find in this wiki.{{Placeholder end}}
+A passive scalar is a quantity carried by a fluid without acting on it, such as heat, a dye in water or a pollutant in the air. If <math display="inline">f</math> is its concentration, <math display="inline">u</math> the velocity of an incompressible flow, and <math display="inline">\nu>0</math> the molecular diffusivity, then <math display="inline">f</math> solves the advection–diffusion equation
 <math display="block">\partial_t f+u\cdot\nabla f=\nu\Delta f,\qquad \nabla\cdot u=0.</math>
+Diffusion alone dissipates the scalar on a time scale of order <math display="inline">1/\nu</math>, which is very long when <math display="inline">\nu</math> is small. The flow, on the other hand, dissipates nothing: it only rearranges the scalar. In doing so, it can transfer large-scale structures to small scales, for instance by stretching the scalar into thin filaments, and at small scales diffusion is much more efficient. The result is that <math display="inline">f</math> decays on a time scale much shorter than <math display="inline">1/\nu</math>: this is ''enhanced dissipation''.
+
+{{Fold start|kind=note|title=Beyond passive scalars}}
+The same mechanism, acting on the vorticity of a two-dimensional fluid, helps keep shear flows stable at large Reynolds numbers, against perturbations that are small enough in terms of the Reynolds number; the page [[Why it matters]] expands on this.
+{{Fold end}}
+
+<div class="central-question">How, and by how much, does an incompressible velocity field speed up the dissipation of a diffusing scalar?</div>
+
+The two videos below show the phenomenon in the simplest setting, a periodic box in two dimensions. In the first, a steady shear flow significantly accelerates the dissipation of vertical stripes, orthogonal to its streamlines.
 {{Media|kind=video|file=heat-vs-shear.mp4|poster=heat-vs-shear-poster.png|caption=Left: the heat equation. Right: the same initial datum carried by the shear flow <math display="inline">u=(\sin y,0)</math>, with the same diffusivity. Bottom: the size of the two solutions in time, on a logarithmic scale. {{Numeric}}|record=num-heat-vs-shear}}
+The second video compares two flows of the same size. A steady shear stretches the scalar only along its own streamlines. Shears that alternate in direction, with random phases (the model of Pierrehumbert), stretch and fold the scalar, which then dissipates much faster and more uniformly in space.
 {{Media|kind=video|file=alternating-shears.mp4|poster=alternating-shears-poster.png|caption=Left: the shear flow <math display="inline">u=(\sin y,0)</math>. Right: shears that alternate, horizontal and vertical, each acting for 3 units of time, with random phases. Same initial datum <math display="inline">f_0=\cos x</math>, same diffusivity <math display="inline">\nu=10^{-4}</math>; both velocity fields have size at most 1. Bottom: the size of the solutions in time, on a logarithmic scale. {{Numeric}}|record=num-alternating-shears}}
+Quantifying the time scale of enhanced dissipation is the subject of this wiki. Laminar flows, such as shear flows, typically dissipate the scalar on time scales of order <math display="inline">\nu^{-a}</math> with <math display="inline">0<a<1</math>, whereas ''mixing'' flows, such as the alternating shears, can dissipate it on time scales of order <math display="inline">|\log\nu|</math>. The questions are which time scales are possible, which flows achieve them, and how one proves it.
+
+{{Fold start|kind=note|title=Mixing: the problem without diffusion}}
+When <math display="inline">\nu=0</math> the equation is pure transport: the flow conserves every <math display="inline">L^p</math> norm of <math display="inline">f</math> and dissipates nothing. It can still ''mix'', that is, move the scalar to ever smaller scales, so that <math display="inline">f</math> converges weakly to its mean while its <math display="inline">L^2</math> norm stays constant. The speed of mixing can be measured by the decay of a negative Sobolev norm, such as <math display="inline">\|f\|_{H^{-1}}</math>. Mixing is a field of its own, with its own questions and methods; this wiki covers only its relation to enhanced dissipation.
+{{Fold end}}
+
+{{Fold start|kind=note|title=The setting, made precise}}
+In most of the wiki, the domains without boundary are the torus <math display="inline">\mathbb{T}^2</math> and the periodic strip <math display="inline">\mathbb{T}\times\mathbb{R}</math>; some problems are set in the whole plane <math display="inline">\mathbb{R}^2</math>. The domains with boundary are the disk and the periodic channel <math display="inline">\mathbb{T}\times[0,1]</math>; the boundary conditions are stated where they are used. The initial datum <math display="inline">f_0</math> is in <math display="inline">L^2</math> and has mean zero; for shear and circular flows, it also has zero average along each streamline, since the flow does not act on that average. The size of a solution is its <math display="inline">L^2</math> norm. One definition of the dissipation time of a flow is the time it needs to reduce every initial datum by a fixed factor, say one half; the flow enhances dissipation when this time is much shorter than <math display="inline">1/\nu</math>. Definitions and notation are collected in [[Notation]].
+{{Fold end}}
 
 == Map of the wiki ==
+* ''Motivation and history'': [[Why it matters|why the problem matters]] and [[History of the problem|where it comes from]].
+* ''Techniques through examples'': enhanced dissipation for two flows, [[Couette flow|Couette]] and [[Poiseuille flow|Poiseuille]], proved once with each method, so that the methods can be compared on the same example.
+* ''Techniques and general results'': the general theorem behind each method, with its proof, for [[Spectral methods|spectral methods]], [[Hypocoercivity|hypocoercivity]], [[Stochastic methods|stochastic methods]] and [[Hörmander theory]].
+* ''Extensions and recent advances'': the [[State of the art|state of the art]], [[Related results|related results]] and [[Open problems|open problems]].
+* ''Toolkit'': the [[Notation|notation]] and the [[Standard analysis|standard analysis]] that the proofs use.
+* ''Numerical methods'': [[Numerical methods|the codes behind the pictures]].
+* ''Lean formalization'': [[Lean formalization|the statements checked by a proof assistant]].
+* ''About this wiki'': [[How to contribute|how to contribute]] and [[Contributors|who did what]].
 {{Media|kind=diagram|file=wiki-map.svg|caption=The parts of the wiki; click a name to open its page.}}
