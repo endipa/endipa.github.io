@@ -1,0 +1,12 @@
+'''Proposal for a paragraph of the page $1''', made with the edit button of the website (paragraph <code>$2</code>).
+
+''Reason:'' $5
+
+'''Proposed text''' (TeX):
+<pre>$4</pre>
+
+'''Current text''' (TeX):
+<pre>$3</pre>
+
+~~<includeonly>~~</includeonly><noinclude>
+The text of a proposal made from the website: the edit button of a paragraph opens a new topic on the talk page of its page, filled in with this text (1: the page, 2: the id of the paragraph, 3: its TeX, 4: the proposed TeX, 5: the reason). The proposal is discussed on the talk page; once it is accepted, an editor applies it with <code>wikitex.py apply-unit</code> and the id of the paragraph. The split signature at the end becomes four tildes in the new topic. See [[How to contribute]].</noinclude>

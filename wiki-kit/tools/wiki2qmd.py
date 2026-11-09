@@ -40,6 +40,8 @@ Conventions (see also the recipe):
 """
 import re, sys, os, json, collections, unicodedata, html, shutil, urllib.parse
 import xml.etree.ElementTree as ET
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import wikitex   # noqa: E402  (the editable paragraphs of a page and their TeX, for the edit buttons)
 
 XML, OUT = sys.argv[1], sys.argv[2]
 DATE = sys.argv[sys.argv.index('--date') + 1] if '--date' in sys.argv else None
@@ -68,6 +70,119 @@ KIND_PREFIX = {'Theorem': 'thm-', 'Lemma': 'lem-', 'Proposition': 'prp-', 'Corol
 THEOREM_TITLE = re.compile(r'^(Theorem|Lemma|Proposition|Corollary|Definition)\s*\((.*)\)\.?$', re.S)
 UNNUMBERED_TITLE = re.compile(r'^(Claim|Remark|Conjecture|Example)\s*(?:\((.*)\))?\.?$', re.S)   # boxes Quarto does not number
 ZULIP_CHANNELS = CONFIG.get('zulip_channels', {})   # short name -> "<id>-<name>" once the Zulip exists (optional)
+# Edit buttons (kit, November 2026): with "edit_paragraphs": {"preload": "Template:Proposal/Preload"} in edition.json,
+# every paragraph of a page has a button that shows its TeX in a popup; the reader changes it and opens a new topic on
+# the page's talk page in the wiki, filled in by the preload page ($1 page, $2 paragraph id, $3 current TeX, $4 proposed
+# TeX, $5 reason). The proposal is saved only when the reader saves it in the wiki; wikitex.py apply-unit applies it.
+EDIT = CONFIG.get('edit_paragraphs')
+EDIT_SCRIPT = r"""<style>
+.edit-unit { position: relative; }
+.edit-unit > .edit-btn { position: absolute; top: 0.1rem; right: -2.1rem; width: 1.7rem; height: 1.7rem; padding: 0; border: 1px solid #c9cfd8;
+  border-radius: 4px; background: #fff; color: #1f4e79; font-size: 0.85rem; line-height: 1; opacity: 0; transition: opacity .15s; cursor: pointer; }
+.edit-unit:hover > .edit-btn, .edit-unit > .edit-btn:focus { opacity: 1; }
+@media (hover: none), (max-width: 767px) { .edit-unit > .edit-btn { right: 0; top: -0.3rem; opacity: 0.55; } }
+.edit-overlay { position: fixed; inset: 0; z-index: 3000; background: rgba(20, 28, 40, 0.38); display: flex; align-items: center;
+  justify-content: center; padding: 1rem; }
+.edit-dialog { background: #fff; width: min(46rem, 100%); max-height: 92vh; overflow: auto; border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, .25); padding: 1.1rem 1.3rem 1rem; font-size: 0.95rem; }
+.edit-dialog h3 { font-size: 1.1rem; margin: 0 0 .3rem; }
+.edit-dialog .edit-note { color: #59616e; font-size: 0.85rem; margin: 0 0 .7rem; }
+.edit-dialog textarea { width: 100%; min-height: 10rem; font-family: SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.82rem;
+  line-height: 1.45; padding: .5rem .6rem; border: 1px solid #c9cfd8; border-radius: 4px; }
+.edit-dialog input[type=text] { width: 100%; padding: .35rem .6rem; border: 1px solid #c9cfd8; border-radius: 4px; font-size: .9rem; }
+.edit-dialog label { display: block; font-size: .8rem; color: #59616e; margin: .6rem 0 .2rem; }
+.edit-preview { border: 1px dashed #c9cfd8; border-radius: 4px; padding: .5rem .8rem; background: #fbfcfd; font-size: .93rem; }
+.edit-actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .9rem; align-items: center; }
+.edit-actions button { border-radius: 4px; padding: .35rem .8rem; font-size: .88rem; border: 1px solid #c9cfd8; background: #fff; cursor: pointer; }
+.edit-actions button.edit-send { background: #1f4e79; border-color: #1f4e79; color: #fff; }
+.edit-status { font-size: .82rem; color: #59616e; }
+@media print { .edit-btn { display: none !important; } }
+</style>
+<script>
+(function () {
+  var el = document.getElementById('edit-units'); if (!el) return;
+  var data = JSON.parse(el.textContent);
+  function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+  // a rough preview of the TeX: the formulas with MathJax, a few commands as text
+  function preview(tex) {
+    var h = esc(tex);
+    h = h.replace(/\\begin\{(itemize|enumerate|quote)\}|\\end\{(itemize|enumerate|quote)\}/g, '')
+         .replace(/\\item\s*/g, '<br>&bull;&nbsp;')
+         .replace(/\\(emph|textit)\{([^{}]*)\}/g, '<em>$2</em>').replace(/\\textbf\{([^{}]*)\}/g, '<strong>$1</strong>')
+         .replace(/\\wikilink\{([^{}]*)\}\{\}/g, '<u>$1</u>').replace(/\\wikilink\{[^{}]*\}\{([^{}]*)\}/g, '<u>$1</u>')
+         .replace(/\\hyperref\[[^\]]*\]\{([^{}]*)\}/g, '<u>$1</u>').replace(/\\cite[tp]?\{([^{}]*)\}/g, '[$1]')
+         .replace(/\\(numerics|heuristic|demo|preprint|published|raw)\{\}/g, '[$1]')
+         .replace(/---/g, '&mdash;').replace(/--/g, '&ndash;').replace(/\n\s*\n/g, '<br><br>');
+    return h.replace(/\$([^$]+)\$/g, '\\($1\\)');
+  }
+  function open(id) {
+    var old = data.units[id];
+    var ov = document.createElement('div'); ov.className = 'edit-overlay';
+    ov.innerHTML = '<div class="edit-dialog" role="dialog" aria-modal="true" aria-label="Propose a change to this paragraph">'
+      + '<h3>Propose a change to this paragraph</h3>'
+      + '<p class="edit-note">The TeX of the paragraph, as in the TeX source of the page. Change it, then open the proposal on the talk page of <em>'
+      + esc(data.page) + '</em> in the wiki (members, logged in): it is saved only when you click <em>Save</em> there, and it is discussed before an editor applies it.</p>'
+      + '<textarea spellcheck="false"></textarea>'
+      + '<label>Preview (formulas and basic formatting)</label><div class="edit-preview"></div>'
+      + '<label>Reason (optional, one line)</label><input type="text" maxlength="300">'
+      + '<div class="edit-actions"><button type="button" class="edit-send">Open the proposal on the talk page</button>'
+      + '<button type="button" class="edit-copy">Copy the TeX</button><button type="button" class="edit-cancel">Cancel</button>'
+      + '<span class="edit-status"></span></div></div>';
+    document.body.appendChild(ov);
+    var ta = ov.querySelector('textarea'), pv = ov.querySelector('.edit-preview'), reason = ov.querySelector('input'),
+        status = ov.querySelector('.edit-status'), timer = null;
+    ta.value = old;
+    function render() {
+      pv.innerHTML = preview(ta.value);
+      if (window.MathJax && MathJax.typesetPromise) { MathJax.typesetPromise([pv]).catch(function () {}); }
+    }
+    ta.addEventListener('input', function () { clearTimeout(timer); timer = setTimeout(render, 300); });
+    render();
+    function close() { ov.remove(); document.removeEventListener('keydown', onkey); }
+    function onkey(e) { if (e.key === 'Escape') close(); }
+    document.addEventListener('keydown', onkey);
+    ov.addEventListener('click', function (e) { if (e.target === ov) close(); });
+    ov.querySelector('.edit-cancel').onclick = close;
+    ov.querySelector('.edit-copy').onclick = function () {
+      ta.select();
+      try { document.execCommand('copy'); status.textContent = 'Copied.'; } catch (e) { status.textContent = 'Select the text and copy it.'; }
+    };
+    ov.querySelector('.edit-send').onclick = function () {
+      var neu = ta.value.replace(/\s+$/, '');
+      if (neu === old.replace(/\s+$/, '')) { status.textContent = 'Nothing has changed.'; return; }
+      var words = neu.replace(/\\[a-zA-Z]+|[{}$\\]/g, ' ').replace(/\s+/g, ' ').trim().split(' ').slice(0, 6).join(' ');
+      var params = [data.page, id, old, neu, reason.value.trim() || '(none given)'];
+      function link(p) {
+        return data.edit + encodeURIComponent(data.talk.replace(/ /g, '_')) + '?action=edit&section=new'
+          + '&preloadtitle=' + encodeURIComponent('Proposal: ' + words + '…')
+          + '&preload=' + encodeURIComponent(data.preload)
+          + p.map(function (x) { return '&preloadparams%5B%5D=' + encodeURIComponent(x); }).join('');
+      }
+      var u = link(params);
+      if (u.length > 7500) { params[2] = '(not repeated: see the paragraph ' + id + ' of the page)'; u = link(params); }
+      if (u.length > 7500) { status.textContent = 'Too long for a link: copy the TeX and open a topic on the talk page by hand.'; return; }
+      window.open(u, '_blank', 'noopener');
+      status.textContent = 'Opened in a new tab: check it there and click Save.';
+    };
+    ta.focus();
+  }
+  document.querySelectorAll('.edit-unit').forEach(function (u) {
+    var id = u.getAttribute('data-unit'); if (!data.units[id]) return;
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'edit-btn';
+    b.title = 'Propose a change to this paragraph'; b.setAttribute('aria-label', b.title);
+    b.innerHTML = '<i class="bi bi-pencil" aria-hidden="true"></i>';
+    b.addEventListener('click', function () { open(id); });
+    u.appendChild(b);
+  });
+})();
+</script>"""
+
+
+def edit_block(title, tex):
+    """The TeX of the editable paragraphs of a page and the script of the edit buttons, as raw HTML."""
+    data = {'page': title, 'talk': 'Talk:' + title, 'edit': WIKI, 'preload': EDIT.get('preload', ''), 'units': tex}
+    js = json.dumps(data, ensure_ascii=False).replace('</', '<\\/')
+    return '\n\n```{=html}\n<script type="application/json" id="edit-units">' + js + '</script>\n' + EDIT_SCRIPT + '\n```\n'
 
 
 def zulip_hash(s):
@@ -341,7 +456,15 @@ def convert_page(title, text, statements):
     used_ids = collections.Counter()
     i, n = 0, len(lines)
     fence = lambda f: out.extend(['', f, ''])
+    # edit buttons: the editable paragraphs (wikitex.edit_units), each in a div with its id
+    ustart = {a: (b, uid) for a, b, _, uid in wikitex.edit_units(text)} if EDIT and not WIKI_IS_PREVIEW else {}
+    uend = None
     while i < n:
+        if uend is not None and i > uend:
+            fence(':::'); uend = None
+        if uend is None and i in ustart:
+            uend, uid = ustart[i]
+            fence('::: {.edit-unit data-unit="' + uid + '"}')
         raw = lines[i]
         line = raw.rstrip()
         stripped = line.strip()
@@ -533,6 +656,8 @@ def convert_page(title, text, statements):
             continue
         out.append(inline(line))
         i += 1
+    if uend is not None:
+        fence(':::')
     body = '\n'.join(out)
     body = re.sub(r'\n{3,}', '\n\n', body).strip() + '\n'
     return display, meta, body
@@ -702,6 +827,7 @@ def main():
             out_lines.append(ln)
         return '\n'.join(out_lines)
     articles = [t for t in pages if ':' not in t.split('/')[0] and t != 'Main Page']
+    lit = wikitex.literature({t: pages[t] for t in articles}) if EDIT else {}
     ARTICLES.update(articles)
     for t, txt in pages.items():
         for a, b, name, pos, named in templates_in(no_pre(txt)):
@@ -714,6 +840,10 @@ def main():
     for title in articles:
         source = expand_inline_statements(pages[title])
         display, meta, body = convert_page(title, source, statements)
+        if EDIT and not WIKI_IS_PREVIEW:
+            tex = wikitex.units_tex(pages[title], lit)
+            if tex:
+                body += edit_block(title, tex)
         fm = ['---']
         if title != 'Overview':
             fm.append('title: ' + yaml_str(display))

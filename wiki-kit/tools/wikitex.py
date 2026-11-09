@@ -29,6 +29,11 @@ This script writes the TeX sources, converts TeX back to wikitext, and applies a
         pages from <out-dir>/pages/<page>.tex, in the order of the menu; the pictures go in <out-dir>/figures
   roundtrip <pages-dir>
         page -> TeX -> page on every article: must give back the page
+  apply-unit <pages-dir> <page> <paragraph-id> <new.tex> [--write]
+        a proposal made from the website for one paragraph (its id, shown in the proposal on the talk page, and its
+        new TeX): replaces the paragraph if it has not changed since, and prints the diff
+  units <pages-dir>
+        check the editable paragraphs of every page (TeX -> wiki must give back each paragraph)
   zips <tex-dir> [<pictures-dir>]
         <page>.zip next to <page>.tex for every page that shows pictures: the page and its pictures (from
         <pictures-dir>) in the folder figures/
@@ -41,7 +46,7 @@ the Literature page.
 
 Python 3.8+, standard library only. Part of the wiki kit (2026); drafted by Claude (AI).
 """
-import datetime, difflib, os, re, sys, unicodedata
+import datetime, difflib, hashlib, json, os, re, sys, unicodedata
 import xml.etree.ElementTree as ET
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -296,6 +301,10 @@ class W2T:
 
     def page(self, title, text, date='', site=''):
         self.scan(text)
+        return render_document(title, self.convert(text), date, site)
+
+    def convert(self, text):
+        """The TeX body of a wikitext: a whole page, or a paragraph of a page (after scan() of the page)."""
         lines = text.split('\n')
         out, envs, lists = [], [], []
         i, n = 0, len(lines)
@@ -450,8 +459,7 @@ class W2T:
             out.append(self.inline(line))
             i += 1
         close_lists()
-        body = '\n'.join(out).rstrip('\n')
-        return render_document(title, body, date, site)
+        return '\n'.join(out).rstrip('\n')
 
     def table(self, rows):
         first = rows[0].strip()
@@ -1421,6 +1429,123 @@ def cmd_apply(pdir, tex_path, write=False):
     return 1 if report['problems'] else 0
 
 
+INLINE_TEMPLATES = ('Demo', 'Heuristic', 'Numeric', 'Preprint', 'Published', 'Raw', 'Claim', 'Anchor')
+
+
+def edit_units(text):
+    """The paragraphs of a page that can be edited from the website: the runs of consecutive text lines (prose,
+    displayed formulas, lists), as (first line, last line, wikitext, id). The id is 'p' and 8 hex digits of the SHA-1 of
+    the wikitext: it stays valid as long as the paragraph itself is not changed, whatever happens around it.
+    Not editable: headings, boxes and folds (their text is), media, tables, code, the reference list, placeholders,
+    lines made only of labels."""
+    if re.match(r'^\s*#redirect', text, re.I):
+        return []
+    lines = text.split('\n')
+    skip = [False] * len(lines)
+    inside = None
+    for k, l in enumerate(lines):
+        s = l.strip()
+        if inside:
+            skip[k] = True
+            if inside in s:
+                inside = None
+            continue
+        if s.startswith('<pre') and '</pre>' not in s:
+            skip[k], inside = True, '</pre>'
+        elif s.startswith('<!-- refs-begin'):
+            skip[k], inside = True, '<!-- refs-end -->'
+        elif s.startswith('<!--') and '-->' not in s:
+            skip[k], inside = True, '-->'
+
+    def is_text(k):
+        s = lines[k].strip()
+        if skip[k] or not s or s.startswith(('=', '{|', '|', '!', '<div', '</div', '<pre', '<!--', '__', '{{Placeholder')):
+            return False
+        if 'Placeholder start' in s or re.match(r'^(\{\{(%s)\}\}\s*)+$' % '|'.join(INLINE_TEMPLATES), s):
+            return False
+        if s.startswith('{{'):
+            m = re.match(r'\{\{\s*([^|}]*)', s)
+            return bool(m) and m.group(1).strip() in INLINE_TEMPLATES
+        return True
+    out, k, n = [], 0, len(lines)
+    while k < n:
+        if is_text(k):
+            j = k
+            while j + 1 < n and is_text(j + 1):
+                j += 1
+            w = '\n'.join(lines[k:j + 1])
+            out.append((k, j, w, 'p' + hashlib.sha1(w.encode('utf-8')).hexdigest()[:8]))
+            k = j + 1
+        else:
+            k += 1
+    return out
+
+
+def units_tex(text, lit):
+    """{id: TeX} for the editable paragraphs of a page (the TeX of each, as in the page's TeX source)."""
+    conv = W2T(lit)
+    conv.scan(text)
+    return {uid: conv.convert(w) for _, _, w, uid in edit_units(text)}
+
+
+def cmd_apply_unit(pdir, title, uid, tex_path, write=False):
+    """A proposal made from the website for one paragraph: its id and its new TeX."""
+    pages = wikikit.read_pages(pdir)
+    if title not in pages:
+        sys.exit('no page %r' % title)
+    lit = literature({t: v[3] for t, v in pages.items()})
+    refs = refs_of(lit)
+    old = pages[title][3]
+    found = {u[3]: u for u in edit_units(old)}
+    if uid not in found:
+        sys.exit('paragraph %s is not on the page %s: it was changed after the proposal was made (or the id is wrong); '
+                 'apply the proposal by hand' % (uid, title))
+    a, b, w, _ = found[uid]
+    conv = T2W(refs)
+    wiki = conv.document(open(tex_path, encoding='utf-8').read()).strip('\n').split('\n')
+    lines = old.split('\n')
+    if normalize('\n'.join(wiki)).strip('\n') == normalize(w).strip('\n'):
+        print('(no change: the proposed text gives back the paragraph %s of %s)' % (uid, title))
+        return 0
+    lines[a:b + 1] = wiki
+    new_text, added, probs = update_reference_list('\n'.join(lines), old, lit)
+    problems = list(dict.fromkeys(conv.problems + probs))
+    links = lambda t: set(x.strip() for x in re.findall(r'\[\[([^\]|]+)', t))
+    report = {'page': title, 'paragraph': uid + ' (lines %d-%d)' % (a + 1, b + 1), 'problems': problems,
+              'references added': added, 'new links': sorted(links(new_text) - links(old)),
+              'removed links': sorted(links(old) - links(new_text))}
+    for k, v in report.items():
+        if v:
+            print('%-20s %s' % (k + ':', v if isinstance(v, str) else '\n'.join([v[0]] + ['                     ' + x for x in v[1:]])))
+    diff = list(difflib.unified_diff(old.split('\n'), new_text.split('\n'), 'current: ' + title, 'proposed', n=1, lineterm=''))
+    print('\n'.join(diff) if diff else '(no change)')
+    if write and diff:
+        path = os.path.join(pdir, wikikit.file_for(title, 'wikitext'))
+        open(path, 'w', encoding='utf-8', newline='\n').write(new_text.rstrip('\n') + '\n')
+        print('written:', path)
+    return 1 if problems else 0
+
+
+def cmd_units(pdir):
+    """Check the editable paragraphs of every page: TeX -> wikitext must give back each paragraph."""
+    pages = wikikit.read_pages(pdir)
+    lit = literature({t: v[3] for t, v in pages.items()})
+    refs = refs_of(lit)
+    bad = total = 0
+    for title, v in sorted(pages.items()):
+        if ':' in title.split('/')[0] or title == 'Main Page':
+            continue
+        tex = units_tex(v[3], lit)
+        for _, _, w, uid in edit_units(v[3]):
+            total += 1
+            back = T2W(dict(refs)).document(tex[uid]).strip('\n')
+            if normalize(back).strip('\n') != normalize(w).strip('\n'):   # adjacent text lines may be joined: same page
+                bad += 1
+                print('%s %s: differs\n  wiki: %s\n  back: %s' % (title, uid, w[:150], back[:150]))
+    print('%d editable paragraphs, %d do not come back unchanged' % (total, bad))
+    return 1 if bad else 0
+
+
 def cmd_page2tex(src, out, date='', site=''):
     os.makedirs(out, exist_ok=True)
     for f in os.listdir(out):
@@ -1606,6 +1731,10 @@ def main(argv):
         return cmd_roundtrip(args[0])
     if cmd == 'zips':
         return cmd_zips(args[0], args[1] if len(args) > 1 else '')
+    if cmd == 'apply-unit':
+        return cmd_apply_unit(args[0], args[1], args[2], args[3], '--write' in args)
+    if cmd == 'units':
+        return cmd_units(args[0])
     print(__doc__); return 2
 
 
