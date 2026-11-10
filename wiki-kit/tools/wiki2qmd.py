@@ -805,6 +805,11 @@ filters:
 # Each page links to its version in the wiki (page-links.lua adds the page title).
 wiki-url: {wiki_url}
 
+# No numbers on the website (10 November 2026): pages and sections are not numbered, and results are numbered within
+# their page (Theorem 1, Lemma 2); the TeX sources and their PDFs keep the numbering of a paper.
+crossref:
+  chapters: false
+
 book:
   title: {title}
   subtitle: {subtitle}
@@ -822,8 +827,7 @@ format:
     theme: [cosmo, theme.scss]
     toc: true
     toc-title: "On this page"
-    number-sections: true
-    number-depth: 2
+    number-sections: false
     crossrefs-hover: true
     link-external-newwindow: true
     include-in-header:

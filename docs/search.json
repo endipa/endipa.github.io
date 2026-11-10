@@ -22,7 +22,7 @@
   {
     "objectID": "why-it-matters.html",
     "href": "why-it-matters.html",
-    "title": "1  Why it matters",
+    "title": "Why it matters",
     "section": "",
     "text": "References",
     "crumbs": [
@@ -33,9 +33,9 @@
   {
     "objectID": "history-of-the-problem.html",
     "href": "history-of-the-problem.html",
-    "title": "2  History of the problem",
+    "title": "History of the problem",
     "section": "",
-    "text": "2.1 Origins",
+    "text": "Origins",
     "crumbs": [
       "Motivation and history",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>History of the problem</span>"
@@ -44,7 +44,7 @@
   {
     "objectID": "history-of-the-problem.html#origins",
     "href": "history-of-the-problem.html#origins",
-    "title": "2  History of the problem",
+    "title": "History of the problem",
     "section": "",
     "text": "Before the mathematical theory.\nPropose a text →",
     "crumbs": [
@@ -55,9 +55,9 @@
   {
     "objectID": "history-of-the-problem.html#spectral-methods",
     "href": "history-of-the-problem.html#spectral-methods",
-    "title": "2  History of the problem",
-    "section": "2.2 Spectral methods",
-    "text": "2.2 Spectral methods\n\n\nContributions and dates; the general theory is on Spectral methods.\nPropose a text →",
+    "title": "History of the problem",
+    "section": "Spectral methods",
+    "text": "Spectral methods\n\n\nContributions and dates; the general theory is on Spectral methods.\nPropose a text →",
     "crumbs": [
       "Motivation and history",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>History of the problem</span>"
@@ -66,9 +66,9 @@
   {
     "objectID": "history-of-the-problem.html#hypocoercivity",
     "href": "history-of-the-problem.html#hypocoercivity",
-    "title": "2  History of the problem",
-    "section": "2.3 Hypocoercivity",
-    "text": "2.3 Hypocoercivity\n\n\nContributions and dates; the general theory is on Hypocoercivity.\nPropose a text →",
+    "title": "History of the problem",
+    "section": "Hypocoercivity",
+    "text": "Hypocoercivity\n\n\nContributions and dates; the general theory is on Hypocoercivity.\nPropose a text →",
     "crumbs": [
       "Motivation and history",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>History of the problem</span>"
@@ -77,9 +77,9 @@
   {
     "objectID": "history-of-the-problem.html#stochastic-methods",
     "href": "history-of-the-problem.html#stochastic-methods",
-    "title": "2  History of the problem",
-    "section": "2.4 Stochastic methods",
-    "text": "2.4 Stochastic methods\n\n\nContributions and dates; the general theory is on Stochastic methods.\nPropose a text →",
+    "title": "History of the problem",
+    "section": "Stochastic methods",
+    "text": "Stochastic methods\n\n\nContributions and dates; the general theory is on Stochastic methods.\nPropose a text →",
     "crumbs": [
       "Motivation and history",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>History of the problem</span>"
@@ -88,9 +88,9 @@
   {
     "objectID": "history-of-the-problem.html#hormander-theory",
     "href": "history-of-the-problem.html#hormander-theory",
-    "title": "2  History of the problem",
-    "section": "2.5 Hörmander theory",
-    "text": "2.5 Hörmander theory\n\n\nContributions and dates; the general theory is on Hörmander theory.\nPropose a text →",
+    "title": "History of the problem",
+    "section": "Hörmander theory",
+    "text": "Hörmander theory\n\n\nContributions and dates; the general theory is on Hörmander theory.\nPropose a text →",
     "crumbs": [
       "Motivation and history",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>History of the problem</span>"
@@ -99,7 +99,7 @@
   {
     "objectID": "history-of-the-problem.html#references",
     "href": "history-of-the-problem.html#references",
-    "title": "2  History of the problem",
+    "title": "History of the problem",
     "section": "References",
     "text": "References",
     "crumbs": [
@@ -110,7 +110,7 @@
   {
     "objectID": "recent-literature.html",
     "href": "recent-literature.html",
-    "title": "3  Recent literature",
+    "title": "Recent literature",
     "section": "",
     "text": "References",
     "crumbs": [
@@ -121,9 +121,9 @@
   {
     "objectID": "couette-flow.html",
     "href": "couette-flow.html",
-    "title": "4  Couette flow",
+    "title": "Couette flow",
     "section": "",
-    "text": "4.1 Setting",
+    "text": "Setting",
     "crumbs": [
       "Techniques through examples",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Couette flow</span>"
@@ -132,7 +132,7 @@
   {
     "objectID": "couette-flow.html#setting",
     "href": "couette-flow.html#setting",
-    "title": "4  Couette flow",
+    "title": "Couette flow",
     "section": "",
     "text": "The flow \\(u=(y,0)\\) on \\(\\mathbb{T}\\times\\mathbb{R}\\): the equation, the Fourier modes, what decays.\nPropose a text →",
     "crumbs": [
@@ -143,9 +143,9 @@
   {
     "objectID": "couette-flow.html#the-result",
     "href": "couette-flow.html#the-result",
-    "title": "4  Couette flow",
-    "section": "4.2 The result",
-    "text": "4.2 The result\n\nTheorem 4.1 (enhanced dissipation for Couette flow)  \n\n\nThe statement.\nPropose a text →\n\n\n\n\nLean: not yet formalized · add a certificate\n\n\n\n\n\n\n\nTipIdea\n\n\n\n\n\n\n\nThe key mechanism in a few lines.\nPropose a text →\n\n\n\n\n\n\n\n\n\n\n\nNoteProof architecture\n\n\n\n\n\n\n\nThe proof as a short chain of steps, and its diagram.\nPropose a text →",
+    "title": "Couette flow",
+    "section": "The result",
+    "text": "The result\n\nTheorem 1 (enhanced dissipation for Couette flow)  \n\n\nThe statement.\nPropose a text →\n\n\n\n\nLean: not yet formalized · add a certificate\n\n\n\n\n\n\n\nTipIdea\n\n\n\n\n\n\n\nThe key mechanism in a few lines.\nPropose a text →\n\n\n\n\n\n\n\n\n\n\n\nNoteProof architecture\n\n\n\n\n\n\n\nThe proof as a short chain of steps, and its diagram.\nPropose a text →",
     "crumbs": [
       "Techniques through examples",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Couette flow</span>"
@@ -154,9 +154,9 @@
   {
     "objectID": "couette-flow.html#one-example-every-technique",
     "href": "couette-flow.html#one-example-every-technique",
-    "title": "4  Couette flow",
-    "section": "4.3 One example, every technique",
-    "text": "4.3 One example, every technique\n\nEach proof below is written for this example only, to show the mechanism; the general results, with complete proofs, are in the part Techniques and general results.\n\n\nExplicit solution\n\n\n\n\n\n\nNoteProof by the explicit solution\n\n\n\n\n\n\n\nThe proof.\nPropose a text →\n\n\n\n\n\n\n\nSpectral methods\n\n\n\n\n\n\nNoteProof by spectral methods\n\n\n\n\n\n\n\nThe proof.\nPropose a text →\n\n\n\n\n\n\nGeneral theory: Spectral methods.\n\n\n\nHypocoercivity\n\n\n\n\n\n\nNoteProof by hypocoercivity\n\n\n\n\n\n\n\nThe proof.\nPropose a text →\n\n\n\n\n\n\nGeneral theory: Hypocoercivity.\n\n\n\nStochastic methods\n\n\n\n\n\n\nNoteProof by stochastic methods\n\n\n\n\n\n\n\nThe proof.\nPropose a text →\n\n\n\n\n\n\nGeneral theory: Stochastic methods.\n\n\n\nHörmander theory\n\n\n\n\n\n\nNoteProof by Hörmander theory\n\n\n\n\n\n\n\nThe proof.\nPropose a text →\n\n\n\n\n\n\nGeneral theory: Hörmander theory.",
+    "title": "Couette flow",
+    "section": "One example, every technique",
+    "text": "One example, every technique\n\nEach proof below is written for this example only, to show the mechanism; the general results, with complete proofs, are in the part Techniques and general results.\n\n\nExplicit solution\n\n\n\n\n\n\nNoteProof by the explicit solution\n\n\n\n\n\n\n\nThe proof.\nPropose a text →\n\n\n\n\n\n\n\nSpectral methods\n\n\n\n\n\n\nNoteProof by spectral methods\n\n\n\n\n\n\n\nThe proof.\nPropose a text →\n\n\n\n\n\n\nGeneral theory: Spectral methods.\n\n\n\nHypocoercivity\n\n\n\n\n\n\nNoteProof by hypocoercivity\n\n\n\n\n\n\n\nThe proof.\nPropose a text →\n\n\n\n\n\n\nGeneral theory: Hypocoercivity.\n\n\n\nStochastic methods\n\n\n\n\n\n\nNoteProof by stochastic methods\n\n\n\n\n\n\n\nThe proof.\nPropose a text →\n\n\n\n\n\n\nGeneral theory: Stochastic methods.\n\n\n\nHörmander theory\n\n\n\n\n\n\nNoteProof by Hörmander theory\n\n\n\n\n\n\n\nThe proof.\nPropose a text →\n\n\n\n\n\n\nGeneral theory: Hörmander theory.",
     "crumbs": [
       "Techniques through examples",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Couette flow</span>"
@@ -165,9 +165,9 @@
   {
     "objectID": "couette-flow.html#what-this-example-teaches",
     "href": "couette-flow.html#what-this-example-teaches",
-    "title": "4  Couette flow",
-    "section": "4.4 What this example teaches",
-    "text": "4.4 What this example teaches\n\n\nWhat the example shows, and what the general theory keeps of it.\nPropose a text →",
+    "title": "Couette flow",
+    "section": "What this example teaches",
+    "text": "What this example teaches\n\n\nWhat the example shows, and what the general theory keeps of it.\nPropose a text →",
     "crumbs": [
       "Techniques through examples",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Couette flow</span>"
@@ -176,7 +176,7 @@
   {
     "objectID": "couette-flow.html#references",
     "href": "couette-flow.html#references",
-    "title": "4  Couette flow",
+    "title": "Couette flow",
     "section": "References",
     "text": "References",
     "crumbs": [
@@ -187,9 +187,9 @@
   {
     "objectID": "poiseuille-flow.html",
     "href": "poiseuille-flow.html",
-    "title": "5  Poiseuille flow",
+    "title": "Poiseuille flow",
     "section": "",
-    "text": "5.1 Setting",
+    "text": "Setting",
     "crumbs": [
       "Techniques through examples",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Poiseuille flow</span>"
@@ -198,7 +198,7 @@
   {
     "objectID": "poiseuille-flow.html#setting",
     "href": "poiseuille-flow.html#setting",
-    "title": "5  Poiseuille flow",
+    "title": "Poiseuille flow",
     "section": "",
     "text": "The flow, the domain, the critical point, what decays.\nPropose a text →",
     "crumbs": [
@@ -209,9 +209,9 @@
   {
     "objectID": "poiseuille-flow.html#the-result",
     "href": "poiseuille-flow.html#the-result",
-    "title": "5  Poiseuille flow",
-    "section": "5.2 The result",
-    "text": "5.2 The result\n\nTheorem 5.1 (enhanced dissipation for Poiseuille flow)  \n\n\nThe statement.\nPropose a text →\n\n\n\n\nLean: not yet formalized · add a certificate\n\n\n\n\n\n\n\nTipIdea\n\n\n\n\n\n\n\nThe key mechanism in a few lines.\nPropose a text →\n\n\n\n\n\n\n\n\n\n\n\nNoteProof architecture\n\n\n\n\n\n\n\nThe proof as a short chain of steps, and its diagram.\nPropose a text →",
+    "title": "Poiseuille flow",
+    "section": "The result",
+    "text": "The result\n\nTheorem 1 (enhanced dissipation for Poiseuille flow)  \n\n\nThe statement.\nPropose a text →\n\n\n\n\nLean: not yet formalized · add a certificate\n\n\n\n\n\n\n\nTipIdea\n\n\n\n\n\n\n\nThe key mechanism in a few lines.\nPropose a text →\n\n\n\n\n\n\n\n\n\n\n\nNoteProof architecture\n\n\n\n\n\n\n\nThe proof as a short chain of steps, and its diagram.\nPropose a text →",
     "crumbs": [
       "Techniques through examples",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Poiseuille flow</span>"
@@ -220,9 +220,9 @@
   {
     "objectID": "poiseuille-flow.html#what-changes-compared-with-couette-flow",
     "href": "poiseuille-flow.html#what-changes-compared-with-couette-flow",
-    "title": "5  Poiseuille flow",
-    "section": "5.3 What changes compared with Couette flow",
-    "text": "5.3 What changes compared with Couette flow\n\nFor each technique: what carries over from Couette flow, what is lost, and the proof for this example.\n\n\nExplicit solution\n\n\nWhat is lost.\nPropose a text →\n\n\n\n\nSpectral methods\n\n\n\n\n\n\nNoteProof by spectral methods\n\n\n\n\n\n\n\nThe proof.\nPropose a text →\n\n\n\n\n\n\n\nHypocoercivity\n\n\n\n\n\n\nNoteProof by hypocoercivity\n\n\n\n\n\n\n\nThe proof.\nPropose a text →\n\n\n\n\n\n\n\nStochastic methods\n\n\n\n\n\n\nNoteProof by stochastic methods\n\n\n\n\n\n\n\nThe proof.\nPropose a text →\n\n\n\n\n\n\n\nHörmander theory\n\n\n\n\n\n\nNoteProof by Hörmander theory\n\n\n\n\n\n\n\nThe proof.\nPropose a text →",
+    "title": "Poiseuille flow",
+    "section": "What changes compared with Couette flow",
+    "text": "What changes compared with Couette flow\n\nFor each technique: what carries over from Couette flow, what is lost, and the proof for this example.\n\n\nExplicit solution\n\n\nWhat is lost.\nPropose a text →\n\n\n\n\nSpectral methods\n\n\n\n\n\n\nNoteProof by spectral methods\n\n\n\n\n\n\n\nThe proof.\nPropose a text →\n\n\n\n\n\n\n\nHypocoercivity\n\n\n\n\n\n\nNoteProof by hypocoercivity\n\n\n\n\n\n\n\nThe proof.\nPropose a text →\n\n\n\n\n\n\n\nStochastic methods\n\n\n\n\n\n\nNoteProof by stochastic methods\n\n\n\n\n\n\n\nThe proof.\nPropose a text →\n\n\n\n\n\n\n\nHörmander theory\n\n\n\n\n\n\nNoteProof by Hörmander theory\n\n\n\n\n\n\n\nThe proof.\nPropose a text →",
     "crumbs": [
       "Techniques through examples",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Poiseuille flow</span>"
@@ -231,7 +231,7 @@
   {
     "objectID": "poiseuille-flow.html#references",
     "href": "poiseuille-flow.html#references",
-    "title": "5  Poiseuille flow",
+    "title": "Poiseuille flow",
     "section": "References",
     "text": "References",
     "crumbs": [
@@ -242,9 +242,9 @@
   {
     "objectID": "spectral-methods.html",
     "href": "spectral-methods.html",
-    "title": "6  Spectral methods",
+    "title": "Spectral methods",
     "section": "",
-    "text": "6.1 The method",
+    "text": "The method",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Spectral methods</span>"
@@ -253,7 +253,7 @@
   {
     "objectID": "spectral-methods.html#the-method",
     "href": "spectral-methods.html#the-method",
-    "title": "6  Spectral methods",
+    "title": "Spectral methods",
     "section": "",
     "text": "The key mechanism, in a few lines.\nPropose a text →\n\n\n\nWorked example: Couette flow. What changes with a critical point: Poiseuille flow.",
     "crumbs": [
@@ -264,9 +264,9 @@
   {
     "objectID": "spectral-methods.html#general-results",
     "href": "spectral-methods.html#general-results",
-    "title": "6  Spectral methods",
-    "section": "6.2 General results",
-    "text": "6.2 General results\n\n\nThe theorems, each written as a result (statement, Lean banner, idea, proof architecture, complete proof; see How to contribute); lemmas of general use go to the Toolkit (Standard analysis, Enhanced-dissipation tools).\nPropose a text →",
+    "title": "Spectral methods",
+    "section": "General results",
+    "text": "General results\n\n\nThe theorems, each written as a result (statement, Lean banner, idea, proof architecture, complete proof; see How to contribute); lemmas of general use go to the Toolkit (Standard analysis, Enhanced-dissipation tools).\nPropose a text →",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Spectral methods</span>"
@@ -275,9 +275,9 @@
   {
     "objectID": "spectral-methods.html#limitations-and-comparison",
     "href": "spectral-methods.html#limitations-and-comparison",
-    "title": "6  Spectral methods",
-    "section": "6.3 Limitations and comparison",
-    "text": "6.3 Limitations and comparison\n\n\nWhat the method does not give, and how it compares with the other techniques.\nPropose a text →",
+    "title": "Spectral methods",
+    "section": "Limitations and comparison",
+    "text": "Limitations and comparison\n\n\nWhat the method does not give, and how it compares with the other techniques.\nPropose a text →",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Spectral methods</span>"
@@ -286,7 +286,7 @@
   {
     "objectID": "spectral-methods.html#references",
     "href": "spectral-methods.html#references",
-    "title": "6  Spectral methods",
+    "title": "Spectral methods",
     "section": "References",
     "text": "References",
     "crumbs": [
@@ -297,9 +297,9 @@
   {
     "objectID": "hypocoercivity.html",
     "href": "hypocoercivity.html",
-    "title": "7  Hypocoercivity",
+    "title": "Hypocoercivity",
     "section": "",
-    "text": "7.1 The method",
+    "text": "The method",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Hypocoercivity</span>"
@@ -308,7 +308,7 @@
   {
     "objectID": "hypocoercivity.html#the-method",
     "href": "hypocoercivity.html#the-method",
-    "title": "7  Hypocoercivity",
+    "title": "Hypocoercivity",
     "section": "",
     "text": "The key mechanism, in a few lines.\nPropose a text →\n\n\n\nWorked example: Couette flow. What changes with a critical point: Poiseuille flow.",
     "crumbs": [
@@ -319,9 +319,9 @@
   {
     "objectID": "hypocoercivity.html#general-results",
     "href": "hypocoercivity.html#general-results",
-    "title": "7  Hypocoercivity",
-    "section": "7.2 General results",
-    "text": "7.2 General results\n\n\nThe theorems, each written as a result (statement, Lean banner, idea, proof architecture, complete proof; see How to contribute); lemmas of general use go to the Toolkit (Standard analysis, Enhanced-dissipation tools).\nPropose a text →",
+    "title": "Hypocoercivity",
+    "section": "General results",
+    "text": "General results\n\n\nThe theorems, each written as a result (statement, Lean banner, idea, proof architecture, complete proof; see How to contribute); lemmas of general use go to the Toolkit (Standard analysis, Enhanced-dissipation tools).\nPropose a text →",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Hypocoercivity</span>"
@@ -330,9 +330,9 @@
   {
     "objectID": "hypocoercivity.html#limitations-and-comparison",
     "href": "hypocoercivity.html#limitations-and-comparison",
-    "title": "7  Hypocoercivity",
-    "section": "7.3 Limitations and comparison",
-    "text": "7.3 Limitations and comparison\n\n\nWhat the method does not give, and how it compares with the other techniques.\nPropose a text →",
+    "title": "Hypocoercivity",
+    "section": "Limitations and comparison",
+    "text": "Limitations and comparison\n\n\nWhat the method does not give, and how it compares with the other techniques.\nPropose a text →",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Hypocoercivity</span>"
@@ -341,7 +341,7 @@
   {
     "objectID": "hypocoercivity.html#references",
     "href": "hypocoercivity.html#references",
-    "title": "7  Hypocoercivity",
+    "title": "Hypocoercivity",
     "section": "References",
     "text": "References",
     "crumbs": [
@@ -352,9 +352,9 @@
   {
     "objectID": "stochastic-methods.html",
     "href": "stochastic-methods.html",
-    "title": "8  Stochastic methods",
+    "title": "Stochastic methods",
     "section": "",
-    "text": "8.1 The method",
+    "text": "The method",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Stochastic methods</span>"
@@ -363,7 +363,7 @@
   {
     "objectID": "stochastic-methods.html#the-method",
     "href": "stochastic-methods.html#the-method",
-    "title": "8  Stochastic methods",
+    "title": "Stochastic methods",
     "section": "",
     "text": "The key mechanism, in a few lines.\nPropose a text →\n\n\n\nWorked example: Couette flow. What changes with a critical point: Poiseuille flow.",
     "crumbs": [
@@ -374,9 +374,9 @@
   {
     "objectID": "stochastic-methods.html#general-results",
     "href": "stochastic-methods.html#general-results",
-    "title": "8  Stochastic methods",
-    "section": "8.2 General results",
-    "text": "8.2 General results\n\n\nThe theorems, each written as a result (statement, Lean banner, idea, proof architecture, complete proof; see How to contribute); lemmas of general use go to the Toolkit (Standard analysis, Enhanced-dissipation tools).\nPropose a text →",
+    "title": "Stochastic methods",
+    "section": "General results",
+    "text": "General results\n\n\nThe theorems, each written as a result (statement, Lean banner, idea, proof architecture, complete proof; see How to contribute); lemmas of general use go to the Toolkit (Standard analysis, Enhanced-dissipation tools).\nPropose a text →",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Stochastic methods</span>"
@@ -385,9 +385,9 @@
   {
     "objectID": "stochastic-methods.html#limitations-and-comparison",
     "href": "stochastic-methods.html#limitations-and-comparison",
-    "title": "8  Stochastic methods",
-    "section": "8.3 Limitations and comparison",
-    "text": "8.3 Limitations and comparison\n\n\nWhat the method does not give, and how it compares with the other techniques.\nPropose a text →",
+    "title": "Stochastic methods",
+    "section": "Limitations and comparison",
+    "text": "Limitations and comparison\n\n\nWhat the method does not give, and how it compares with the other techniques.\nPropose a text →",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Stochastic methods</span>"
@@ -396,7 +396,7 @@
   {
     "objectID": "stochastic-methods.html#references",
     "href": "stochastic-methods.html#references",
-    "title": "8  Stochastic methods",
+    "title": "Stochastic methods",
     "section": "References",
     "text": "References",
     "crumbs": [
@@ -407,9 +407,9 @@
   {
     "objectID": "hormander-theory.html",
     "href": "hormander-theory.html",
-    "title": "9  Hörmander theory",
+    "title": "Hörmander theory",
     "section": "",
-    "text": "9.1 The method",
+    "text": "The method",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Hörmander theory</span>"
@@ -418,7 +418,7 @@
   {
     "objectID": "hormander-theory.html#the-method",
     "href": "hormander-theory.html#the-method",
-    "title": "9  Hörmander theory",
+    "title": "Hörmander theory",
     "section": "",
     "text": "The key mechanism, in a few lines.\nPropose a text →\n\n\n\nWorked example: Couette flow. What changes with a critical point: Poiseuille flow.",
     "crumbs": [
@@ -429,9 +429,9 @@
   {
     "objectID": "hormander-theory.html#general-results",
     "href": "hormander-theory.html#general-results",
-    "title": "9  Hörmander theory",
-    "section": "9.2 General results",
-    "text": "9.2 General results\n\n\nThe theorems, each written as a result (statement, Lean banner, idea, proof architecture, complete proof; see How to contribute); lemmas of general use go to the Toolkit (Standard analysis, Enhanced-dissipation tools).\nPropose a text →",
+    "title": "Hörmander theory",
+    "section": "General results",
+    "text": "General results\n\n\nThe theorems, each written as a result (statement, Lean banner, idea, proof architecture, complete proof; see How to contribute); lemmas of general use go to the Toolkit (Standard analysis, Enhanced-dissipation tools).\nPropose a text →",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Hörmander theory</span>"
@@ -440,9 +440,9 @@
   {
     "objectID": "hormander-theory.html#limitations-and-comparison",
     "href": "hormander-theory.html#limitations-and-comparison",
-    "title": "9  Hörmander theory",
-    "section": "9.3 Limitations and comparison",
-    "text": "9.3 Limitations and comparison\n\n\nWhat the method does not give, and how it compares with the other techniques.\nPropose a text →",
+    "title": "Hörmander theory",
+    "section": "Limitations and comparison",
+    "text": "Limitations and comparison\n\n\nWhat the method does not give, and how it compares with the other techniques.\nPropose a text →",
     "crumbs": [
       "Techniques and general results",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Hörmander theory</span>"
@@ -451,7 +451,7 @@
   {
     "objectID": "hormander-theory.html#references",
     "href": "hormander-theory.html#references",
-    "title": "9  Hörmander theory",
+    "title": "Hörmander theory",
     "section": "References",
     "text": "References",
     "crumbs": [
@@ -462,7 +462,7 @@
   {
     "objectID": "state-of-the-art.html",
     "href": "state-of-the-art.html",
-    "title": "10  State of the art",
+    "title": "State of the art",
     "section": "",
     "text": "References",
     "crumbs": [
@@ -473,9 +473,9 @@
   {
     "objectID": "related-results.html",
     "href": "related-results.html",
-    "title": "11  Related results",
+    "title": "Related results",
     "section": "",
-    "text": "11.1 Entries",
+    "text": "Entries",
     "crumbs": [
       "Extensions and recent advances",
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>Related results</span>"
@@ -484,7 +484,7 @@
   {
     "objectID": "related-results.html#entries",
     "href": "related-results.html#entries",
-    "title": "11  Related results",
+    "title": "Related results",
     "section": "",
     "text": "First entries.\nPropose a text →",
     "crumbs": [
@@ -495,9 +495,9 @@
   {
     "objectID": "related-results.html#how-an-entry-moves",
     "href": "related-results.html#how-an-entry-moves",
-    "title": "11  Related results",
-    "section": "11.2 How an entry moves",
-    "text": "11.2 How an entry moves\n\n\nAn entry keeps its label until its status changes: raw data checked and posted becomes preprint · to be verified, a refereed result published.\nThe editorial board moves established results into the part Techniques and general results, or into a new page, with a synthesis proof.",
+    "title": "Related results",
+    "section": "How an entry moves",
+    "text": "How an entry moves\n\n\nAn entry keeps its label until its status changes: raw data checked and posted becomes preprint · to be verified, a refereed result published.\nThe editorial board moves established results into the part Techniques and general results, or into a new page, with a synthesis proof.",
     "crumbs": [
       "Extensions and recent advances",
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>Related results</span>"
@@ -506,7 +506,7 @@
   {
     "objectID": "related-results.html#references",
     "href": "related-results.html#references",
-    "title": "11  Related results",
+    "title": "Related results",
     "section": "References",
     "text": "References",
     "crumbs": [
@@ -517,9 +517,9 @@
   {
     "objectID": "open-problems.html",
     "href": "open-problems.html",
-    "title": "12  Open problems",
+    "title": "Open problems",
     "section": "",
-    "text": "12.1 Problems",
+    "text": "Problems",
     "crumbs": [
       "Extensions and recent advances",
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>Open problems</span>"
@@ -528,7 +528,7 @@
   {
     "objectID": "open-problems.html#problems",
     "href": "open-problems.html#problems",
-    "title": "12  Open problems",
+    "title": "Open problems",
     "section": "",
     "text": "First problems.\nPropose a text →",
     "crumbs": [
@@ -539,7 +539,7 @@
   {
     "objectID": "open-problems.html#references",
     "href": "open-problems.html#references",
-    "title": "12  Open problems",
+    "title": "Open problems",
     "section": "References",
     "text": "References",
     "crumbs": [
@@ -550,9 +550,9 @@
   {
     "objectID": "raw-data.html",
     "href": "raw-data.html",
-    "title": "13  Raw data",
+    "title": "Raw data",
     "section": "",
-    "text": "13.1 Entries",
+    "text": "Entries",
     "crumbs": [
       "Extensions and recent advances",
       "<span class='chapter-number'>13</span>  <span class='chapter-title'>Raw data</span>"
@@ -561,7 +561,7 @@
   {
     "objectID": "raw-data.html#entries",
     "href": "raw-data.html#entries",
-    "title": "13  Raw data",
+    "title": "Raw data",
     "section": "",
     "text": "First entries.\nPropose a text →",
     "crumbs": [
@@ -572,9 +572,9 @@
   {
     "objectID": "notation.html",
     "href": "notation.html",
-    "title": "14  Notation",
+    "title": "Notation",
     "section": "",
-    "text": "14.1 Notation",
+    "text": "Notation",
     "crumbs": [
       "Toolkit",
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>Notation</span>"
@@ -583,7 +583,7 @@
   {
     "objectID": "notation.html#notation",
     "href": "notation.html#notation",
-    "title": "14  Notation",
+    "title": "Notation",
     "section": "",
     "text": "The scalar, the velocity field, the domains, the Fourier modes, the norms.\nPropose a text →",
     "crumbs": [
@@ -594,9 +594,9 @@
   {
     "objectID": "notation.html#definitions",
     "href": "notation.html#definitions",
-    "title": "14  Notation",
-    "section": "14.2 Definitions",
-    "text": "14.2 Definitions\n\n\nDissipation time, enhanced dissipation, and the related notions used in the wiki.\nPropose a text →",
+    "title": "Notation",
+    "section": "Definitions",
+    "text": "Definitions\n\n\nDissipation time, enhanced dissipation, and the related notions used in the wiki.\nPropose a text →",
     "crumbs": [
       "Toolkit",
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>Notation</span>"
@@ -605,9 +605,9 @@
   {
     "objectID": "standard-analysis.html",
     "href": "standard-analysis.html",
-    "title": "15  Standard analysis",
+    "title": "Standard analysis",
     "section": "",
-    "text": "15.1 Inequalities",
+    "text": "Inequalities",
     "crumbs": [
       "Toolkit",
       "<span class='chapter-number'>15</span>  <span class='chapter-title'>Standard analysis</span>"
@@ -616,7 +616,7 @@
   {
     "objectID": "standard-analysis.html#inequalities",
     "href": "standard-analysis.html#inequalities",
-    "title": "15  Standard analysis",
+    "title": "Standard analysis",
     "section": "",
     "text": "Poincaré and interpolation inequalities, and the other inequalities the proofs use.\nPropose a text →",
     "crumbs": [
@@ -627,9 +627,9 @@
   {
     "objectID": "standard-analysis.html#functional-analysis",
     "href": "standard-analysis.html#functional-analysis",
-    "title": "15  Standard analysis",
-    "section": "15.2 Functional analysis",
-    "text": "15.2 Functional analysis\n\n\nSemigroups, spectral theory, and the other facts the proofs use.\nPropose a text →",
+    "title": "Standard analysis",
+    "section": "Functional analysis",
+    "text": "Functional analysis\n\n\nSemigroups, spectral theory, and the other facts the proofs use.\nPropose a text →",
     "crumbs": [
       "Toolkit",
       "<span class='chapter-number'>15</span>  <span class='chapter-title'>Standard analysis</span>"
@@ -638,7 +638,7 @@
   {
     "objectID": "standard-analysis.html#references",
     "href": "standard-analysis.html#references",
-    "title": "15  Standard analysis",
+    "title": "Standard analysis",
     "section": "References",
     "text": "References",
     "crumbs": [
@@ -649,9 +649,9 @@
   {
     "objectID": "enhanced-dissipation-tools.html",
     "href": "enhanced-dissipation-tools.html",
-    "title": "16  Enhanced-dissipation tools",
+    "title": "Enhanced-dissipation tools",
     "section": "",
-    "text": "16.1 Tools",
+    "text": "Tools",
     "crumbs": [
       "Toolkit",
       "<span class='chapter-number'>16</span>  <span class='chapter-title'>Enhanced-dissipation tools</span>"
@@ -660,7 +660,7 @@
   {
     "objectID": "enhanced-dissipation-tools.html#tools",
     "href": "enhanced-dissipation-tools.html#tools",
-    "title": "16  Enhanced-dissipation tools",
+    "title": "Enhanced-dissipation tools",
     "section": "",
     "text": "For instance spectral-gap and resolvent lemmas, and the link between mixing and enhanced dissipation.\nPropose a text →",
     "crumbs": [
@@ -671,7 +671,7 @@
   {
     "objectID": "enhanced-dissipation-tools.html#references",
     "href": "enhanced-dissipation-tools.html#references",
-    "title": "16  Enhanced-dissipation tools",
+    "title": "Enhanced-dissipation tools",
     "section": "References",
     "text": "References",
     "crumbs": [
@@ -682,9 +682,9 @@
   {
     "objectID": "numerical-methods.html",
     "href": "numerical-methods.html",
-    "title": "17  Numerical methods",
+    "title": "Numerical methods",
     "section": "",
-    "text": "17.1 How a record works",
+    "text": "How a record works",
     "crumbs": [
       "<span class='chapter-number'>17</span>  <span class='chapter-title'>Numerical methods</span>"
     ]
@@ -692,7 +692,7 @@
   {
     "objectID": "numerical-methods.html#how-a-record-works",
     "href": "numerical-methods.html#how-a-record-works",
-    "title": "17  Numerical methods",
+    "title": "Numerical methods",
     "section": "",
     "text": "A record is a section with an anchor num-…; the picture or video links to it with the parameter record of Media.\nIt gives the equation, the parameters, the method, the checks, the code and how to run it, and its status.\nThe code is in the folder numerics/ of the repository of the wiki, one folder per record, with the output of its checks.",
     "crumbs": [
@@ -702,9 +702,9 @@
   {
     "objectID": "numerical-methods.html#records",
     "href": "numerical-methods.html#records",
-    "title": "17  Numerical methods",
-    "section": "17.2 Records",
-    "text": "17.2 Records\n\nHeat versus shear on the torus\n\nProduces the video on the Overview (heat-vs-shear.mp4) and the check figure below\nEquation \\(\\partial_t f+\\sin y\\,\\partial_x f=\\nu\\Delta f\\) on \\([0,2\\pi)^2\\), periodic, and the heat equation \\(\\partial_t f=\\nu\\Delta f\\); same datum \\(f_0=\\cos x\\)\nParameters \\(\\nu=10^{-3}\\), times \\(0\\le t\\le 100\\); video of 20 s at 24 frames per second, time running uniformly (5 time units per second), last frame held 1.5 s\nMethod one Fourier mode in \\(x\\): \\(f=\\operatorname{Re}(g(t,y)e^{ix})\\) with \\(\\partial_t g=-i\\sin y\\,g+\\nu(\\partial_y^2-1)g\\); 512 Fourier modes in \\(y\\); Strang splitting with time step 0.01, transport and diffusion steps solved exactly; heat equation solved exactly\nChecks with 1024 modes and time step 0.005 the norms agree to a relative \\(6\\cdot10^{-8}\\); the energy balance \\(\\|g(t)\\|^2+2\\nu\\int_0^t\\|(\\partial_y g,g)\\|^2ds=\\|g(0)\\|^2\\) holds to \\(3\\cdot10^{-7}\\); decay rate of the norm on \\([50,100]\\): 0.0167, against \\(\\nu^{1/2}\\approx0.0316\\)\nCode numerics/heat-vs-shear/heat_vs_shear.py in the repository, also below (Python 3, NumPy, Matplotlib, ffmpeg); python3 heat_vs_shear.py --out ../../wiki/media, about a minute\nStatus computed by Claude (AI) on 8 November 2026; not yet checked by a human demo text\n\n\n\n\n\nLeft: the norms of the two runs and of the heat equation. Right: the relative difference of the two runs and the energy-balance residual.\n\n\n\n\n\n\n\n\n\nNoteCode\n\n\n\n\n\n#!/usr/bin/env python3\n\"\"\"Heat equation versus advection-diffusion by a shear flow on the torus [0, 2pi)^2.\n\n    d_t f + sin(y) d_x f = nu (d_xx + d_yy) f,      f(0, x, y) = cos x,\n\ncompared with the heat equation (the same without the transport term), whose solution is\nexp(-nu t) cos x. The initial datum has zero average in x. It is a single Fourier mode in x,\nso f(t, x, y) = Re(g(t, y) e^{ix}) with\n\n    d_t g = -i sin(y) g + nu (d_yy - 1) g,      g(0, y) = 1,\n\nsolved by a Fourier method in y with Strang splitting: the transport step is the exact\nmultiplication by exp(-i sin(y) dt), the diffusion step is exact in Fourier variables.\nThe L2 norm reported is ||f(t)|| / ||f(0)||, that is the root mean square of |g(t, .)|.\n\nChecks (written to heat-vs-shear-check.txt and heat-vs-shear-check.png):\n  * the run is repeated with twice the Fourier modes and half the time step, and the norms are compared;\n  * energy balance: ||g(t)||^2 + 2 nu int_0^t ||(d_y g, g)||^2 ds = ||g(0)||^2 (means over y).\n\nThe video lasts --duration seconds; frame s in [0, 1] shows t = T (a s + (1 - a) s^2), a = --slow (default 1:\ntime runs uniformly; a &lt; 1 slows down the start); the last frame is held --hold seconds.\n\nOutputs, in --out: heat-vs-shear.mp4 (video), heat-vs-shear-poster.png (one frame of it),\nheat-vs-shear-check.png and heat-vs-shear-check.txt. Needs NumPy, Matplotlib and ffmpeg\n(with the libx264 encoder). Run:  python3 heat_vs_shear.py --out ../../wiki/media\n\nDrafted by Claude (AI) on 8 November 2026 for the wiki \"Enhanced dissipation for passive\nscalars\"; record: page Numerical methods, section num-heat-vs-shear.\n\"\"\"\nimport argparse\nimport os\nimport shutil\nimport subprocess\nimport tempfile\n\nimport numpy as np\nimport matplotlib\n\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\n\nHEAT_COLOR = \"#b4532a\"\nSHEAR_COLOR = \"#1f4e79\"\n\ndef solve(nu, T, N, dt, frame_times=()):\n    \"\"\"Times, norms ||f(t)||/||f(0)||, energy-balance residuals, and g(t, y) at frame_times.\"\"\"\n    y = 2 * np.pi * np.arange(N) / N\n    eta = np.fft.fftfreq(N, d=1.0 / N)              # integer wavenumbers in y\n    symbol = eta ** 2 + 1.0                          # symbol of -(d_yy - 1): mode k = 1 in x\n    half = np.exp(-nu * symbol * dt / 2)\n    transport = np.exp(-1j * np.sin(y) * dt)\n    ghat = np.fft.fft(np.ones(N, dtype=complex))\n    steps = int(round(T / dt))\n    times = dt * np.arange(steps + 1)\n    sq = np.empty(steps + 1)                         # mean over y of |g|^2\n    dissip = np.empty(steps + 1)                     # mean over y of |d_y g|^2 + |g|^2\n    frames, targets, j = [], list(frame_times), 0\n    for n in range(steps + 1):\n        power = np.abs(ghat) ** 2 / N ** 2           # Parseval: means over y\n        sq[n] = power.sum()\n        dissip[n] = (symbol * power).sum()\n        while j &lt; len(targets) and targets[j] &lt;= times[n] + dt / 2:\n            frames.append(np.fft.ifft(ghat))\n            j += 1\n        if n == steps:\n            break\n        ghat *= half\n        ghat = np.fft.fft(np.fft.ifft(ghat) * transport) * half\n    integral = np.concatenate([[0.0], np.cumsum((dissip[1:] + dissip[:-1]) / 2) * dt])\n    residual = np.abs(sq + 2 * nu * integral - 1.0)\n    return times, np.sqrt(sq), residual, frames, y\n\ndef field(g, nx):\n    \"\"\"f(x, y) = Re(g(y) e^{ix}) on an nx-by-nx grid (rows: y, columns: x).\"\"\"\n    step = max(1, len(g) // nx)\n    x = 2 * np.pi * np.arange(nx) / nx\n    return np.real(g[::step][:, None] * np.exp(1j * x)[None, :])\n\ndef draw_frame(path, t, g, nu, times, norms, heat, nx, ymin):\n    x = 2 * np.pi * np.arange(nx) / nx\n    f_heat = np.exp(-nu * t) * np.cos(x)[None, :] * np.ones((nx, 1))\n    f_shear = field(g, nx)\n    fig = plt.figure(figsize=(11.2, 7.2), dpi=100)\n    gs = fig.add_gridspec(2, 2, height_ratios=[3.6, 1.15], hspace=0.3, wspace=0.06,\n                          left=0.08, right=0.97, top=0.845, bottom=0.095)\n    for col, (data, title) in enumerate([(f_heat, \"Heat equation:  $u = 0$\"),\n                                         (f_shear, r\"Shear flow:  $u = (\\sin y,\\, 0)$\")]):\n        ax = fig.add_subplot(gs[0, col])\n        ax.imshow(data, origin=\"lower\", extent=[0, 2 * np.pi, 0, 2 * np.pi], cmap=\"RdBu_r\",\n                  vmin=-1, vmax=1, interpolation=\"bilinear\")\n        ax.set_title(title, fontsize=17, pad=8)\n        ax.set_xticks([]); ax.set_yticks([])\n        ax.set_aspect(\"equal\")\n    fig.suptitle(r\"Same initial datum $f_0 = \\cos x$, same diffusivity $\\nu = 10^{-3}$\"\n                 + \"        t = %d\" % round(t), fontsize=17, y=0.975)\n    ax = fig.add_subplot(gs[1, :])\n    k = np.searchsorted(times, t, side=\"right\")\n    ax.semilogy(times, heat, color=HEAT_COLOR, alpha=0.18, lw=2)\n    ax.semilogy(times, norms, color=SHEAR_COLOR, alpha=0.18, lw=2)\n    ax.semilogy(times[:k], heat[:k], color=HEAT_COLOR, lw=2.4, label=\"heat equation\")\n    ax.semilogy(times[:k], norms[:k], color=SHEAR_COLOR, lw=2.4, label=\"shear flow\")\n    ax.axvline(t, color=\"#888888\", lw=1)\n    ax.set_xlim(0, times[-1]); ax.set_ylim(ymin, 1.5)\n    ax.set_yticks([10.0 ** e for e in range(int(np.log10(ymin)), 1)])\n    ax.set_xlabel(\"time  t\", fontsize=13)\n    ax.set_ylabel(r\"$\\|f(t)\\|\\,/\\,\\|f_0\\|$\", fontsize=14)\n    ax.tick_params(labelsize=11)\n    ax.legend(loc=\"lower left\", fontsize=12, frameon=False, ncol=2)\n    fig.savefig(path)\n    plt.close(fig)\n\ndef main():\n    ap = argparse.ArgumentParser(description=__doc__.split(\"\\n\")[0])\n    ap.add_argument(\"--out\", default=\".\", help=\"folder for the video and the figures\")\n    ap.add_argument(\"--nu\", type=float, default=1e-3)\n    ap.add_argument(\"--T\", type=float, default=100.0)\n    ap.add_argument(\"--N\", type=int, default=512, help=\"Fourier modes in y\")\n    ap.add_argument(\"--dt\", type=float, default=0.01)\n    ap.add_argument(\"--duration\", type=float, default=20.0, help=\"length of the video in seconds\")\n    ap.add_argument(\"--fps\", type=int, default=24)\n    ap.add_argument(\"--slow\", type=float, default=1.0, help=\"speed of time at the start, relative to the mean (1: uniform)\")\n    ap.add_argument(\"--hold\", type=float, default=1.5, help=\"seconds the last frame is held\")\n    ap.add_argument(\"--nx\", type=int, default=256, help=\"pixels per side of each panel\")\n    a = ap.parse_args()\n    os.makedirs(a.out, exist_ok=True)\n    s = np.linspace(0, 1, int(round(a.duration * a.fps)))\n    frame_times = a.T * (a.slow * s + (1 - a.slow) * s ** 2)\n    times, norms, residual, frames, y = solve(a.nu, a.T, a.N, a.dt, frame_times)\n    heat = np.exp(-a.nu * times)\n    # check: the same run with N doubled and dt halved\n    times2, norms2, residual2, _, _ = solve(a.nu, a.T, 2 * a.N, a.dt / 2)\n    diff = np.abs(norms2[::2] - norms) / norms2[::2]\n    ymin = 10 ** np.floor(np.log10(norms.min()))\n    with open(os.path.join(a.out, \"heat-vs-shear-check.txt\"), \"w\") as fh:\n        fh.write(\"nu=%g T=%g N=%d dt=%g frames=%d fps=%d\\n\" % (a.nu, a.T, a.N, a.dt, len(frame_times), a.fps))\n        fh.write(\"final norm: shear %.4e, heat %.4e\\n\" % (norms[-1], heat[-1]))\n        fh.write(\"max relative difference with (2N, dt/2): %.2e\\n\" % diff.max())\n        fh.write(\"max energy-balance residual: %.2e (2N, dt/2: %.2e)\\n\" % (residual.max(), residual2.max()))\n        fh.write(\"decay rate of the shear norm on [T/2, T]: %.4f; nu^(1/2) = %.4f\\n\" % (\n            np.log(norms[len(norms) // 2] / norms[-1]) / (times[-1] - times[len(times) // 2]), np.sqrt(a.nu)))\n    # check figure\n    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11, 4), dpi=100)\n    ax1.semilogy(times, heat, color=HEAT_COLOR, lw=2, label=\"heat equation (exact)\")\n    ax1.semilogy(times, norms, color=SHEAR_COLOR, lw=2, label=\"shear flow, N=%d, dt=%g\" % (a.N, a.dt))\n    ax1.semilogy(times2, norms2, color=\"k\", lw=1, ls=\"--\", label=\"shear flow, N=%d, dt=%g\" % (2 * a.N, a.dt / 2))\n    ax1.set_xlabel(\"time t\"); ax1.set_ylabel(\"norm ratio\"); ax1.legend(frameon=False, fontsize=9)\n    ax1.set_title(\"Norms (log scale)\")\n    ax2.semilogy(times[1:], diff[1:] + 1e-16, color=SHEAR_COLOR, lw=1.5, label=\"relative difference of the two runs\")\n    ax2.semilogy(times[1:], residual[1:] + 1e-16, color=\"#6b7280\", lw=1.5, label=\"energy-balance residual\")\n    ax2.set_xlabel(\"time t\"); ax2.legend(frameon=False, fontsize=9); ax2.set_title(\"Checks\")\n    fig.tight_layout()\n    fig.savefig(os.path.join(a.out, \"heat-vs-shear-check.png\"))\n    plt.close(fig)\n    # video\n    with tempfile.TemporaryDirectory() as tmp:\n        for i, (t, g) in enumerate(zip(frame_times, frames)):\n            draw_frame(os.path.join(tmp, \"f%04d.png\" % i), t, g, a.nu, times, norms, heat, a.nx, ymin)\n        poster = min(range(len(frame_times)), key=lambda i: abs(frame_times[i] - 0.2 * a.T))\n        shutil.copyfile(os.path.join(tmp, \"f%04d.png\" % poster), os.path.join(a.out, \"heat-vs-shear-poster.png\"))\n        subprocess.run([\"ffmpeg\", \"-y\", \"-loglevel\", \"error\", \"-framerate\", str(a.fps),\n                        \"-i\", os.path.join(tmp, \"f%04d.png\"), \"-vf\", \"tpad=stop_mode=clone:stop_duration=%g\" % a.hold,\n                        \"-c:v\", \"libx264\", \"-pix_fmt\", \"yuv420p\",\n                        \"-crf\", \"26\", \"-preset\", \"slow\", \"-movflags\", \"+faststart\",\n                        os.path.join(a.out, \"heat-vs-shear.mp4\")], check=True)\n    print(open(os.path.join(a.out, \"heat-vs-shear-check.txt\")).read().strip())\n\nif __name__ == \"__main__\":\n    main()\n\n\n\n\n\nAlternating shears with random phases\n\nProduces the second video on the Overview (alternating-shears.mp4) and the check figure below\nEquation \\(\\partial_t f+u\\cdot\\nabla f=\\nu\\Delta f\\) on \\([0,2\\pi)^2\\), periodic, with \\(f_0=\\cos x\\) and the alternating shears of Pierrehumbert’s model: \\(u=(\\sin(y+\\varphi_n),0)\\) for \\(6n\\le t&lt;6n+3\\) and \\(u=(0,\\sin(x+\\psi_n))\\) for \\(6n+3\\le t&lt;6n+6\\), the phases independent and uniform on \\([0,2\\pi)\\); compared with the steady shear \\(u=(\\sin y,0)\\) and with the heat equation. Both velocity fields have size at most 1.\nParameters \\(\\nu=10^{-4}\\), each shear acting for a time 3, times \\(0\\le t\\le 60\\), phases from the random generator of NumPy with seed 2026; video of 20 s at 24 frames per second, time running uniformly (3 time units per second), last frame held 1.5 s\nMethod Fourier pseudo-spectral method on a \\(512\\times512\\) grid; Strang splitting with time step 0.0125, the transport steps (each row or column shifted, through its Fourier coefficients) and the diffusion steps solved exactly; the steady shear as in the record above\nChecks with \\(1024\\times1024\\) modes and time step 0.00625 the norms agree to a relative \\(1.2\\cdot10^{-6}\\); the energy balance \\(\\|f(t)\\|^2+2\\nu\\int_0^t\\|\\nabla f\\|^2ds=\\|f_0\\|^2\\) holds to \\(3.5\\cdot10^{-6}\\); time for the norm to halve, for \\(\\nu=10^{-2},10^{-3},10^{-4},10^{-5}\\): alternating shears 8.8, 16.3, 23.9, 31.7 (the same with twice the modes), an increase of about 7.6 for each factor 10 in \\(\\nu\\); steady shear 8.6, 20.0, 43.9, 94.9; heat equation \\(\\ln 2/\\nu\\)\nContext Exponential mixing for randomly shifted alternating shears is proved by Blumenthal, Coti Zelati and Gvalani (2023), and dissipation on the time scale \\(|\\log\\nu|\\), with high probability, by Cooperman, Iyer and Son (2025); whether the parameters used here satisfy their hypotheses has not been checked\nCode numerics/alternating-shears/alternating_shears.py in the repository (Python 3, NumPy, SciPy, Matplotlib, ffmpeg); python3 alternating_shears.py --out ../../wiki/media, about 15 minutes\nStatus computed by Claude (AI) on 8 November 2026; not yet checked by a human demo text\n\n\n\n\n\nLeft: the norms for \\(\\nu=10^{-4}\\), with two resolutions for the alternating shears. Right: the time for the norm to halve, against \\(1/\\nu\\), logarithmic scales.",
+    "title": "Numerical methods",
+    "section": "Records",
+    "text": "Records\n\nHeat versus shear on the torus\n\nProduces the video on the Overview (heat-vs-shear.mp4) and the check figure below\nEquation \\(\\partial_t f+\\sin y\\,\\partial_x f=\\nu\\Delta f\\) on \\([0,2\\pi)^2\\), periodic, and the heat equation \\(\\partial_t f=\\nu\\Delta f\\); same datum \\(f_0=\\cos x\\)\nParameters \\(\\nu=10^{-3}\\), times \\(0\\le t\\le 100\\); video of 20 s at 24 frames per second, time running uniformly (5 time units per second), last frame held 1.5 s\nMethod one Fourier mode in \\(x\\): \\(f=\\operatorname{Re}(g(t,y)e^{ix})\\) with \\(\\partial_t g=-i\\sin y\\,g+\\nu(\\partial_y^2-1)g\\); 512 Fourier modes in \\(y\\); Strang splitting with time step 0.01, transport and diffusion steps solved exactly; heat equation solved exactly\nChecks with 1024 modes and time step 0.005 the norms agree to a relative \\(6\\cdot10^{-8}\\); the energy balance \\(\\|g(t)\\|^2+2\\nu\\int_0^t\\|(\\partial_y g,g)\\|^2ds=\\|g(0)\\|^2\\) holds to \\(3\\cdot10^{-7}\\); decay rate of the norm on \\([50,100]\\): 0.0167, against \\(\\nu^{1/2}\\approx0.0316\\)\nCode numerics/heat-vs-shear/heat_vs_shear.py in the repository, also below (Python 3, NumPy, Matplotlib, ffmpeg); python3 heat_vs_shear.py --out ../../wiki/media, about a minute\nStatus computed by Claude (AI) on 8 November 2026; not yet checked by a human demo text\n\n\n\n\n\nLeft: the norms of the two runs and of the heat equation. Right: the relative difference of the two runs and the energy-balance residual.\n\n\n\n\n\n\n\n\n\nNoteCode\n\n\n\n\n\n#!/usr/bin/env python3\n\"\"\"Heat equation versus advection-diffusion by a shear flow on the torus [0, 2pi)^2.\n\n    d_t f + sin(y) d_x f = nu (d_xx + d_yy) f,      f(0, x, y) = cos x,\n\ncompared with the heat equation (the same without the transport term), whose solution is\nexp(-nu t) cos x. The initial datum has zero average in x. It is a single Fourier mode in x,\nso f(t, x, y) = Re(g(t, y) e^{ix}) with\n\n    d_t g = -i sin(y) g + nu (d_yy - 1) g,      g(0, y) = 1,\n\nsolved by a Fourier method in y with Strang splitting: the transport step is the exact\nmultiplication by exp(-i sin(y) dt), the diffusion step is exact in Fourier variables.\nThe L2 norm reported is ||f(t)|| / ||f(0)||, that is the root mean square of |g(t, .)|.\n\nChecks (written to heat-vs-shear-check.txt and heat-vs-shear-check.png):\n  * the run is repeated with twice the Fourier modes and half the time step, and the norms are compared;\n  * energy balance: ||g(t)||^2 + 2 nu int_0^t ||(d_y g, g)||^2 ds = ||g(0)||^2 (means over y).\n\nThe video lasts --duration seconds; frame s in [0, 1] shows t = T (a s + (1 - a) s^2), a = --slow (default 1:\ntime runs uniformly; a &lt; 1 slows down the start); the last frame is held --hold seconds.\n\nOutputs, in --out: heat-vs-shear.mp4 (video), heat-vs-shear-poster.png (one frame of it),\nheat-vs-shear-check.png and heat-vs-shear-check.txt. Needs NumPy, Matplotlib and ffmpeg\n(with the libx264 encoder). Run:  python3 heat_vs_shear.py --out ../../wiki/media\n\nDrafted by Claude (AI) on 8 November 2026 for the wiki \"Enhanced dissipation for passive\nscalars\"; record: page Numerical methods, section num-heat-vs-shear.\n\"\"\"\nimport argparse\nimport os\nimport shutil\nimport subprocess\nimport tempfile\n\nimport numpy as np\nimport matplotlib\n\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\n\nHEAT_COLOR = \"#b4532a\"\nSHEAR_COLOR = \"#1f4e79\"\n\ndef solve(nu, T, N, dt, frame_times=()):\n    \"\"\"Times, norms ||f(t)||/||f(0)||, energy-balance residuals, and g(t, y) at frame_times.\"\"\"\n    y = 2 * np.pi * np.arange(N) / N\n    eta = np.fft.fftfreq(N, d=1.0 / N)              # integer wavenumbers in y\n    symbol = eta ** 2 + 1.0                          # symbol of -(d_yy - 1): mode k = 1 in x\n    half = np.exp(-nu * symbol * dt / 2)\n    transport = np.exp(-1j * np.sin(y) * dt)\n    ghat = np.fft.fft(np.ones(N, dtype=complex))\n    steps = int(round(T / dt))\n    times = dt * np.arange(steps + 1)\n    sq = np.empty(steps + 1)                         # mean over y of |g|^2\n    dissip = np.empty(steps + 1)                     # mean over y of |d_y g|^2 + |g|^2\n    frames, targets, j = [], list(frame_times), 0\n    for n in range(steps + 1):\n        power = np.abs(ghat) ** 2 / N ** 2           # Parseval: means over y\n        sq[n] = power.sum()\n        dissip[n] = (symbol * power).sum()\n        while j &lt; len(targets) and targets[j] &lt;= times[n] + dt / 2:\n            frames.append(np.fft.ifft(ghat))\n            j += 1\n        if n == steps:\n            break\n        ghat *= half\n        ghat = np.fft.fft(np.fft.ifft(ghat) * transport) * half\n    integral = np.concatenate([[0.0], np.cumsum((dissip[1:] + dissip[:-1]) / 2) * dt])\n    residual = np.abs(sq + 2 * nu * integral - 1.0)\n    return times, np.sqrt(sq), residual, frames, y\n\ndef field(g, nx):\n    \"\"\"f(x, y) = Re(g(y) e^{ix}) on an nx-by-nx grid (rows: y, columns: x).\"\"\"\n    step = max(1, len(g) // nx)\n    x = 2 * np.pi * np.arange(nx) / nx\n    return np.real(g[::step][:, None] * np.exp(1j * x)[None, :])\n\ndef draw_frame(path, t, g, nu, times, norms, heat, nx, ymin):\n    x = 2 * np.pi * np.arange(nx) / nx\n    f_heat = np.exp(-nu * t) * np.cos(x)[None, :] * np.ones((nx, 1))\n    f_shear = field(g, nx)\n    fig = plt.figure(figsize=(11.2, 7.2), dpi=100)\n    gs = fig.add_gridspec(2, 2, height_ratios=[3.6, 1.15], hspace=0.3, wspace=0.06,\n                          left=0.08, right=0.97, top=0.845, bottom=0.095)\n    for col, (data, title) in enumerate([(f_heat, \"Heat equation:  $u = 0$\"),\n                                         (f_shear, r\"Shear flow:  $u = (\\sin y,\\, 0)$\")]):\n        ax = fig.add_subplot(gs[0, col])\n        ax.imshow(data, origin=\"lower\", extent=[0, 2 * np.pi, 0, 2 * np.pi], cmap=\"RdBu_r\",\n                  vmin=-1, vmax=1, interpolation=\"bilinear\")\n        ax.set_title(title, fontsize=17, pad=8)\n        ax.set_xticks([]); ax.set_yticks([])\n        ax.set_aspect(\"equal\")\n    fig.suptitle(r\"Same initial datum $f_0 = \\cos x$, same diffusivity $\\nu = 10^{-3}$\"\n                 + \"        t = %d\" % round(t), fontsize=17, y=0.975)\n    ax = fig.add_subplot(gs[1, :])\n    k = np.searchsorted(times, t, side=\"right\")\n    ax.semilogy(times, heat, color=HEAT_COLOR, alpha=0.18, lw=2)\n    ax.semilogy(times, norms, color=SHEAR_COLOR, alpha=0.18, lw=2)\n    ax.semilogy(times[:k], heat[:k], color=HEAT_COLOR, lw=2.4, label=\"heat equation\")\n    ax.semilogy(times[:k], norms[:k], color=SHEAR_COLOR, lw=2.4, label=\"shear flow\")\n    ax.axvline(t, color=\"#888888\", lw=1)\n    ax.set_xlim(0, times[-1]); ax.set_ylim(ymin, 1.5)\n    ax.set_yticks([10.0 ** e for e in range(int(np.log10(ymin)), 1)])\n    ax.set_xlabel(\"time  t\", fontsize=13)\n    ax.set_ylabel(r\"$\\|f(t)\\|\\,/\\,\\|f_0\\|$\", fontsize=14)\n    ax.tick_params(labelsize=11)\n    ax.legend(loc=\"lower left\", fontsize=12, frameon=False, ncol=2)\n    fig.savefig(path)\n    plt.close(fig)\n\ndef main():\n    ap = argparse.ArgumentParser(description=__doc__.split(\"\\n\")[0])\n    ap.add_argument(\"--out\", default=\".\", help=\"folder for the video and the figures\")\n    ap.add_argument(\"--nu\", type=float, default=1e-3)\n    ap.add_argument(\"--T\", type=float, default=100.0)\n    ap.add_argument(\"--N\", type=int, default=512, help=\"Fourier modes in y\")\n    ap.add_argument(\"--dt\", type=float, default=0.01)\n    ap.add_argument(\"--duration\", type=float, default=20.0, help=\"length of the video in seconds\")\n    ap.add_argument(\"--fps\", type=int, default=24)\n    ap.add_argument(\"--slow\", type=float, default=1.0, help=\"speed of time at the start, relative to the mean (1: uniform)\")\n    ap.add_argument(\"--hold\", type=float, default=1.5, help=\"seconds the last frame is held\")\n    ap.add_argument(\"--nx\", type=int, default=256, help=\"pixels per side of each panel\")\n    a = ap.parse_args()\n    os.makedirs(a.out, exist_ok=True)\n    s = np.linspace(0, 1, int(round(a.duration * a.fps)))\n    frame_times = a.T * (a.slow * s + (1 - a.slow) * s ** 2)\n    times, norms, residual, frames, y = solve(a.nu, a.T, a.N, a.dt, frame_times)\n    heat = np.exp(-a.nu * times)\n    # check: the same run with N doubled and dt halved\n    times2, norms2, residual2, _, _ = solve(a.nu, a.T, 2 * a.N, a.dt / 2)\n    diff = np.abs(norms2[::2] - norms) / norms2[::2]\n    ymin = 10 ** np.floor(np.log10(norms.min()))\n    with open(os.path.join(a.out, \"heat-vs-shear-check.txt\"), \"w\") as fh:\n        fh.write(\"nu=%g T=%g N=%d dt=%g frames=%d fps=%d\\n\" % (a.nu, a.T, a.N, a.dt, len(frame_times), a.fps))\n        fh.write(\"final norm: shear %.4e, heat %.4e\\n\" % (norms[-1], heat[-1]))\n        fh.write(\"max relative difference with (2N, dt/2): %.2e\\n\" % diff.max())\n        fh.write(\"max energy-balance residual: %.2e (2N, dt/2: %.2e)\\n\" % (residual.max(), residual2.max()))\n        fh.write(\"decay rate of the shear norm on [T/2, T]: %.4f; nu^(1/2) = %.4f\\n\" % (\n            np.log(norms[len(norms) // 2] / norms[-1]) / (times[-1] - times[len(times) // 2]), np.sqrt(a.nu)))\n    # check figure\n    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11, 4), dpi=100)\n    ax1.semilogy(times, heat, color=HEAT_COLOR, lw=2, label=\"heat equation (exact)\")\n    ax1.semilogy(times, norms, color=SHEAR_COLOR, lw=2, label=\"shear flow, N=%d, dt=%g\" % (a.N, a.dt))\n    ax1.semilogy(times2, norms2, color=\"k\", lw=1, ls=\"--\", label=\"shear flow, N=%d, dt=%g\" % (2 * a.N, a.dt / 2))\n    ax1.set_xlabel(\"time t\"); ax1.set_ylabel(\"norm ratio\"); ax1.legend(frameon=False, fontsize=9)\n    ax1.set_title(\"Norms (log scale)\")\n    ax2.semilogy(times[1:], diff[1:] + 1e-16, color=SHEAR_COLOR, lw=1.5, label=\"relative difference of the two runs\")\n    ax2.semilogy(times[1:], residual[1:] + 1e-16, color=\"#6b7280\", lw=1.5, label=\"energy-balance residual\")\n    ax2.set_xlabel(\"time t\"); ax2.legend(frameon=False, fontsize=9); ax2.set_title(\"Checks\")\n    fig.tight_layout()\n    fig.savefig(os.path.join(a.out, \"heat-vs-shear-check.png\"))\n    plt.close(fig)\n    # video\n    with tempfile.TemporaryDirectory() as tmp:\n        for i, (t, g) in enumerate(zip(frame_times, frames)):\n            draw_frame(os.path.join(tmp, \"f%04d.png\" % i), t, g, a.nu, times, norms, heat, a.nx, ymin)\n        poster = min(range(len(frame_times)), key=lambda i: abs(frame_times[i] - 0.2 * a.T))\n        shutil.copyfile(os.path.join(tmp, \"f%04d.png\" % poster), os.path.join(a.out, \"heat-vs-shear-poster.png\"))\n        subprocess.run([\"ffmpeg\", \"-y\", \"-loglevel\", \"error\", \"-framerate\", str(a.fps),\n                        \"-i\", os.path.join(tmp, \"f%04d.png\"), \"-vf\", \"tpad=stop_mode=clone:stop_duration=%g\" % a.hold,\n                        \"-c:v\", \"libx264\", \"-pix_fmt\", \"yuv420p\",\n                        \"-crf\", \"26\", \"-preset\", \"slow\", \"-movflags\", \"+faststart\",\n                        os.path.join(a.out, \"heat-vs-shear.mp4\")], check=True)\n    print(open(os.path.join(a.out, \"heat-vs-shear-check.txt\")).read().strip())\n\nif __name__ == \"__main__\":\n    main()\n\n\n\n\n\nAlternating shears with random phases\n\nProduces the second video on the Overview (alternating-shears.mp4) and the check figure below\nEquation \\(\\partial_t f+u\\cdot\\nabla f=\\nu\\Delta f\\) on \\([0,2\\pi)^2\\), periodic, with \\(f_0=\\cos x\\) and the alternating shears of Pierrehumbert’s model: \\(u=(\\sin(y+\\varphi_n),0)\\) for \\(6n\\le t&lt;6n+3\\) and \\(u=(0,\\sin(x+\\psi_n))\\) for \\(6n+3\\le t&lt;6n+6\\), the phases independent and uniform on \\([0,2\\pi)\\); compared with the steady shear \\(u=(\\sin y,0)\\) and with the heat equation. Both velocity fields have size at most 1.\nParameters \\(\\nu=10^{-4}\\), each shear acting for a time 3, times \\(0\\le t\\le 60\\), phases from the random generator of NumPy with seed 2026; video of 20 s at 24 frames per second, time running uniformly (3 time units per second), last frame held 1.5 s\nMethod Fourier pseudo-spectral method on a \\(512\\times512\\) grid; Strang splitting with time step 0.0125, the transport steps (each row or column shifted, through its Fourier coefficients) and the diffusion steps solved exactly; the steady shear as in the record above\nChecks with \\(1024\\times1024\\) modes and time step 0.00625 the norms agree to a relative \\(1.2\\cdot10^{-6}\\); the energy balance \\(\\|f(t)\\|^2+2\\nu\\int_0^t\\|\\nabla f\\|^2ds=\\|f_0\\|^2\\) holds to \\(3.5\\cdot10^{-6}\\); time for the norm to halve, for \\(\\nu=10^{-2},10^{-3},10^{-4},10^{-5}\\): alternating shears 8.8, 16.3, 23.9, 31.7 (the same with twice the modes), an increase of about 7.6 for each factor 10 in \\(\\nu\\); steady shear 8.6, 20.0, 43.9, 94.9; heat equation \\(\\ln 2/\\nu\\)\nContext Exponential mixing for randomly shifted alternating shears is proved by Blumenthal, Coti Zelati and Gvalani (2023), and dissipation on the time scale \\(|\\log\\nu|\\), with high probability, by Cooperman, Iyer and Son (2025); whether the parameters used here satisfy their hypotheses has not been checked\nCode numerics/alternating-shears/alternating_shears.py in the repository (Python 3, NumPy, SciPy, Matplotlib, ffmpeg); python3 alternating_shears.py --out ../../wiki/media, about 15 minutes\nStatus computed by Claude (AI) on 8 November 2026; not yet checked by a human demo text\n\n\n\n\n\nLeft: the norms for \\(\\nu=10^{-4}\\), with two resolutions for the alternating shears. Right: the time for the norm to halve, against \\(1/\\nu\\), logarithmic scales.",
     "crumbs": [
       "<span class='chapter-number'>17</span>  <span class='chapter-title'>Numerical methods</span>"
     ]
@@ -712,9 +712,9 @@
   {
     "objectID": "numerical-methods.html#solvers",
     "href": "numerical-methods.html#solvers",
-    "title": "17  Numerical methods",
-    "section": "17.3 Solvers",
-    "text": "17.3 Solvers\n\n\nThe methods used across the records, with their strengths and limits.\nPropose a text →",
+    "title": "Numerical methods",
+    "section": "Solvers",
+    "text": "Solvers\n\n\nThe methods used across the records, with their strengths and limits.\nPropose a text →",
     "crumbs": [
       "<span class='chapter-number'>17</span>  <span class='chapter-title'>Numerical methods</span>"
     ]
@@ -722,7 +722,7 @@
   {
     "objectID": "numerical-methods.html#references",
     "href": "numerical-methods.html#references",
-    "title": "17  Numerical methods",
+    "title": "Numerical methods",
     "section": "References",
     "text": "References\n\n\nA. Blumenthal, M. Coti Zelati and R. S. Gvalani, Exponential mixing for random dynamical systems and an example of Pierrehumbert, Annals of Probability 51 (2023), 1559–1601, arXiv:2204.13651.\nW. Cooperman, G. Iyer and S. Son, A Harris theorem for enhanced dissipation, and an example of Pierrehumbert, Nonlinearity 38 (2025), 045027, arXiv:2403.19858.",
     "crumbs": [
@@ -732,9 +732,9 @@
   {
     "objectID": "lean-formalization.html",
     "href": "lean-formalization.html",
-    "title": "18  Lean formalization",
+    "title": "Lean formalization",
     "section": "",
-    "text": "18.1 Certificates",
+    "text": "Certificates",
     "crumbs": [
       "<span class='chapter-number'>18</span>  <span class='chapter-title'>Lean formalization</span>"
     ]
@@ -742,7 +742,7 @@
   {
     "objectID": "lean-formalization.html#certificates",
     "href": "lean-formalization.html#certificates",
-    "title": "18  Lean formalization",
+    "title": "Lean formalization",
     "section": "",
     "text": "Result\nStatus\nCertificate\nLean and Mathlib versions\n\n\n\n\n—\n—\n—\n—",
     "crumbs": [
@@ -752,9 +752,9 @@
   {
     "objectID": "lean-formalization.html#how-to-add-a-certificate",
     "href": "lean-formalization.html#how-to-add-a-certificate",
-    "title": "18  Lean formalization",
-    "section": "18.2 How to add a certificate",
-    "text": "18.2 How to add a certificate\n\n\nWhat a certificate contains (repository, commit, versions, the statement as formalized, the axioms used), and how it is checked before its banner turns green.\nPropose a text →",
+    "title": "Lean formalization",
+    "section": "How to add a certificate",
+    "text": "How to add a certificate\n\n\nWhat a certificate contains (repository, commit, versions, the statement as formalized, the axioms used), and how it is checked before its banner turns green.\nPropose a text →",
     "crumbs": [
       "<span class='chapter-number'>18</span>  <span class='chapter-title'>Lean formalization</span>"
     ]
@@ -762,9 +762,9 @@
   {
     "objectID": "how-to-contribute.html",
     "href": "how-to-contribute.html",
-    "title": "19  How to contribute",
+    "title": "How to contribute",
     "section": "",
-    "text": "19.1 Roles",
+    "text": "Roles",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>19</span>  <span class='chapter-title'>How to contribute</span>"
@@ -773,7 +773,7 @@
   {
     "objectID": "how-to-contribute.html#roles",
     "href": "how-to-contribute.html#roles",
-    "title": "19  How to contribute",
+    "title": "How to contribute",
     "section": "",
     "text": "Editorial board: the scope and the structure of the wiki; appoints the associate editors; settles discussions that end without consensus.\nAssociate editors: one or more per part, following the talk pages of its pages and its Zulip channel. They run the discussion of each proposal, ask members of the community for a review when it helps, and decide.\nCommunity: propose, review and discuss. Every member can endorse a new member. Editors can remove a member whose participation disturbs the work rather than helping it.\n\nThe first line of each page names its team. As the wiki grows, busy parts and pages get more associate editors; the roles stay the same. On the wiki, everyone with a role is a member (reads every page and writes on talk pages); the editorial board and the associate editors are also editors (edit articles and templates, and write accepted proposals into the pages); administrators give these rights.",
     "crumbs": [
@@ -784,9 +784,9 @@
   {
     "objectID": "how-to-contribute.html#proposing-a-change",
     "href": "how-to-contribute.html#proposing-a-change",
-    "title": "19  How to contribute",
-    "section": "19.2 Proposing a change",
-    "text": "19.2 Proposing a change\n\nEvery change to a page, from a typo to a new proof, is a proposal: a topic on the talk page of the page (tab Discussion), which members of the wiki open and discuss. There are two ways to open one.\n\nOne paragraph, a figure, the central question, or a part still to be written (a typo, a sentence, a formula, a shorter argument, a caption, a shorter video, a missing proof): in the edition, the pencil button next to it shows its TeX or, for a part still to be written, an empty box (the link Write this part opens it too). Change the TeX, write the missing text, or describe the change you ask for (for a picture or a video, for instance), say why, and open the proposal: the wiki shows a new topic on the talk page, already filled in, to be saved. A text too long for a link is copied by the edition, to be pasted into the topic in the wiki.\nLarger changes (a section, a statement, a proof, a new section): the link new proposal under the title of the page in the wiki (Propose a change in the edition) opens a new topic with a short form. Download the TeX source of the page: link TeX source under the title of every page of the edition (with the figures, in a zip, when the page has some). It is a standard LaTeX article that compiles as it is. The TeX of the whole wiki (TeX of the whole wiki, on the Overview) is one LaTeX project, for working offline, in which every page is a file of the folder pages; such a file can be proposed in the same way. Change what you want and check that it compiles; then paste in the form the blocks you changed (a section, or a statement or a proof with its label), or the whole file: only what changes is applied, and there is no limit of length. Say what the proposal changes, why, and which sources it uses; for a long proposal, attach its PDF (upload it and link it in the form).\n\nThose who are not yet members of the wiki write in the Zulip channel contributing, naming the page.\n\n\nHow a proposal is decided\n\n\nThe community discusses and reviews the proposal in its topic, with the buttons Support, Oppose and Comment of its box, which add a signed reply (the box counts the supports and the oppositions); replies can also be written by hand, signed with ~~~~. The author may revise the proposed text in place; the history of the talk page keeps every version.\nWhen the discussion has settled, an associate editor of the part decides, with the buttons Accept or Decline in the box at the top of the topic (shown to editors): the box changes status, and the reason they give is added as a signed reply. There is no deadline. If the discussion ends without consensus, the editorial board decides.\nAn editor writes the accepted proposal into the page with a script. The script converts the TeX to the wiki’s format, refuses a paragraph that has changed since the proposal was made, shows exactly what changes on the page, and flags new citations and links. The edit summary links the topic and credits its author, and the box of the topic becomes applied, with a link to the change. Decided topics, applied or declined, are moved to the archive of the talk page (its subpage /Archive), so that the talk page shows only the proposals under discussion or waiting to be applied.\n\nSmall corrections (a typo, a broken link, a missing reference) go the same way, and are usually accepted without discussion. Open and accepted proposals are listed in :Category:Open proposals and :Category:Accepted proposals. A proposal changes only the blocks it contains. A paper that is not yet on Literature is proposed on its own, on the talk page of the Literature page.",
+    "title": "How to contribute",
+    "section": "Proposing a change",
+    "text": "Proposing a change\n\nEvery change to a page, from a typo to a new proof, is a proposal: a topic on the talk page of the page (tab Discussion), which members of the wiki open and discuss. There are two ways to open one.\n\nOne paragraph, a figure, the central question, or a part still to be written (a typo, a sentence, a formula, a shorter argument, a caption, a shorter video, a missing proof): in the edition, the pencil button next to it shows its TeX or, for a part still to be written, an empty box (the link Write this part opens it too). Change the TeX, write the missing text, or describe the change you ask for (for a picture or a video, for instance), say why, and open the proposal: the wiki shows a new topic on the talk page, already filled in, to be saved. A text too long for a link is copied by the edition, to be pasted into the topic in the wiki.\nLarger changes (a section, a statement, a proof, a new section): the link new proposal under the title of the page in the wiki (Propose a change in the edition) opens a new topic with a short form. Download the TeX source of the page: link TeX source under the title of every page of the edition (with the figures, in a zip, when the page has some). It is a standard LaTeX article that compiles as it is. The TeX of the whole wiki (TeX of the whole wiki, on the Overview) is one LaTeX project, for working offline, in which every page is a file of the folder pages; such a file can be proposed in the same way. Change what you want and check that it compiles; then paste in the form the blocks you changed (a section, or a statement or a proof with its label), or the whole file: only what changes is applied, and there is no limit of length. Say what the proposal changes, why, and which sources it uses; for a long proposal, attach its PDF (upload it and link it in the form).\n\nThose who are not yet members of the wiki write in the Zulip channel contributing, naming the page.\n\n\nHow a proposal is decided\n\n\nThe community discusses and reviews the proposal in its topic, with the buttons Support, Oppose and Comment of its box, which add a signed reply (the box counts the supports and the oppositions); replies can also be written by hand, signed with ~~~~. The author may revise the proposed text in place; the history of the talk page keeps every version.\nWhen the discussion has settled, an associate editor of the part decides, with the buttons Accept or Decline in the box at the top of the topic (shown to editors): the box changes status, and the reason they give is added as a signed reply. There is no deadline. If the discussion ends without consensus, the editorial board decides.\nAn editor writes the accepted proposal into the page with a script. The script converts the TeX to the wiki’s format, refuses a paragraph that has changed since the proposal was made, shows exactly what changes on the page, and flags new citations and links. The edit summary links the topic and credits its author, and the box of the topic becomes applied, with a link to the change. Decided topics, applied or declined, are moved to the archive of the talk page (its subpage /Archive), so that the talk page shows only the proposals under discussion or waiting to be applied.\n\nSmall corrections (a typo, a broken link, a missing reference) go the same way, and are usually accepted without discussion. Open and accepted proposals are listed in :Category:Open proposals and :Category:Accepted proposals. A proposal changes only the blocks it contains. A paper that is not yet on Literature comes with the proposal that cites it (see Citations in The TeX format), and is added to the reference catalogue when the proposal is applied.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>19</span>  <span class='chapter-title'>How to contribute</span>"
@@ -795,9 +795,9 @@
   {
     "objectID": "how-to-contribute.html#credits",
     "href": "how-to-contribute.html#credits",
-    "title": "19  How to contribute",
-    "section": "19.3 Credits",
-    "text": "19.3 Credits\n\nUnder the title of a section, a line in small type names the people who contributed to it, the most recent first: {Contributed by|Name Surname, Name Surname} on the line after the heading (in TeX, \\contributors{Name Surname, Name Surname} after the section title). A relevant contribution cannot be measured objectively: the editors decide, at their discretion, who is listed, and add a new name at the beginning of the list. A long list shows the three most recent names, and a link opens the others. The history of each page keeps the record of every change and of its author.",
+    "title": "How to contribute",
+    "section": "Credits",
+    "text": "Credits\n\nUnder the title of a section, a line in small type names the people who contributed to it, the most recent first: {Contributed by|Name Surname, Name Surname} on the line after the heading (in TeX, \\contributors{Name Surname, Name Surname} after the section title). A relevant contribution cannot be measured objectively: the editors decide, at their discretion, who is listed, and add a new name at the beginning of the list. A long list shows the three most recent names, and a link opens the others. The history of each page keeps the record of every change and of its author.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>19</span>  <span class='chapter-title'>How to contribute</span>"
@@ -806,9 +806,9 @@
   {
     "objectID": "how-to-contribute.html#the-tex-format",
     "href": "how-to-contribute.html#the-tex-format",
-    "title": "19  How to contribute",
-    "section": "19.4 The TeX format",
-    "text": "19.4 The TeX format\n\nThe TeX source of a page is a standard LaTeX article: one file that compiles with pdflatex and nothing else (on Overleaf, or with TeXShop, TeXstudio, …; typeset twice for the citations). Its preamble is the same for every page and is never changed; a contribution defines no macros, since the wiki has none. Sections and statements are numbered in the PDF only.\n\nStatements: theorem, proposition, lemma, corollary, conjecture, definition, example, remark, claim. The optional argument is the name, the label is the anchor: \\begin{theorem}[name]\\label{thm-name}. Labels start with thm-, prp-, lem-, cor-, def- or clm-.\nAfter a statement: \\lean{} (the Lean banner), the environments idea and architecture, and proofs with an optional title and a label, as in \\begin{proof}[Proof by hypocoercivity]\\label{proof-name}. A claim and its proof sit inside the proof that uses them.\nFormulas: $...$, \\[ ... \\] and align*; no numbered equations and no labels on equations; none of the commands that the wiki’s renderer rejects (the script lists them).\nCitations: \\citet{Key} gives Author (year) and \\citep{Key} gives (Author, year), with the keys of Literature. The reference list at the end of the file is generated from the reference catalogue; a new citation is added to it when the proposal is accepted.\nLinks: on the same page, \\hyperref[thm-name]{the theorem above} rather than \\ref, since the wiki has no numbers; to another page, \\wikilink{Page\\#anchor}{text}.\nLabels: \\heuristic{}, \\numerics{}, \\published{}, \\preprint{}, \\raw{}.\nA new block goes after an existing one: put the line %% after: Setting (a section title or a label) just before it.",
+    "title": "How to contribute",
+    "section": "The TeX format",
+    "text": "The TeX format\n\nThe TeX source of a page is a standard LaTeX article: one file that compiles with pdflatex and nothing else (on Overleaf, or with TeXShop, TeXstudio, …; typeset twice for the citations). Its preamble is the same for every page and is never changed; a contribution defines no macros, since the wiki has none. Sections are numbered in the PDF only; the website numbers the results within each page (Theorem 1, Lemma 2, …).\n\nStatements: theorem, proposition, lemma, corollary, conjecture, definition, example, remark, claim. The optional argument is the name, the label is the anchor: \\begin{theorem}[name]\\label{thm-name}. Labels start with thm-, prp-, lem-, cor-, def- or clm-.\nAfter a statement: \\lean{} (the Lean banner), the environments idea and architecture, and proofs with an optional title and a label, as in \\begin{proof}[Proof by hypocoercivity]\\label{proof-name}. A claim and its proof sit inside the proof that uses them.\nFormulas: $...$, \\[ ... \\] and align*; no numbered equations and no labels on equations; none of the commands that the wiki’s renderer rejects (the script lists them).\nCitations: \\citet{Key} gives Author (year) and \\citep{Key} gives (Author, year), with the keys of Literature; several papers at once: \\citep{Key1,Key2,Key3}. The reference list at the end of each page is generated from the reference catalogue and contains only the papers that the page cites: a new citation is added to it when the proposal is applied. A paper that is not yet on Literature: give its full reference in the proposal, as \\bibitem{NewKey} Authors, title, journal (year) in a thebibliography at the end of the TeX, with its DOI or arXiv number (from the pencil button: in the reason field); it is added to the catalogue and then to the page.\nLinks: on the same page, \\hyperref[thm-name]{the theorem above} rather than \\ref, since the wiki has no numbers; to another page, \\wikilink{Page\\#anchor}{text}.\nLabels: \\heuristic{}, \\numerics{}, \\published{}, \\preprint{}, \\raw{}.\nA new block goes after an existing one: put the line %% after: Setting (a section title or a label) just before it.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>19</span>  <span class='chapter-title'>How to contribute</span>"
@@ -817,9 +817,9 @@
   {
     "objectID": "how-to-contribute.html#anatomy-of-a-result",
     "href": "how-to-contribute.html#anatomy-of-a-result",
-    "title": "19  How to contribute",
-    "section": "19.5 Anatomy of a result",
-    "text": "19.5 Anatomy of a result\n\nA result is a statement followed by its levels of detail, each folded until the reader opens it:\n\n\nStatement in the simplest form, constants hidden\nLean a one-line banner: formalized or not yet\nIdea the key mechanism in a few lines\nArchitecture the proof as a short chain of steps, later with a diagram\nProof the complete proof, in steps; a statement used only in this proof is a claim, with its own folded proof inside\n\n\nA statement that several proofs use, or that holds in more generality than one result, goes to the Toolkit (Standard analysis or Enhanced-dissipation tools) and is linked from the proofs. A short proof is written in one piece. The specimen below shows the boxes at work; open the folds to see the nesting.\n\n\nSpecimen\n\nTheorem 19.1 (specimen)  \n\nThe statement, in its simplest form.\n\n\n\nLean: not yet formalized · add a certificate\n\n\n\n\n\n\n\nTipIdea\n\n\n\n\n\n\nThe key mechanism in a few lines, and the heuristic scaling, labelled heuristic.\n\n\n\n\n\n\n\n\n\n\nNoteProof architecture\n\n\n\n\n\n\n\nStep 1 reduces the theorem to a claim.\nStep 2 proves the claim.\nStep 3 concludes with a lemma of the toolkit.\n\n\n\n\n\n\n\n\n\n\n\nNoteProof\n\n\n\n\n\n\nStep 1. The reduction.\n\n\nClaim (specimen).\n\nA statement used only in this proof.\n\n\n\n\n\n\n\n\nNoteProof of the claim\n\n\n\n\n\n\nThe proof of the claim, folded inside the proof that uses it.\n\n\n\n\n\nStep 2. The conclusion, with a lemma of the toolkit.\n\n\nSources. This proof follows …",
+    "title": "How to contribute",
+    "section": "Anatomy of a result",
+    "text": "Anatomy of a result\n\nA result is a statement followed by its levels of detail, each folded until the reader opens it:\n\n\nStatement in the simplest form, constants hidden\nLean a one-line banner: formalized or not yet\nIdea the key mechanism in a few lines\nArchitecture the proof as a short chain of steps, later with a diagram\nProof the complete proof: first its sources (the papers it follows, cited by their key), then the steps; a statement used only in this proof is a claim, with its own folded proof inside\n\n\nA statement that several proofs use, or that holds in more generality than one result, goes to the Toolkit (Standard analysis or Enhanced-dissipation tools) and is linked from the proofs. A short proof is written in one piece. The specimen below shows the boxes at work; open the folds to see the nesting.\n\n\nSpecimen\n\nTheorem 1 (specimen)  \n\nThe statement, in its simplest form.\n\n\n\nLean: not yet formalized · add a certificate\n\n\n\n\n\n\n\nTipIdea\n\n\n\n\n\n\nThe key mechanism in a few lines, and the heuristic scaling, labelled heuristic.\n\n\n\n\n\n\n\n\n\n\nNoteProof architecture\n\n\n\n\n\n\n\nStep 1 reduces the theorem to a claim.\nStep 2 proves the claim.\nStep 3 concludes with a lemma of the toolkit.\n\n\n\n\n\n\n\n\n\n\n\nNoteProof\n\n\n\n\n\n\nSources. This proof follows …\n\n\nStep 1. The reduction.\n\n\nClaim (specimen).\n\nA statement used only in this proof.\n\n\n\n\n\n\n\n\nNoteProof of the claim\n\n\n\n\n\n\nThe proof of the claim, folded inside the proof that uses it.\n\n\n\n\n\nStep 2. The conclusion, with a lemma of the toolkit.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>19</span>  <span class='chapter-title'>How to contribute</span>"
@@ -828,9 +828,9 @@
   {
     "objectID": "how-to-contribute.html#labels",
     "href": "how-to-contribute.html#labels",
-    "title": "19  How to contribute",
-    "section": "19.6 Labels",
-    "text": "19.6 Labels\n\n\ndemo text: text drafted by Claude (AI), until a member of the page team replaces or approves it.\nheuristic: a non-rigorous explanation, kept apart from what is proved.\nnumerics: a computation, with its record on Numerical methods.\npublished, preprint · to be verified, raw · unchecked: the status of an entry on Related results and Raw data: refereed; posted but not refereed; neither posted nor checked by a human (an AI-generated proof, a numerical observation, a sketch).\nGrey quote boxes: AI-generated text, quoted verbatim with its source and date.",
+    "title": "How to contribute",
+    "section": "Labels",
+    "text": "Labels\n\n\ndemo text: text drafted by Claude (AI), until a member of the page team replaces or approves it.\nheuristic: a non-rigorous explanation, kept apart from what is proved.\nnumerics: a computation, with its record on Numerical methods.\npublished, preprint · to be verified, raw · unchecked: the status of an entry on Related results and Raw data: refereed; posted but not refereed; neither posted nor checked by a human (an AI-generated proof, a numerical observation, a sketch).\nGrey quote boxes: AI-generated text, quoted verbatim with its source and date.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>19</span>  <span class='chapter-title'>How to contribute</span>"
@@ -839,9 +839,9 @@
   {
     "objectID": "how-to-contribute.html#pictures-videos-and-numerics",
     "href": "how-to-contribute.html#pictures-videos-and-numerics",
-    "title": "19  How to contribute",
-    "section": "19.7 Pictures, videos and numerics",
-    "text": "19.7 Pictures, videos and numerics\n\nA picture, a video or a diagram is one line in the wiki, the template Media; in TeX, \\media{video}{file}{caption}. The files are kept in the folder wiki/media of the project; the edition shows them, the wiki shows a box with the caption. Every computed picture or video has a record on Numerical methods, with the method, the parameters, the checks and the code.",
+    "title": "How to contribute",
+    "section": "Pictures, videos and numerics",
+    "text": "Pictures, videos and numerics\n\nA picture, a video or a diagram is one line in the wiki, the template Media; in TeX, \\media{video}{file}{caption}. The files are kept in the folder wiki/media of the project; the edition shows them, the wiki shows a box with the caption. Every computed picture or video has a record on Numerical methods, with the method, the parameters, the checks and the code.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>19</span>  <span class='chapter-title'>How to contribute</span>"
@@ -850,9 +850,9 @@
   {
     "objectID": "how-to-contribute.html#lean",
     "href": "how-to-contribute.html#lean",
-    "title": "19  How to contribute",
-    "section": "19.8 Lean",
-    "text": "19.8 Lean\n\nUnder each theorem a one-line banner says whether it is formalized: grey while it is not, green with a link to the certificate once it is. Certificates are listed on Lean formalization.",
+    "title": "How to contribute",
+    "section": "Lean",
+    "text": "Lean\n\nUnder each theorem a one-line banner says whether it is formalized: grey while it is not, green with a link to the certificate once it is. Certificates are listed on Lean formalization.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>19</span>  <span class='chapter-title'>How to contribute</span>"
@@ -861,9 +861,9 @@
   {
     "objectID": "how-to-contribute.html#discussion-and-conduct",
     "href": "how-to-contribute.html#discussion-and-conduct",
-    "title": "19  How to contribute",
-    "section": "19.9 Discussion and conduct",
-    "text": "19.9 Discussion and conduct\n\nProposals are discussed on the talk page of the page they change, so that the discussion stays next to the text and in its history. Zulip is the forum for the mathematics: questions and clarifications, ideas for new results and how they fit the established theory, and larger changes to the structure of the wiki, discussed there before they become proposals. It has one channel per part and one topic per question or idea; the link under the title of each page opens the topic named after the page, for questions about it.\n\n\n\n\nPart\nZulip channel\n\n\n\n\nOverview, Motivation and history\noverview\n\n\nTechniques through examples\nexamples\n\n\nTechniques and general results\ntechniques\n\n\nExtensions and recent advances\nadvances\n\n\nToolkit\ntoolkit\n\n\nNumerical methods\nnumerics\n\n\nLean formalization\nlean\n\n\nAbout this wiki\ncontributing\n\n\n\n\nDiscuss the mathematics, not the people. Associate editors moderate the channel and the talk pages of their part, and can hide messages; editors can remove a member whose participation disturbs the work rather than helping it. The Zulip is endipa.zulipchat.com, by invitation; its administrators invite new members and create channels.",
+    "title": "How to contribute",
+    "section": "Discussion and conduct",
+    "text": "Discussion and conduct\n\nProposals are discussed on the talk page of the page they change, so that the discussion stays next to the text and in its history. Zulip is the forum for the mathematics: questions and clarifications, ideas for new results and how they fit the established theory, and larger changes to the structure of the wiki, discussed there before they become proposals. It has one channel per part and one topic per question or idea; the link under the title of each page opens the topic named after the page, for questions about it.\n\n\n\n\nPart\nZulip channel\n\n\n\n\nOverview, Motivation and history\noverview\n\n\nTechniques through examples\nexamples\n\n\nTechniques and general results\ntechniques\n\n\nExtensions and recent advances\nadvances\n\n\nToolkit\ntoolkit\n\n\nNumerical methods\nnumerics\n\n\nLean formalization\nlean\n\n\nAbout this wiki\ncontributing\n\n\n\n\nDiscuss the mathematics, not the people. Associate editors moderate the channel and the talk pages of their part, and can hide messages; editors can remove a member whose participation disturbs the work rather than helping it. The Zulip is endipa.zulipchat.com, by invitation; its administrators invite new members and create channels.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>19</span>  <span class='chapter-title'>How to contribute</span>"
@@ -872,9 +872,9 @@
   {
     "objectID": "how-to-contribute.html#formulas-in-the-wiki",
     "href": "how-to-contribute.html#formulas-in-the-wiki",
-    "title": "19  How to contribute",
-    "section": "19.10 Formulas in the wiki",
-    "text": "19.10 Formulas in the wiki\n\nFor editors who write the wiki’s own format.\n\nInline formulas need display=\"inline\", displayed ones display=\"block\"; each formula is written on one line. The renderer rejects \\newcommand, \\label, \\eqref and \\substack. No formulas in headings.\nCitations link to the Literature page by the key of the reference catalogue: [[Literature#BedrossianCotiZelati2017|Bedrossian and Coti Zelati (2017)]]. The section References of each page is generated from the catalogue: add the key to its comment line rather than editing the list.\nTo link to a result, use the id of its box as the anchor, as in Couette flow#thm-couette.",
+    "title": "How to contribute",
+    "section": "Formulas in the wiki",
+    "text": "Formulas in the wiki\n\nFor editors who write the wiki’s own format.\n\nInline formulas need display=\"inline\", displayed ones display=\"block\"; each formula is written on one line. The renderer rejects \\newcommand, \\label, \\eqref and \\substack. No formulas in headings.\nCitations link to the Literature page by the key of the reference catalogue: [[Literature#BedrossianCotiZelati2017|Bedrossian and Coti Zelati (2017)]]. The section References of each page is generated from the catalogue: add the key to its comment line rather than editing the list.\nTo link to a result, use the id of its box as the anchor, as in Couette flow#thm-couette.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>19</span>  <span class='chapter-title'>How to contribute</span>"
@@ -883,9 +883,9 @@
   {
     "objectID": "how-to-contribute.html#the-edition",
     "href": "how-to-contribute.html#the-edition",
-    "title": "19  How to contribute",
-    "section": "19.11 The edition",
-    "text": "19.11 The edition\n\nA static edition of this wiki, with the pictures, the videos and the TeX source of every page, is built from the wiki’s text by a script and never edited by hand: endipa.github.io.",
+    "title": "How to contribute",
+    "section": "The edition",
+    "text": "The edition\n\nA static edition of this wiki, with the pictures, the videos and the TeX source of every page, is built from the wiki’s text by a script and never edited by hand: endipa.github.io.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>19</span>  <span class='chapter-title'>How to contribute</span>"
@@ -894,9 +894,9 @@
   {
     "objectID": "contributors.html",
     "href": "contributors.html",
-    "title": "20  Contributors",
+    "title": "Contributors",
     "section": "",
-    "text": "20.1 Editorial board",
+    "text": "Editorial board",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>20</span>  <span class='chapter-title'>Contributors</span>"
@@ -905,7 +905,7 @@
   {
     "objectID": "contributors.html#editorial-board",
     "href": "contributors.html#editorial-board",
-    "title": "20  Contributors",
+    "title": "Contributors",
     "section": "",
     "text": "Decides the scope and the structure of the wiki, appoints the associate editors, and settles a discussion that ends without consensus.\n\n\n\nNames and roles.\nPropose a text →",
     "crumbs": [
@@ -916,9 +916,9 @@
   {
     "objectID": "contributors.html#associate-editors",
     "href": "contributors.html#associate-editors",
-    "title": "20  Contributors",
-    "section": "20.2 Associate editors",
-    "text": "20.2 Associate editors\n\nEach part of the wiki has at least one associate editor, who follows the talk pages of its pages and its Zulip channel, runs the discussion of every proposal, asks members of the community for a review when it helps, and decides; accepted changes are written into the wiki by an editor. A busy part or page can have several.\n\n\n\nNames, with their parts.\nPropose a text →",
+    "title": "Contributors",
+    "section": "Associate editors",
+    "text": "Associate editors\n\nEach part of the wiki has at least one associate editor, who follows the talk pages of its pages and its Zulip channel, runs the discussion of every proposal, asks members of the community for a review when it helps, and decides; accepted changes are written into the wiki by an editor. A busy part or page can have several.\n\n\n\nNames, with their parts.\nPropose a text →",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>20</span>  <span class='chapter-title'>Contributors</span>"
@@ -927,9 +927,9 @@
   {
     "objectID": "contributors.html#community",
     "href": "contributors.html#community",
-    "title": "20  Contributors",
-    "section": "20.3 Community",
-    "text": "20.3 Community\n\nMembers of the wiki and of the Zulip, who propose, review and discuss changes. Every member can endorse a new member; editors can remove a member whose participation disturbs the work rather than helping it. Early-stage researchers (PhD students, and researchers up to two years after the PhD) can choose to be listed as such.\n\n\n\nNames.\nPropose a text →",
+    "title": "Contributors",
+    "section": "Community",
+    "text": "Community\n\nMembers of the wiki and of the Zulip, who propose, review and discuss changes. Every member can endorse a new member; editors can remove a member whose participation disturbs the work rather than helping it. Early-stage researchers (PhD students, and researchers up to two years after the PhD) can choose to be listed as such.\n\n\n\nNames.\nPropose a text →",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>20</span>  <span class='chapter-title'>Contributors</span>"
@@ -938,9 +938,9 @@
   {
     "objectID": "provenance-and-ai-use.html",
     "href": "provenance-and-ai-use.html",
-    "title": "21  Provenance and AI use",
+    "title": "Provenance and AI use",
     "section": "",
-    "text": "21.1 Rules",
+    "text": "Rules",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>21</span>  <span class='chapter-title'>Provenance and AI use</span>"
@@ -949,7 +949,7 @@
   {
     "objectID": "provenance-and-ai-use.html#rules",
     "href": "provenance-and-ai-use.html#rules",
-    "title": "21  Provenance and AI use",
+    "title": "Provenance and AI use",
     "section": "",
     "text": "Text drafted by Claude (AI) carries demo text until a member of the page team replaces or approves it.\nArguments produced by AI systems appear only as verbatim quotations, with source and date, or as entries labelled raw · unchecked on Raw data.\nThe first line of each page records its team, its status and the checks made. A machine check is recorded as such and never counts as a human check.\nStatements attributed to a paper give its theorem number; synthesis proofs say which papers they follow.\nEvery accepted proposal is linked, in the edit summary, to the Zulip topic where it was discussed.",
     "crumbs": [
@@ -960,9 +960,9 @@
   {
     "objectID": "provenance-and-ai-use.html#this-version",
     "href": "provenance-and-ai-use.html#this-version",
-    "title": "21  Provenance and AI use",
-    "section": "21.2 This version",
-    "text": "21.2 This version\n\nOn 8 November 2026 the wiki was reorganized into the parts drawn on the map, and its pages were reduced to a skeleton, to be filled by the editorial board and contributors. The first version (6 November 2026: Couette flow with three proofs, a hypocoercivity page, the toolkit, the history) is kept in the project folder, in archive/2026-11-06-first-version. The only computed content is the video on the Overview, with its record on Numerical methods, made by Claude (AI) and not yet checked by a human. The TeX source of each page is generated from the wiki by a script.",
+    "title": "Provenance and AI use",
+    "section": "This version",
+    "text": "This version\n\nOn 8 November 2026 the wiki was reorganized into the parts drawn on the map, and its pages were reduced to a skeleton, to be filled by the editorial board and contributors. The first version (6 November 2026: Couette flow with three proofs, a hypocoercivity page, the toolkit, the history) is kept in the project folder, in archive/2026-11-06-first-version. The only computed content is the video on the Overview, with its record on Numerical methods, made by Claude (AI) and not yet checked by a human. The TeX source of each page is generated from the wiki by a script.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>21</span>  <span class='chapter-title'>Provenance and AI use</span>"
@@ -971,9 +971,9 @@
   {
     "objectID": "provenance-and-ai-use.html#ai-generated-documents",
     "href": "provenance-and-ai-use.html#ai-generated-documents",
-    "title": "21  Provenance and AI use",
-    "section": "21.3 AI-generated documents",
-    "text": "21.3 AI-generated documents\n\n\n\nDocument\nDate\nContents\nChecks recorded\n\n\n\n\nnone\n—\n—\n—",
+    "title": "Provenance and AI use",
+    "section": "AI-generated documents",
+    "text": "AI-generated documents\n\n\n\nDocument\nDate\nContents\nChecks recorded\n\n\n\n\nnone\n—\n—\n—",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>21</span>  <span class='chapter-title'>Provenance and AI use</span>"
@@ -982,9 +982,9 @@
   {
     "objectID": "provenance-and-ai-use.html#how-a-result-becomes-checked",
     "href": "provenance-and-ai-use.html#how-a-result-becomes-checked",
-    "title": "21  Provenance and AI use",
-    "section": "21.4 How a result becomes checked",
-    "text": "21.4 How a result becomes checked\n\n\nTo be agreed with the editorial board: how many readers a proof needs before it loses its label, and whether a page records who read which proof.\nPropose a text →",
+    "title": "Provenance and AI use",
+    "section": "How a result becomes checked",
+    "text": "How a result becomes checked\n\n\nTo be agreed with the editorial board: how many readers a proof needs before it loses its label, and whether a page records who read which proof.\nPropose a text →",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>21</span>  <span class='chapter-title'>Provenance and AI use</span>"
@@ -993,9 +993,9 @@
   {
     "objectID": "literature.html",
     "href": "literature.html",
-    "title": "22  Literature",
+    "title": "Literature",
     "section": "",
-    "text": "22.1 Orientation",
+    "text": "Orientation",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>22</span>  <span class='chapter-title'>Literature</span>"
@@ -1004,7 +1004,7 @@
   {
     "objectID": "literature.html#orientation",
     "href": "literature.html#orientation",
-    "title": "22  Literature",
+    "title": "Literature",
     "section": "",
     "text": "M. Coti Zelati, G. Crippa, G. Iyer and A. L. Mazzucato, Mixing in incompressible flows: transport, dissipation, and their interplay, Notices of the American Mathematical Society 71 (2024), 593–604, arXiv:2308.00358.\n A. L. Mazzucato, Y. Feng and C. Nobili, Enhanced dissipation by advection and applications to PDEs, Applied Mathematical Modelling 150 (2026), Part A, 116310, arXiv:2501.17695.",
     "crumbs": [
@@ -1015,9 +1015,9 @@
   {
     "objectID": "literature.html#general-mechanisms-and-rate-limitations",
     "href": "literature.html#general-mechanisms-and-rate-limitations",
-    "title": "22  Literature",
-    "section": "22.2 General mechanisms and rate limitations",
-    "text": "22.2 General mechanisms and rate limitations\n\n\n P. Constantin, A. Kiselev, L. Ryzhik and A. Zlatoš, Diffusion and mixing in fluid flow, Annals of Mathematics 168 (2008), 643–674, arXiv:math/0509663.\n W. Cooperman, G. Iyer, K. Rowan and S. Son, Exponentially mixing flows with slow enhanced dissipation, preprint (2025), arXiv:2507.21305.\n M. Coti Zelati, M. G. Delgadino and T. M. Elgindi, On the relation between enhanced dissipation timescales and mixing rates, Communications on Pure and Applied Mathematics 73 (2020), 1205–1244, arXiv:1806.03258.\n Y. Feng and G. Iyer, Dissipation enhancement by mixing, Nonlinearity 32 (2019), 1810–1851, arXiv:1806.03699.\n C. Seis, Bounds on the rate of enhanced dissipation, Communications in Mathematical Physics 399 (2023), 2071–2081, arXiv:2003.08794.\n D. Wei, Diffusion and mixing in fluid flow via the resolvent estimate, Science China Mathematics 64 (2021), 507–518, arXiv:1811.11904.",
+    "title": "Literature",
+    "section": "General mechanisms and rate limitations",
+    "text": "General mechanisms and rate limitations\n\n\n P. Constantin, A. Kiselev, L. Ryzhik and A. Zlatoš, Diffusion and mixing in fluid flow, Annals of Mathematics 168 (2008), 643–674, arXiv:math/0509663.\n W. Cooperman, G. Iyer, K. Rowan and S. Son, Exponentially mixing flows with slow enhanced dissipation, preprint (2025), arXiv:2507.21305.\n M. Coti Zelati, M. G. Delgadino and T. M. Elgindi, On the relation between enhanced dissipation timescales and mixing rates, Communications on Pure and Applied Mathematics 73 (2020), 1205–1244, arXiv:1806.03258.\n Y. Feng and G. Iyer, Dissipation enhancement by mixing, Nonlinearity 32 (2019), 1810–1851, arXiv:1806.03699.\n C. Seis, Bounds on the rate of enhanced dissipation, Communications in Mathematical Physics 399 (2023), 2071–2081, arXiv:2003.08794.\n D. Wei, Diffusion and mixing in fluid flow via the resolvent estimate, Science China Mathematics 64 (2021), 507–518, arXiv:1811.11904.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>22</span>  <span class='chapter-title'>Literature</span>"
@@ -1026,9 +1026,9 @@
   {
     "objectID": "literature.html#smooth-stationary-shears",
     "href": "literature.html#smooth-stationary-shears",
-    "title": "22  Literature",
-    "section": "22.3 Smooth stationary shears",
-    "text": "22.3 Smooth stationary shears\n\n\n D. Albritton, R. Beekie and M. Novack, Enhanced dissipation and Hörmander’s hypoellipticity, Journal of Functional Analysis 283 (2022), 109522, arXiv:2105.12308.\n J. Bedrossian and M. Coti Zelati, Enhanced dissipation, hypoellipticity, and anomalous small noise inviscid limits in shear flows, Archive for Rational Mechanics and Analysis 224 (2017), 1161–1204, arXiv:1510.08098.\n M. Coti Zelati, Stable mixing estimates in the infinite Péclet number limit, Journal of Functional Analysis 279 (2020), 108562, arXiv:1909.01310.\n M. Coti Zelati and T. D. Drivas, A stochastic approach to enhanced diffusion, Annali della Scuola Normale Superiore di Pisa, Classe di Scienze 22 (2021), 811–834, arXiv:1911.09995.\n M. Coti Zelati and T. Gallay, Enhanced dissipation and Taylor dispersion in higher-dimensional parallel shear flows, Journal of the London Mathematical Society 108 (2023), 1358–1392, arXiv:2108.11192.",
+    "title": "Literature",
+    "section": "Smooth stationary shears",
+    "text": "Smooth stationary shears\n\n\n D. Albritton, R. Beekie and M. Novack, Enhanced dissipation and Hörmander’s hypoellipticity, Journal of Functional Analysis 283 (2022), 109522, arXiv:2105.12308.\n J. Bedrossian and M. Coti Zelati, Enhanced dissipation, hypoellipticity, and anomalous small noise inviscid limits in shear flows, Archive for Rational Mechanics and Analysis 224 (2017), 1161–1204, arXiv:1510.08098.\n M. Coti Zelati, Stable mixing estimates in the infinite Péclet number limit, Journal of Functional Analysis 279 (2020), 108562, arXiv:1909.01310.\n M. Coti Zelati and T. D. Drivas, A stochastic approach to enhanced diffusion, Annali della Scuola Normale Superiore di Pisa, Classe di Scienze 22 (2021), 811–834, arXiv:1911.09995.\n M. Coti Zelati and T. Gallay, Enhanced dissipation and Taylor dispersion in higher-dimensional parallel shear flows, Journal of the London Mathematical Society 108 (2023), 1358–1392, arXiv:2108.11192.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>22</span>  <span class='chapter-title'>Literature</span>"
@@ -1037,9 +1037,9 @@
   {
     "objectID": "literature.html#circular-and-hamiltonian-flows-and-taylor-dispersion",
     "href": "literature.html#circular-and-hamiltonian-flows-and-taylor-dispersion",
-    "title": "22  Literature",
-    "section": "22.4 Circular and Hamiltonian flows and Taylor dispersion",
-    "text": "22.4 Circular and Hamiltonian flows and Taylor dispersion\n\n\n M. Beck, O. Chaudhary and C. E. Wayne, Analysis of enhanced diffusion in Taylor dispersion via a model problem, Hamiltonian Partial Differential Equations and Applications, Fields Institute Communications 75 (2015), pp. 31–71, arXiv:1501.05877.\n M. Beck, O. Chaudhary and C. E. Wayne, Rigorous justification of Taylor dispersion via center manifolds and hypocoercivity, Archive for Rational Mechanics and Analysis 235 (2020), 1105–1149, arXiv:1804.06916.\n E. Bruè, M. Coti Zelati and E. Marconi, Enhanced dissipation for two-dimensional Hamiltonian flows, Archive for Rational Mechanics and Analysis 248 (2024), Article 84, arXiv:2211.14057.\n M. Coti Zelati and M. Dolce, Separation of time-scales in drift-diffusion equations on R², Journal de Mathématiques Pures et Appliquées 142 (2020), 58–75, arXiv:1907.04012.\n M. Coti Zelati, M. Dolce and C. Lo, Diffusion enhancement and Taylor dispersion for rotationally symmetric flows in discs and pipes, Journal of Mathematical Fluid Mechanics 26 (2024), Article 12, arXiv:2305.18162.\n M. Dolce, C. J. P. Johansson and M. Sorella, Dissipation enhancing properties for a class of Hamiltonian flows with closed streamlines, Communications in Partial Differential Equations 50 (2025), 301–352, arXiv:2407.06884.\n Y. Feng, A. L. Mazzucato and C. Nobili, Enhanced dissipation by circularly symmetric and parallel pipe flows, Physica D: Nonlinear Phenomena 445 (2023), 133640, doi:10.1016/j.physd.2022.133640.\n G. Iyer and H. Zhou, Quantifying the dissipation enhancement of cellular flows, SIAM Journal on Mathematical Analysis 55 (2023), 6496–6516, arXiv:2209.11645.\n T. Li and L. Zhang, Enhanced dissipation and Taylor dispersion by a parallel shear flow in an infinite cylinder with unbounded cross section, preprint (2025), arXiv:2510.13097.",
+    "title": "Literature",
+    "section": "Circular and Hamiltonian flows and Taylor dispersion",
+    "text": "Circular and Hamiltonian flows and Taylor dispersion\n\n\n M. Beck, O. Chaudhary and C. E. Wayne, Analysis of enhanced diffusion in Taylor dispersion via a model problem, Hamiltonian Partial Differential Equations and Applications, Fields Institute Communications 75 (2015), pp. 31–71, arXiv:1501.05877.\n M. Beck, O. Chaudhary and C. E. Wayne, Rigorous justification of Taylor dispersion via center manifolds and hypocoercivity, Archive for Rational Mechanics and Analysis 235 (2020), 1105–1149, arXiv:1804.06916.\n E. Bruè, M. Coti Zelati and E. Marconi, Enhanced dissipation for two-dimensional Hamiltonian flows, Archive for Rational Mechanics and Analysis 248 (2024), Article 84, arXiv:2211.14057.\n M. Coti Zelati and M. Dolce, Separation of time-scales in drift-diffusion equations on R², Journal de Mathématiques Pures et Appliquées 142 (2020), 58–75, arXiv:1907.04012.\n M. Coti Zelati, M. Dolce and C. Lo, Diffusion enhancement and Taylor dispersion for rotationally symmetric flows in discs and pipes, Journal of Mathematical Fluid Mechanics 26 (2024), Article 12, arXiv:2305.18162.\n M. Dolce, C. J. P. Johansson and M. Sorella, Dissipation enhancing properties for a class of Hamiltonian flows with closed streamlines, Communications in Partial Differential Equations 50 (2025), 301–352, arXiv:2407.06884.\n Y. Feng, A. L. Mazzucato and C. Nobili, Enhanced dissipation by circularly symmetric and parallel pipe flows, Physica D: Nonlinear Phenomena 445 (2023), 133640, doi:10.1016/j.physd.2022.133640.\n G. Iyer and H. Zhou, Quantifying the dissipation enhancement of cellular flows, SIAM Journal on Mathematical Analysis 55 (2023), 6496–6516, arXiv:2209.11645.\n T. Li and L. Zhang, Enhanced dissipation and Taylor dispersion by a parallel shear flow in an infinite cylinder with unbounded cross section, preprint (2025), arXiv:2510.13097.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>22</span>  <span class='chapter-title'>Literature</span>"
@@ -1048,9 +1048,9 @@
   {
     "objectID": "literature.html#time-dependent-shears-and-localized-estimates",
     "href": "literature.html#time-dependent-shears-and-localized-estimates",
-    "title": "22  Literature",
-    "section": "22.5 Time dependent shears and localized estimates",
-    "text": "22.5 Time dependent shears and localized estimates\n\n\n J. Bedrossian, S. He, S. Iyer and F. Wang, Pseudo-Gevrey smoothing for the passive scalar equations near Couette, Journal of Functional Analysis 289 (2025), 110987, arXiv:2405.19233.\n J. Benthaus, G. M. Coclite and C. Nobili, Mixing and enhanced dissipation in a time-translating shear flow, preprint (2026), arXiv:2603.14624.\n J. Benthaus and C. Nobili, Enhanced dissipation via time-modulated velocity fields, Evolution Equations and Control Theory 15 (2026), 21–50, arXiv:2501.16905.\n D. Coble and S. He, A note on enhanced dissipation of time-dependent shear flows, Communications in Mathematical Sciences 22 (2024), 1685–1700, arXiv:2309.15738.\n S. He, Localized Enhanced Dissipation: A Hypocoercivity Approach, preprint (2026), arXiv:2603.14657.",
+    "title": "Literature",
+    "section": "Time dependent shears and localized estimates",
+    "text": "Time dependent shears and localized estimates\n\n\n J. Bedrossian, S. He, S. Iyer and F. Wang, Pseudo-Gevrey smoothing for the passive scalar equations near Couette, Journal of Functional Analysis 289 (2025), 110987, arXiv:2405.19233.\n J. Benthaus, G. M. Coclite and C. Nobili, Mixing and enhanced dissipation in a time-translating shear flow, preprint (2026), arXiv:2603.14624.\n J. Benthaus and C. Nobili, Enhanced dissipation via time-modulated velocity fields, Evolution Equations and Control Theory 15 (2026), 21–50, arXiv:2501.16905.\n D. Coble and S. He, A note on enhanced dissipation of time-dependent shear flows, Communications in Mathematical Sciences 22 (2024), 1685–1700, arXiv:2309.15738.\n S. He, Localized Enhanced Dissipation: A Hypocoercivity Approach, preprint (2026), arXiv:2603.14657.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>22</span>  <span class='chapter-title'>Literature</span>"
@@ -1059,9 +1059,9 @@
   {
     "objectID": "literature.html#deterministic-mixing-constructions",
     "href": "literature.html#deterministic-mixing-constructions",
-    "title": "22  Literature",
-    "section": "22.6 Deterministic mixing constructions",
-    "text": "22.6 Deterministic mixing constructions\n\n\n T. M. Elgindi, K. Liss and J. C. Mattingly, Optimal enhanced dissipation and mixing for a time-periodic, Lipschitz velocity field on T2, Duke Mathematical Journal 174 (2025), 1209–1260, arXiv:2304.05374.",
+    "title": "Literature",
+    "section": "Deterministic mixing constructions",
+    "text": "Deterministic mixing constructions\n\n\n T. M. Elgindi, K. Liss and J. C. Mattingly, Optimal enhanced dissipation and mixing for a time-periodic, Lipschitz velocity field on T2, Duke Mathematical Journal 174 (2025), 1209–1260, arXiv:2304.05374.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>22</span>  <span class='chapter-title'>Literature</span>"
@@ -1070,9 +1070,9 @@
   {
     "objectID": "literature.html#rough-velocities-and-generalized-diffusion",
     "href": "literature.html#rough-velocities-and-generalized-diffusion",
-    "title": "22  Literature",
-    "section": "22.7 Rough velocities and generalized diffusion",
-    "text": "22.7 Rough velocities and generalized diffusion\n\n\n M. Colombo, M. Coti Zelati and K. Widmayer, Mixing and diffusion for rough shear flows, Ars Inveniendi Analytica, Paper No. 2 (2021), 21 pp., arXiv:2009.12268.\n Y. Feng and A. L. Mazzucato, Dissipation enhancement by shear flows for generalized diffusion operators in high dimension, Communications in Mathematical Sciences 23 (2025), 2203–2215, doi:10.4310/CMS.250930031923.\n L. Galeati and M. Gubinelli, Mixing for generic rough shear flows, SIAM Journal on Mathematical Analysis 55 (2023), 7240–7272, arXiv:2107.12115.\n S. He, Enhanced dissipation, hypoellipticity for passive scalar equations with fractional dissipation, Journal of Functional Analysis 282 (2022), 109319, arXiv:2103.07906.\n M. Romito and L. Roveri, Instantaneous Total Enhanced Dissipation For Very Rough Shear Flows, preprint (2025), arXiv:2510.27331.",
+    "title": "Literature",
+    "section": "Rough velocities and generalized diffusion",
+    "text": "Rough velocities and generalized diffusion\n\n\n M. Colombo, M. Coti Zelati and K. Widmayer, Mixing and diffusion for rough shear flows, Ars Inveniendi Analytica, Paper No. 2 (2021), 21 pp., arXiv:2009.12268.\n Y. Feng and A. L. Mazzucato, Dissipation enhancement by shear flows for generalized diffusion operators in high dimension, Communications in Mathematical Sciences 23 (2025), 2203–2215, doi:10.4310/CMS.250930031923.\n L. Galeati and M. Gubinelli, Mixing for generic rough shear flows, SIAM Journal on Mathematical Analysis 55 (2023), 7240–7272, arXiv:2107.12115.\n S. He, Enhanced dissipation, hypoellipticity for passive scalar equations with fractional dissipation, Journal of Functional Analysis 282 (2022), 109319, arXiv:2103.07906.\n M. Romito and L. Roveri, Instantaneous Total Enhanced Dissipation For Very Rough Shear Flows, preprint (2025), arXiv:2510.27331.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>22</span>  <span class='chapter-title'>Literature</span>"
@@ -1081,9 +1081,9 @@
   {
     "objectID": "literature.html#random-stirring-and-transport-noise",
     "href": "literature.html#random-stirring-and-transport-noise",
-    "title": "22  Literature",
-    "section": "22.8 Random stirring and transport noise",
-    "text": "22.8 Random stirring and transport noise\n\n\n J. Bedrossian, A. Blumenthal and S. Punshon-Smith, Almost-sure enhanced dissipation and uniform-in-diffusivity exponential mixing for advection-diffusion by stochastic Navier-Stokes, Probability Theory and Related Fields 179 (2021), 777–834, arXiv:1911.01561.\n A. Blumenthal, M. Coti Zelati and R. S. Gvalani, Exponential mixing for random dynamical systems and an example of Pierrehumbert, Annals of Probability 51 (2023), 1559–1601, arXiv:2204.13651.\n W. Cooperman, G. Iyer and S. Son, A Harris theorem for enhanced dissipation, and an example of Pierrehumbert, Nonlinearity 38 (2025), 045027, arXiv:2403.19858.\n M. Coti Zelati, M. Hairer and D. Villringer, A Stochastic RAGE Theorem and Enhanced Dissipation for Transport Noise, preprint (2025), arXiv:2507.11422.\n A. Del Zotto and M. Nualart, Exponential mixing and enhanced dissipation on the unit sphere with Rossby-Haurwitz flows, preprint (2026), arXiv:2606.11055.\n F. Flandoli and D. Luo, Enhanced dissipation and Lyapunov exponents for stochastic transport-diffusion equations with small molecular diffusivity and small noise intensity, Stochastics and Partial Differential Equations: Analysis and Computations 14 (2026), 1062–1076, doi:10.1007/s40072-026-00426-y.",
+    "title": "Literature",
+    "section": "Random stirring and transport noise",
+    "text": "Random stirring and transport noise\n\n\n J. Bedrossian, A. Blumenthal and S. Punshon-Smith, Almost-sure enhanced dissipation and uniform-in-diffusivity exponential mixing for advection-diffusion by stochastic Navier-Stokes, Probability Theory and Related Fields 179 (2021), 777–834, arXiv:1911.01561.\n A. Blumenthal, M. Coti Zelati and R. S. Gvalani, Exponential mixing for random dynamical systems and an example of Pierrehumbert, Annals of Probability 51 (2023), 1559–1601, arXiv:2204.13651.\n W. Cooperman, G. Iyer and S. Son, A Harris theorem for enhanced dissipation, and an example of Pierrehumbert, Nonlinearity 38 (2025), 045027, arXiv:2403.19858.\n M. Coti Zelati, M. Hairer and D. Villringer, A Stochastic RAGE Theorem and Enhanced Dissipation for Transport Noise, preprint (2025), arXiv:2507.11422.\n A. Del Zotto and M. Nualart, Exponential mixing and enhanced dissipation on the unit sphere with Rossby-Haurwitz flows, preprint (2026), arXiv:2606.11055.\n F. Flandoli and D. Luo, Enhanced dissipation and Lyapunov exponents for stochastic transport-diffusion equations with small molecular diffusivity and small noise intensity, Stochastics and Partial Differential Equations: Analysis and Computations 14 (2026), 1062–1076, doi:10.1007/s40072-026-00426-y.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>22</span>  <span class='chapter-title'>Literature</span>"
@@ -1092,9 +1092,9 @@
   {
     "objectID": "literature.html#inviscid-mixing-anomalous-dissipation-and-further-lower-bounds",
     "href": "literature.html#inviscid-mixing-anomalous-dissipation-and-further-lower-bounds",
-    "title": "22  Literature",
-    "section": "22.9 Inviscid mixing anomalous dissipation and further lower bounds",
-    "text": "22.9 Inviscid mixing anomalous dissipation and further lower bounds\n\n\n G. Alberti, G. Crippa and A. L. Mazzucato, Exponential self-similar mixing by incompressible flows, Journal of the American Mathematical Society 32 (2019), 445–490, arXiv:1605.02090.\n G. Crippa, T. Elgindi, G. Iyer and A. L. Mazzucato, Growth of Sobolev norms and loss of regularity in transport equations, Philosophical Transactions of the Royal Society A 380 (2022), 20210024, arXiv:2109.14975.\n T. D. Drivas, T. M. Elgindi, G. Iyer and I. Jeong, Anomalous dissipation in passive scalar transport, Archive for Rational Mechanics and Analysis 243 (2022), 1151–1180, arXiv:1911.03271.\n T. M. Elgindi and A. Zlatoš, Universal mixers in all dimensions, Advances in Mathematics 356 (2019), 106807, arXiv:1809.09614.\n T. M. Elgindi and K. Liss, Norm growth, non-uniqueness, and anomalous dissipation in passive scalars, Archive for Rational Mechanics and Analysis 248 (2024), arXiv:2309.08576.\n G. Iyer, A. Kiselev and X. Xu, Lower bounds on the mix norm of passive scalars advected by incompressible enstrophy-constrained flows, Nonlinearity 27 (2014), 973–985, arXiv:1310.2986.\n C. Nobili and S. Pottel, Lower bounds on mixing norms for the advection diffusion equation in Rd, Nonlinear Differential Equations and Applications NoDEA 29 (2022), Article 12, arXiv:2006.04614.",
+    "title": "Literature",
+    "section": "Inviscid mixing anomalous dissipation and further lower bounds",
+    "text": "Inviscid mixing anomalous dissipation and further lower bounds\n\n\n G. Alberti, G. Crippa and A. L. Mazzucato, Exponential self-similar mixing by incompressible flows, Journal of the American Mathematical Society 32 (2019), 445–490, arXiv:1605.02090.\n G. Crippa, T. Elgindi, G. Iyer and A. L. Mazzucato, Growth of Sobolev norms and loss of regularity in transport equations, Philosophical Transactions of the Royal Society A 380 (2022), 20210024, arXiv:2109.14975.\n T. D. Drivas, T. M. Elgindi, G. Iyer and I. Jeong, Anomalous dissipation in passive scalar transport, Archive for Rational Mechanics and Analysis 243 (2022), 1151–1180, arXiv:1911.03271.\n T. M. Elgindi and A. Zlatoš, Universal mixers in all dimensions, Advances in Mathematics 356 (2019), 106807, arXiv:1809.09614.\n T. M. Elgindi and K. Liss, Norm growth, non-uniqueness, and anomalous dissipation in passive scalars, Archive for Rational Mechanics and Analysis 248 (2024), arXiv:2309.08576.\n G. Iyer, A. Kiselev and X. Xu, Lower bounds on the mix norm of passive scalars advected by incompressible enstrophy-constrained flows, Nonlinearity 27 (2014), 973–985, arXiv:1310.2986.\n C. Nobili and S. Pottel, Lower bounds on mixing norms for the advection diffusion equation in Rd, Nonlinear Differential Equations and Applications NoDEA 29 (2022), Article 12, arXiv:2006.04614.",
     "crumbs": [
       "About this wiki",
       "<span class='chapter-number'>22</span>  <span class='chapter-title'>Literature</span>"

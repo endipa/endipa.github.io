@@ -684,6 +684,8 @@ def bibitem_refs(tex):
         lab = re.match(r'^(.*)\((\d{4}[a-z]?)\)', m.group(1) or '', re.S)
         if lab:
             out[m.group(2).strip()] = (T2W().inline(lab.group(1).strip()), lab.group(2))
+        else:   # a plain \bibitem{key} (a new paper in a proposal): known, its names come with the catalogue entry
+            out.setdefault(m.group(2).strip(), (m.group(2).strip(), '?'))
     return out
 
 

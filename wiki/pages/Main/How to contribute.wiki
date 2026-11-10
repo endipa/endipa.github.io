@@ -21,17 +21,17 @@ Those who are not yet members of the wiki write in the Zulip channel ''contribut
 # When the discussion has settled, an associate editor of the part decides, with the buttons ''Accept'' or ''Decline'' in the box at the top of the topic (shown to editors): the box changes status, and the reason they give is added as a signed reply. There is no deadline. If the discussion ends without consensus, the editorial board decides.
 # An editor writes the accepted proposal into the page with a script. The script converts the TeX to the wiki's format, refuses a paragraph that has changed since the proposal was made, shows exactly what changes on the page, and flags new citations and links. The edit summary links the topic and credits its author, and the box of the topic becomes ''applied'', with a link to the change. Decided topics, applied or declined, are moved to the archive of the talk page (its subpage ''/Archive''), so that the talk page shows only the proposals under discussion or waiting to be applied.
 Small corrections (a typo, a broken link, a missing reference) go the same way, and are usually accepted without discussion. Open and accepted proposals are listed in [[:Category:Open proposals]] and [[:Category:Accepted proposals]].
-A proposal changes only the blocks it contains. A paper that is not yet on [[Literature]] is proposed on its own, on the talk page of the Literature page.
+A proposal changes only the blocks it contains. A paper that is not yet on [[Literature]] comes with the proposal that cites it (see ''Citations'' in [[#The TeX format|The TeX format]]), and is added to the reference catalogue when the proposal is applied.
 
 == Credits ==
 Under the title of a section, a line in small type names the people who contributed to it, the most recent first: <code><nowiki>{{Contributed by|Name Surname, Name Surname}}</nowiki></code> on the line after the heading (in TeX, <code><nowiki>\contributors{Name Surname, Name Surname}</nowiki></code> after the section title). A relevant contribution cannot be measured objectively: the editors decide, at their discretion, who is listed, and add a new name at the beginning of the list. A long list shows the three most recent names, and a link opens the others. The history of each page keeps the record of every change and of its author.
 
 == The TeX format ==
-The TeX source of a page is a standard LaTeX article: one file that compiles with pdflatex and nothing else (on Overleaf, or with TeXShop, TeXstudio, ...; typeset twice for the citations). Its preamble is the same for every page and is never changed; a contribution defines no macros, since the wiki has none. Sections and statements are numbered in the PDF only.
+The TeX source of a page is a standard LaTeX article: one file that compiles with pdflatex and nothing else (on Overleaf, or with TeXShop, TeXstudio, ...; typeset twice for the citations). Its preamble is the same for every page and is never changed; a contribution defines no macros, since the wiki has none. Sections are numbered in the PDF only; the website numbers the results within each page (Theorem 1, Lemma 2, ...).
 * Statements: theorem, proposition, lemma, corollary, conjecture, definition, example, remark, claim. The optional argument is the name, the label is the anchor: <code><nowiki>\begin{theorem}[name]\label{thm-name}</nowiki></code>. Labels start with thm-, prp-, lem-, cor-, def- or clm-.
 * After a statement: <code><nowiki>\lean{}</nowiki></code> (the Lean banner), the environments idea and architecture, and proofs with an optional title and a label, as in <code><nowiki>\begin{proof}[Proof by hypocoercivity]\label{proof-name}</nowiki></code>. A claim and its proof sit inside the proof that uses them.
 * Formulas: <code><nowiki>$...$</nowiki></code>, <code><nowiki>\[ ... \]</nowiki></code> and align*; no numbered equations and no labels on equations; none of the commands that the wiki's renderer rejects (the script lists them).
-* Citations: <code><nowiki>\citet{Key}</nowiki></code> gives ''Author (year)'' and <code><nowiki>\citep{Key}</nowiki></code> gives ''(Author, year)'', with the keys of [[Literature]]. The reference list at the end of the file is generated from the reference catalogue; a new citation is added to it when the proposal is accepted.
+* Citations: <code><nowiki>\citet{Key}</nowiki></code> gives ''Author (year)'' and <code><nowiki>\citep{Key}</nowiki></code> gives ''(Author, year)'', with the keys of [[Literature]]; several papers at once: <code><nowiki>\citep{Key1,Key2,Key3}</nowiki></code>. The reference list at the end of each page is generated from the reference catalogue and contains only the papers that the page cites: a new citation is added to it when the proposal is applied. A paper that is not yet on [[Literature]]: give its full reference in the proposal, as <code><nowiki>\bibitem{NewKey} Authors, title, journal (year)</nowiki></code> in a <code>thebibliography</code> at the end of the TeX, with its DOI or arXiv number (from the pencil button: in the reason field); it is added to the catalogue and then to the page.
 * Links: on the same page, <code><nowiki>\hyperref[thm-name]{the theorem above}</nowiki></code> rather than <code><nowiki>\ref</nowiki></code>, since the wiki has no numbers; to another page, <code><nowiki>\wikilink{Page\#anchor}{text}</nowiki></code>.
 * Labels: <code><nowiki>\heuristic{}</nowiki></code>, <code><nowiki>\numerics{}</nowiki></code>, <code><nowiki>\published{}</nowiki></code>, <code><nowiki>\preprint{}</nowiki></code>, <code><nowiki>\raw{}</nowiki></code>.
 * A new block goes after an existing one: put the line <code><nowiki>%% after: Setting</nowiki></code> (a section title or a label) just before it.
@@ -47,7 +47,7 @@ A result is a statement followed by its levels of detail, each folded until the 
 |-
 | Architecture || the proof as a short chain of steps, later with a diagram
 |-
-| Proof || the complete proof, in steps; a statement used only in this proof is a ''claim'', with its own folded proof inside
+| Proof || the complete proof: first its sources (the papers it follows, cited by their key), then the steps; a statement used only in this proof is a ''claim'', with its own folded proof inside
 |}
 A statement that several proofs use, or that holds in more generality than one result, goes to the ''Toolkit'' ([[Standard analysis]] or [[Enhanced-dissipation tools]]) and is linked from the proofs. A short proof is written in one piece. The specimen below shows the boxes at work; open the folds to see the nesting.
 
@@ -65,6 +65,8 @@ The key mechanism in a few lines, and the heuristic scaling, labelled {{Heuristi
 # Step 3 concludes with a lemma of the toolkit.
 {{Fold end}}
 {{Proof start|id=proof-specimen}}
+''Sources.'' This proof follows ...
+
 '''Step 1.''' The reduction.
 {{Theorem start|id=clm-specimen|title=Claim (specimen).}}
 A statement used only in this proof.
@@ -73,8 +75,6 @@ A statement used only in this proof.
 The proof of the claim, folded inside the proof that uses it.
 {{Proof end}}
 '''Step 2.''' The conclusion, with a lemma of the [[Standard analysis|toolkit]].
-
-''Sources.'' This proof follows ...
 {{Proof end}}
 
 == Labels ==

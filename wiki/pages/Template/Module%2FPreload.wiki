@@ -19,6 +19,8 @@ The key mechanism in a few lines.
 # Second step.
 {{Fold end}}
 {{Proof start|id=proof-name}}
+''Sources.'' This proof follows …
+
 '''Step 1.''' The first step.
 {{Theorem start|id=clm-name|title=Claim (name).}}
 A statement used only in this proof.
@@ -27,8 +29,6 @@ A statement used only in this proof.
 The proof of the claim.
 {{Proof end}}
 '''Step 2.''' The second step, using a lemma of the [[Standard analysis|toolkit]].
-
-''Sources.'' This proof follows …
 {{Proof end}}
 
 == References ==
