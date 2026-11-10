@@ -1,6 +1,6 @@
 % !TEX TS-program = pdflatex
 % !TEX encoding = UTF-8 Unicode
-% How to contribute: a page of the wiki "Enhanced dissipation for passive scalars", generated from the wiki on 9 November 2026.
+% How to contribute: a page of the wiki "Enhanced dissipation for passive scalars", generated from the wiki on 10 November 2026.
 % It compiles as it is with pdflatex (Overleaf, TeXShop, TeXstudio, ...); typeset twice for the citations.
 % To propose a change: keep the preamble and the line \title{...}; keep only the blocks you change
 % (a \section{...} with its content, or a statement or proof with its \label{...}), change them, and post
@@ -52,6 +52,8 @@
 \def\ed@formalized{formalized}\def\ed@image{image}\def\ed@video{video}\def\ed@diagram{diagram}
 \newcommand{\lean}[2][]{\par{\noindent\footnotesize\def\ed@a{#2}Lean: \ifx\ed@a\ed@formalized formalized\ifx\relax#1\relax\else\
   (\href{#1}{certificate})\fi\else not yet formalized\fi.\par}}
+% the contributors of a section, most recent first (chosen by the editors), in small type under its title
+\newcommand{\contributors}[1]{\par{\noindent\footnotesize\itshape Contributors: #1\par}\smallskip}
 % the two lines under the title: the page's team and status, its Zulip topic (default: the title)
 \def\ed@title{}\let\ed@maketitle\maketitle\renewcommand{\maketitle}{\let\ed@title\@title\ed@maketitle}
 \newcommand{\pagestatus}[1]{{\par\centering\small#1\par}}
@@ -108,7 +110,7 @@
 \begin{document}
 \title{How to contribute}
 \author{Wiki \emph{Enhanced dissipation for passive scalars}}
-\date{9 November 2026}
+\date{10 November 2026}
 \maketitle
 \pagestatus{Page team: Michele Dolce · Status: proposal, to be agreed with the editorial board · Text: \demo{}}
 \zulip{contributing}
@@ -128,19 +130,22 @@ On the wiki, everyone with a role is a \emph{member} (reads every page and write
 \section{Proposing a change}
 Every change to a page, from a typo to a new proof, is a \emph{proposal}: a topic on the talk page of the page (tab \emph{Discussion}), which members of the wiki open and discuss. There are two ways to open one.
 \begin{itemize}
-  \item \emph{One paragraph} (a typo, a sentence, a formula, a shorter argument): in the \href{https://endipa.github.io}{edition}, the pencil button next to a paragraph shows its TeX. Change it, say why, and open the proposal: the wiki shows a new topic on the talk page, already filled in, to be saved.
-  \item \emph{Larger changes} (a section, a statement, a proof, a new section): the link \emph{new proposal} under the title of the page in the wiki (\emph{Propose a change} in the edition) opens a new topic with a short form. Download the TeX source of the page: link \emph{TeX source} under the title of every page of the edition (with the figures, in a zip, when the page has some). It is a standard LaTeX article that compiles as it is. In the Overleaf project of the whole wiki (\emph{Open the whole wiki in Overleaf}, on the Overview) every page is a file of the folder \emph{pages}, which can be proposed in the same way. Change what you want and check that it compiles; then paste in the form only the blocks you changed (a section, or a statement or a proof with its label), and say what they change, why, and which sources they use.
+  \item \emph{One paragraph, a figure or the central question} (a typo, a sentence, a formula, a shorter argument, a caption, a shorter video): in the \href{https://endipa.github.io}{edition}, the pencil button next to it shows its TeX. Change it, or describe the change you ask for (for a picture or a video, for instance), say why, and open the proposal: the wiki shows a new topic on the talk page, already filled in, to be saved.
+  \item \emph{Larger changes} (a section, a statement, a proof, a new section): the link \emph{new proposal} under the title of the page in the wiki (\emph{Propose a change} in the edition) opens a new topic with a short form. Download the TeX source of the page: link \emph{TeX source} under the title of every page of the edition (with the figures, in a zip, when the page has some). It is a standard LaTeX article that compiles as it is. The TeX of the whole wiki (\emph{TeX of the whole wiki}, on the Overview) is one LaTeX project, for working offline, in which every page is a file of the folder \emph{pages}; such a file can be proposed in the same way. Change what you want and check that it compiles; then paste in the form only the blocks you changed (a section, or a statement or a proof with its label), and say what they change, why, and which sources they use.
 \end{itemize}
 Those who are not yet members of the wiki write in the Zulip channel \emph{contributing}, naming the page.
 
 \subsection{How a proposal is decided}
 \begin{enumerate}
-  \item The community and the reviewers discuss the proposal in its topic, with replies that start with \emph{Support} or \emph{Oppose}, give a reason, and are signed. The author may revise the proposed text in place; the history of the talk page keeps every version.
-  \item When the discussion has settled, an associate editor of the part decides: in the box at the top of the topic they change \texttt{status=open} to \texttt{status=accepted}, or to \texttt{status=declined}, and sign a reply that says why. There is no deadline. If the discussion ends without consensus, the editorial board decides.
-  \item An editor writes the accepted proposal into the page with a script. The script converts the TeX to the wiki's format, refuses a paragraph that has changed since the proposal was made, shows exactly what changes on the page, and flags new citations and links. The edit summary links the topic and credits its author, and the box of the topic becomes \emph{applied}, with a link to the change.
+  \item The community and the reviewers discuss the proposal in its topic, with the buttons \emph{Support}, \emph{Oppose} and \emph{Comment} of its box, which add a signed reply (the box counts the supports and the oppositions); replies can also be written by hand, signed with \nowikicode{\textasciitilde{}\textasciitilde{}\textasciitilde{}\textasciitilde{}}. The author may revise the proposed text in place; the history of the talk page keeps every version.
+  \item When the discussion has settled, an associate editor of the part decides, with the buttons \emph{Accept} or \emph{Decline} in the box at the top of the topic (shown to editors): the box changes status, and the reason they give is added as a signed reply. There is no deadline. If the discussion ends without consensus, the editorial board decides.
+  \item An editor writes the accepted proposal into the page with a script. The script converts the TeX to the wiki's format, refuses a paragraph that has changed since the proposal was made, shows exactly what changes on the page, and flags new citations and links. The edit summary links the topic and credits its author, and the box of the topic becomes \emph{applied}, with a link to the change. Decided topics, applied or declined, are moved to the archive of the talk page (its subpage \emph{/Archive}), so that the talk page shows only the proposals under discussion or waiting to be applied.
 \end{enumerate}
 Small corrections (a typo, a broken link, a missing reference) go the same way, and are usually accepted without discussion. Open and accepted proposals are listed in \wikilink{:Category:Open proposals}{} and \wikilink{:Category:Accepted proposals}{}.
 A proposal changes only the blocks it contains. A paper that is not yet on \wikilink{Literature}{} is proposed on its own, on the talk page of the Literature page.
+
+\section{Credits}
+Under the title of a section, a line in small type names the people who contributed to it, the most recent first: \nowikicode{\{\{Contributed by|\allowbreak{}Name Surname, Name Surname\}\allowbreak{}\}} on the line after the heading (in TeX, \nowikicode{\textbackslash{}contributors\{Name Surname, Name Surname\}} after the section title). A relevant contribution cannot be measured objectively: the editors decide, at their discretion, who is listed, and add a new name at the beginning of the list. The history of each page keeps the record of every change and of its author.
 
 \section{The TeX format}
 The TeX source of a page is a standard LaTeX article: one file that compiles with pdflatex and nothing else (on Overleaf, or with TeXShop, TeXstudio, ...; typeset twice for the citations). Its preamble is the same for every page and is never changed; a contribution defines no macros, since the wiki has none. Sections and statements are numbered in the PDF only.
@@ -209,7 +214,7 @@ A picture, a video or a diagram is one line in the wiki, the template \wikilink{
 Under each theorem a one-line banner says whether it is formalized: grey while it is not, green with a link to the certificate once it is. Certificates are listed on \wikilink{Lean formalization}{}.
 
 \section{Discussion and conduct}
-Proposals are discussed on the talk page of the page they change, so that the discussion stays next to the text and in its history. Zulip is for everything else: questions, ideas for new results or new pages, announcements. It has one channel per part and one topic per page; the line under the title of each page links to its topic.
+Proposals are discussed on the talk page of the page they change, so that the discussion stays next to the text and in its history. Zulip is the forum for the mathematics: questions and clarifications, ideas for new results and how they fit the established theory, and larger changes to the structure of the wiki, discussed there before they become proposals. It has one channel per part and one topic per question or idea; the link under the title of each page opens the topic named after the page, for questions about it.
 \begin{wikitable}{2}
 \header{Part & Zulip channel}
 \row{Overview, Motivation and history & overview}

@@ -1,6 +1,6 @@
 {{Discuss|channel=overview}}
 
-A passive scalar is a quantity carried by a fluid without acting on it, such as heat, a dye in water or a pollutant in the air. If <math display="inline">f</math> is its concentration, <math display="inline">u</math> the velocity of an incompressible flow, and <math display="inline">\nu>0</math> the molecular diffusivity, then <math display="inline">f</math> solves the advection–diffusion equation
+A passive scalar is a quantity carried by a fluid without acting on it, such as temperature, a dye in water or a pollutant in the air. If <math display="inline">f</math> is its concentration, <math display="inline">u</math> the velocity of an incompressible flow, and <math display="inline">\nu>0</math> the molecular diffusivity, then <math display="inline">f</math> solves the advection–diffusion equation
 <math display="block">\partial_t f+u\cdot\nabla f=\nu\Delta f,\qquad \nabla\cdot u=0.</math>
 Diffusion alone dissipates the scalar on a time scale of order <math display="inline">1/\nu</math>, which is very long when <math display="inline">\nu</math> is small. The flow, on the other hand, dissipates nothing: it only rearranges the scalar. In doing so, it can transfer large-scale structures to small scales, for instance by stretching the scalar into thin filaments, and at small scales diffusion is much more efficient. The result is that <math display="inline">f</math> decays on a time scale much shorter than <math display="inline">1/\nu</math>: this is ''enhanced dissipation''.
 

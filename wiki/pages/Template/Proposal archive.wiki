@@ -1,0 +1,2 @@
+{{#ifexist:{{FULLPAGENAME}}/Archive|[[{{FULLPAGENAME}}/Archive|the archive of this page]]|the archive of this page (none yet)}}<noinclude>
+On a talk page: a link to its subpage ''/Archive'', where applied and declined proposals are moved (by the button ''Decline'' of the box [[Template:Proposal]], and by the editor who applies an accepted proposal). See [[How to contribute#How a proposal is decided|How to contribute]].</noinclude>

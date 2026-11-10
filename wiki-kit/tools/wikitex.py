@@ -438,6 +438,8 @@ class W2T:
                     status = pos[0] if pos else ''
                     url = pos[1] if len(pos) > 1 else ''
                     out.append(r'\lean' + ('[' + url.replace('%', r'\%').replace('#', r'\#') + ']' if url else '') + '{' + status + '}')
+                elif name == 'Contributed by':
+                    out.append(r'\contributors{' + self.inline(pos[0] if pos else named.get('1', '')) + '}')
                 elif name == 'Media':
                     opts = ','.join('%s=%s' % (k, named[k]) for k in ('poster', 'record', 'id') if named.get(k))
                     out.append(r'\media' + ('[' + opts + ']' if opts else '') + '{' + named.get('kind', 'image') + '}{'
@@ -566,6 +568,8 @@ PREAMBLE = r"""\documentclass[11pt]{article}
 \def\ed@formalized{formalized}\def\ed@image{image}\def\ed@video{video}\def\ed@diagram{diagram}
 \newcommand{\lean}[2][]{\par{\noindent\footnotesize\def\ed@a{#2}Lean: \ifx\ed@a\ed@formalized formalized\ifx\relax#1\relax\else\
   (\href{#1}{certificate})\fi\else not yet formalized\fi.\par}}
+% the contributors of a section, most recent first (chosen by the editors), in small type under its title
+\newcommand{\contributors}[1]{\par{\noindent\footnotesize\itshape Contributors: #1\par}\smallskip}
 % the two lines under the title: the page's team and status, its Zulip topic (default: the title)
 \def\ed@title{}\let\ed@maketitle\maketitle\renewcommand{\maketitle}{\let\ed@title\@title\ed@maketitle}
 \newcommand{\pagestatus}[1]{{\par\centering\small#1\par}}
@@ -1017,6 +1021,13 @@ class T2W:
                     self.problems.append('\\end{%s} does not close the open environment %s' % (env, envs[-1] if envs else '(none)'))
                 out.append('{{Proof end}}' if env == 'proof' else '{{Fold end}}' if env in FOLD_KIND else '{{Theorem end}}')
                 i += 1; continue
+            if re.match(r'^\\contributors\{', s):
+                flush()
+                g, k = read_group(s, len('\\contributors'))
+                if s[k:].strip():
+                    self.problems.append('text after \\contributors{...}, on the same line: ' + s[:60])
+                out.append('{{Contributed by|' + self.inline(g) + '}}')
+                i += 1; continue
             m = re.match(r'^\\lean(?:\[([^\]]*)\])?\{([^}]*)\}$', s)
             if m:
                 flush()
@@ -1444,7 +1455,9 @@ def edit_units(text):
     """The paragraphs of a page that can be edited from the website: the runs of consecutive text lines (prose,
     displayed formulas, lists), as (first line, last line, wikitext, id). The id is 'p' and 8 hex digits of the SHA-1 of
     the wikitext: it stays valid as long as the paragraph itself is not changed, whatever happens around it.
-    Not editable: headings, boxes and folds (their text is), media, tables, code, the reference list, placeholders,
+    Also editable, each on its own: a picture or video ({{Media}} on one line) and a one-line central question
+    (<div class="central-question">); there a proposal may also leave the TeX as it is and only describe the change asked for.
+    Not editable: headings, boxes and folds (their text is), tables, code, the reference list, placeholders,
     lines made only of labels."""
     if re.match(r'^\s*#redirect', text, re.I):
         return []
@@ -1475,9 +1488,16 @@ def edit_units(text):
             m = re.match(r'\{\{\s*([^|}]*)', s)
             return bool(m) and m.group(1).strip() in INLINE_TEMPLATES
         return True
+    def is_single(k):
+        s = lines[k].strip()
+        return not skip[k] and bool(re.match(r'^\{\{\s*Media\s*\|.*\}\}$', s) and s.count('{{') == s.count('}}')
+                                    or re.match(r'^<div class="central-question">.*</div>$', s))
     out, k, n = [], 0, len(lines)
     while k < n:
-        if is_text(k):
+        if is_single(k):
+            out.append((k, k, lines[k], 'p' + hashlib.sha1(lines[k].encode('utf-8')).hexdigest()[:8]))
+            k += 1
+        elif is_text(k):
             j = k
             while j + 1 < n and is_text(j + 1):
                 j += 1
@@ -1513,7 +1533,8 @@ def cmd_apply_unit(pdir, title, uid, tex_path, write=False):
     wiki = conv.document(open(tex_path, encoding='utf-8').read()).strip('\n').split('\n')
     lines = old.split('\n')
     if normalize('\n'.join(wiki)).strip('\n') == normalize(w).strip('\n'):
-        print('(no change: the proposed text gives back the paragraph %s of %s)' % (uid, title))
+        print('(no change to the text: the proposed TeX gives back the element %s of %s; if the proposal asks for something '
+              'else, such as a new picture or a shorter video, it is carried out by hand)' % (uid, title))
         return 0
     lines[a:b + 1] = wiki
     new_text, added, probs = update_reference_list('\n'.join(lines), old, lit)

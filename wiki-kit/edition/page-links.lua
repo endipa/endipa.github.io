@@ -17,9 +17,10 @@
 --     rebuilt from it by a script and never edited by hand (wiki-note, from edition.json, is added
 --     in brackets when the link goes to the real wiki, e.g. "members" for a wiki by invitation),
 --   * kit v2.1: a "TeX source" link that downloads the page's TeX source (tex-source in the front
---     matter), a "PDF" link to the PDF compiled from it (pdf-source), and, on the Overview only, "PDF of the whole wiki" and "Open the whole wiki in Overleaf": a new
---     project with main.tex as main document and every page as a file of pages/ (Overleaf fetches tex/all-pages.zip:
---     public site only); on a page with pictures, "TeX source" downloads a zip (the .tex and the folder figures/),
+--     matter), a "PDF" link to the PDF compiled from it (pdf-source), and, on the Overview only, "PDF of the whole wiki" and "TeX of the whole
+--     wiki (zip)": tex/all-pages.zip, a LaTeX project with main.tex and every page as a file of pages/ (it also opens in
+--     Overleaf; November 2026: no "Open in Overleaf" button any more); on a page with pictures, "TeX source" downloads a zip
+--     (the .tex and the folder figures/),
 --   * (November 2026) a "Propose a change" link, when _quarto.yml sets propose-preload (edition.json, edit_paragraphs.preload_block)
 --     and the wiki is the real one: a new topic on the page's talk page, filled in with that preload page,
 -- and a "Propose a text" link at the end of every placeholder: the same new topic, or the Zulip topic when there is none.
@@ -27,20 +28,6 @@
 local zulip, related, wiki, tex, pdf, wiki_note, wiki_real = nil, nil, nil, nil, nil, nil, false
 local book_pdf, book_zip = nil, nil
 local propose_preload, propose = nil, nil
-
-local OVERLEAF_SCRIPT = [=[
-<script>
-(function () {
-  // Open the whole wiki in Overleaf: one project from tex/all-pages.zip (main.tex reads the pages from pages/, the
-  // pictures are in figures/). Overleaf downloads the zip itself, so this works on the public site only.
-  document.querySelectorAll('a.overleaf-link').forEach(function (a) {
-    var zip = new URL(a.getAttribute('data-zip'), window.location.href).href;
-    a.href = 'https://www.overleaf.com/docs?engine=pdflatex&main_document=' + encodeURIComponent(a.getAttribute('data-main'))
-      + '&snip_uri=' + encodeURIComponent(zip);
-  });
-})();
-</script>
-]=]
 
 -- MediaWiki page address: spaces become underscores, other characters are percent-encoded.
 local function wiki_title(t)
@@ -123,12 +110,10 @@ local function links_row()
                                         pandoc.Attr("", {"edit-link", "pdf-link"}, {{"download", book_pdf:match("([^/]+)$")}})))
     end
     if book_zip then
-      local icon2 = pandoc.RawInline("html", '<i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>')
+      local icon2 = pandoc.RawInline("html", '<i class="bi bi-file-earmark-zip" aria-hidden="true"></i>')
       table.insert(inlines, pandoc.Space())
-      table.insert(inlines, pandoc.Link({icon2, pandoc.Space(), pandoc.Str("Open the whole wiki in Overleaf")}, book_zip, "",
-                                        pandoc.Attr("", {"edit-link", "overleaf-link"},
-                                                    {{"data-zip", book_zip}, {"data-main", "main.tex"},
-                                                     {"target", "_blank"}, {"rel", "noopener"}})))
+      table.insert(inlines, pandoc.Link({icon2, pandoc.Space(), pandoc.Str("TeX of the whole wiki (zip)")}, book_zip, "",
+                                        pandoc.Attr("", {"edit-link", "tex-link"}, {{"download", book_zip:match("([^/]+)$")}})))
     end
   end
   if related then
@@ -153,9 +138,4 @@ local function div(el)
   end
 end
 
-local function add_script(doc)
-  if book_zip then doc.blocks:insert(pandoc.RawBlock("html", OVERLEAF_SCRIPT)) end
-  return doc
-end
-
-return { {Meta = read_meta}, {Div = div}, {Pandoc = add_script} }
+return { {Meta = read_meta}, {Div = div} }

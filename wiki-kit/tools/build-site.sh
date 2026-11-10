@@ -58,7 +58,7 @@ if command -v pdflatex >/dev/null 2>&1; then
 fi
 # a page with pictures: <page>.zip, its TeX source and its pictures in figures/ (the link "TeX source" gives the zip)
 python3 "$HERE/wikitex.py" zips "$ED/tex" "$PICS" >> "$ED/tex-report.txt"
-# the whole wiki as a LaTeX project, for "Open the whole wiki in Overleaf" on the Overview (tex/all-pages.zip): main.tex
+# the whole wiki as a LaTeX project, "TeX of the whole wiki" on the Overview (tex/all-pages.zip): main.tex
 # reads the pages from pages/, the pictures are in figures/; and its PDF (tex/whole-wiki.pdf)
 B="$(mktemp -d)"
 python3 "$HERE/wikitex.py" book "$XML" "$ED/tex" "$B" --site "$SITE_NAME" --date "$(date -u +%F)" >> "$ED/tex-report.txt"

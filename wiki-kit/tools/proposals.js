@@ -1,7 +1,8 @@
 // proposals.js: the proposals on the talk pages of the wiki, from the browser (wiki kit, November 2026).
 //
-// Run it in the browser console (or with a browser tool) on any page of the wiki, logged in as an editor. It defines
-// window.Proposals:
+// The wiki has a copy as MediaWiki:Proposals.js: on any page of the wiki, logged in as an editor, load it with
+//   await mw.loader.getScript('/w/index.php?title=MediaWiki:Proposals.js&action=raw&ctype=text/javascript')
+// (or paste this file in the browser console). It defines window.Proposals:
 //   await Proposals.list('accepted')   the accepted proposals (or 'open', 'applied', 'declined'): for each, the talk
 //                                      page and its page, the heading of the topic, the paragraph id (proposals made
 //                                      with the edit button of the edition), the author (who opened the topic), the
@@ -12,6 +13,8 @@
 //                                      SHA-1 is the expected one, and checks the saved text; returns the new revision
 //   await Proposals.markApplied(talk, heading, revid)
 //                                      changes status=accepted to status=applied|revision=<revid> in the box of the topic
+//   await Proposals.archive(talk, heading)
+//                                      moves an applied or declined topic to the subpage <talk>/Archive
 //   Proposals.summary(p)               the edit summary of the page: the topic, its author and its acceptor
 // The editor copies the wikitext of the topic to a file (and checks its SHA-1), runs
 //   python3 wikitex.py apply-proposal <pages-dir> <page> <topic.wiki> [--write]
@@ -119,9 +122,27 @@
       summary: '/* ' + heading + ' */ applied: [[Special:Diff/' + revid + ']]'});
     return r.edit.result;
   }
+  async function archive(talk, heading) {
+    var cur = await current(talk), lines = cur.text.split('\n');
+    var t = topics(cur.text).filter(function (x) { return x.heading === heading; })[0];
+    if (!t) throw new Error('no topic "' + heading + '" on ' + talk);
+    var st = (box(t.text) || {}).status;
+    if (st !== 'applied' && st !== 'declined') throw new Error('"' + heading + '" is ' + st + ': only applied or declined proposals are archived');
+    var arch = talk + '/Archive', old = await current(arch);
+    var head = 'Proposals for [[' + talk.replace(/^Talk:/, '') + ']] that were applied or declined, moved here from [[' + talk
+      + ']], oldest first. New proposals and replies go on the talk page.';
+    var p = {action: 'edit', title: arch, text: (old ? old.text.replace(/\s+$/, '') : head) + '\n\n' + t.text,
+             summary: 'Archived from [[' + talk + ']]: ' + heading};
+    if (old) { p.basetimestamp = old.timestamp; p.nocreate = 1; } else { p.createonly = 1; }
+    await api().postWithEditToken(p);
+    var before = lines.slice(0, t.start).join('\n').replace(/\s+$/, ''), after = lines.slice(t.end).join('\n');
+    var r = await api().postWithEditToken({action: 'edit', title: talk, text: before + (after ? '\n\n' + after : ''), nocreate: 1,
+      basetimestamp: cur.timestamp, summary: 'Archived to [[' + arch + ']]: ' + heading});
+    return r.edit.result;
+  }
   function summary(p) {
     var who = function (u) { return u ? '[[User:' + u + '|' + u + ']]' : 'unknown'; };
-    return 'Proposal by ' + who(p.author) + ', accepted by ' + who(p.acceptor && p.acceptor.user) + ': [[' + p.talk + '#' + p.heading + '|discussion]]';
+    return 'Proposal by ' + who(p.author) + ', accepted by ' + who(p.acceptor && p.acceptor.user) + ': [[' + p.talk + '/Archive#' + p.heading + '|discussion]]';   // the topic is archived once applied
   }
-  window.Proposals = {list: list, save: save, markApplied: markApplied, summary: summary, topics: topics, box: box, sha1: sha1};
+  window.Proposals = {list: list, save: save, markApplied: markApplied, archive: archive, summary: summary, topics: topics, box: box, sha1: sha1};
 })();

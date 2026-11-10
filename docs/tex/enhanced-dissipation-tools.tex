@@ -1,6 +1,6 @@
 % !TEX TS-program = pdflatex
 % !TEX encoding = UTF-8 Unicode
-% Enhanced-dissipation tools: a page of the wiki "Enhanced dissipation for passive scalars", generated from the wiki on 9 November 2026.
+% Enhanced-dissipation tools: a page of the wiki "Enhanced dissipation for passive scalars", generated from the wiki on 10 November 2026.
 % It compiles as it is with pdflatex (Overleaf, TeXShop, TeXstudio, ...); typeset twice for the citations.
 % To propose a change: keep the preamble and the line \title{...}; keep only the blocks you change
 % (a \section{...} with its content, or a statement or proof with its \label{...}), change them, and post
@@ -52,6 +52,8 @@
 \def\ed@formalized{formalized}\def\ed@image{image}\def\ed@video{video}\def\ed@diagram{diagram}
 \newcommand{\lean}[2][]{\par{\noindent\footnotesize\def\ed@a{#2}Lean: \ifx\ed@a\ed@formalized formalized\ifx\relax#1\relax\else\
   (\href{#1}{certificate})\fi\else not yet formalized\fi.\par}}
+% the contributors of a section, most recent first (chosen by the editors), in small type under its title
+\newcommand{\contributors}[1]{\par{\noindent\footnotesize\itshape Contributors: #1\par}\smallskip}
 % the two lines under the title: the page's team and status, its Zulip topic (default: the title)
 \def\ed@title{}\let\ed@maketitle\maketitle\renewcommand{\maketitle}{\let\ed@title\@title\ed@maketitle}
 \newcommand{\pagestatus}[1]{{\par\centering\small#1\par}}
@@ -108,7 +110,7 @@
 \begin{document}
 \title{Enhanced-dissipation tools}
 \author{Wiki \emph{Enhanced dissipation for passive scalars}}
-\date{9 November 2026}
+\date{10 November 2026}
 \maketitle
 \pagestatus{Page team: to be named · Status: skeleton}
 \zulip{toolkit}

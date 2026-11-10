@@ -131,13 +131,14 @@ EDIT_SCRIPT = r"""<style>
   function open(id) {
     var old = data.units[id];
     var ov = document.createElement('div'); ov.className = 'edit-overlay';
-    ov.innerHTML = '<div class="edit-dialog" role="dialog" aria-modal="true" aria-label="Propose a change to this paragraph">'
-      + '<h3>Propose a change to this paragraph</h3>'
-      + '<p class="edit-note">The TeX of the paragraph, as in the TeX source of the page. Change it, then open the proposal on the talk page of <em>'
+    ov.innerHTML = '<div class="edit-dialog" role="dialog" aria-modal="true" aria-label="Propose a change">'
+      + '<h3>Propose a change</h3>'
+      + '<p class="edit-note">The TeX of this paragraph or figure, as in the TeX source of the page. Change it, or describe below the change you'
+      + ' ask for (a shorter video, a clearer picture, ...); then open the proposal on the talk page of <em>'
       + esc(data.page) + '</em> in the wiki (members, logged in): it is saved only when you click <em>Save</em> there, and it is discussed before an editor applies it.</p>'
       + '<textarea spellcheck="false"></textarea>'
       + '<label>Preview (formulas and basic formatting)</label><div class="edit-preview"></div>'
-      + '<label>Reason (optional, one line)</label><input type="text" maxlength="300">'
+      + '<label>Reason, or the change you ask for (one line)</label><input type="text" maxlength="500">'
       + '<div class="edit-actions"><button type="button" class="edit-send">Open the proposal on the talk page</button>'
       + '<button type="button" class="edit-copy">Copy the TeX</button><button type="button" class="edit-cancel">Cancel</button>'
       + '<span class="edit-status"></span></div></div>';
@@ -162,9 +163,12 @@ EDIT_SCRIPT = r"""<style>
     };
     ov.querySelector('.edit-send').onclick = function () {
       var neu = ta.value.replace(/\s+$/, '');
-      if (neu === old.replace(/\s+$/, '')) { status.textContent = 'Nothing has changed.'; return; }
-      var words = neu.replace(/\$[^$]*\$/g, ' ').replace(/\\[a-zA-Z]+|[{}$\\]/g, ' ').replace(/\s+/g, ' ').trim().split(' ').slice(0, 6).join(' ');
-      var params = [data.page, id, old, neu, reason.value.trim() || '(none given)', change(old, neu)];
+      var same = neu === old.replace(/\s+$/, ''), why = reason.value.trim();
+      if (same && !why) { status.textContent = 'Change the TeX, or describe the change you ask for in the field below.'; return; }
+      var fig = old.match(/^\\media(?:\[[^\]]*\])?\{[^}]*\}\{([^}]*)\}/);
+      var words = same ? why.split(/\s+/).slice(0, 6).join(' ') : fig ? 'figure ' + fig[1] : neu.replace(/\$[^$]*\$/g, ' ').replace(/\\[a-zA-Z]+|[{}$\\]/g, ' ').replace(/\s+/g, ' ').trim().split(' ').slice(0, 6).join(' ');
+      var params = [data.page, id, old, neu, why || '(none given)',
+                    same ? '(no change to the TeX: the change asked for is in the reason)' : change(old, neu)];
       function link(p) {
         return data.edit + encodeURIComponent(data.talk.replace(/ /g, '_')) + '?action=edit&section=new'
           + '&preloadtitle=' + encodeURIComponent('Proposal: ' + words + '…')
@@ -182,7 +186,7 @@ EDIT_SCRIPT = r"""<style>
   document.querySelectorAll('.edit-unit').forEach(function (u) {
     var id = u.getAttribute('data-unit'); if (!data.units[id]) return;
     var b = document.createElement('button'); b.type = 'button'; b.className = 'edit-btn';
-    b.title = 'Propose a change to this paragraph'; b.setAttribute('aria-label', b.title);
+    b.title = 'Propose a change'; b.setAttribute('aria-label', b.title);
     b.innerHTML = '<i class="bi bi-pencil" aria-hidden="true"></i>';
     b.addEventListener('click', function () { open(id); });
     u.appendChild(b);
@@ -621,6 +625,8 @@ def convert_page(title, text, statements):
                 fence('::: {.proof-link}'); out.append('→ ' + link(pos[0], inline(pos[1] if len(pos) > 1 else 'Proof'))); fence(':::')
             elif name == 'Crumbs':
                 fence('::: {.crumbs}'); out.append(' › '.join(inline(p) for p in pos if p)); fence(':::')
+            elif name == 'Contributed by':   # the contributors of a section, most recent first
+                fence('::: {.section-contributors}'); out.append('Contributors: ' + inline(pos[0] if pos else '')); fence(':::')
             elif name == 'Media':
                 out += media_block(title, named)
             elif name == 'Lean':
@@ -870,7 +876,7 @@ def main():
             fm.append('tex-source: ' + yaml_str(z if os.path.exists(os.path.join(OUT, z)) else tex))
             if os.path.exists(os.path.join(OUT, tex[:-4] + '.pdf')):   # compiled by build-site.sh when pdflatex exists
                 fm.append('pdf-source: ' + yaml_str(tex[:-4] + '.pdf'))
-            if title == 'Overview':   # the whole wiki: one document (and its PDF), and the Overleaf project of all pages
+            if title == 'Overview':   # the whole wiki: one document (and its PDF), and the LaTeX project of all pages
                 for k, f in (('book-tex', 'tex/whole-wiki.tex'), ('book-pdf', 'tex/whole-wiki.pdf'), ('book-zip', 'tex/all-pages.zip')):
                     if os.path.exists(os.path.join(OUT, f)):
                         fm.append(k + ': ' + yaml_str(f))
