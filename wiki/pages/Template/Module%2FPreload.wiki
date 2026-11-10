@@ -10,7 +10,6 @@ The flow, the domain, what decays.
 {{Theorem start|id=thm-name|title=Theorem (name).}}
 The statement, in its simplest form, with constants hidden.
 {{Theorem end}}
-{{Lean}}
 {{Fold start|kind=idea|title=Idea}}
 The key mechanism in a few lines.
 {{Fold end}}

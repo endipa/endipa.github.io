@@ -8,7 +8,7 @@
 Worked example: [[Couette flow#Stochastic methods|Couette flow]]. What changes with a critical point: [[Poiseuille flow#Stochastic methods|Poiseuille flow]].
 
 == General results ==
-{{Placeholder start}}The theorems, each written as a result (statement, Lean banner, idea, proof architecture, complete proof; see [[How to contribute#Anatomy of a result|How to contribute]]); lemmas of general use go to the ''Toolkit'' ([[Standard analysis]], [[Enhanced-dissipation tools]]).{{Placeholder end}}
+{{Placeholder start}}The theorems, each written as a result (statement, idea, proof architecture, complete proof; see [[How to contribute#Anatomy of a result|How to contribute]]); lemmas of general use go to the ''Toolkit'' ([[Standard analysis]], [[Enhanced-dissipation tools]]).{{Placeholder end}}
 
 == Limitations and comparison ==
 {{Placeholder start}}What the method does not give, and how it compares with the other techniques.{{Placeholder end}}

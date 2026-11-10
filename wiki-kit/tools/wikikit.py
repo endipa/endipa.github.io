@@ -39,7 +39,7 @@ UNSAFE = set('%/\\:*?"<>|')
 INTERWIKI = {'w', 'wikipedia', 'wikt', 'wiktionary', 'mw', 'mediawikiwiki', 'meta', 'm', 'commons', 'c', 'd',
              'wikidata', 'mh', 'miraheze', 'arxiv', 'doi', 'google'}
 BOXES = ('Theorem', 'Level', 'Proof', 'Fold', 'Quote', 'Placeholder', 'Card')
-ID_PREFIXES = ('thm-', 'prp-', 'prop-', 'lem-', 'cor-', 'def-', 'clm-')
+ID_PREFIXES = ('thm-', 'prp-', 'prop-', 'lem-', 'cor-', 'def-', 'clm-', 'rem-', 'cnj-', 'exm-')
 MAGIC = {'PAGENAME', 'FULLPAGENAME', 'BASEPAGENAME', 'SUBPAGENAME', 'NAMESPACE', 'TALKPAGENAME', 'SITENAME',
          'SERVER', 'SCRIPTPATH', 'CURRENTYEAR', 'CURRENTMONTH', 'CURRENTDAY', 'CURRENTTIMESTAMP', 'REVISIONID',
          '!', '=', 'PAGENAMEE', 'FULLPAGENAMEE'}

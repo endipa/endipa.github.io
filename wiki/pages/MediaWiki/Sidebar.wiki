@@ -23,8 +23,6 @@
 ** Enhanced-dissipation tools|Enhanced-dissipation tools
 * Numerical methods
 ** Numerical methods|Numerical methods
-* Lean formalization
-** Lean formalization|Lean formalization
 * About this wiki
 ** How to contribute|How to contribute
 ** Contributors|Contributors

@@ -260,11 +260,6 @@ ul.task-list li input[type="checkbox"] {
   <a href="./numerical-methods.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Numerical methods</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./lean-formalization.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Lean formalization</span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
@@ -361,9 +356,9 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="general-results" class="level2">
 <h2 class="anchored" data-anchor-id="general-results">General results</h2>
-<div class="edit-unit" data-unit="pfc2cb77a">
+<div class="edit-unit" data-unit="p75270f2d">
 <div class="placeholder">
-<p>The theorems, each written as a result (statement, Lean banner, idea, proof architecture, complete proof; see <a href="./how-to-contribute.html#anatomy-of-a-result">How to contribute</a>); lemmas of general use go to the <em>Toolkit</em> (<a href="./standard-analysis.html">Standard analysis</a>, <a href="./enhanced-dissipation-tools.html">Enhanced-dissipation tools</a>).</p>
+<p>The theorems, each written as a result (statement, idea, proof architecture, complete proof; see <a href="./how-to-contribute.html#anatomy-of-a-result">How to contribute</a>); lemmas of general use go to the <em>Toolkit</em> (<a href="./standard-analysis.html">Standard analysis</a>, <a href="./enhanced-dissipation-tools.html">Enhanced-dissipation tools</a>).</p>
 <p><a href="https://endipa.miraheze.org/wiki/Talk:Spectral_methods?action=edit&amp;section=new&amp;preload=Template:Proposal/Preload-block&amp;preloadtitle=Proposal%3A+" class="propose">Propose a text →</a></p>
 </div>
 </div>
@@ -381,7 +376,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="unnumbered anchored" data-anchor-id="references">References</h2>
 <!-- refs-begin: -->
 <!-- refs-end -->
-<script type="application/json" id="edit-units">{"page": "Spectral methods", "talk": "Talk:Spectral methods", "edit": "https://endipa.miraheze.org/wiki/", "preload": "Template:Proposal/Preload", "units": {"p5d88b484": "\\placeholder{Lead: what the method gives, and under which hypotheses.}", "pc6e71d64": "\\placeholder{The key mechanism, in a few lines.}", "p94b3e160": "Worked example: \\wikilink{Couette flow\\#Spectral methods}{Couette flow}. What changes with a critical point: \\wikilink{Poiseuille flow\\#Spectral methods}{Poiseuille flow}.", "pfc2cb77a": "\\placeholder{The theorems, each written as a result (statement, Lean banner, idea, proof architecture, complete proof; see \\wikilink{How to contribute\\#Anatomy of a result}{How to contribute}); lemmas of general use go to the \\emph{Toolkit} (\\wikilink{Standard analysis}{}, \\wikilink{Enhanced-dissipation tools}{}).}", "p498f50f5": "\\placeholder{What the method does not give, and how it compares with the other techniques.}"}}</script>
+<script type="application/json" id="edit-units">{"page": "Spectral methods", "talk": "Talk:Spectral methods", "edit": "https://endipa.miraheze.org/wiki/", "preload": "Template:Proposal/Preload", "units": {"p5d88b484": "\\placeholder{Lead: what the method gives, and under which hypotheses.}", "pc6e71d64": "\\placeholder{The key mechanism, in a few lines.}", "p94b3e160": "Worked example: \\wikilink{Couette flow\\#Spectral methods}{Couette flow}. What changes with a critical point: \\wikilink{Poiseuille flow\\#Spectral methods}{Poiseuille flow}.", "p75270f2d": "\\placeholder{The theorems, each written as a result (statement, idea, proof architecture, complete proof; see \\wikilink{How to contribute\\#Anatomy of a result}{How to contribute}); lemmas of general use go to the \\emph{Toolkit} (\\wikilink{Standard analysis}{}, \\wikilink{Enhanced-dissipation tools}{}).}", "p498f50f5": "\\placeholder{What the method does not give, and how it compares with the other techniques.}"}}</script>
 <style>
 .edit-unit { position: relative; }
 .edit-unit > .edit-btn { position: absolute; top: 0.1rem; right: -2.1rem; width: 1.7rem; height: 1.7rem; padding: 0; border: 1px solid #c9cfd8;
@@ -401,6 +396,10 @@ ul.task-list li input[type="checkbox"] {
   line-height: 1.45; padding: .5rem .6rem; border: 1px solid #c9cfd8; border-radius: 4px; }
 .edit-dialog input[type=text] { width: 100%; padding: .35rem .6rem; border: 1px solid #c9cfd8; border-radius: 4px; font-size: .9rem; }
 .edit-dialog label { display: block; font-size: .8rem; color: #59616e; margin: .6rem 0 .2rem; }
+.edit-insert { display: flex; flex-wrap: wrap; gap: .3rem; align-items: center; margin: 0 0 .35rem; font-size: .8rem; color: #59616e; }
+.edit-insert button { border: 1px solid #c9cfd8; border-radius: 4px; background: #fff; padding: .1rem .5rem; font-size: .8rem; cursor: pointer; }
+.edit-preview .pv-env { border-left: 3px solid #1f4e79; background: #f8f9fb; padding: .2rem .6rem; margin: .4rem 0; }
+.edit-preview .pv-proof { border-left: 1px solid #d5dbe3; padding-left: .6rem; margin: .4rem 0; }
 .edit-preview { border: 1px dashed #c9cfd8; border-radius: 4px; padding: .5rem .8rem; background: #fbfcfd; font-size: .93rem; }
 .edit-actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .9rem; align-items: center; }
 .edit-actions button { border-radius: 4px; padding: .35rem .8rem; font-size: .88rem; border: 1px solid #c9cfd8; background: #fff; cursor: pointer; }
@@ -416,6 +415,12 @@ ul.task-list li input[type="checkbox"] {
   // a rough preview of the TeX: the formulas with MathJax, a few commands as text
   function preview(tex) {
     var h = esc(tex);
+    var ENV = 'theorem|proposition|lemma|corollary|definition|claim|remark|conjecture|example';
+    h = h.replace(new RegExp('\\\\begin\\{(' + ENV + ')\\}(?:\\[([^\\]]*)\\])?(?:\\\\label\\{[^}]*\\})?', 'g'), function (m, e, n) {
+           return '<div class="pv-env"><strong>' + e.charAt(0).toUpperCase() + e.slice(1) + (n ? ' (' + n + ')' : '') + '.</strong> '; })
+         .replace(new RegExp('\\\\end\\{(' + ENV + ')\\}', 'g'), '</div>')
+         .replace(/\\begin\{proof\}(?:\[([^\]]*)\])?(?:\\label\{[^}]*\})?/g, function (m, n) { return '<div class="pv-proof"><em>' + (n || 'Proof') + '.</em> '; })
+         .replace(/\\end\{proof\}/g, ' &#9633;</div>');
     h = h.replace(/\\begin\{(itemize|enumerate|quote)\}|\\end\{(itemize|enumerate|quote)\}/g, '')
          .replace(/\\item\s*/g, '<br>&bull;&nbsp;')
          .replace(/\\(emph|textit)\{([^{}]*)\}/g, '<em>$2</em>').replace(/\\textbf\{([^{}]*)\}/g, '<strong>$1</strong>')
@@ -452,8 +457,12 @@ ul.task-list li input[type="checkbox"] {
             + '<p class="edit-note">Write it in TeX, as in the TeX source of the page (<code>$...$</code>, <code>\\[...\\]</code>, <code>align*</code>,'
             + ' <code>\\citet{Key}</code>, <code>\\wikilink{Page}{text}</code>; no macros): it takes the place of this placeholder once the'
             + ' proposal is accepted;' + where
-          : '<p class="edit-note">The TeX of this paragraph or figure, as in the TeX source of the page. Change it, or describe below the'
-            + ' change you ask for (a shorter video, a clearer picture, ...);' + where)
+          : '<p class="edit-note">The TeX of this paragraph or figure, as in the TeX source of the page. Change it (the buttons add a remark,'
+            + ' a lemma with its proof or a formula after it), or describe below the change you ask for (a shorter video, a clearer picture, ...);' + where)
+      + '<div class="edit-insert">Add after the text: <button type="button" data-ins="remark">Remark</button>'
+      + '<button type="button" data-ins="lemma">Lemma</button><button type="button" data-ins="proposition">Proposition</button>'
+      + '<button type="button" data-ins="definition">Definition</button><button type="button" data-ins="proof">Proof</button>'
+      + '<button type="button" data-ins="formula">Displayed formula</button></div>'
       + '<textarea spellcheck="false"></textarea>'
       + '<label>Preview (formulas and basic formatting)</label><div class="edit-preview"></div>'
       + '<label>' + (ph ? 'Note for the editors (optional, one line)' : 'Reason, or the change you ask for (one line)')
@@ -472,6 +481,20 @@ ul.task-list li input[type="checkbox"] {
       if (window.MathJax && MathJax.typesetPromise) { MathJax.typesetPromise([pv]).catch(function () {}); }
     }
     ta.addEventListener('input', function () { clearTimeout(timer); timer = setTimeout(render, 300); });
+    // the buttons "Add after the text": the skeleton of a block, at the cursor, with the cursor in its first line
+    var SNIP = { remark: ['\\begin{remark}\n', '\n\\end{remark}'], lemma: ['\\begin{lemma}\n', '\n\\end{lemma}'],
+      proposition: ['\\begin{proposition}\n', '\n\\end{proposition}'], definition: ['\\begin{definition}\n', '\n\\end{definition}'],
+      proof: ['\\begin{proof}\n', '\n\\end{proof}'], formula: ['\\[\n', '\n\\]'] };
+    ov.querySelectorAll('.edit-insert button').forEach(function (b) {
+      b.onclick = function () {
+        var s = SNIP[b.getAttribute('data-ins')], v = ta.value, at = ta.selectionStart || v.length;
+        if (document.activeElement !== ta && at === 0) at = v.length;
+        var before = v.slice(0, at).replace(/\s+$/, ''), after = v.slice(at).replace(/^\s+/, '');
+        var pre = before ? before + (b.getAttribute('data-ins') === 'formula' ? '\n' : '\n\n') : '';
+        ta.value = pre + s[0] + s[1] + (after ? '\n\n' + after : '');
+        var caret = (pre + s[0]).length; ta.focus(); ta.setSelectionRange(caret, caret); render();
+      };
+    });
     render();
     function close() { ov.remove(); document.removeEventListener('keydown', onkey); }
     function onkey(e) { if (e.key === 'Escape') close(); }

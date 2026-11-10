@@ -10,7 +10,6 @@
 {{Theorem start|id=thm-poiseuille|title=Theorem (enhanced dissipation for Poiseuille flow).}}
 {{Placeholder start}}The statement.{{Placeholder end}}
 {{Theorem end}}
-{{Lean}}
 {{Fold start|kind=idea|title=Idea}}
 {{Placeholder start}}The key mechanism in a few lines.{{Placeholder end}}
 {{Fold end}}

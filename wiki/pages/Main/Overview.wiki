@@ -32,5 +32,4 @@ In most of the wiki, the domains without boundary are the torus <math display="i
 * ''Extensions and recent advances'': the [[state of the art]], [[related results]] and [[open problems]].
 * ''Toolkit'': the [[notation]] and the [[standard analysis]] that the proofs use.
 * ''Numerical methods'': [[Numerical methods|the codes behind the pictures]].
-* ''Lean formalization'': [[Lean formalization|the statements checked by a proof assistant]].
 * ''About this wiki'': [[how to contribute]] and [[Contributors|who did what]].

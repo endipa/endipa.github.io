@@ -60,6 +60,8 @@ import wikikit  # noqa: E402  (read_pages, TEX_ERRORS)
 
 STATEMENTS = ('Theorem', 'Proposition', 'Lemma', 'Corollary', 'Definition', 'Claim', 'Remark', 'Conjecture', 'Example')
 STATEMENT_ENVS = {k.lower(): k for k in STATEMENTS}
+LABEL_PREFIX = {'Theorem': 'thm-', 'Proposition': 'prp-', 'Lemma': 'lem-', 'Corollary': 'cor-', 'Definition': 'def-',
+                'Claim': 'clm-', 'Remark': 'rem-', 'Conjecture': 'cnj-', 'Example': 'exm-'}
 BADGES = {'Demo': 'demo', 'Heuristic': 'heuristic', 'Numeric': 'numerics', 'Preprint': 'preprint',
           'Published': 'published', 'Raw': 'raw'}
 BADGE_OF_CMD = {v: k for k, v in BADGES.items()}
@@ -981,11 +983,15 @@ class T2W:
                 if rest.startswith('['):
                     name, k = read_group(rest, 0, '[', ']'); rest = rest[k:]
                 lab = re.match(r'\s*\\label\{([^}]*)\}(.*)$', rest)
-                if not lab:
-                    self.problems.append('\\begin{%s} without \\label{...}: the label is the anchor of the statement' % env)
                 kind = STATEMENT_ENVS[env]
+                if lab:
+                    sid = lab.group(1)
+                else:   # no \label (e.g. a remark added from the website): a label from its name or its first words
+                    words = name if name else (rest.strip() or (lines[i + 1].strip() if i + 1 < n else ''))
+                    words = re.sub(r'\$[^$]*\$|\\[a-zA-Z]+', ' ', words)
+                    sid = LABEL_PREFIX.get(kind, 'clm-') + ('-'.join(slug(words).split('-')[:5]) or 'statement')
                 title = kind + (' (' + self.inline(name) + ')' if name is not None else '') + '.'
-                out.append('{{Theorem start|id=' + (lab.group(1) if lab else '') + '|title=' + title + '}}')
+                out.append('{{Theorem start|id=' + sid + '|title=' + title + '}}')
                 envs.append(env)
                 tail = (lab.group(2) if lab else rest).strip()
                 if tail:

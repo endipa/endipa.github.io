@@ -129,7 +129,7 @@ On the wiki, everyone with a role is a \emph{member} (reads every page and write
 \section{Proposing a change}
 Every change to a page, from a typo to a new proof, is a \emph{proposal}: a topic on the talk page of the page (tab \emph{Discussion}), which members of the wiki open and discuss. There are two ways to open one.
 \begin{itemize}
-  \item \emph{One paragraph, a figure, the central question, or a part still to be written} (a typo, a sentence, a formula, a shorter argument, a caption, a shorter video, a missing proof): in the \href{https://endipa.github.io}{edition}, the pencil button next to it shows its TeX or, for a part still to be written, an empty box (the link \emph{Write this part} opens it too). Change the TeX, write the missing text, or describe the change you ask for (for a picture or a video, for instance), say why, and open the proposal: the wiki shows a new topic on the talk page, already filled in, to be saved. A text too long for a link is copied by the edition, to be pasted into the topic in the wiki.
+  \item \emph{One paragraph, a figure, the central question, or a part still to be written} (a typo, a sentence, a formula, a shorter argument, a caption, a shorter video, a missing proof): in the \href{https://endipa.github.io}{edition}, the pencil button next to it shows its TeX or, for a part still to be written, an empty box (the link \emph{Write this part} opens it too). Change the TeX (the buttons of the box add a remark, a lemma with its proof or a displayed formula after the text), write the missing text, or describe the change you ask for (for a picture or a video, for instance), say why, and open the proposal: the wiki shows a new topic on the talk page, already filled in, to be saved. A text too long for a link is copied by the edition, to be pasted into the topic in the wiki.
   \item \emph{Larger changes} (a section, a statement, a proof, a new section): the link \emph{new proposal} under the title of the page in the wiki (\emph{Propose a change} in the edition) opens a new topic with a short form. Download the TeX source of the page: link \emph{TeX source} under the title of every page of the edition (with the figures, in a zip, when the page has some). It is a standard LaTeX article that compiles as it is. The TeX of the whole wiki (\emph{TeX of the whole wiki}, on the Overview) is one LaTeX project, for working offline, in which every page is a file of the folder \emph{pages}; such a file can be proposed in the same way. Change what you want and check that it compiles; then paste in the form the blocks you changed (a section, or a statement or a proof with its label), or the whole file: only what changes is applied, and there is no limit of length. Say what the proposal changes, why, and which sources it uses; for a long proposal, attach its PDF (\wikilink{Special:Upload}{upload it} and link it in the form).
 \end{itemize}
 Those who are not yet members of the wiki write in the Zulip channel \emph{contributing}, naming the page.
@@ -149,8 +149,8 @@ Under the title of a section, a line in small type names the people who contribu
 \section{The TeX format}
 The TeX source of a page is a standard LaTeX article: one file that compiles with pdflatex and nothing else (on Overleaf, or with TeXShop, TeXstudio, ...; typeset twice for the citations). Its preamble is the same for every page and is never changed; a contribution defines no macros, since the wiki has none. Sections are numbered in the PDF only; the website numbers the results within each page (Theorem 1, Lemma 2, ...).
 \begin{itemize}
-  \item Statements: theorem, proposition, lemma, corollary, conjecture, definition, example, remark, claim. The optional argument is the name, the label is the anchor: \nowikicode{\textbackslash{}begin\{theorem\}\allowbreak{}[name]\textbackslash{}label\{thm-name\}}. Labels start with thm-, prp-, lem-, cor-, def- or clm-.
-  \item After a statement: \nowikicode{\textbackslash{}lean\{\}} (the Lean banner), the environments idea and architecture, and proofs with an optional title and a label, as in \nowikicode{\textbackslash{}begin\{proof\}\allowbreak{}[Proof by hypocoercivity]\textbackslash{}label\{proof-name\}}. A claim and its proof sit inside the proof that uses them.
+  \item Statements: theorem, proposition, lemma, corollary, conjecture, definition, example, remark, claim. The optional argument is the name, the label is the anchor: \nowikicode{\textbackslash{}begin\{theorem\}\allowbreak{}[name]\textbackslash{}label\{thm-name\}}. Labels start with thm-, prp-, lem-, cor-, def-, clm-, rem- (remarks), cnj- or exm-; a statement sent without a label gets one made from its name or its first words.
+  \item After a statement: the environments idea and architecture, and proofs with an optional title and a label, as in \nowikicode{\textbackslash{}begin\{proof\}\allowbreak{}[Proof by hypocoercivity]\textbackslash{}label\{proof-name\}}. A claim and its proof sit inside the proof that uses them.
   \item Formulas: \nowikicode{\$...\$}, \nowikicode{\textbackslash{}[ ... \textbackslash{}]} and align*; no numbered equations and no labels on equations; none of the commands that the wiki's renderer rejects (the script lists them).
   \item Citations: \nowikicode{\textbackslash{}citet\{Key\}} gives \emph{Author (year)} and \nowikicode{\textbackslash{}citep\{Key\}} gives \emph{(Author, year)}, with the keys of \wikilink{Literature}{}; several papers at once: \nowikicode{\textbackslash{}citep\{Key1,Key2,Key3\}}. The reference list at the end of each page is generated from the reference catalogue and contains only the papers that the page cites: a new citation is added to it when the proposal is applied. A paper that is not yet on \wikilink{Literature}{}: give its full reference in the proposal, as \nowikicode{\textbackslash{}bibitem\{NewKey\}\allowbreak{} Authors, title, journal (year)} in a \texttt{thebibliography} at the end of the TeX, with its DOI or arXiv number (from the pencil button: in the reason field); it is added to the catalogue and then to the page.
   \item Links: on the same page, \nowikicode{\textbackslash{}hyperref[thm-name]\{the theorem above\}} rather than \nowikicode{\textbackslash{}ref}, since the wiki has no numbers; to another page, \nowikicode{\textbackslash{}wikilink\{Page\textbackslash{}\#\allowbreak{}anchor\}\allowbreak{}\{text\}}.
@@ -162,7 +162,6 @@ The TeX source of a page is a standard LaTeX article: one file that compiles wit
 A result is a statement followed by its levels of detail, each folded until the reader opens it:
 \begin{levels}
 \lv{Statement}{in the simplest form, constants hidden}
-\lv{Lean}{a one-line banner: formalized or not yet}
 \lv{Idea}{the key mechanism in a few lines}
 \lv{Architecture}{the proof as a short chain of steps, later with a diagram}
 \lv{Proof}{the complete proof: first its sources (the papers it follows, cited by their key), then the steps; a statement used only in this proof is a \emph{claim}, with its own folded proof inside}
@@ -173,7 +172,6 @@ A statement that several proofs use, or that holds in more generality than one r
 \begin{theorem}[specimen]\label{thm-specimen}
 The statement, in its simplest form.
 \end{theorem}
-\lean{}
 \begin{idea}
 The key mechanism in a few lines, and the heuristic scaling, labelled \heuristic{}.
 \end{idea}
@@ -209,9 +207,6 @@ The proof of the claim, folded inside the proof that uses it.
 \section{Pictures, videos and numerics}
 A picture, a video or a diagram is one line in the wiki, the template \wikilink{Template:Media}{Media}; in TeX, \nowikicode{\textbackslash{}media\{video\}\allowbreak{}\{file\}\allowbreak{}\{caption\}}. The files are kept in the folder \texttt{wiki/media} of the project; the edition shows them, the wiki shows a box with the caption. Every computed picture or video has a record on \wikilink{Numerical methods}{}, with the method, the parameters, the checks and the code.
 
-\section{Lean}
-Under each theorem a one-line banner says whether it is formalized: grey while it is not, green with a link to the certificate once it is. Certificates are listed on \wikilink{Lean formalization}{}.
-
 \section{Discussion and conduct}
 Proposals are discussed on the talk page of the page they change, so that the discussion stays next to the text and in its history. Zulip is the forum for the mathematics: questions and clarifications, ideas for new results and how they fit the established theory, and larger changes to the structure of the wiki, discussed there before they become proposals. It has one channel per part and one topic per question or idea; the link under the title of each page opens the topic named after the page, for questions about it.
 \begin{wikitable}{2}
@@ -222,7 +217,6 @@ Proposals are discussed on the talk page of the page they change, so that the di
 \row{Extensions and recent advances & advances}
 \row{Toolkit & toolkit}
 \row{Numerical methods & numerics}
-\row{Lean formalization & lean}
 \row{About this wiki & contributing}
 \end{wikitable}
 Discuss the mathematics, not the people. Associate editors moderate the channel and the talk pages of their part, and can hide messages; editors can remove a member whose participation disturbs the work rather than helping it. The Zulip is \href{https://endipa.zulipchat.com}{endipa.zulipchat.com}, by invitation; its administrators invite new members and create channels.
