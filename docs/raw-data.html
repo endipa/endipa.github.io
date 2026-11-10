@@ -368,6 +368,8 @@ ul.task-list li input[type="checkbox"] {
 .edit-insert button { border: 1px solid #c9cfd8; border-radius: 4px; background: #fff; padding: .1rem .5rem; font-size: .8rem; cursor: pointer; }
 .edit-preview .pv-env { border-left: 3px solid #1f4e79; background: #f8f9fb; padding: .2rem .6rem; margin: .4rem 0; }
 .edit-preview .pv-proof { border-left: 1px solid #d5dbe3; padding-left: .6rem; margin: .4rem 0; }
+.edit-preview .pv-claim { border: 1px dashed #c8cfd9; border-left: 3px solid #1f4e79; }
+.edit-preview .pv-note { border: 1px dashed #8a94a3; border-radius: 3px; padding: .3rem .6rem; margin: .4rem 0; }
 .edit-preview { border: 1px dashed #c9cfd8; border-radius: 4px; padding: .5rem .8rem; background: #fbfcfd; font-size: .93rem; }
 .edit-actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .9rem; align-items: center; }
 .edit-actions button { border-radius: 4px; padding: .35rem .8rem; font-size: .88rem; border: 1px solid #c9cfd8; background: #fff; cursor: pointer; }
@@ -385,10 +387,12 @@ ul.task-list li input[type="checkbox"] {
     var h = esc(tex);
     var ENV = 'theorem|proposition|lemma|corollary|definition|claim|remark|conjecture|example';
     h = h.replace(new RegExp('\\\\begin\\{(' + ENV + ')\\}(?:\\[([^\\]]*)\\])?(?:\\\\label\\{[^}]*\\})?', 'g'), function (m, e, n) {
-           return '<div class="pv-env"><strong>' + e.charAt(0).toUpperCase() + e.slice(1) + (n ? ' (' + n + ')' : '') + '.</strong> '; })
+           return '<div class="pv-env' + (e === 'claim' ? ' pv-claim' : '') + '"><strong>' + e.charAt(0).toUpperCase() + e.slice(1) + (n ? ' (' + n + ')' : '') + '.</strong> '; })
          .replace(new RegExp('\\\\end\\{(' + ENV + ')\\}', 'g'), '</div>')
          .replace(/\\begin\{proof\}(?:\[([^\]]*)\])?(?:\\label\{[^}]*\})?/g, function (m, n) { return '<div class="pv-proof"><em>' + (n || 'Proof') + '.</em> '; })
-         .replace(/\\end\{proof\}/g, ' &#9633;</div>');
+         .replace(/\\end\{proof\}/g, ' &#9633;</div>')
+         .replace(/\\begin\{note\}(?:\[([^\]]*)\])?/g, function (m, n) { return '<div class="pv-note"><em>' + (n || 'Note') + '.</em> '; })
+         .replace(/\\end\{note\}/g, '</div>');
     h = h.replace(/\\begin\{(itemize|enumerate|quote)\}|\\end\{(itemize|enumerate|quote)\}/g, '')
          .replace(/\\item\s*/g, '<br>&bull;&nbsp;')
          .replace(/\\(emph|textit)\{([^{}]*)\}/g, '<em>$2</em>').replace(/\\textbf\{([^{}]*)\}/g, '<strong>$1</strong>')
@@ -425,12 +429,10 @@ ul.task-list li input[type="checkbox"] {
             + '<p class="edit-note">Write it in TeX, as in the TeX source of the page (<code>$...$</code>, <code>\\[...\\]</code>, <code>align*</code>,'
             + ' <code>\\citet{Key}</code>, <code>\\wikilink{Page}{text}</code>; no macros): it takes the place of this placeholder once the'
             + ' proposal is accepted;' + where
-          : '<p class="edit-note">The TeX of this paragraph or figure, as in the TeX source of the page. Change it (the buttons add a remark,'
-            + ' a lemma with its proof or a formula after it), or describe below the change you ask for (a shorter video, a clearer picture, ...);' + where)
-      + '<div class="edit-insert">Add after the text: <button type="button" data-ins="remark">Remark</button>'
-      + '<button type="button" data-ins="lemma">Lemma</button><button type="button" data-ins="proposition">Proposition</button>'
-      + '<button type="button" data-ins="definition">Definition</button><button type="button" data-ins="proof">Proof</button>'
-      + '<button type="button" data-ins="formula">Displayed formula</button></div>'
+          : '<p class="edit-note">The TeX of this paragraph or figure, as in the TeX source of the page. Change it (the buttons add a note, a'
+            + ' folded box as on the Overview, or a claim, a dashed box, after it), or describe below the change you ask for (a shorter video, a clearer picture, ...);' + where)
+      + '<div class="edit-insert">Add after the text: <button type="button" data-ins="note">Note (folded box)</button>'
+      + '<button type="button" data-ins="claim">Claim (dashed box)</button></div>'
       + '<textarea spellcheck="false"></textarea>'
       + '<label>Preview (formulas and basic formatting)</label><div class="edit-preview"></div>'
       + '<label>' + (ph ? 'Note for the editors (optional, one line)' : 'Reason, or the change you ask for (one line)')
@@ -449,18 +451,17 @@ ul.task-list li input[type="checkbox"] {
       if (window.MathJax && MathJax.typesetPromise) { MathJax.typesetPromise([pv]).catch(function () {}); }
     }
     ta.addEventListener('input', function () { clearTimeout(timer); timer = setTimeout(render, 300); });
-    // the buttons "Add after the text": the skeleton of a block, at the cursor, with the cursor in its first line
-    var SNIP = { remark: ['\\begin{remark}\n', '\n\\end{remark}'], lemma: ['\\begin{lemma}\n', '\n\\end{lemma}'],
-      proposition: ['\\begin{proposition}\n', '\n\\end{proposition}'], definition: ['\\begin{definition}\n', '\n\\end{definition}'],
-      proof: ['\\begin{proof}\n', '\n\\end{proof}'], formula: ['\\[\n', '\n\\]'] };
+    // the buttons "Add after the text": a note (a folded box, as on the Overview: its title is selected, to be typed over) or a
+    // claim (a dashed box: the cursor in its first line); statements, proofs and formulas are written in TeX as usual
+    var SNIP = { note: ['\\begin{note}[', 'Title', ']\n', '\n\\end{note}'], claim: ['\\begin{claim}\n', '', '', '\n\\end{claim}'] };
     ov.querySelectorAll('.edit-insert button').forEach(function (b) {
       b.onclick = function () {
         var s = SNIP[b.getAttribute('data-ins')], v = ta.value, at = ta.selectionStart || v.length;
         if (document.activeElement !== ta && at === 0) at = v.length;
         var before = v.slice(0, at).replace(/\s+$/, ''), after = v.slice(at).replace(/^\s+/, '');
-        var pre = before ? before + (b.getAttribute('data-ins') === 'formula' ? '\n' : '\n\n') : '';
-        ta.value = pre + s[0] + s[1] + (after ? '\n\n' + after : '');
-        var caret = (pre + s[0]).length; ta.focus(); ta.setSelectionRange(caret, caret); render();
+        var pre = before ? before + '\n\n' : '';
+        ta.value = pre + s.join('') + (after ? '\n\n' + after : '');
+        var a0 = (pre + s[0]).length; ta.focus(); ta.setSelectionRange(a0, a0 + s[1].length); render();
       };
     });
     render();
