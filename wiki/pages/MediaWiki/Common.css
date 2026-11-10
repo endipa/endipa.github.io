@@ -12,6 +12,10 @@
 .lvl-arch { border-left-color: #1f4e79; }
 .lvl-arch > .lvl-title { color: #1f4e79; }
 .lvl-proof { border-left-color: #54595d; }
+.lvl.lvl-proof { border-left: 1px solid #c8ccd1; background: transparent; padding: 0 0 0 0.9em; }
+.lvl-proof > .lvl-title { font-weight: normal; font-style: italic; }
+.lvl-proof > .lvl-title::after { content: "."; }
+.lvl-proof > .mw-collapsible-content::after { content: "\25A1"; display: block; text-align: right; line-height: 1; }
 .lvl-formal { font-size: 0.9em; color: #54595d; border-top: 1px dashed #c8ccd1; padding-top: 0.5em; margin-top: 1.2em; }
 .badge-claim { display: inline-block; font-size: 0.78em; line-height: 1.5; padding: 0 0.45em; border: 1px solid #e0a8a8; color: #9b2c2c; background: #fdf2f2; border-radius: 3px; }
 .demo-banner { border-left: 3px solid #d9b25f; background: #fdf9ef; padding: 0.6em 0.9em; margin: 0.4em 0 0.8em; }

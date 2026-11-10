@@ -51,7 +51,7 @@ the Literature page.
 
 Python 3.8+, standard library only. Part of the wiki kit (2026); drafted by Claude (AI).
 """
-import datetime, difflib, hashlib, json, os, re, sys, unicodedata
+import collections, datetime, difflib, hashlib, json, os, re, sys, unicodedata
 import xml.etree.ElementTree as ET
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -1455,10 +1455,10 @@ def edit_units(text):
     """The paragraphs of a page that can be edited from the website: the runs of consecutive text lines (prose,
     displayed formulas, lists), as (first line, last line, wikitext, id). The id is 'p' and 8 hex digits of the SHA-1 of
     the wikitext: it stays valid as long as the paragraph itself is not changed, whatever happens around it.
-    Also editable, each on its own: a picture or video ({{Media}} on one line) and a one-line central question
-    (<div class="central-question">); there a proposal may also leave the TeX as it is and only describe the change asked for.
-    Not editable: headings, boxes and folds (their text is), tables, code, the reference list, placeholders,
-    lines made only of labels."""
+    Also editable, each on its own: a picture or video ({{Media}} on one line), a one-line central question
+    (<div class="central-question">), where a proposal may also leave the TeX as it is and only describe the change asked
+    for, and a placeholder (a part still to be written, one line), which the proposal replaces by its text.
+    Not editable: headings, boxes and folds (their text is), tables, code, the reference list, lines made only of labels."""
     if re.match(r'^\s*#redirect', text, re.I):
         return []
     lines = text.split('\n')
@@ -1491,7 +1491,9 @@ def edit_units(text):
     def is_single(k):
         s = lines[k].strip()
         return not skip[k] and bool(re.match(r'^\{\{\s*Media\s*\|.*\}\}$', s) and s.count('{{') == s.count('}}')
-                                    or re.match(r'^<div class="central-question">.*</div>$', s))
+                                    or re.match(r'^<div class="central-question">.*</div>$', s)
+                                    or re.match(r'^\{\{Placeholder start\}\}.*\{\{Placeholder end\}\}$', s)
+                                    and s.count('{{Placeholder start}}') == 1)
     out, k, n = [], 0, len(lines)
     while k < n:
         if is_single(k):
@@ -1506,6 +1508,24 @@ def edit_units(text):
             k = j + 1
         else:
             k += 1
+    # the same text twice on a page (e.g. "The proof." in several proofs still to be written): the id also depends on the
+    # heading or the box the text sits in, and then on its rank, so that every id points to one place only
+    counts = collections.Counter(w for _, _, w, _ in out)
+    if any(c > 1 for c in counts.values()):
+        def context(k):
+            for i in range(k - 1, -1, -1):
+                s = lines[i].strip()
+                if re.match(r'^=+.*=+$', s) or re.match(r'^\{\{\s*(Theorem|Proof|Fold|Level|Card|Quote) start\b', s):
+                    return s
+            return ''
+        seen = collections.Counter()
+        for i, (a, b, w, uid) in enumerate(out):
+            if counts[w] > 1:
+                key = context(a) + '\n' + w
+                seen[key] += 1
+                if seen[key] > 1:
+                    key += '\n#%d' % seen[key]
+                out[i] = (a, b, w, 'p' + hashlib.sha1(key.encode('utf-8')).hexdigest()[:8])
     return out
 
 

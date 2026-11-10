@@ -79,8 +79,21 @@ div.remark { border-left: 3px solid #d5dbe3; padding: 0.1rem 0.9rem; margin: 0.8
 .callout.lvl-idea { border-left-color: $lvl-idea !important; }
 .callout.lvl-idea .callout-title-container { color: $lvl-idea; }
 .callout.lvl-arch { border-left-color: $lvl-arch !important; }
-.callout.lvl-proof { border-left-color: $lvl-proof !important; }
-.callout.lvl-proof { margin-top: 0.3rem; }
+// Proofs (10 November 2026): no box and no coloured band, as in a paper: "Proof." in italics with a small triangle that
+// opens it, a thin rule along the open proof, and the end-of-proof square
+.callout.lvl-proof { border: 0 !important; border-left: 1px solid #d5dbe3 !important; border-radius: 0 !important; background: transparent !important;
+  box-shadow: none !important; margin: 0.4rem 0 1rem !important; padding: 0 !important; }
+.callout.lvl-proof:has(> .callout-header.collapsed) { border-left-color: transparent !important; }
+.callout.lvl-proof > .callout-header { background: transparent !important; border: 0 !important; padding: 0.1rem 0 0.1rem 0.75rem !important; cursor: pointer; }
+.callout.lvl-proof > .callout-header .callout-icon-container, .callout.lvl-proof > .callout-header .callout-btn-toggle { display: none !important; }
+.callout.lvl-proof > .callout-header .callout-title-container { display: flex; align-items: baseline; font-family: $font-family-serif; font-style: italic;
+  font-weight: 400; font-size: 1rem; color: var(--bs-body-color); opacity: 1; }
+.callout.lvl-proof > .callout-header .callout-title-container::before { content: "\25B8"; display: inline-block; width: 1.1em; margin-left: -0.15em;
+  font-style: normal; font-size: 0.8em; color: #6b7280; }
+.callout.lvl-proof > .callout-header:not(.collapsed) .callout-title-container::before { content: "\25BE"; }
+.callout.lvl-proof > .callout-header .callout-title-container::after { content: "."; }
+.callout.lvl-proof > .callout-collapse > .callout-body-container { padding: 0.15rem 0 0 0.75rem !important; }
+.callout.lvl-proof > .callout-collapse > .callout-body-container::after { content: "\25A1"; display: block; text-align: right; line-height: 1; margin: -0.9rem 0 0.2rem; }
 .lvl-formal { font-family: $font-family-sans-serif; font-size: 0.88rem; color: #59616e; border-top: 1px dashed #c9cfd8; padding-top: 0.5rem; margin-top: 1.2rem; }
 
 // Verbatim quotations from the AI-generated source

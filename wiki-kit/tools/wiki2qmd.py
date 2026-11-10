@@ -90,6 +90,8 @@ EDIT_SCRIPT = r"""<style>
   box-shadow: 0 10px 40px rgba(0, 0, 0, .25); padding: 1.1rem 1.3rem 1rem; font-size: 0.95rem; }
 .edit-dialog h3 { font-size: 1.1rem; margin: 0 0 .3rem; }
 .edit-dialog .edit-note { color: #59616e; font-size: 0.85rem; margin: 0 0 .7rem; }
+.edit-dialog .edit-todo { display: block; margin: .3rem 0 0; padding: .4rem .7rem; border: 1px dashed #8aa2c0; border-radius: 4px;
+  font-style: italic; color: #3f4855; font-size: .9rem; }
 .edit-dialog textarea { width: 100%; min-height: 10rem; font-family: SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.82rem;
   line-height: 1.45; padding: .5rem .6rem; border: 1px solid #c9cfd8; border-radius: 4px; }
 .edit-dialog input[type=text] { width: 100%; padding: .35rem .6rem; border: 1px solid #c9cfd8; border-radius: 4px; font-size: .9rem; }
@@ -128,24 +130,37 @@ EDIT_SCRIPT = r"""<style>
     return (p > 4 ? '… ' : '') + nw(x.slice(Math.max(0, p - 4), p)) + (del.length ? ' <del>' + nw(del) + '</del>' : '')
       + (ins.length ? ' <ins>' + nw(ins) + '</ins>' : '') + ' ' + nw(x.slice(x.length - s, x.length - s + 4)) + (s > 4 ? ' …' : '');
   }
+  // a placeholder (a part still to be written): its description, and a few words of it for the titles
+  function todo(tex) { var m = tex.match(/^\\placeholder\{([\s\S]*)\}\s*$/); return m ? m[1] : null; }
+  function words(s, n) {
+    return s.replace(/\$[^$]*\$/g, ' ').replace(/\\[a-zA-Z]+|[{}$\\]/g, ' ').replace(/\s+/g, ' ').trim().split(' ').slice(0, n).join(' ');
+  }
   function open(id) {
-    var old = data.units[id];
+    var old = data.units[id], ph = todo(old);
+    var where = ' then open the proposal on the talk page of <em>' + esc(data.page) + '</em> in the wiki (members, logged in): it is saved only'
+      + ' when you click <em>Save</em> there, and it is discussed before an editor applies it.</p>';
     var ov = document.createElement('div'); ov.className = 'edit-overlay';
-    ov.innerHTML = '<div class="edit-dialog" role="dialog" aria-modal="true" aria-label="Propose a change">'
-      + '<h3>Propose a change</h3>'
-      + '<p class="edit-note">The TeX of this paragraph or figure, as in the TeX source of the page. Change it, or describe below the change you'
-      + ' ask for (a shorter video, a clearer picture, ...); then open the proposal on the talk page of <em>'
-      + esc(data.page) + '</em> in the wiki (members, logged in): it is saved only when you click <em>Save</em> there, and it is discussed before an editor applies it.</p>'
+    ov.innerHTML = '<div class="edit-dialog" role="dialog" aria-modal="true" aria-label="' + (ph ? 'Write this part' : 'Propose a change') + '">'
+      + '<h3>' + (ph ? 'Write this part' : 'Propose a change') + '</h3>'
+      + (ph ? '<p class="edit-note">Still to be written:<span class="edit-todo">' + preview(ph) + '</span></p>'
+            + '<p class="edit-note">Write it in TeX, as in the TeX source of the page (<code>$...$</code>, <code>\\[...\\]</code>, <code>align*</code>,'
+            + ' <code>\\citet{Key}</code>, <code>\\wikilink{Page}{text}</code>; no macros): it takes the place of this placeholder once the'
+            + ' proposal is accepted;' + where
+          : '<p class="edit-note">The TeX of this paragraph or figure, as in the TeX source of the page. Change it, or describe below the'
+            + ' change you ask for (a shorter video, a clearer picture, ...);' + where)
       + '<textarea spellcheck="false"></textarea>'
       + '<label>Preview (formulas and basic formatting)</label><div class="edit-preview"></div>'
-      + '<label>Reason, or the change you ask for (one line)</label><input type="text" maxlength="500">'
+      + '<label>' + (ph ? 'Note for the editors (optional, one line)' : 'Reason, or the change you ask for (one line)')
+      + '</label><input type="text" maxlength="500">'
       + '<div class="edit-actions"><button type="button" class="edit-send">Open the proposal on the talk page</button>'
       + '<button type="button" class="edit-copy">Copy the TeX</button><button type="button" class="edit-cancel">Cancel</button>'
       + '<span class="edit-status"></span></div></div>';
     document.body.appendChild(ov);
     var ta = ov.querySelector('textarea'), pv = ov.querySelector('.edit-preview'), reason = ov.querySelector('input'),
         status = ov.querySelector('.edit-status'), timer = null;
-    ta.value = old;
+    ta.value = ph === null ? old : '';
+    var todoEl = ov.querySelector('.edit-todo');
+    if (todoEl && window.MathJax && MathJax.typesetPromise) { MathJax.typesetPromise([todoEl]).catch(function () {}); }
     function render() {
       pv.innerHTML = preview(ta.value);
       if (window.MathJax && MathJax.typesetPromise) { MathJax.typesetPromise([pv]).catch(function () {}); }
@@ -164,20 +179,23 @@ EDIT_SCRIPT = r"""<style>
     ov.querySelector('.edit-send').onclick = function () {
       var neu = ta.value.replace(/\s+$/, '');
       var same = neu === old.replace(/\s+$/, ''), why = reason.value.trim();
+      if (ph !== null && !neu) { status.textContent = 'Write the text first.'; return; }
       if (same && !why) { status.textContent = 'Change the TeX, or describe the change you ask for in the field below.'; return; }
       var fig = old.match(/^\\media(?:\[[^\]]*\])?\{[^}]*\}\{([^}]*)\}/);
-      var words = same ? why.split(/\s+/).slice(0, 6).join(' ') : fig ? 'figure ' + fig[1] : neu.replace(/\$[^$]*\$/g, ' ').replace(/\\[a-zA-Z]+|[{}$\\]/g, ' ').replace(/\s+/g, ' ').trim().split(' ').slice(0, 6).join(' ');
+      var title = ph !== null ? 'text for “' + words(ph, 6) + '”' : same ? why.split(/\s+/).slice(0, 6).join(' ')
+                  : fig ? 'figure ' + fig[1] : words(neu, 6) + '…';
       var params = [data.page, id, old, neu, why || '(none given)',
-                    same ? '(no change to the TeX: the change asked for is in the reason)' : change(old, neu)];
+                    ph !== null ? 'a new text in place of the placeholder “' + words(ph, 10) + '”'
+                    : same ? '(no change to the TeX: the change asked for is in the reason)' : change(old, neu)];
       function link(p) {
         return data.edit + encodeURIComponent(data.talk.replace(/ /g, '_')) + '?action=edit&section=new'
-          + '&preloadtitle=' + encodeURIComponent('Proposal: ' + words + '…')
+          + '&preloadtitle=' + encodeURIComponent('Proposal: ' + title)
           + '&preload=' + encodeURIComponent(data.preload)
           + p.map(function (x) { return '&preloadparams%5B%5D=' + encodeURIComponent(x); }).join('');
       }
       var u = link(params);
       if (u.length > 7500) { params[2] = '(not repeated: see the paragraph ' + id + ' of the page)'; u = link(params); }
-      if (u.length > 7500) { status.textContent = 'Too long for a link: copy the TeX and open a topic on the talk page by hand.'; return; }
+      if (u.length > 7500) { status.textContent = 'Too long for a link: copy the TeX, then open a new proposal on the talk page (Propose a change, under the title) and paste it there.'; return; }
       window.open(u, '_blank', 'noopener');
       status.textContent = 'Opened in a new tab: check it there and click Save.';
     };
@@ -186,10 +204,14 @@ EDIT_SCRIPT = r"""<style>
   document.querySelectorAll('.edit-unit').forEach(function (u) {
     var id = u.getAttribute('data-unit'); if (!data.units[id]) return;
     var b = document.createElement('button'); b.type = 'button'; b.className = 'edit-btn';
-    b.title = 'Propose a change'; b.setAttribute('aria-label', b.title);
+    var ph = todo(data.units[id]) !== null;
+    b.title = ph ? 'Write this part' : 'Propose a change'; b.setAttribute('aria-label', b.title);
     b.innerHTML = '<i class="bi bi-pencil" aria-hidden="true"></i>';
     b.addEventListener('click', function () { open(id); });
     u.appendChild(b);
+    // a placeholder: its "Propose a text" link (page-links.lua) opens the same box
+    var a = ph && u.querySelector('a.propose');
+    if (a) { a.textContent = 'Write this part →'; a.addEventListener('click', function (e) { e.preventDefault(); open(id); }); }
   });
 })();
 </script>"""
