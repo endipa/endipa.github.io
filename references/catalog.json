@@ -589,36 +589,6 @@
       "topic_subgroup": "Other smooth flows"
     },
     {
-      "key": "LiZhang2025Unbounded",
-      "title": "Enhanced dissipation and Taylor dispersion by a parallel shear flow in an infinite cylinder with unbounded cross section",
-      "authors": [
-        "Te Li",
-        "Le Zhang"
-      ],
-      "arxiv": "2510.13097",
-      "preprint_year": 2025,
-      "publication_year": null,
-      "journal": null,
-      "doi": null,
-      "source_urls": [
-        "https://arxiv.org/abs/2510.13097",
-        "https://arxiv.org/pdf/2510.13097"
-      ],
-      "topic": "Parallel shears; unbounded cross sections; Taylor dispersion",
-      "priority": "extended",
-      "annotation": "Studies passive scalars in infinite cylinders with unbounded cross section. The one-dimensional theorem assumes finite-order nondegeneracy and nonvanishing shear derivative at infinity; the higher-dimensional theorem requires a product cross section and an additively separable profile. Distinguishes streamwise frequencies |k| at least nu (enhanced dissipation) from |k| at most nu (Taylor-dispersion regime). Do not generalize to arbitrary multidimensional profiles or cross sections. Preprint v1 submitted 15 October 2025.",
-      "checked_on": "2026-11-05",
-      "aliases": [
-        "LiZhang2025Cylinder"
-      ],
-      "topic_group": "Deterministic enhanced dissipation",
-      "publication_status": "preprint",
-      "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
-      "local_pdf": null,
-      "local_pdf_version": null,
-      "topic_subgroup": "Shear, radial and other symmetric flows"
-    },
-    {
       "key": "CobleHe2024",
       "title": "A note on enhanced dissipation of time-dependent shear flows",
       "authors": [

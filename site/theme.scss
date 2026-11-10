@@ -79,6 +79,12 @@ div.remark { border-left: 3px solid #d5dbe3; padding: 0.1rem 0.9rem; margin: 0.8
 .callout.lvl-idea { border-left-color: $lvl-idea !important; }
 .callout.lvl-idea .callout-title-container { color: $lvl-idea; }
 .callout.lvl-arch { border-left-color: $lvl-arch !important; }
+// Notes (10 November 2026): quiet, as in the wiki: a thin frame with a grey edge, no icon and no coloured band, so that
+// a page with many of them (Literature) stays calm; ideas keep their colour
+.callout.lvl-note { border: 1px solid #d5dbe3 !important; border-left: 3px solid #a2a9b1 !important; }
+.callout.lvl-note > .callout-header { background: transparent !important; }
+.callout.lvl-note > .callout-header .callout-icon-container { display: none !important; }
+.callout.lvl-note > .callout-header .callout-title-container { color: $body-color; font-weight: 500; }
 // Proofs (10 November 2026): no box and no coloured band, as in a paper: "Proof." in italics with a small triangle that
 // opens it, a thin rule along the open proof, and the end-of-proof square
 .callout.lvl-proof { border: 0 !important; border-left: 1px solid #d5dbe3 !important; border-radius: 0 !important; background: transparent !important;
@@ -107,15 +113,14 @@ div.remark { border-left: 3px solid #d5dbe3; padding: 0.1rem 0.9rem; margin: 0.8
 .placeholder p:last-child { margin-bottom: 0; }
 .placeholder a.propose { font-family: $font-family-sans-serif; font-style: normal; font-size: 0.85rem; font-weight: 500; }
 
-// Links under each page's title (added by page-links.lua): Zulip button and wiki link
-.discuss { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.9rem; margin: 0.1rem 0 1.4rem; font-family: $font-family-sans-serif; }
-a.edit-link { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.85rem; font-weight: 500; text-decoration: none; }
+// Links under each page's title (added by page-links.lua), one quiet line (10 November 2026: the Zulip topic is a link
+// like the others, no longer a filled button): "For members:" Zulip topic, page in the wiki, proposal | TeX source, PDF
+.discuss { display: flex; flex-wrap: wrap; align-items: center; gap: 0.15rem 0.8rem; margin: 0.1rem 0 1.4rem; font-family: $font-family-sans-serif; }
+a.edit-link { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.8rem; font-weight: 500; text-decoration: none; white-space: nowrap; }
 a.edit-link:hover, a.edit-link:focus { text-decoration: underline; }
-a.zulip-btn { display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.9rem; font-weight: 500; line-height: 1.3;
-  color: #fff; background: $primary; border-radius: 4px; padding: 0.42rem 0.85rem; text-decoration: none; }
-a.zulip-btn:hover, a.zulip-btn:focus { color: #fff; background: darken($primary, 6%); }
-a.zulip-btn:focus-visible { outline: 2px solid $body-color; outline-offset: 2px; }
-.discuss-note { font-size: 0.82rem; color: #59616e; }
+.discuss-note { font-size: 0.8rem; color: #59616e; }
+.discuss-sep { align-self: stretch; border-left: 1px solid #c9cfd8; margin: 0.25rem 0; }
+@media (max-width: 575.98px) { .discuss-sep { display: none; } }
 
 // Definition lists (history outlines)
 dl dt { font-family: $font-family-sans-serif; font-size: 0.9rem; margin-top: 0.5rem; }
@@ -179,3 +184,73 @@ main :not(pre) > code { white-space: pre-wrap; overflow-wrap: anywhere; }
 .section-contributors { font-family: $font-family-sans-serif; font-size: 0.8rem; font-style: italic; color: #59616e; margin: -0.3rem 0 0.9rem; }
 .section-contributors p { margin: 0; }
 .section-contributors .sc-more { font-style: normal; white-space: nowrap; }
+
+// Reading mode and text size (10 November 2026). A group of buttons (.view-tools: "Reading mode", A-, A+) sits above
+// "On this page" in the right column and, on phones, opens from the "Aa" button of the top bar; the script is in
+// page-links.lua. Reading mode (class "reading" on <html>): the menu on the left (on wide screens), the links under the
+// title and the edit buttons are hidden, and the text is set as in a paper, justified, in a centred column of about 85
+// characters; the right column and the folded boxes stay as they are. On wide screens the menu is folded into the
+// button "Menu" at the top left (.vt-menu), which opens it beside the text (class "menu-open"). The text size scales
+// the root size, so that everything follows. Reading mode and text size are remembered in the browser.
+html:root { font-size: calc(#{$font-size-root} * var(--text-scale, 1)); }
+.view-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem; font-family: $font-family-sans-serif; }
+.view-tools button, .vt-menu { display: inline-flex; align-items: center; gap: 0.4rem; border: 1px solid #c9cfd8; border-radius: 4px; background: #fff;
+  color: $primary; font-size: 0.8rem; font-weight: 500; line-height: 1.35; padding: 0.22rem 0.55rem; cursor: pointer; white-space: nowrap; }
+.view-tools button:hover:not(:disabled), .view-tools button:focus-visible, .vt-menu:hover, .vt-menu:focus-visible { background: #eef3f8; border-color: #9fb3c8; }
+.view-tools button:disabled { color: #9aa3af; cursor: default; }
+.view-tools .vt-read[aria-pressed="true"] { background: $primary; border-color: $primary; color: #fff; }
+.view-tools .vt-read[aria-pressed="true"]:hover { background: darken($primary, 6%); }
+.view-tools .vt-sizes { display: inline-flex; }
+.view-tools .vt-sizes button { padding-left: 0.5rem; padding-right: 0.5rem; }
+.view-tools .vt-sizes button:first-child { border-radius: 4px 0 0 4px; }
+.view-tools .vt-sizes button:last-child { border-radius: 0 4px 4px 0; margin-left: -1px; }
+#quarto-margin-sidebar > .view-tools { margin: 0 0 1.1rem; padding-top: 0.15rem; }
+// phones: the group opens under the top bar, from the button "Aa"
+.vt-open { font-family: $font-family-sans-serif; font-weight: 600; font-size: 1rem; line-height: 1; padding: 0.3rem 0.5rem; color: inherit; }
+#quarto-header .view-tools { display: none; position: absolute; top: 100%; right: 0.5rem; z-index: 1040; background: #fff; border: 1px solid #d5dbe3;
+  border-radius: 6px; padding: 0.55rem 0.6rem; box-shadow: 0 8px 24px rgba(20, 28, 40, 0.14); }
+#quarto-header .view-tools.open { display: flex; }
+#quarto-header .view-tools button { font-size: 0.9rem; padding: 0.4rem 0.7rem; }
+@media (min-width: 768px) { .vt-open, #quarto-header .view-tools, #quarto-header .view-tools.open { display: none !important; } }
+.vt-menu { display: none; font-family: $font-family-sans-serif; }
+@media print { .view-tools, .vt-open, .vt-menu { display: none !important; } }
+
+html.reading .discuss, html.reading .edit-btn, html.reading .placeholder p:has(> a.propose) { display: none !important; }
+html.reading .module-meta { margin-bottom: 1.6rem; }
+html.reading .placeholder p:nth-last-child(2):has(+ p > a.propose) { margin-bottom: 0; }
+html.reading main.content p, html.reading main.content li { hyphens: auto; -webkit-hyphens: auto; }
+@media (min-width: 768px) {
+  html.reading main.content p { text-align: justify; }
+  html.reading main.content .module-meta p, html.reading main.content .central-question p, html.reading main.content .media-caption p,
+  html.reading main.content .media-record p, html.reading main.content .section-contributors p, html.reading main.content table p,
+  html.reading main.content .levels p { text-align: inherit; }
+}
+@media (min-width: 992px) {
+  html.reading #quarto-sidebar, html.reading #quarto-sidebar-glass { display: none !important; }
+  html.reading .vt-menu { display: inline-flex; position: fixed; top: 1.05rem; left: 1.5rem; z-index: 1036; }
+  html.reading.menu-open #quarto-sidebar { display: flex !important; position: fixed; top: 0; bottom: 0; left: 0; width: 17.5rem; max-width: 85vw;
+    height: auto; max-height: none; margin: 0; padding: 3.5rem 1.25rem 1.5rem 1.5rem; overflow-y: auto; background: #fff;
+    border-right: 1px solid #e3e7ed; box-shadow: 0 0 28px rgba(20, 28, 40, 0.1); z-index: 1035; }
+  html.reading #quarto-content.page-columns {
+    grid-template-columns: [screen-start screen-start-inset page-start page-start-inset body-start-outset body-start] minmax(7rem, 1fr)
+      [body-content-start] minmax(0, 34rem) [body-content-end] 3rem [body-end body-end-outset] minmax(11rem, 1fr)
+      [page-end-inset page-end] 1.5rem [screen-end-inset screen-end];
+  }
+  html.reading #quarto-margin-sidebar { max-width: 16rem; }
+}
+// The top bar of phones and tablets: the trail of the page stays on one line (it used to wrap and to be cut at the
+// top); on phones only the title of the page is shown, the part is in the menu.
+.quarto-secondary-nav .quarto-page-breadcrumbs { min-width: 0; }
+.quarto-secondary-nav .breadcrumb { flex-wrap: nowrap; min-width: 0; }
+.quarto-secondary-nav .breadcrumb-item { white-space: nowrap; }
+.quarto-secondary-nav .breadcrumb-item:last-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+@media (max-width: 575.98px) {
+  .quarto-secondary-nav .breadcrumb-item:not(:last-child), .quarto-secondary-nav .breadcrumb-item:last-child::before { display: none; }
+  .quarto-secondary-nav .breadcrumb-item:last-child { padding-left: 0; }
+}
+// The trail of the page (above the title, and in the top bar of phones) in the font of the menus
+.quarto-page-breadcrumbs { font-family: $font-family-sans-serif; }
+.quarto-title-breadcrumbs .breadcrumb { font-size: 0.85rem; }
+// Phones and other touch screens: no edit buttons next to the paragraphs (they sat on the end of the first line of each
+// paragraph); the link "Propose a change" under the title and the links of the placeholders remain
+@media (hover: none), (max-width: 767.98px) { .edit-unit > .edit-btn { display: none !important; } }

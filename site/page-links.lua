@@ -12,15 +12,15 @@
 --
 -- The filter adds, after the page's module-meta block (or inside an empty `::: {.discuss}` div
 -- on pages without one):
---   * a "Discuss on Zulip" button, when the page has a Zulip topic,
+--   * a "Discuss on Zulip" link, when the page has a Zulip topic (a filled button until 10 November 2026),
 --   * a "This page in the wiki" link: the wiki is where the text is edited; this edition is
---     rebuilt from it by a script and never edited by hand (wiki-note, from edition.json, is added
---     in brackets when the link goes to the real wiki, e.g. "members" for a wiki by invitation),
+--     rebuilt from it by a script and never edited by hand (wiki-note, from edition.json, e.g. "members" for a
+--     wiki by invitation: when the link goes to the real wiki, the line opens with "For members:"),
 --   * kit v2.1: a "TeX source" link that downloads the page's TeX source (tex-source in the front
 --     matter), a "PDF" link to the PDF compiled from it (pdf-source), and, on the Overview only, "PDF of the whole wiki" and "TeX of the whole
 --     wiki (zip)": tex/all-pages.zip, a LaTeX project with main.tex and every page as a file of pages/ (it also opens in
 --     Overleaf; November 2026: no "Open in Overleaf" button any more); on a page with pictures, "TeX source" downloads a zip
---     (the .tex and the folder figures/),
+--     (the .tex and the folder figures/; said by the tooltip of the link),
 --   * (November 2026) a "Propose a change" link, when _quarto.yml sets propose-preload (edition.json, edit_paragraphs.preload_block)
 --     and the wiki is the real one: a new topic on the page's talk page, filled in with that preload page,
 -- and a "Propose a text" link at the end of every placeholder: the same new topic, or the Zulip topic when there is none.
@@ -67,58 +67,55 @@ local function note(inlines)
 end
 
 local function links_row()
+  -- One quiet line (10 November 2026; before, a filled "Discuss on Zulip" button and a sentence): the links that need an
+  -- account first, after "For members:" (wiki-note of edition.json), then a thin rule and the downloads.
   local inlines = {}
+  local function add(el)
+    if #inlines > 0 then table.insert(inlines, pandoc.Space()) end
+    table.insert(inlines, el)
+  end
+  local function link(icon, label, target, title, classes, attrs)
+    local i = pandoc.RawInline("html", '<i class="bi bi-' .. icon .. '" aria-hidden="true"></i>')
+    return pandoc.Link({i, pandoc.Space(), pandoc.Str(label)}, target, title or "", pandoc.Attr("", classes, attrs or {}))
+  end
+  local who = (wiki_real and wiki_note and wiki_note ~= "") and wiki_note or nil   -- e.g. "members": Zulip and wiki by invitation
+  if who and (zulip or wiki) then add(note({pandoc.Str("For " .. who .. ":")})) end
   if zulip then
-    local icon = pandoc.RawInline("html", '<i class="bi bi-chat-left-text" aria-hidden="true"></i>')
-    table.insert(inlines, pandoc.Link({icon, pandoc.Space(), pandoc.Str("Discuss on Zulip")},
-                                      zulip, "", pandoc.Attr("", {"zulip-btn"})))
-    table.insert(inlines, pandoc.Space())
-    table.insert(inlines, note({pandoc.Str("For project members: the Zulip and the wiki are by invitation.")}))
+    -- the class zulip-btn is kept for site-check.js; it is styled as the other links
+    add(link("chat-left-text", "Discuss on Zulip", zulip,
+             "The Zulip topic of this page" .. (who and " (the Zulip is by invitation)" or ""), {"edit-link", "zulip-btn"}))
   end
   if wiki then
-    local icon = pandoc.RawInline("html", '<i class="bi bi-pencil-square" aria-hidden="true"></i>')
-    table.insert(inlines, pandoc.Space())
-    local label = "This page in the wiki"
-    if wiki_real and wiki_note and wiki_note ~= "" then label = label .. " (" .. wiki_note .. ")" end
-    table.insert(inlines, pandoc.Link({icon, pandoc.Space(), pandoc.Str(label)},
-                                      wiki, "", pandoc.Attr("", {"edit-link"})))
+    add(link("pencil-square", "This page in the wiki", wiki,
+             wiki_real and ("The page in the wiki, where the text is written" .. (who and " (the wiki is by invitation)" or "")) or "",
+             {"edit-link"}))
   end
   if propose then
-    local iconp = pandoc.RawInline("html", '<i class="bi bi-journal-plus" aria-hidden="true"></i>')
-    table.insert(inlines, pandoc.Space())
-    table.insert(inlines, pandoc.Link({iconp, pandoc.Space(), pandoc.Str("Propose a change")}, propose,
-                                      "A new proposal on the talk page of this page in the wiki (members)",
-                                      pandoc.Attr("", {"edit-link", "propose-link"})))
+    add(link("journal-plus", "Propose a change", propose, "A new proposal on the talk page of this page in the wiki (members)",
+             {"edit-link", "propose-link"}))
   end
   if tex then
-    local icon = pandoc.RawInline("html", '<i class="bi bi-file-earmark-code" aria-hidden="true"></i>')
-    table.insert(inlines, pandoc.Space())
-    local file = tex:match("([^/]+)$")
-    local label = tex:match("%.zip$") and "TeX source (zip, with figures)" or "TeX source"
-    table.insert(inlines, pandoc.Link({icon, pandoc.Space(), pandoc.Str(label)}, tex, "",
-                                      pandoc.Attr("", {"edit-link", "tex-link"}, {{"download", file}})))
+    if #inlines > 0 then
+      add(pandoc.RawInline("html", '<span class="discuss-sep" aria-hidden="true"></span>'))
+    end
+    local zip = tex:match("%.zip$")
+    add(link("file-earmark-code", "TeX source", tex,
+             zip and "A zip with the TeX source of this page and its figures" or "The TeX source of this page",
+             {"edit-link", "tex-link"}, {{"download", tex:match("([^/]+)$")}}))
     if pdf then
-      local iconp = pandoc.RawInline("html", '<i class="bi bi-file-earmark-pdf" aria-hidden="true"></i>')
-      table.insert(inlines, pandoc.Space())
-      table.insert(inlines, pandoc.Link({iconp, pandoc.Space(), pandoc.Str("PDF")}, pdf, "",
-                                        pandoc.Attr("", {"edit-link", "pdf-link"}, {{"download", pdf:match("([^/]+)$")}})))
+      add(link("file-earmark-pdf", "PDF", pdf, "The PDF of this page, compiled from its TeX source",
+               {"edit-link", "pdf-link"}, {{"download", pdf:match("([^/]+)$")}}))
     end
     if book_pdf then
-      local iconb = pandoc.RawInline("html", '<i class="bi bi-book" aria-hidden="true"></i>')
-      table.insert(inlines, pandoc.Space())
-      table.insert(inlines, pandoc.Link({iconb, pandoc.Space(), pandoc.Str("PDF of the whole wiki")}, book_pdf, "",
-                                        pandoc.Attr("", {"edit-link", "pdf-link"}, {{"download", book_pdf:match("([^/]+)$")}})))
+      add(link("book", "PDF of the whole wiki", book_pdf, "", {"edit-link", "pdf-link"}, {{"download", book_pdf:match("([^/]+)$")}}))
     end
     if book_zip then
-      local icon2 = pandoc.RawInline("html", '<i class="bi bi-file-earmark-zip" aria-hidden="true"></i>')
-      table.insert(inlines, pandoc.Space())
-      table.insert(inlines, pandoc.Link({icon2, pandoc.Space(), pandoc.Str("TeX of the whole wiki (zip)")}, book_zip, "",
-                                        pandoc.Attr("", {"edit-link", "tex-link"}, {{"download", book_zip:match("([^/]+)$")}})))
+      add(link("file-earmark-zip", "TeX of the whole wiki (zip)", book_zip, "", {"edit-link", "tex-link"},
+               {{"download", book_zip:match("([^/]+)$")}}))
     end
   end
   if related then
-    table.insert(inlines, pandoc.Space())
-    table.insert(inlines, note(related))
+    add(note(related))
   end
   return pandoc.Div({pandoc.Plain(inlines)}, pandoc.Attr("", {"discuss"}))
 end
@@ -163,8 +160,127 @@ local FOLD_SCRIPT = [=[
 </script>
 ]=]
 
+
+-- Reading mode and text size (10 November 2026): the buttons "Reading mode", A- and A+ above "On this page" (on phones:
+-- the button "Aa" of the top bar). Reading mode sets the class "reading" on <html> and the text size sets --text-scale
+-- there; the styles are in theme.scss. In reading mode on a computer the menu is folded into the button "Menu" at the
+-- top left (class "menu-open" on <html> while it is open; not remembered: every page opens with the menu folded). Both are remembered in the browser (localStorage; without it they last for the
+-- page only). READING_HEAD runs in the <head>, so that a page opens directly in the chosen mode and size.
+local READING_HEAD = [=[
+<script>
+(function () { try { var d = document.documentElement, s = window.localStorage, t = parseFloat(s.getItem('wiki-text-scale'));
+  if (s.getItem('wiki-reading') === '1') d.classList.add('reading');
+  if (t >= 0.8 && t <= 1.5 && t !== 1) d.style.setProperty('--text-scale', t); } catch (e) {} })();
+</script>
+]=]
+
+local READING_SCRIPT = [=[
+<script>
+(function () {
+  var R = 'wiki-reading', T = 'wiki-text-scale', STEPS = [0.85, 0.92, 1, 1.1, 1.2, 1.32, 1.45];
+  var root = document.documentElement, panels = [], menuBtn = null;
+  function put(k, v) { try { window.localStorage.setItem(k, v); } catch (e) {} }
+  function step() {
+    var s = parseFloat(root.style.getPropertyValue('--text-scale')) || 1, best = 0;
+    STEPS.forEach(function (v, i) { if (Math.abs(v - s) < Math.abs(STEPS[best] - s)) best = i; });
+    return best;
+  }
+  // the reader keeps the place: the first visible block stays where it was
+  function keepPlace(change) {
+    var els = document.querySelectorAll('main h1, main h2, main h3, main h4, main p, main li, main mjx-container[display="true"]'), a = null;
+    for (var i = 0; i < els.length; i++) { var r = els[i].getBoundingClientRect(); if (r.height && r.bottom > 0) { a = {el: els[i], top: r.top}; break; } }
+    change();
+    if (a && window.scrollY > 0) window.scrollBy(0, a.el.getBoundingClientRect().top - a.top);
+  }
+  function render() {
+    var on = root.classList.contains('reading'), i = step(), pct = Math.round(STEPS[i] * 100) + '%';
+    panels.forEach(function (p) {
+      var b = p.querySelector('.vt-read');
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      b.querySelector('span').textContent = on ? 'Exit reading mode' : 'Reading mode';
+      b.querySelector('i').className = on ? 'bi bi-x-lg' : 'bi bi-book';
+      b.title = on ? 'Show the menu and the editing tools again' : 'The text as in a paper: the menu folded away, no editing tools';
+      var m = p.querySelector('.vt-minus'), q = p.querySelector('.vt-plus');
+      m.disabled = i === 0; q.disabled = i === STEPS.length - 1;
+      m.title = 'Smaller text (now ' + pct + ')'; q.title = 'Larger text (now ' + pct + ')';
+    });
+  }
+  // reading mode on a computer: the menu is folded into a button at the top left, which opens it beside the text
+  function setMenu(open) {
+    root.classList.toggle('menu-open', open);
+    if (!menuBtn) return;
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    menuBtn.querySelector('i').className = open ? 'bi bi-x-lg' : 'bi bi-layout-text-sidebar-reverse';
+    menuBtn.querySelector('span').textContent = open ? 'Close' : 'Menu';
+  }
+  function setReading(on) {
+    if (!on) setMenu(false);
+    keepPlace(function () { root.classList.toggle('reading', on); }); put(R, on ? '1' : '0'); render();
+  }
+  function setStep(i) {
+    i = Math.max(0, Math.min(STEPS.length - 1, i));
+    keepPlace(function () { if (STEPS[i] === 1) root.style.removeProperty('--text-scale'); else root.style.setProperty('--text-scale', STEPS[i]); });
+    put(T, String(STEPS[i])); render();
+  }
+  function panel() {
+    var p = document.createElement('div');
+    p.className = 'view-tools'; p.setAttribute('role', 'group'); p.setAttribute('aria-label', 'Reading settings');
+    p.innerHTML = '<button type="button" class="vt-read"><i aria-hidden="true"></i><span></span></button>' +
+      '<span class="vt-sizes"><button type="button" class="vt-minus" aria-label="Smaller text">A−</button>' +
+      '<button type="button" class="vt-plus" aria-label="Larger text">A+</button></span>';
+    p.querySelector('.vt-read').addEventListener('click', function () { setReading(!root.classList.contains('reading')); });
+    p.querySelector('.vt-minus').addEventListener('click', function () { setStep(step() - 1); });
+    p.querySelector('.vt-plus').addEventListener('click', function () { setStep(step() + 1); });
+    panels.push(p);
+    return p;
+  }
+  function init() {
+    var side = document.getElementById('quarto-margin-sidebar');
+    if (side) side.insertBefore(panel(), side.firstChild);
+    var bar = document.querySelector('#quarto-header .quarto-secondary-nav .container-fluid');
+    if (bar) {
+      var open = document.createElement('button'), drop = panel();
+      open.type = 'button'; open.className = 'btn vt-open'; open.textContent = 'Aa';
+      open.setAttribute('aria-label', 'Reading settings'); open.setAttribute('aria-expanded', 'false');
+      bar.insertBefore(open, bar.querySelector('.quarto-search-button'));
+      bar.parentElement.style.position = 'relative';
+      bar.parentElement.appendChild(drop);
+      var show = function (v) { drop.classList.toggle('open', v); open.setAttribute('aria-expanded', v ? 'true' : 'false'); };
+      open.addEventListener('click', function (e) { e.stopPropagation(); show(!drop.classList.contains('open')); });
+      drop.addEventListener('click', function (e) { e.stopPropagation(); });
+      document.addEventListener('click', function () { show(false); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') show(false); });
+    }
+    var nav = document.getElementById('quarto-sidebar');
+    if (nav) {
+      menuBtn = document.createElement('button');
+      menuBtn.type = 'button'; menuBtn.className = 'vt-menu'; menuBtn.setAttribute('aria-controls', 'quarto-sidebar');
+      menuBtn.title = 'The menu of the wiki';
+      menuBtn.innerHTML = '<i aria-hidden="true"></i><span></span>';
+      document.body.appendChild(menuBtn);
+      menuBtn.addEventListener('click', function (e) { e.stopPropagation(); setMenu(!root.classList.contains('menu-open')); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+      // a click on the page closes the menu when it covers the text (narrow windows); beside the text it stays open
+      document.addEventListener('click', function (e) {
+        if (!root.classList.contains('menu-open') || nav.contains(e.target)) return;
+        var m = document.querySelector('main');
+        if (m && nav.getBoundingClientRect().right > m.getBoundingClientRect().left) setMenu(false);
+      });
+      setMenu(false);
+    }
+    render();
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+})();
+</script>
+]=]
+
 local function add_script(doc)
   doc.blocks:insert(pandoc.RawBlock("html", FOLD_SCRIPT))
+  if quarto and quarto.doc and quarto.doc.is_format and quarto.doc.is_format("html") then
+    quarto.doc.include_text("in-header", READING_HEAD)
+    doc.blocks:insert(pandoc.RawBlock("html", READING_SCRIPT))
+  end
   return doc
 end
 

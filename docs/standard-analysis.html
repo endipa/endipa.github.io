@@ -47,7 +47,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-17888a1159294d3eb470f19f6f52f5a5.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-d6b9d81cab021339c835e949d24b50d5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-812377c33fd1fb6db8ab946a7cf4f6b3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -76,6 +76,11 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <meta name="robots" content="noindex, nofollow">
+<script>
+(function () { try { var d = document.documentElement, s = window.localStorage, t = parseFloat(s.getItem('wiki-text-scale'));
+  if (s.getItem('wiki-reading') === '1') d.classList.add('reading');
+  if (t >= 0.8 && t <= 1.5 && t !== 1) d.style.setProperty('--text-scale', t); } catch (e) {} })();
+</script>
 
 
 </head>
@@ -328,7 +333,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Contributors: to be named · Status: skeleton</p>
 </div>
 <div class="discuss">
-<a href="https://endipa.zulipchat.com/#narrow/channel/653116-toolkit/topic/Standard.20analysis" class="zulip-btn"><i class="bi bi-chat-left-text" aria-hidden="true"></i> Discuss on Zulip</a> <span class="discuss-note">For project members: the Zulip and the wiki are by invitation.</span> <a href="https://endipa.miraheze.org/wiki/Standard_analysis" class="edit-link"><i class="bi bi-pencil-square" aria-hidden="true"></i> This page in the wiki (members)</a> <a href="https://endipa.miraheze.org/wiki/Talk:Standard_analysis?action=edit&amp;section=new&amp;preload=Template:Proposal/Preload-block&amp;preloadtitle=Proposal%3A+" class="edit-link propose-link" title="A new proposal on the talk page of this page in the wiki (members)"><i class="bi bi-journal-plus" aria-hidden="true"></i> Propose a change</a> <a href="tex/standard-analysis.tex" class="edit-link tex-link" download="standard-analysis.tex"><i class="bi bi-file-earmark-code" aria-hidden="true"></i> TeX source</a> <a href="tex/standard-analysis.pdf" class="edit-link pdf-link" download="standard-analysis.pdf"><i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> PDF</a>
+<span class="discuss-note">For members:</span> <a href="https://endipa.zulipchat.com/#narrow/channel/653116-toolkit/topic/Standard.20analysis" class="edit-link zulip-btn" title="The Zulip topic of this page (the Zulip is by invitation)"><i class="bi bi-chat-left-text" aria-hidden="true"></i> Discuss on Zulip</a> <a href="https://endipa.miraheze.org/wiki/Standard_analysis" class="edit-link" title="The page in the wiki, where the text is written (the wiki is by invitation)"><i class="bi bi-pencil-square" aria-hidden="true"></i> This page in the wiki</a> <a href="https://endipa.miraheze.org/wiki/Talk:Standard_analysis?action=edit&amp;section=new&amp;preload=Template:Proposal/Preload-block&amp;preloadtitle=Proposal%3A+" class="edit-link propose-link" title="A new proposal on the talk page of this page in the wiki (members)"><i class="bi bi-journal-plus" aria-hidden="true"></i> Propose a change</a> <span class="discuss-sep" aria-hidden="true"></span> <a href="tex/standard-analysis.tex" class="edit-link tex-link" download="standard-analysis.tex" title="The TeX source of this page"><i class="bi bi-file-earmark-code" aria-hidden="true"></i> TeX source</a> <a href="tex/standard-analysis.pdf" class="edit-link pdf-link" download="standard-analysis.pdf" title="The PDF of this page, compiled from its TeX source"><i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> PDF</a>
 </div>
 <div class="edit-unit" data-unit="p2991f75e">
 <p>Classical facts of analysis used by the proofs. A statement comes to the Toolkit when several proofs use it, or when it holds in more generality than one result; a step used by one proof only is a claim inside that proof. Each statement is given once, with its proof or a reference, and the proofs elsewhere link to it.</p>
@@ -551,6 +556,105 @@ ul.task-list li input[type="checkbox"] {
   }
   window.addEventListener('hashchange', openTarget);
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', openTarget); else openTarget();
+})();
+</script>
+
+<script>
+(function () {
+  var R = 'wiki-reading', T = 'wiki-text-scale', STEPS = [0.85, 0.92, 1, 1.1, 1.2, 1.32, 1.45];
+  var root = document.documentElement, panels = [], menuBtn = null;
+  function put(k, v) { try { window.localStorage.setItem(k, v); } catch (e) {} }
+  function step() {
+    var s = parseFloat(root.style.getPropertyValue('--text-scale')) || 1, best = 0;
+    STEPS.forEach(function (v, i) { if (Math.abs(v - s) < Math.abs(STEPS[best] - s)) best = i; });
+    return best;
+  }
+  // the reader keeps the place: the first visible block stays where it was
+  function keepPlace(change) {
+    var els = document.querySelectorAll('main h1, main h2, main h3, main h4, main p, main li, main mjx-container[display="true"]'), a = null;
+    for (var i = 0; i < els.length; i++) { var r = els[i].getBoundingClientRect(); if (r.height && r.bottom > 0) { a = {el: els[i], top: r.top}; break; } }
+    change();
+    if (a && window.scrollY > 0) window.scrollBy(0, a.el.getBoundingClientRect().top - a.top);
+  }
+  function render() {
+    var on = root.classList.contains('reading'), i = step(), pct = Math.round(STEPS[i] * 100) + '%';
+    panels.forEach(function (p) {
+      var b = p.querySelector('.vt-read');
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      b.querySelector('span').textContent = on ? 'Exit reading mode' : 'Reading mode';
+      b.querySelector('i').className = on ? 'bi bi-x-lg' : 'bi bi-book';
+      b.title = on ? 'Show the menu and the editing tools again' : 'The text as in a paper: the menu folded away, no editing tools';
+      var m = p.querySelector('.vt-minus'), q = p.querySelector('.vt-plus');
+      m.disabled = i === 0; q.disabled = i === STEPS.length - 1;
+      m.title = 'Smaller text (now ' + pct + ')'; q.title = 'Larger text (now ' + pct + ')';
+    });
+  }
+  // reading mode on a computer: the menu is folded into a button at the top left, which opens it beside the text
+  function setMenu(open) {
+    root.classList.toggle('menu-open', open);
+    if (!menuBtn) return;
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    menuBtn.querySelector('i').className = open ? 'bi bi-x-lg' : 'bi bi-layout-text-sidebar-reverse';
+    menuBtn.querySelector('span').textContent = open ? 'Close' : 'Menu';
+  }
+  function setReading(on) {
+    if (!on) setMenu(false);
+    keepPlace(function () { root.classList.toggle('reading', on); }); put(R, on ? '1' : '0'); render();
+  }
+  function setStep(i) {
+    i = Math.max(0, Math.min(STEPS.length - 1, i));
+    keepPlace(function () { if (STEPS[i] === 1) root.style.removeProperty('--text-scale'); else root.style.setProperty('--text-scale', STEPS[i]); });
+    put(T, String(STEPS[i])); render();
+  }
+  function panel() {
+    var p = document.createElement('div');
+    p.className = 'view-tools'; p.setAttribute('role', 'group'); p.setAttribute('aria-label', 'Reading settings');
+    p.innerHTML = '<button type="button" class="vt-read"><i aria-hidden="true"></i><span></span></button>' +
+      '<span class="vt-sizes"><button type="button" class="vt-minus" aria-label="Smaller text">A−</button>' +
+      '<button type="button" class="vt-plus" aria-label="Larger text">A+</button></span>';
+    p.querySelector('.vt-read').addEventListener('click', function () { setReading(!root.classList.contains('reading')); });
+    p.querySelector('.vt-minus').addEventListener('click', function () { setStep(step() - 1); });
+    p.querySelector('.vt-plus').addEventListener('click', function () { setStep(step() + 1); });
+    panels.push(p);
+    return p;
+  }
+  function init() {
+    var side = document.getElementById('quarto-margin-sidebar');
+    if (side) side.insertBefore(panel(), side.firstChild);
+    var bar = document.querySelector('#quarto-header .quarto-secondary-nav .container-fluid');
+    if (bar) {
+      var open = document.createElement('button'), drop = panel();
+      open.type = 'button'; open.className = 'btn vt-open'; open.textContent = 'Aa';
+      open.setAttribute('aria-label', 'Reading settings'); open.setAttribute('aria-expanded', 'false');
+      bar.insertBefore(open, bar.querySelector('.quarto-search-button'));
+      bar.parentElement.style.position = 'relative';
+      bar.parentElement.appendChild(drop);
+      var show = function (v) { drop.classList.toggle('open', v); open.setAttribute('aria-expanded', v ? 'true' : 'false'); };
+      open.addEventListener('click', function (e) { e.stopPropagation(); show(!drop.classList.contains('open')); });
+      drop.addEventListener('click', function (e) { e.stopPropagation(); });
+      document.addEventListener('click', function () { show(false); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') show(false); });
+    }
+    var nav = document.getElementById('quarto-sidebar');
+    if (nav) {
+      menuBtn = document.createElement('button');
+      menuBtn.type = 'button'; menuBtn.className = 'vt-menu'; menuBtn.setAttribute('aria-controls', 'quarto-sidebar');
+      menuBtn.title = 'The menu of the wiki';
+      menuBtn.innerHTML = '<i aria-hidden="true"></i><span></span>';
+      document.body.appendChild(menuBtn);
+      menuBtn.addEventListener('click', function (e) { e.stopPropagation(); setMenu(!root.classList.contains('menu-open')); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+      // a click on the page closes the menu when it covers the text (narrow windows); beside the text it stays open
+      document.addEventListener('click', function (e) {
+        if (!root.classList.contains('menu-open') || nav.contains(e.target)) return;
+        var m = document.querySelector('main');
+        if (m && nav.getBoundingClientRect().right > m.getBoundingClientRect().left) setMenu(false);
+      });
+      setMenu(false);
+    }
+    render();
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();
 </script>
 
