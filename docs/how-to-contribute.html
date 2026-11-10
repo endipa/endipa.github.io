@@ -787,6 +787,27 @@ document.querySelectorAll('.section-contributors .sc-names').forEach(function (s
 </script>
 
 
+<script>
+(function () {
+  function openTarget() {
+    var id = decodeURIComponent(location.hash.slice(1)), el = id && document.getElementById(id), opened = false;
+    if (!el) return;
+    var c = el.closest('.callout-collapse');
+    while (c) {
+      if (!c.classList.contains('show')) {
+        c.classList.add('show'); opened = true;
+        var h = c.parentElement && c.parentElement.querySelector(':scope > .callout-header');
+        if (h) { h.classList.remove('collapsed'); h.setAttribute('aria-expanded', 'true'); }
+      }
+      c = c.parentElement && c.parentElement.closest('.callout-collapse');
+    }
+    if (opened) setTimeout(function () { el.scrollIntoView(); }, 50);
+  }
+  window.addEventListener('hashchange', openTarget);
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', openTarget); else openTarget();
+})();
+</script>
+
 </section>
 
 </main> <!-- /main -->

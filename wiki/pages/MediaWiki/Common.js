@@ -352,3 +352,36 @@ mw.hook('wikipage.content').add(function ($content) {
 		});
 	});
 });
+
+/* A link to an anchor inside a folded box (for instance Literature#Key, or a proof inside a folded box) opens the box and
+ * shows the anchor (wiki kit, November 2026; drafted by Claude, AI).
+ */
+( function () {
+	'use strict';
+	function openTarget() {
+		var id = decodeURIComponent( location.hash.slice( 1 ) ), el, box, api, opened = false;
+		el = id && document.getElementById( id );
+		if ( !el ) {
+			return;
+		}
+		box = el.closest( '.mw-collapsible.mw-collapsed' );
+		while ( box ) {
+			api = $( box ).data( 'mw-collapsible' );
+			if ( !api ) {
+				break;
+			}
+			api.expand();
+			opened = true;
+			box = box.parentElement && box.parentElement.closest( '.mw-collapsible.mw-collapsed' );
+		}
+		if ( opened ) {
+			setTimeout( function () {
+				el.scrollIntoView();
+			}, 50 );
+		}
+	}
+	mw.hook( 'wikipage.content' ).add( function () {
+		setTimeout( openTarget, 0 );
+	} );
+	window.addEventListener( 'hashchange', openTarget );
+}() );

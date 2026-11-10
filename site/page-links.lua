@@ -138,4 +138,34 @@ local function div(el)
   end
 end
 
-return { {Meta = read_meta}, {Div = div} }
+-- A link to an anchor inside a folded box (for instance literature.html#Key, or a proof inside a fold) opens the box
+-- (November 2026): Quarto's collapsed callouts do not open by themselves.
+local FOLD_SCRIPT = [=[
+<script>
+(function () {
+  function openTarget() {
+    var id = decodeURIComponent(location.hash.slice(1)), el = id && document.getElementById(id), opened = false;
+    if (!el) return;
+    var c = el.closest('.callout-collapse');
+    while (c) {
+      if (!c.classList.contains('show')) {
+        c.classList.add('show'); opened = true;
+        var h = c.parentElement && c.parentElement.querySelector(':scope > .callout-header');
+        if (h) { h.classList.remove('collapsed'); h.setAttribute('aria-expanded', 'true'); }
+      }
+      c = c.parentElement && c.parentElement.closest('.callout-collapse');
+    }
+    if (opened) setTimeout(function () { el.scrollIntoView(); }, 50);
+  }
+  window.addEventListener('hashchange', openTarget);
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', openTarget); else openTarget();
+})();
+</script>
+]=]
+
+local function add_script(doc)
+  doc.blocks:insert(pandoc.RawBlock("html", FOLD_SCRIPT))
+  return doc
+end
+
+return { {Meta = read_meta}, {Div = div}, {Pandoc = add_script} }
