@@ -130,6 +130,7 @@ EDIT_SCRIPT = r"""<style>
     return (p > 4 ? '… ' : '') + nw(x.slice(Math.max(0, p - 4), p)) + (del.length ? ' <del>' + nw(del) + '</del>' : '')
       + (ins.length ? ' <ins>' + nw(ins) + '</ins>' : '') + ' ' + nw(x.slice(x.length - s, x.length - s + 4)) + (s > 4 ? ' …' : '');
   }
+  var PASTE = 'PASTE THE TEXT HERE: it was copied to the clipboard';
   // a placeholder (a part still to be written): its description, and a few words of it for the titles
   function todo(tex) { var m = tex.match(/^\\placeholder\{([\s\S]*)\}\s*$/); return m ? m[1] : null; }
   function words(s, n) {
@@ -193,11 +194,18 @@ EDIT_SCRIPT = r"""<style>
           + '&preload=' + encodeURIComponent(data.preload)
           + p.map(function (x) { return '&preloadparams%5B%5D=' + encodeURIComponent(x); }).join('');
       }
-      var u = link(params);
-      if (u.length > 7500) { params[2] = '(not repeated: see the paragraph ' + id + ' of the page)'; u = link(params); }
-      if (u.length > 7500) { status.textContent = 'Too long for a link: copy the TeX, then open a new proposal on the talk page (Propose a change, under the title) and paste it there.'; return; }
+      // a link to the wiki holds about 7500 characters: a long text is copied to the clipboard and pasted in the wiki
+      var u = link(params), pasted = false;
+      if (u.length > 7500) { params[2] = '(not repeated: see the element ' + id + ' of the page)'; u = link(params); }
+      if (u.length > 7500) {
+        params[3] = PASTE; params[5] = ph !== null ? params[5] : '(see the proposed text)'; u = link(params); pasted = true;
+        ta.select();
+        try { (navigator.clipboard ? navigator.clipboard.writeText(neu) : Promise.reject()).catch(function () { document.execCommand('copy'); }); }
+        catch (e) { try { document.execCommand('copy'); } catch (e2) {} }
+      }
       window.open(u, '_blank', 'noopener');
-      status.textContent = 'Opened in a new tab: check it there and click Save.';
+      status.textContent = pasted ? 'The text is too long for a link: it has been copied. In the new tab, replace the line "' + PASTE
+        + '" with it (paste), then click Save.' : 'Opened in a new tab: check it there and click Save.';
     };
     ta.focus();
   }
@@ -214,6 +222,20 @@ EDIT_SCRIPT = r"""<style>
     if (a) { a.textContent = 'Write this part →'; a.addEventListener('click', function (e) { e.preventDefault(); open(id); }); }
   });
 })();
+</script>"""
+
+
+# Contributors of a section: a long list shows the three most recent names and a link that opens the others
+CONTRIB_SCRIPT = r"""<script>
+document.querySelectorAll('.section-contributors .sc-names').forEach(function (s) {
+  var MAX = 3, parts = s.innerHTML.split(/\s*,\s*(?![^<]*>)/).filter(function (x) { return x.trim(); });
+  if (parts.length <= MAX + 1) return;
+  var more = 'and ' + (parts.length - MAX) + ' more';
+  s.innerHTML = parts.slice(0, MAX).join(', ') + '<span class="sc-rest" hidden>, ' + parts.slice(MAX).join(', ')
+    + '</span> <a href="#" class="sc-more" role="button">' + more + '</a>';
+  var a = s.querySelector('.sc-more'), r = s.querySelector('.sc-rest');
+  a.addEventListener('click', function (e) { e.preventDefault(); r.hidden = !r.hidden; a.textContent = r.hidden ? more : 'show fewer'; });
+});
 </script>"""
 
 
@@ -648,7 +670,7 @@ def convert_page(title, text, statements):
             elif name == 'Crumbs':
                 fence('::: {.crumbs}'); out.append(' › '.join(inline(p) for p in pos if p)); fence(':::')
             elif name == 'Contributed by':   # the contributors of a section, most recent first
-                fence('::: {.section-contributors}'); out.append('Contributors: ' + inline(pos[0] if pos else '')); fence(':::')
+                fence('::: {.section-contributors}'); out.append('Contributors: [' + inline(pos[0] if pos else '') + ']{.sc-names}'); fence(':::')
             elif name == 'Media':
                 out += media_block(title, named)
             elif name == 'Lean':
@@ -881,6 +903,8 @@ def main():
     for title in articles:
         source = expand_inline_statements(pages[title])
         display, meta, body = convert_page(title, source, statements)
+        if '{{Contributed by' in source:
+            body += '\n\n```{=html}\n' + CONTRIB_SCRIPT + '\n```\n'
         if EDIT and not WIKI_IS_PREVIEW:
             tex = wikitex.units_tex(pages[title], lit)
             if tex:

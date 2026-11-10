@@ -82,3 +82,4 @@ table.levels.infobox { border: 1px solid #d5dbe3; border-radius: 4px; padding: 0
 .proposal-tally { font-size: 0.88em; color: #54595d; margin-right: 0.3em; }
 .proposal-editor { display: inline-flex; gap: 0.4em; margin-left: 0.4em; padding-left: 0.8em; border-left: 1px solid #c8ccd1; }
 .section-contributors { font-size: 0.82em; font-style: italic; color: #54595d; margin: -0.2em 0 0.8em; }
+.section-contributors .sc-more { font-style: normal; white-space: nowrap; }

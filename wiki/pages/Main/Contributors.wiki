@@ -1,20 +1,16 @@
 <div class="mod-meta">Page team: editorial board · Status: to be filled</div>
 {{Discuss|channel=contributing}}
 
-The people who write and check this wiki, by role. How they work together is described in [[How to contribute]].
+The people who write and check this wiki, by role; the contributors of each section are also named under its title. How they work together is described in [[How to contribute]].
 
 == Editorial board ==
 Decides the scope and the structure of the wiki, appoints the associate editors, and settles a discussion that ends without consensus.
 {{Placeholder start}}Names and roles.{{Placeholder end}}
 
 == Associate editors ==
-Each part of the wiki has at least one associate editor, who follows its Zulip channel, runs the discussion of every proposal there, asks reviewers, decides, and writes accepted changes into the wiki. A busy part or page can have several.
+Each part of the wiki has at least one associate editor, who follows the talk pages of its pages and its Zulip channel, runs the discussion of every proposal, asks members of the community for a review when it helps, and decides; accepted changes are written into the wiki by an editor. A busy part or page can have several.
 {{Placeholder start}}Names, with their parts.{{Placeholder end}}
 
-== Reviewers ==
-Asked by an associate editor to check a proposal: the mathematics, the format, or both. Reviews are posted in the Zulip topic of the proposal. A busy page can have its own reviewers, named in its first line.
-{{Placeholder start}}Names.{{Placeholder end}}
-
 == Community ==
-Members of the Zulip, who propose and discuss changes. A new member is endorsed by an editor or by a member at least two years past the PhD. Early-stage researchers (PhD students, and researchers up to two years after the PhD) can choose to be listed as such.
+Members of the wiki and of the Zulip, who propose, review and discuss changes. Every member can endorse a new member; editors can remove a member whose participation disturbs the work rather than helping it. Early-stage researchers (PhD students, and researchers up to two years after the PhD) can choose to be listed as such.
 {{Placeholder start}}Names.{{Placeholder end}}

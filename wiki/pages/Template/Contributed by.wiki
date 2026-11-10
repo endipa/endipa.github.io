@@ -1,2 +1,5 @@
-<div class="section-contributors">Contributors: {{{1|}}}</div><noinclude>
-On the line after the heading of a section: the people who contributed to the section, the most recent first, in small type. Usage: <code><nowiki>{{Contributed by|Name Surname, Name Surname}}</nowiki></code>; in TeX, <code><nowiki>\contributors{Name Surname, Name Surname}</nowiki></code> after <code><nowiki>\section{...}</nowiki></code>. The editors decide, at their discretion, who is listed, and add a new name at the beginning of the list. See [[How to contribute#Credits|How to contribute]].</noinclude>
+<div class="section-contributors">Contributors: <span class="sc-names">{{{1|}}}</span></div><noinclude>
+On the line after the heading of a section: the people who contributed to the section, the most recent first, in small type. Usage: <code><nowiki>{{Contributed by|Name Surname, Name Surname}}</nowiki></code>; in TeX, <code><nowiki>\contributors{Name Surname, Name Surname}</nowiki></code> after <code><nowiki>\section{...}</nowiki></code>. The editors decide, at their discretion, who is listed, and add a new name at the beginning of the list. A long list shows the three most recent names and a link that opens the others. See [[How to contribute#Credits|How to contribute]].
+
+Example, with invented names:
+{{Contributed by|Contributor 7, Contributor 6, Contributor 5, Contributor 4, Contributor 3, Contributor 2, Contributor 1}}</noinclude>

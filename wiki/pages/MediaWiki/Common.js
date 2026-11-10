@@ -325,3 +325,30 @@
 		});
 	});
 }());
+
+/* Contributors of a section ({{Contributed by}}; wiki kit, November 2026, drafted by Claude, AI): a long list shows the
+ * three most recent names and a link that opens the others.
+ */
+mw.hook('wikipage.content').add(function ($content) {
+	'use strict';
+	var MAX = 3;
+	$content.find('.section-contributors .sc-names').each(function () {
+		var s = this;
+		if (s.querySelector('.sc-more')) {
+			return;
+		}
+		var parts = s.innerHTML.split(/\s*,\s*(?![^<]*>)/).filter(function (x) { return x.trim(); });
+		if (parts.length <= MAX + 1) {
+			return;
+		}
+		var more = 'and ' + (parts.length - MAX) + ' more';
+		s.innerHTML = parts.slice(0, MAX).join(', ') + '<span class="sc-rest" hidden>, ' + parts.slice(MAX).join(', ')
+			+ '</span> <a href="#" class="sc-more" role="button">' + more + '</a>';
+		var a = s.querySelector('.sc-more'), r = s.querySelector('.sc-rest');
+		a.addEventListener('click', function (e) {
+			e.preventDefault();
+			r.hidden = !r.hidden;
+			a.textContent = r.hidden ? more : 'show fewer';
+		});
+	});
+});

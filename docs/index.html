@@ -8,7 +8,6 @@
 
 <meta name="author" content="Editorial board">
 <meta name="author" content="Associate editors">
-<meta name="author" content="Reviewers">
 <meta name="author" content="Community">
 <meta name="dcterms.date" content="2026-11-10">
 
@@ -51,7 +50,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-17888a1159294d3eb470f19f6f52f5a5.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-837453bd5a0296ebfb386a4818da8fb9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-d6b9d81cab021339c835e949d24b50d5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -385,7 +384,6 @@ window.Quarto = {
     <div class="quarto-title-meta-contents">
              <p><a href="contributors.html#editorial-board">Editorial board</a> </p>
              <p><a href="contributors.html#associate-editors">Associate editors</a> </p>
-             <p><a href="contributors.html#reviewers">Reviewers</a> </p>
              <p><a href="contributors.html#community">Community</a> </p>
           </div>
   </div>
@@ -579,6 +577,7 @@ window.Quarto = {
     return (p > 4 ? '… ' : '') + nw(x.slice(Math.max(0, p - 4), p)) + (del.length ? ' <del>' + nw(del) + '</del>' : '')
       + (ins.length ? ' <ins>' + nw(ins) + '</ins>' : '') + ' ' + nw(x.slice(x.length - s, x.length - s + 4)) + (s > 4 ? ' …' : '');
   }
+  var PASTE = 'PASTE THE TEXT HERE: it was copied to the clipboard';
   // a placeholder (a part still to be written): its description, and a few words of it for the titles
   function todo(tex) { var m = tex.match(/^\\placeholder\{([\s\S]*)\}\s*$/); return m ? m[1] : null; }
   function words(s, n) {
@@ -642,11 +641,18 @@ window.Quarto = {
           + '&preload=' + encodeURIComponent(data.preload)
           + p.map(function (x) { return '&preloadparams%5B%5D=' + encodeURIComponent(x); }).join('');
       }
-      var u = link(params);
-      if (u.length > 7500) { params[2] = '(not repeated: see the paragraph ' + id + ' of the page)'; u = link(params); }
-      if (u.length > 7500) { status.textContent = 'Too long for a link: copy the TeX, then open a new proposal on the talk page (Propose a change, under the title) and paste it there.'; return; }
+      // a link to the wiki holds about 7500 characters: a long text is copied to the clipboard and pasted in the wiki
+      var u = link(params), pasted = false;
+      if (u.length > 7500) { params[2] = '(not repeated: see the element ' + id + ' of the page)'; u = link(params); }
+      if (u.length > 7500) {
+        params[3] = PASTE; params[5] = ph !== null ? params[5] : '(see the proposed text)'; u = link(params); pasted = true;
+        ta.select();
+        try { (navigator.clipboard ? navigator.clipboard.writeText(neu) : Promise.reject()).catch(function () { document.execCommand('copy'); }); }
+        catch (e) { try { document.execCommand('copy'); } catch (e2) {} }
+      }
       window.open(u, '_blank', 'noopener');
-      status.textContent = 'Opened in a new tab: check it there and click Save.';
+      status.textContent = pasted ? 'The text is too long for a link: it has been copied. In the new tab, replace the line "' + PASTE
+        + '" with it (paste), then click Save.' : 'Opened in a new tab: check it there and click Save.';
     };
     ta.focus();
   }

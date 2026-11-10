@@ -15,15 +15,11 @@
       "url": "contributors.html#associate-editors"
     },
     {
-      "name": "Reviewers",
-      "url": "contributors.html#reviewers"
-    },
-    {
       "name": "Community",
       "url": "contributors.html#community"
     }
   ],
-  "author": "Editorial board, associate editors, reviewers and community",
+  "author": "Editorial board, associate editors and community",
   "wiki_note": "members",
   "zulip_channels": {
     "overview": "653112-overview",

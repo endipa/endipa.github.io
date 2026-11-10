@@ -1592,6 +1592,8 @@ def cmd_apply_proposal(pdir, title, topic_path, write=False):
     params, tex = proposal_parts(open(topic_path, encoding='utf-8').read())
     if not tex or not tex.strip():
         sys.exit("no proposed text: the topic must contain '''Proposed text''' followed by <pre>...</pre>")
+    if 'PASTE THE TEXT HERE' in tex:
+        sys.exit('the proposed text was not pasted into the topic (it still says "PASTE THE TEXT HERE"): ask the author to paste it')
     status = params.get('status', 'open').lower()
     if status != 'accepted':
         if write:

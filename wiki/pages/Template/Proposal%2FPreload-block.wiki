@@ -3,7 +3,9 @@
 
 ''Sources:'' 
 
-'''Proposed text''' (TeX). The blocks that change, copied from the TeX source of the page and edited: a section with its title, or a statement or a proof with its label. A new block goes after an existing one: put the line <code>%% after: title or label</code> just before it.
+''PDF (optional, for a long proposal):'' [[Special:Upload|upload it]], then replace this line with its name, as in <nowiki>[[Media:Name of the file.pdf]]</nowiki>.
+
+'''Proposed text''' (TeX). Paste the blocks that change, copied from the TeX source of the page and edited (a section with its title, or a statement or a proof with its label), or the whole TeX source of the page: only what changes is applied, and there is no limit of length. A new block goes after an existing one: put the line <code>%% after: title or label</code> just before it.
 <pre>
 \section{Title of the section}
 The new text of the section.
