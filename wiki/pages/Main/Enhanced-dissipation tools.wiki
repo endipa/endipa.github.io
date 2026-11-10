@@ -1,4 +1,4 @@
-<div class="mod-meta">Page team: to be named · Status: skeleton</div>
+<div class="mod-meta">Contributors: to be named · Status: skeleton</div>
 {{Discuss|channel=toolkit}}
 
 Tools specific to enhanced dissipation. A statement comes to the Toolkit when several proofs use it, or when it holds in more generality than one result; a step used by one proof only is a claim inside that proof. Each statement is given once, with its proof or a reference, and the proofs elsewhere link to it.

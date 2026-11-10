@@ -1,10 +1,25 @@
-<div class="mod-meta">Page team: to be named · Status: skeleton</div>
+<div class="mod-meta">Contributors: Michele Dolce · Status: skeleton</div>
 {{Discuss|channel=examples}}
 
-{{Placeholder start}}Lead: what this example shows, in three lines.{{Placeholder end}}
+The Couette flow is the linear shear <math display="inline">u=(y,0)</math>, considered here in the simplest possible domain for this problem, <math display="inline">(x,y)\in\mathbb{T}\times\mathbb{R}</math>. The equation under study then reduces to
+<math display="block">\partial_t f+y\partial_xf=\nu\Delta f, \qquad f|_{t=0}=f^{\rm in}, \qquad (x,y)\in \mathbb{T}\times\mathbb{R}.</math>
+This is a foundational model in the field, because the same equation governs the vorticity of the two-dimensional Navier–Stokes equations linearized around the Couette flow. In that context Kelvin already solved it explicitly in 1887 (see [[Literature#Kelvin1887|Kelvin (1887, eq. (34)–(35))]] and [[History of the problem]]).
 
-== Setting ==
-{{Placeholder start}}The flow <math display="inline">u=(y,0)</math> on <math display="inline">\mathbb{T}\times\mathbb{R}</math>: the equation, the Fourier modes, what decays.{{Placeholder end}}
+We use this model to illustrate what typical mixing and enhanced dissipation results look like, and how the two are related. The model is simple enough that each proof technique can be carried out in full. They are all presented below on this single example.
+
+{{Fold start|kind=note|title=Why this domain?}}
+The domain <math display="inline">\mathbb{T}\times\mathbb{R}</math> is mathematically convenient: there are no boundaries, and one can take the Fourier transform in both variables.
+
+There is also a more geometric motivation. Consider a circular flow in the plane, <math display="inline">u=rV(r)e_\theta</math>, for which the equation reads <math display="inline">\partial_tf+V(r)\partial_\theta f=\nu\Delta f</math>. The log-polar coordinates <math display="inline">X=e^s\cos(\theta)</math>, <math display="inline">Y=e^s\sin(\theta)</math> identify <math display="inline">\mathbb{R}^2\setminus\{0\}</math> with <math display="inline">(\theta,s)\in\mathbb{T}\times\mathbb{R}</math>, as shown in the figure below.
+
+{{Media|kind=image|file=log-polar-map.svg|caption=Left: the plane, with two annuli of the same width and a ray (dashed) carried by a circular flow for some time (solid). Right: the same picture in log-polar coordinates. The annuli become strips, and the circular flow becomes a shear flow.}}
+
+Note that this is a conformal change of variables, so the Laplacian only gains a scalar factor, and the equation becomes
+<math display="block">\partial_t f+V(e^s)\partial_\theta f=\nu e^{-2s}(\partial_\theta^2+\partial_s^2)f,\qquad (\theta,s)\in\mathbb{T}\times\mathbb{R}.</math>
+If we localize near a radius <math display="inline">r_0=e^{s_0}</math> where <math display="inline">V'(r_0)\neq0</math>, then to leading order, and up to constants, we recover the equation for the Couette flow. In this sense, the Couette flow can be seen as a first local approximation of a radial vortex in <math display="inline">\mathbb{R}^2</math>, in a region where the angular velocity is strictly monotone. Below is a video showing the effect of the conformal mapping.
+
+{{Media|kind=video|file=log-polar.mp4|poster=log-polar-poster.png|caption=Left: a scalar transported and diffused by the circular flow with <math display="inline">V(r)=1/(1+r^2)</math>. Right: the same solution in log-polar coordinates, where the flow is a shear flow.|record=num-log-polar}}
+{{Fold end}}
 
 == The result ==
 {{Theorem start|id=thm-couette|title=Theorem (enhanced dissipation for Couette flow).}}
@@ -13,9 +28,8 @@
 {{Fold start|kind=idea|title=Idea}}
 {{Placeholder start}}The key mechanism in a few lines.{{Placeholder end}}
 {{Fold end}}
-{{Fold start|kind=arch|title=Proof architecture}}
-{{Placeholder start}}The proof as a short chain of steps, and its diagram.{{Placeholder end}}
-{{Fold end}}
+== Notation and setting ==
+{{Placeholder start}}The flow <math display="inline">u=(y,0)</math> on <math display="inline">\mathbb{T}\times\mathbb{R}</math>: the equation, the Fourier modes, what decays.{{Placeholder end}}
 
 == One example, every technique ==
 Each proof below is written for this example only, to show the mechanism; the general results, with complete proofs, are in the part ''Techniques and general results''.
@@ -53,5 +67,6 @@ General theory: [[Hörmander theory]].
 {{Placeholder start}}What the example shows, and what the general theory keeps of it.{{Placeholder end}}
 
 == References ==
-<!-- refs-begin: -->
+<!-- refs-begin: Kelvin1887 -->
+# W. Thomson (Lord Kelvin), ''Stability of fluid motion: rectilineal motion of viscous fluid between two parallel planes'', Philosophical Magazine (5) '''24''' (1887), 188–196, [https://doi.org/10.1080/14786448708628078 doi:10.1080/14786448708628078].
 <!-- refs-end -->

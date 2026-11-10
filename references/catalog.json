@@ -28,7 +28,7 @@
       "checked_on": "2026-11-05",
       "local_pdf": "references/pdfs/CotiZelati_Crippa_Iyer_Mazzucato_2024_Survey.pdf",
       "local_pdf_version": "v1",
-      "topic_group": "Orientation",
+      "topic_group": "Reviews",
       "publication_status": "published",
       "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked"
     },
@@ -56,7 +56,7 @@
       "checked_on": "2026-11-05",
       "local_pdf": "references/pdfs/Mazzucato_Feng_Nobili_2026_Survey.pdf",
       "local_pdf_version": "v2",
-      "topic_group": "Orientation",
+      "topic_group": "Reviews",
       "publication_status": "published",
       "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked"
     },
@@ -84,9 +84,10 @@
       "checked_on": "2026-11-05",
       "local_pdf": "references/pdfs/Constantin_Kiselev_Ryzhik_Zlatos_2008_RelaxationEnhancement.pdf",
       "local_pdf_version": "v1",
-      "topic_group": "General mechanisms and rate limitations",
+      "topic_group": "Deterministic enhanced dissipation",
       "publication_status": "published",
-      "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked"
+      "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
+      "topic_subgroup": "General criteria and limits"
     },
     {
       "key": "FI2019",
@@ -110,9 +111,10 @@
       "checked_on": "2026-11-05",
       "local_pdf": "references/pdfs/Feng_Iyer_2019_MixingDissipation.pdf",
       "local_pdf_version": "v4",
-      "topic_group": "General mechanisms and rate limitations",
+      "topic_group": "Deterministic enhanced dissipation",
       "publication_status": "published",
-      "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked"
+      "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
+      "topic_subgroup": "General criteria and limits"
     },
     {
       "key": "CZDE2020",
@@ -140,9 +142,10 @@
       ],
       "local_pdf": "references/pdfs/CotiZelati_Delgadino_Elgindi_2020_MixingDissipation.pdf",
       "local_pdf_version": "v1",
-      "topic_group": "General mechanisms and rate limitations",
+      "topic_group": "Deterministic enhanced dissipation",
       "publication_status": "published",
-      "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked"
+      "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
+      "topic_subgroup": "General criteria and limits"
     },
     {
       "key": "Wei2021Resolvent",
@@ -165,9 +168,10 @@
       "checked_on": "2026-11-05",
       "local_pdf": "references/pdfs/Wei_2021_ResolventEstimate.pdf",
       "local_pdf_version": "v1",
-      "topic_group": "General mechanisms and rate limitations",
+      "topic_group": "Deterministic enhanced dissipation",
       "publication_status": "published",
-      "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked"
+      "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
+      "topic_subgroup": "General criteria and limits"
     },
     {
       "key": "Seis2023",
@@ -190,9 +194,10 @@
       "checked_on": "2026-11-05",
       "local_pdf": "references/pdfs/Seis_2023_RateBounds.pdf",
       "local_pdf_version": "v3",
-      "topic_group": "General mechanisms and rate limitations",
+      "topic_group": "Deterministic enhanced dissipation",
       "publication_status": "published",
-      "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked"
+      "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
+      "topic_subgroup": "General criteria and limits"
     },
     {
       "key": "CoopermanIyerRowanSon2025",
@@ -218,9 +223,10 @@
       "checked_on": "2026-11-05",
       "local_pdf": "references/pdfs/Cooperman_Iyer_Rowan_Son_2025_SlowDissipation.pdf",
       "local_pdf_version": "v2",
-      "topic_group": "General mechanisms and rate limitations",
+      "topic_group": "Deterministic enhanced dissipation",
       "publication_status": "preprint",
-      "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked"
+      "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
+      "topic_subgroup": "General criteria and limits"
     },
     {
       "key": "BedrossianCotiZelati2017",
@@ -244,9 +250,10 @@
       "checked_on": "2026-11-05",
       "local_pdf": "references/pdfs/Bedrossian_CotiZelati_2017_ShearFlows.pdf",
       "local_pdf_version": "v4",
-      "topic_group": "Smooth stationary shears",
+      "topic_group": "Deterministic enhanced dissipation",
       "publication_status": "published",
-      "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked"
+      "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
+      "topic_subgroup": "Shear, radial and other symmetric flows"
     },
     {
       "key": "CotiZelati2020StableMixing",
@@ -267,11 +274,12 @@
       "priority": "core",
       "annotation": "Combines sharp monotone-shear L2 dissipation at rate proportional to ν^(1/3) with inviscid t^(−1) decay in a negative Sobolev norm, uniformly as ν tends to zero. Uses hypocoercivity and a vector field commuting with transport. Useful for explaining that mixing and enhanced dissipation are different estimates that can coexist in one bound.",
       "checked_on": "2026-11-05",
-      "topic_group": "Smooth stationary shears",
+      "topic_group": "Deterministic enhanced dissipation",
       "publication_status": "published",
       "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
       "local_pdf": null,
-      "local_pdf_version": null
+      "local_pdf_version": null,
+      "topic_subgroup": "Shear, radial and other symmetric flows"
     },
     {
       "key": "CotiZelatiDrivas2021",
@@ -296,9 +304,10 @@
       "checked_on": "2026-11-05",
       "local_pdf": "references/pdfs/CotiZelati_Drivas_2021_Sharpness.pdf",
       "local_pdf_version": "v1",
-      "topic_group": "Smooth stationary shears",
+      "topic_group": "Deterministic enhanced dissipation",
       "publication_status": "published",
-      "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked"
+      "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
+      "topic_subgroup": "Shear, radial and other symmetric flows"
     },
     {
       "key": "AlbrittonBeekieNovack2022",
@@ -323,9 +332,10 @@
       "checked_on": "2026-11-05",
       "local_pdf": "references/pdfs/Albritton_Beekie_Novack_2022_Hypoellipticity.pdf",
       "local_pdf_version": "v1",
-      "topic_group": "Smooth stationary shears",
+      "topic_group": "Deterministic enhanced dissipation",
       "publication_status": "published",
-      "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked"
+      "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
+      "topic_subgroup": "Shear, radial and other symmetric flows"
     },
     {
       "key": "CotiZelatiGallay2023",
@@ -349,9 +359,10 @@
       "checked_on": "2026-11-05",
       "local_pdf": "references/pdfs/CotiZelati_Gallay_2023_ParallelShears.pdf",
       "local_pdf_version": "v2",
-      "topic_group": "Smooth stationary shears",
+      "topic_group": "Deterministic enhanced dissipation",
       "publication_status": "published",
-      "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked"
+      "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
+      "topic_subgroup": "Shear, radial and other symmetric flows"
     },
     {
       "key": "BeckChaudharyWayne2015",
@@ -374,11 +385,12 @@
       "priority": "extended",
       "annotation": "A simplified tracer model for shear in an infinite channel. Uses Fourier and center-manifold methods to split exponential high-mode decay from algebraic low-mode behavior governed by an effective diffusion coefficient proportional to 1/ν. A useful elementary example preceding the full PDE treatment; do not conflate long-wave Taylor dispersion with nonzero-mode enhanced dissipation on a periodic channel.",
       "checked_on": "2026-11-05",
-      "topic_group": "Circular and Hamiltonian flows and Taylor dispersion",
+      "topic_group": "Deterministic enhanced dissipation",
       "publication_status": "published",
       "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
       "local_pdf": null,
-      "local_pdf_version": null
+      "local_pdf_version": null,
+      "topic_subgroup": "Shear, radial and other symmetric flows"
     },
     {
       "key": "BeckChaudharyWayne2020",
@@ -403,9 +415,10 @@
       "checked_on": "2026-11-05",
       "local_pdf": "references/pdfs/Beck_Chaudhary_Wayne_2020_TaylorDispersion.pdf",
       "local_pdf_version": "v2",
-      "topic_group": "Circular and Hamiltonian flows and Taylor dispersion",
+      "topic_group": "Deterministic enhanced dissipation",
       "publication_status": "published",
-      "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked"
+      "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
+      "topic_subgroup": "Shear, radial and other symmetric flows"
     },
     {
       "key": "CotiZelatiDolce2020",
@@ -429,9 +442,10 @@
       "checked_on": "2026-11-05",
       "local_pdf": "references/pdfs/CotiZelati_Dolce_2020_SeparationTimescales.pdf",
       "local_pdf_version": "v1",
-      "topic_group": "Circular and Hamiltonian flows and Taylor dispersion",
+      "topic_group": "Deterministic enhanced dissipation",
       "publication_status": "published",
-      "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked"
+      "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
+      "topic_subgroup": "Shear, radial and other symmetric flows"
     },
     {
       "key": "FMN2023",
@@ -454,11 +468,13 @@
       "priority": "extended",
       "annotation": "Uses m-accretive resolvent estimates to quantify enhanced decay for appropriately projected scalars under circular/cylindrical advection in two/three dimensions, allowing diffusion and hyperdiffusion. Extends Coti Zelati–Dolce in these geometries. The projection and nondegeneracy assumptions matter; do not claim enhanced decay for invariant components of arbitrary data.",
       "checked_on": "2026-11-05",
-      "topic_group": "Circular and Hamiltonian flows and Taylor dispersion",
+      "topic_group": "Deterministic enhanced dissipation",
       "publication_status": "published",
       "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
       "local_pdf": null,
-      "local_pdf_version": null
+      "local_pdf_version": null,
+      "topic_subgroup": "Shear, radial and other symmetric flows",
+      "date": "2023-03"
     },
     {
       "key": "IZ2023",
@@ -480,11 +496,12 @@
       "priority": "extended",
       "annotation": "Quantifies dissipation enhancement for a family of cellular flows in terms of flow amplitude, cell size and diffusivity, using probabilistic coupling and a comparison between dissipation and stochastic mixing times. Gives distinct regimes governed by one-cell exit and effective diffusivity. Keep the changing-cell-scale family separate from a fixed cellular Hamiltonian's small-diffusivity asymptotics.",
       "checked_on": "2026-11-05",
-      "topic_group": "Circular and Hamiltonian flows and Taylor dispersion",
+      "topic_group": "Deterministic enhanced dissipation",
       "publication_status": "published",
       "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
       "local_pdf": null,
-      "local_pdf_version": null
+      "local_pdf_version": null,
+      "topic_subgroup": "Other smooth flows"
     },
     {
       "key": "BrueCotiZelatiMarconi2024",
@@ -507,11 +524,12 @@
       "priority": "core",
       "annotation": "Autonomous Hamiltonians in C1∩W2,p on compact two-dimensional manifolds. Derives upper bounds on possible dissipation rates through orbit-period behavior: at most O(ν^(1/3)) generally, with stronger obstructions near nondegenerate elliptic points, including an O(ν^(1/2)) bound for the standard cellular flow. Contains additional bounds for that example. This paper provides rate obstructions as well as constructive estimates; do not reverse upper bounds on a rate into upper bounds on a dissipation time.",
       "checked_on": "2026-11-05",
-      "topic_group": "Circular and Hamiltonian flows and Taylor dispersion",
+      "topic_group": "Deterministic enhanced dissipation",
       "publication_status": "published",
       "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
       "local_pdf": null,
-      "local_pdf_version": null
+      "local_pdf_version": null,
+      "topic_subgroup": "Other smooth flows"
     },
     {
       "key": "CotiZelatiDolceLo2024",
@@ -536,9 +554,10 @@
       "checked_on": "2026-11-05",
       "local_pdf": "references/pdfs/CotiZelati_Dolce_Lo_2024_DiscsPipes.pdf",
       "local_pdf_version": "v1",
-      "topic_group": "Circular and Hamiltonian flows and Taylor dispersion",
+      "topic_group": "Deterministic enhanced dissipation",
       "publication_status": "published",
-      "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked"
+      "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
+      "topic_subgroup": "Shear, radial and other symmetric flows"
     },
     {
       "key": "DolceJohanssonSorella2025",
@@ -564,9 +583,10 @@
       "aliases": [],
       "local_pdf": "references/pdfs/Dolce_Johansson_Sorella_2025_HamiltonianFlows.pdf",
       "local_pdf_version": "v1",
-      "topic_group": "Circular and Hamiltonian flows and Taylor dispersion",
+      "topic_group": "Deterministic enhanced dissipation",
       "publication_status": "published",
-      "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked"
+      "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
+      "topic_subgroup": "Other smooth flows"
     },
     {
       "key": "LiZhang2025Unbounded",
@@ -591,11 +611,12 @@
       "aliases": [
         "LiZhang2025Cylinder"
       ],
-      "topic_group": "Circular and Hamiltonian flows and Taylor dispersion",
+      "topic_group": "Deterministic enhanced dissipation",
       "publication_status": "preprint",
       "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
       "local_pdf": null,
-      "local_pdf_version": null
+      "local_pdf_version": null,
+      "topic_subgroup": "Shear, radial and other symmetric flows"
     },
     {
       "key": "CobleHe2024",
@@ -617,11 +638,12 @@
       "priority": "extended",
       "annotation": "Uses hypocoercivity functionals with time weights to obtain enhanced dissipation and Taylor-dispersion estimates for passive scalars when the shear critical points move sufficiently slowly, matching stationary-case rates under the paper hypotheses. The arXiv title is A Note on Enhanced Dissipation and Taylor Dispersion of Time-dependent Shear Flows; journal title and metadata are confirmed by the published Benthaus-Nobili reference list.",
       "checked_on": "2026-11-05",
-      "topic_group": "Time dependent shears and localized estimates",
+      "topic_group": "Deterministic enhanced dissipation",
       "publication_status": "published",
       "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
       "local_pdf": null,
-      "local_pdf_version": null
+      "local_pdf_version": null,
+      "topic_subgroup": "Shear, radial and other symmetric flows"
     },
     {
       "key": "BedrossianHeIyerWang2025",
@@ -645,11 +667,12 @@
       "priority": "extended",
       "annotation": "Studies the linear passive scalar and Poisson equations in a periodic finite channel for time-varying shears close to Couette. Establishes spatially varying pseudo-Gevrey regularity with adapted derivatives, homogeneous Dirichlet conditions and data supported away from the walls. Relevant advanced technical reference; its nonlinear Navier-Stokes companion is a separate paper. Journal metadata is confirmed in the references of a published primary EMS paper; the author webpage labels the work 2024.",
       "checked_on": "2026-11-05",
-      "topic_group": "Time dependent shears and localized estimates",
+      "topic_group": "Deterministic enhanced dissipation",
       "publication_status": "published",
       "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
       "local_pdf": null,
-      "local_pdf_version": null
+      "local_pdf_version": null,
+      "topic_subgroup": "Shear, radial and other symmetric flows"
     },
     {
       "key": "BenthausCocliteNobili2026",
@@ -674,9 +697,10 @@
       "checked_on": "2026-11-05",
       "local_pdf": "references/pdfs/Benthaus_Coclite_Nobili_2026_TranslatingShear.pdf",
       "local_pdf_version": "v1",
-      "topic_group": "Time dependent shears and localized estimates",
+      "topic_group": "Deterministic enhanced dissipation",
       "publication_status": "preprint",
-      "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked"
+      "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
+      "topic_subgroup": "Shear, radial and other symmetric flows"
     },
     {
       "key": "BenthausNobili2026",
@@ -700,9 +724,10 @@
       "checked_on": "2026-11-05",
       "local_pdf": "references/pdfs/Benthaus_Nobili_2026_TimeModulation.pdf",
       "local_pdf_version": "v2",
-      "topic_group": "Time dependent shears and localized estimates",
+      "topic_group": "Deterministic enhanced dissipation",
       "publication_status": "published",
-      "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked"
+      "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
+      "topic_subgroup": "Shear, radial and other symmetric flows"
     },
     {
       "key": "He2026Localized",
@@ -725,9 +750,10 @@
       "checked_on": "2026-11-05",
       "local_pdf": "references/pdfs/He_2026_LocalizedDissipation.pdf",
       "local_pdf_version": "v1",
-      "topic_group": "Time dependent shears and localized estimates",
+      "topic_group": "Deterministic enhanced dissipation",
       "publication_status": "preprint",
-      "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked"
+      "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
+      "topic_subgroup": "Shear, radial and other symmetric flows"
     },
     {
       "key": "ELM2025",
@@ -752,9 +778,10 @@
       "checked_on": "2026-11-05",
       "local_pdf": "references/pdfs/Elgindi_Liss_Mattingly_2025_OptimalDissipation.pdf",
       "local_pdf_version": "v1",
-      "topic_group": "Deterministic mixing constructions",
+      "topic_group": "Deterministic enhanced dissipation",
       "publication_status": "published",
-      "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked"
+      "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
+      "topic_subgroup": "Other smooth flows"
     },
     {
       "key": "ColomboCotiZelatiWidmayer2021",
@@ -777,11 +804,12 @@
       "priority": "extended",
       "annotation": "Studies passive scalars driven by C^α stationary shears. Shows roughness can speed dissipation substantially without a corresponding uniform acceleration of inviscid mixing beyond smooth monotone-shear behavior. Useful counterexample to treating a mixing-rate heuristic as a universal equivalence.",
       "checked_on": "2026-11-05",
-      "topic_group": "Rough velocities and generalized diffusion",
+      "topic_group": "Deterministic enhanced dissipation",
       "publication_status": "published",
       "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
       "local_pdf": null,
-      "local_pdf_version": null
+      "local_pdf_version": null,
+      "topic_subgroup": "Rough velocity fields"
     },
     {
       "key": "He2022Fractional",
@@ -803,11 +831,12 @@
       "priority": "extended",
       "annotation": "Proves enhanced-dissipation and hypoelliptic estimates for passive scalars under steady periodic shear advection with finite-order critical points and fractional dissipation, including a cross-stream-only diffusion model. The proved fractional-power range is gamma in (1/2,2]; bounds contain logarithmic losses in part of that range. At gamma=1 the estimates recover the sharp classical shear rate. Appropriate for an extension chapter; do not state a theorem for every positive fractional power or omit its profile hypotheses.",
       "checked_on": "2026-11-05",
-      "topic_group": "Rough velocities and generalized diffusion",
+      "topic_group": "Deterministic enhanced dissipation",
       "publication_status": "published",
       "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
       "local_pdf": null,
-      "local_pdf_version": null
+      "local_pdf_version": null,
+      "topic_subgroup": "Shear, radial and other symmetric flows"
     },
     {
       "key": "GaleatiGubinelli2023",
@@ -829,11 +858,12 @@
       "priority": "extended",
       "annotation": "Studies passive-scalar mixing and enhanced dissipation for generic rough shear profiles, where generic means prevalence rather than an assertion about every rough profile. Regularity is measured in Besov–Nikolskii B-alpha_(1,infinity), alpha in (0,1). Derives upper/lower bounds identifying the dissipation-rate power nu^(alpha/(alpha+2)) and the corresponding inviscid mixing scale, using rho-irregularity. Complements explicit rough-shear constructions; retain the genericity and function-space qualifications when presenting the results.",
       "checked_on": "2026-11-05",
-      "topic_group": "Rough velocities and generalized diffusion",
+      "topic_group": "Deterministic enhanced dissipation",
       "publication_status": "published",
       "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
       "local_pdf": null,
-      "local_pdf_version": null
+      "local_pdf_version": null,
+      "topic_subgroup": "Rough velocity fields"
     },
     {
       "key": "FM2025",
@@ -855,11 +885,12 @@
       "priority": "extended",
       "annotation": "Conditions and examples for enhanced dissipation on Td, d>=2, under smooth shear advection and generalized diffusion, including fractional/high-order operators and variable coefficients. Applies to well-prepared data, so it should be cited in a clearly specified projected-data setting. University publication metadata gives pages 2203–2215; the author's publication list has a shorter inconsistent page range.",
       "checked_on": "2026-11-05",
-      "topic_group": "Rough velocities and generalized diffusion",
+      "topic_group": "Deterministic enhanced dissipation",
       "publication_status": "published",
       "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
       "local_pdf": null,
-      "local_pdf_version": null
+      "local_pdf_version": null,
+      "topic_subgroup": "Shear, radial and other symmetric flows"
     },
     {
       "key": "RomitoRoveri2025",
@@ -880,11 +911,12 @@
       "priority": "extended",
       "annotation": "Studies passive scalar advection diffusion on the two-dimensional torus for very rough horizontal shears in negative Besov spaces. Extends Galeati-Gubinelli-type results and obtains non-sharp bounds with dissipation rate diverging as diffusivity vanishes. Interpretation depends on a distributional velocity framework and should be separated from classical smooth-flow results. Preprint submitted 31 October 2025.",
       "checked_on": "2026-11-05",
-      "topic_group": "Rough velocities and generalized diffusion",
+      "topic_group": "Deterministic enhanced dissipation",
       "publication_status": "preprint",
       "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
       "local_pdf": null,
-      "local_pdf_version": null
+      "local_pdf_version": null,
+      "topic_subgroup": "Rough velocity fields"
     },
     {
       "key": "BedrossianBlumenthalPunshonSmith2021",
@@ -907,11 +939,12 @@
       "priority": "extended",
       "annotation": "Passive scalar on T^d with random smooth velocities, including suitably forced 2D stochastic Navier–Stokes flows. Proves almost-sure exponential H−1 mixing uniformly in scalar diffusivity and L2 enhanced dissipation after a logarithmic-in-diffusivity waiting time. Stochastic assumptions on the velocity and random prefactors matter; this is distinct from a deterministic autonomous shear theorem.",
       "checked_on": "2026-11-05",
-      "topic_group": "Random stirring and transport noise",
+      "topic_group": "Stochastic enhanced dissipation",
       "publication_status": "published",
       "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
       "local_pdf": null,
-      "local_pdf_version": null
+      "local_pdf_version": null,
+      "topic_subgroup": "Random velocity fields"
     },
     {
       "key": "BCZG2023",
@@ -934,7 +967,7 @@
       "priority": "extended",
       "annotation": "Develops a dynamical/Harris-theorem framework for smooth time-uniformly bounded universal exponential mixing, applied to randomized alternating periodic shears. The published version corrects an earlier claim concerning deterministic sufficiently long shear durations: use the published hypotheses when presenting Pierrehumbert examples. Primarily an inviscid mixing paper, complementary to later direct enhanced-dissipation results.",
       "checked_on": "2026-11-05",
-      "topic_group": "Random stirring and transport noise",
+      "topic_group": "Stochastic mixing",
       "publication_status": "published",
       "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
       "local_pdf": null,
@@ -961,11 +994,12 @@
       "priority": "core",
       "annotation": "Under Harris conditions on a random dynamical system, obtains passive-scalar dissipation on the optimal |log(kappa)| time scale with probability at least 1-o(kappa^N), and almost-sure diffusivity-independent long-time decay rates. Applies to randomly shifted alternating shears introduced by Pierrehumbert. Keep the probabilistic quantifiers and the distinction between initial dissipation time and asymptotic rate.",
       "checked_on": "2026-11-05",
-      "topic_group": "Random stirring and transport noise",
+      "topic_group": "Stochastic enhanced dissipation",
       "publication_status": "published",
       "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
       "local_pdf": null,
-      "local_pdf_version": null
+      "local_pdf_version": null,
+      "topic_subgroup": "Random velocity fields"
     },
     {
       "key": "CotiZelatiHairerVillringer2025",
@@ -989,11 +1023,12 @@
       "annotation": "Develops a stochastic RAGE theorem for the two-point motion of noisy transport and a necessary and sufficient criterion for dissipation enhancement of the corresponding diffusive equation. Also proves sharp rates for stochastic shear examples. This concerns a transport-noise passive scalar SPDE and must be labeled separately from deterministic prescribed-velocity equations. Listed as submitted on the author research page.",
       "checked_on": "2026-11-05",
       "aliases": [],
-      "topic_group": "Random stirring and transport noise",
+      "topic_group": "Stochastic enhanced dissipation",
       "publication_status": "preprint",
       "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
       "local_pdf": null,
-      "local_pdf_version": null
+      "local_pdf_version": null,
+      "topic_subgroup": "Transport noise"
     },
     {
       "key": "DelZottoNualart2026",
@@ -1014,7 +1049,7 @@
       "priority": "extended",
       "annotation": "Constructs smooth incompressible prescribed velocities on the unit sphere by alternating two Rossby-Haurwitz flows with random amplitudes. Establishes exponential mixing of mean-free passive scalars and optimal enhanced dissipation in the presence of molecular diffusion. This is a randomized velocity construction, not a nonlinear fluid stability theorem. Preprint submitted 9 June 2026.",
       "checked_on": "2026-11-05",
-      "topic_group": "Random stirring and transport noise",
+      "topic_group": "Stochastic mixing",
       "publication_status": "preprint",
       "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
       "local_pdf": null,
@@ -1040,11 +1075,13 @@
       "priority": "extended",
       "annotation": "Quantifies enhanced decay for a linear passive scalar driven by white-in-time, small-scale spatial transport noise in a joint regime of small molecular diffusion and small noise intensity. Noise spectra are tuned to Kolmogorov scaling. A stochastic extension rather than a sharp deterministic shear reference. Published online 15 April 2026; open-access publisher PDF available.",
       "checked_on": "2026-11-05",
-      "topic_group": "Random stirring and transport noise",
+      "topic_group": "Stochastic enhanced dissipation",
       "publication_status": "published",
       "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
       "local_pdf": null,
-      "local_pdf_version": null
+      "local_pdf_version": null,
+      "topic_subgroup": "Transport noise",
+      "date": "2026-04"
     },
     {
       "key": "IKX2014",
@@ -1067,7 +1104,7 @@
       "priority": "adjacent",
       "annotation": "For diffusion-free scalar transport on the torus, proves an exponential lower bound on the H-minus-one mixing norm under an enstrophy constraint, with a rate depending on the initial scalar's support. Connects Crippa–De Lellis flow estimates to optimal mixing. Use for the regularity-budget context, not as an enhanced-dissipation upper bound.",
       "checked_on": "2026-11-05",
-      "topic_group": "Inviscid mixing anomalous dissipation and further lower bounds",
+      "topic_group": "Deterministic mixing",
       "publication_status": "published",
       "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
       "local_pdf": null,
@@ -1094,7 +1131,7 @@
       "priority": "adjacent",
       "annotation": "Constructs two-dimensional incompressible flows and scalar configurations saturating exponential lower bounds for functional and geometric mixing scales under Sobolev constraints, including the Lipschitz case. A cornerstone for explaining inviscid filamentation, but the constructions of scalar-specific mixing are not by themselves uniform positive-diffusivity semigroup estimates.",
       "checked_on": "2026-11-05",
-      "topic_group": "Inviscid mixing anomalous dissipation and further lower bounds",
+      "topic_group": "Deterministic mixing",
       "publication_status": "published",
       "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
       "local_pdf": null,
@@ -1120,7 +1157,7 @@
       "priority": "adjacent",
       "annotation": "Constructs time-periodic incompressible universal mixers in every dimension, with exponential mixing for sufficiently regular initial configurations and uniform-in-time Sobolev control in a range of exponents. Also shows a uniform mixing rate cannot hold for all arbitrary initial data. This is an inviscid transport/mixing reference, distinct from an explicit enhanced-dissipation theorem.",
       "checked_on": "2026-11-05",
-      "topic_group": "Inviscid mixing anomalous dissipation and further lower bounds",
+      "topic_group": "Deterministic mixing",
       "publication_status": "published",
       "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
       "local_pdf": null,
@@ -1148,7 +1185,7 @@
       "priority": "adjacent",
       "annotation": "For any nonconstant locally H1 initial scalar in dimension at least two, constructs an initial-data-dependent divergence-free velocity, almost Lipschitz in a Sobolev sense, causing immediate loss of local H1 regularity. Explains how transport builds gradients. The velocity depends on the initial datum, and the result is inviscid rather than a uniform enhanced-dissipation estimate.",
       "checked_on": "2026-11-05",
-      "topic_group": "Inviscid mixing anomalous dissipation and further lower bounds",
+      "topic_group": "Deterministic mixing",
       "publication_status": "published",
       "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
       "local_pdf": null,
@@ -1176,11 +1213,12 @@
       "priority": "adjacent",
       "annotation": "Explicit incompressible velocity, smooth away from one terminal time and integrable in time with almost-Lipschitz spatial Hölder regularity, that exhibits anomalous dissipation; also sufficient conditions based on controlled inviscid singularity formation. Distinguish order-one loss on a fixed time interval as diffusivity vanishes from enhanced dissipation on a diverging, subdiffusive time scale.",
       "checked_on": "2026-11-05",
-      "topic_group": "Inviscid mixing anomalous dissipation and further lower bounds",
+      "topic_group": "Deterministic enhanced dissipation",
       "publication_status": "published",
       "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
       "local_pdf": null,
-      "local_pdf_version": null
+      "local_pdf_version": null,
+      "topic_subgroup": "Rough velocity fields"
     },
     {
       "key": "NP2022",
@@ -1202,11 +1240,12 @@
       "priority": "extended",
       "annotation": "Derives algebraic lower bounds on energy decay in R2/R3 using Fourier splitting, plus lower bounds on the inverse-gradient mixing norm through gradient estimates and interpolation. Useful for a limitations/lower-bounds chapter and for distinguishing unbounded-domain decay from torus dissipation time; not an upper-bound theorem accelerating all scalar decay.",
       "checked_on": "2026-11-05",
-      "topic_group": "Inviscid mixing anomalous dissipation and further lower bounds",
+      "topic_group": "Deterministic enhanced dissipation",
       "publication_status": "published",
       "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
       "local_pdf": null,
-      "local_pdf_version": null
+      "local_pdf_version": null,
+      "topic_subgroup": "General criteria and limits"
     },
     {
       "key": "EL2024",
@@ -1228,11 +1267,38 @@
       "priority": "adjacent",
       "annotation": "Constructs an incompressible two-dimensional velocity smooth in time with values in every C-alpha, alpha<1, producing anomalous dissipation for smooth nontrivial scalar data; also obtains time-integrated regularity bounds connected to Obukhov–Corrsin predictions. Constant scalar modes remain invariant. This belongs to an adjoining anomalous-dissipation chapter rather than the basic fixed smooth shear theory.",
       "checked_on": "2026-11-05",
-      "topic_group": "Inviscid mixing anomalous dissipation and further lower bounds",
+      "topic_group": "Deterministic enhanced dissipation",
       "publication_status": "published",
       "verification_level": "primary-source bibliographic metadata and abstract; selected theorem qualifications checked",
       "local_pdf": null,
-      "local_pdf_version": null
+      "local_pdf_version": null,
+      "topic_subgroup": "Rough velocity fields"
+    },
+    {
+      "key": "Kelvin1887",
+      "title": "Stability of fluid motion: rectilineal motion of viscous fluid between two parallel planes",
+      "authors": [
+        "William Thomson (Lord Kelvin)"
+      ],
+      "arxiv": null,
+      "preprint_year": null,
+      "publication_year": 1887,
+      "journal": "Philosophical Magazine (5) 24, 188–196",
+      "doi": "10.1080/14786448708628078",
+      "source_urls": [
+        "https://doi.org/10.1080/14786448708628078"
+      ],
+      "topic": "history; Couette flow; linearized Navier–Stokes; explicit solution",
+      "priority": "historical",
+      "annotation": "Kelvin's explicit solution of the two-dimensional Navier–Stokes equations linearized around the Couette flow. Cited on the page Couette flow for the history of the model (eq. (34)–(35), as given by M. Dolce; the equation numbers were not checked against the paper). Title in Crossref: 'XXI. Stability of fluid motion (continued from the May and June numbers).—Rectilineal motion of viscous fluid between two parallel planes', issue 147, August 1887. A paper with the same title appeared in Proc. Roy. Soc. Edinburgh 14 (1888), 359–368, doi:10.1017/s0370164600004119.",
+      "checked_on": "2026-11-10",
+      "topic_group": "Deterministic enhanced dissipation",
+      "publication_status": "published",
+      "verification_level": "bibliographic metadata from the Crossref record of the DOI; the paper itself not read",
+      "local_pdf": null,
+      "local_pdf_version": null,
+      "topic_subgroup": "Shear, radial and other symmetric flows",
+      "date": "1887-08"
     }
   ]
 }

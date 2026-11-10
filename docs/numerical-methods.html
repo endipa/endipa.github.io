@@ -344,11 +344,6 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./provenance-and-ai-use.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Provenance and AI use</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./literature.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Literature</span></a>
   </div>
 </li>
@@ -369,6 +364,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#num-heat-vs-shear" id="toc-num-heat-vs-shear" class="nav-link" data-scroll-target="#num-heat-vs-shear">Heat versus shear on the torus</a></li>
   <li><a href="#num-alternating-shears" id="toc-num-alternating-shears" class="nav-link" data-scroll-target="#num-alternating-shears">Alternating shears with random phases</a></li>
+  <li><a href="#num-log-polar" id="toc-num-log-polar" class="nav-link" data-scroll-target="#num-log-polar">A vortex in log-polar coordinates</a></li>
   </ul></li>
   <li><a href="#solvers" id="toc-solvers" class="nav-link" data-scroll-target="#solvers">Solvers</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
@@ -398,7 +394,7 @@ window.Quarto = {
 
 
 <div class="module-meta">
-<p>Page team: to be named · Status: skeleton, one record</p>
+<p>Contributors: to be named · Status: skeleton, three records</p>
 </div>
 <div class="discuss">
 <a href="https://endipa.zulipchat.com/#narrow/channel/653117-numerics/topic/Numerical.20methods" class="zulip-btn"><i class="bi bi-chat-left-text" aria-hidden="true"></i> Discuss on Zulip</a> <span class="discuss-note">For project members: the Zulip and the wiki are by invitation.</span> <a href="https://endipa.miraheze.org/wiki/Numerical_methods" class="edit-link"><i class="bi bi-pencil-square" aria-hidden="true"></i> This page in the wiki (members)</a> <a href="https://endipa.miraheze.org/wiki/Talk:Numerical_methods?action=edit&amp;section=new&amp;preload=Template:Proposal/Preload-block&amp;preloadtitle=Proposal%3A+" class="edit-link propose-link" title="A new proposal on the talk page of this page in the wiki (members)"><i class="bi bi-journal-plus" aria-hidden="true"></i> Propose a change</a> <a href="tex/numerical-methods.zip" class="edit-link tex-link" download="numerical-methods.zip"><i class="bi bi-file-earmark-code" aria-hidden="true"></i> TeX source (zip, with figures)</a> <a href="tex/numerical-methods.pdf" class="edit-link pdf-link" download="numerical-methods.pdf"><i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> PDF</a>
@@ -642,6 +638,26 @@ window.Quarto = {
 </div>
 </div>
 </section>
+<section id="num-log-polar" class="level3">
+<h3 class="anchored" data-anchor-id="num-log-polar">A vortex in log-polar coordinates</h3>
+<div class="levels">
+<p><span class="lv">Produces</span> <span class="lv-text">the video in the note <em>Why this domain?</em> of <a href="./couette-flow.html">Couette flow</a> (<code>log-polar.mp4</code>) and the check figure below; the same script draws the figure of that note (<code>log-polar-map.svg</code>) from the explicit formulas, without any computation</span></p>
+<p><span class="lv">Equation</span> <span class="lv-text"><span class="math inline">\(\partial_t f+V(r)\partial_\theta f=\nu\Delta f\)</span> in the plane, with <span class="math inline">\(V(r)=1/(1+r^2)\)</span>; in the coordinates <span class="math inline">\(r=e^s\)</span> it is <span class="math inline">\(\partial_t f+V(e^s)\partial_\theta f=\nu e^{-2s}(\partial_\theta^2+\partial_s^2)f\)</span> on <span class="math inline">\((\theta,s)\in\mathbb{T}\times\mathbb{R}\)</span>; datum <span class="math inline">\(f_0=\cos(2\theta)\exp(-(s/0.8)^4)\)</span>. The checks compare with the same equation without the flow (<span class="math inline">\(V=0\)</span>)</span></p>
+<p><span class="lv">Parameters</span> <span class="lv-text"><span class="math inline">\(\nu=10^{-3}\)</span>, times <span class="math inline">\(0\le t\le 40\)</span>; video of 15 s at 24 frames per second, time running uniformly, last frame held 1.5 s</span></p>
+<p><span class="lv">Method</span> <span class="lv-text">one Fourier mode in <span class="math inline">\(\theta\)</span>: <span class="math inline">\(f=\operatorname{Re}(g(t,s)e^{2i\theta})\)</span> with <span class="math inline">\(e^{2s}\partial_t g=-2iV(e^s)e^{2s}g+\nu(\partial_s^2-4)g\)</span> for <span class="math inline">\(-3.2\le s\le 2.8\)</span> and <span class="math inline">\(g=0\)</span> at the two ends; centred second-order differences with 1500 intervals in <span class="math inline">\(s\)</span>; Crank–Nicolson scheme with time step 0.01</span></p>
+<p><span class="lv">Checks</span> <span class="lv-text">with 3000 intervals and time step 0.005 the norms agree to a relative <span class="math inline">\(2.6\cdot10^{-4}\)</span>; the energy balance <span class="math inline">\(\int|g(t)|^2e^{2s}ds+2\nu\int_0^t\!\!\int(|\partial_s g|^2+4|g|^2)\,ds\,dt'=\int|g(0)|^2e^{2s}ds\)</span> holds to <span class="math inline">\(1.6\cdot10^{-5}\)</span> of its initial value; <span class="math inline">\(|g|\)</span> at the two ends of the grid stays below <span class="math inline">\(2.2\cdot10^{-5}\)</span>. The norm is that of <span class="math inline">\(L^2\)</span> of the plane, <span class="math inline">\(\|f(t)\|^2=\int|g(t)|^2e^{2s}ds\)</span> up to a constant; at <span class="math inline">\(t=40\)</span> it is 0.105 times its initial value, and 0.852 times without the flow</span></p>
+<p><span class="lv">Code</span> <span class="lv-text"><a href="https://github.com/endipa/endipa.github.io/blob/main/numerics/log-polar/log_polar.py">numerics/log-polar/log_polar.py</a> in the repository (Python 3, NumPy, SciPy, Matplotlib, ffmpeg); <code>python3 log_polar.py --out ../../wiki/media</code></span></p>
+<p><span class="lv">Status</span> <span class="lv-text">computed by Claude (AI) on 10 November 2026; not yet checked by a human <span class="badge-demo">demo text</span></span></p>
+</div>
+<div class="edit-unit" data-unit="pc7a80844">
+<div class="media-figure media-image">
+<img class="media-img" src="media/log-polar-check.png" alt="Left: the norms with the vortex, at two resolutions, and without the flow. Right: the relative difference of the two runs and the energy-balance residual." loading="lazy">
+<div class="media-caption">
+<p>Left: the norms with the vortex, at two resolutions, and without the flow. Right: the relative difference of the two runs and the energy-balance residual.</p>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="solvers" class="level2">
 <h2 class="anchored" data-anchor-id="solvers">Solvers</h2>
@@ -660,7 +676,7 @@ window.Quarto = {
 <li>W. Cooperman, G. Iyer and S. Son, <em>A Harris theorem for enhanced dissipation, and an example of Pierrehumbert</em>, Nonlinearity <strong>38</strong> (2025), 045027, <a href="https://arxiv.org/abs/2403.19858">arXiv:2403.19858</a>.</li>
 </ol>
 <!-- refs-end -->
-<script type="application/json" id="edit-units">{"page": "Numerical methods", "talk": "Talk:Numerical methods", "edit": "https://endipa.miraheze.org/wiki/", "preload": "Template:Proposal/Preload", "units": {"p4bbfd7ac": "Every computed picture and video of this wiki has a record on this page: what was computed, how, with which parameters and checks, and the code that produced it.", "p10a182c4": "\\begin{itemize}\n  \\item A record is a section with an anchor \\texttt{num-…}; the picture or video links to it with the parameter \\texttt{record} of \\wikilink{Template:Media}{Media}.\n  \\item It gives the equation, the parameters, the method, the checks, the code and how to run it, and its status.\n  \\item The code is in the folder \\texttt{numerics/} of the \\href{https://github.com/endipa/endipa.github.io}{repository} of the wiki, one folder per record, with the output of its checks.\n\\end{itemize}", "p42910016": "\\media{image}{heat-vs-shear-check.png}{Left: the norms of the two runs and of the heat equation. Right: the relative difference of the two runs and the energy-balance residual.}", "p354f7890": "\\media{image}{alternating-shears-check.png}{Left: the norms for $\\nu=10^{-4}$, with two resolutions for the alternating shears. Right: the time for the norm to halve, against $1/\\nu$, logarithmic scales.}", "peb7781f4": "\\placeholder{The methods used across the records, with their strengths and limits.}"}}</script>
+<script type="application/json" id="edit-units">{"page": "Numerical methods", "talk": "Talk:Numerical methods", "edit": "https://endipa.miraheze.org/wiki/", "preload": "Template:Proposal/Preload", "units": {"p4bbfd7ac": "Every computed picture and video of this wiki has a record on this page: what was computed, how, with which parameters and checks, and the code that produced it.", "p10a182c4": "\\begin{itemize}\n  \\item A record is a section with an anchor \\texttt{num-…}; the picture or video links to it with the parameter \\texttt{record} of \\wikilink{Template:Media}{Media}.\n  \\item It gives the equation, the parameters, the method, the checks, the code and how to run it, and its status.\n  \\item The code is in the folder \\texttt{numerics/} of the \\href{https://github.com/endipa/endipa.github.io}{repository} of the wiki, one folder per record, with the output of its checks.\n\\end{itemize}", "p42910016": "\\media{image}{heat-vs-shear-check.png}{Left: the norms of the two runs and of the heat equation. Right: the relative difference of the two runs and the energy-balance residual.}", "p354f7890": "\\media{image}{alternating-shears-check.png}{Left: the norms for $\\nu=10^{-4}$, with two resolutions for the alternating shears. Right: the time for the norm to halve, against $1/\\nu$, logarithmic scales.}", "pc7a80844": "\\media{image}{log-polar-check.png}{Left: the norms with the vortex, at two resolutions, and without the flow. Right: the relative difference of the two runs and the energy-balance residual.}", "peb7781f4": "\\placeholder{The methods used across the records, with their strengths and limits.}"}}</script>
 <style>
 .edit-unit { position: relative; }
 .edit-unit > .edit-btn { position: absolute; top: 0.1rem; right: -2.1rem; width: 1.7rem; height: 1.7rem; padding: 0; border: 1px solid #c9cfd8;

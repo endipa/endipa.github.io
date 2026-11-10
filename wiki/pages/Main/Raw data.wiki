@@ -1,4 +1,4 @@
-<div class="mod-meta">Page team: to be named · Status: skeleton</div>
+<div class="mod-meta">Contributors: to be named · Status: skeleton</div>
 {{Discuss|channel=advances}}
 
 AI-generated proofs, numerical observations and sketches, labelled {{Raw}} until a human has checked them. AI-generated text is quoted verbatim, with its source and date; how an entry moves on is explained on [[Related results#How an entry moves|Related results]].

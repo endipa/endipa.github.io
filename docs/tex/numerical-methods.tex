@@ -112,7 +112,7 @@
 \author{Wiki \emph{Enhanced dissipation for passive scalars}}
 \date{10 November 2026}
 \maketitle
-\pagestatus{Page team: to be named · Status: skeleton, one record}
+\pagestatus{Contributors: to be named · Status: skeleton, three records}
 \zulip{numerics}
 
 Every computed picture and video of this wiki has a record on this page: what was computed, how, with which parameters and checks, and the code that produced it.
@@ -326,6 +326,18 @@ if __name__ == "__main__":
 \lv{Status}{computed by Claude (AI) on 8 November 2026; not yet checked by a human \demo{}}
 \end{levels}
 \media{image}{alternating-shears-check.png}{Left: the norms for $\nu=10^{-4}$, with two resolutions for the alternating shears. Right: the time for the norm to halve, against $1/\nu$, logarithmic scales.}
+
+\subsection{A vortex in log-polar coordinates}\label{num-log-polar}
+\begin{levels}
+\lv{Produces}{the video in the note \emph{Why this domain?} of \wikilink{Couette flow}{} (\texttt{log-polar.mp4}) and the check figure below; the same script draws the figure of that note (\texttt{log-polar-map.svg}) from the explicit formulas, without any computation}
+\lv{Equation}{$\partial_t f+V(r)\partial_\theta f=\nu\Delta f$ in the plane, with $V(r)=1/(1+r^2)$; in the coordinates $r=e^s$ it is $\partial_t f+V(e^s)\partial_\theta f=\nu e^{-2s}(\partial_\theta^2+\partial_s^2)f$ on $(\theta,s)\in\mathbb{T}\times\mathbb{R}$; datum $f_0=\cos(2\theta)\exp(-(s/0.8)^4)$. The checks compare with the same equation without the flow ($V=0$)}
+\lv{Parameters}{$\nu=10^{-3}$, times $0\le t\le 40$; video of 15 s at 24 frames per second, time running uniformly, last frame held 1.5 s}
+\lv{Method}{one Fourier mode in $\theta$: $f=\operatorname{Re}(g(t,s)e^{2i\theta})$ with $e^{2s}\partial_t g=-2iV(e^s)e^{2s}g+\nu(\partial_s^2-4)g$ for $-3.2\le s\le 2.8$ and $g=0$ at the two ends; centred second-order differences with 1500 intervals in $s$; Crank–Nicolson scheme with time step 0.01}
+\lv{Checks}{with 3000 intervals and time step 0.005 the norms agree to a relative $2.6\cdot10^{-4}$; the energy balance $\int|g(t)|^2e^{2s}ds+2\nu\int_0^t\!\!\int(|\partial_s g|^2+4|g|^2)\,ds\,dt'=\int|g(0)|^2e^{2s}ds$ holds to $1.6\cdot10^{-5}$ of its initial value; $|g|$ at the two ends of the grid stays below $2.2\cdot10^{-5}$. The norm is that of $L^2$ of the plane, $\|f(t)\|^2=\int|g(t)|^2e^{2s}ds$ up to a constant; at $t=40$ it is 0.105 times its initial value, and 0.852 times without the flow}
+\lv{Code}{\href{https://github.com/endipa/endipa.github.io/blob/main/numerics/log-polar/log_polar.py}{numerics/log-polar/log\_polar.py} in the repository (Python 3, NumPy, SciPy, Matplotlib, ffmpeg); \texttt{python3 log\_polar.py --out ../../wiki/media}}
+\lv{Status}{computed by Claude (AI) on 10 November 2026; not yet checked by a human \demo{}}
+\end{levels}
+\media{image}{log-polar-check.png}{Left: the norms with the vortex, at two resolutions, and without the flow. Right: the relative difference of the two runs and the energy-balance residual.}
 
 \section{Solvers}
 \placeholder{The methods used across the records, with their strengths and limits.}

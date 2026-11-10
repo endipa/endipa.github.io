@@ -52,7 +52,7 @@ CONFIG = {'title': 'Wiki edition', 'subtitle': 'A modular exposition built from 
           'author': 'Project members, to be listed; first draft by Claude (AI)',
           'wiki_url': 'wiki-preview/', 'zulip_host': '',
           'footer_left': "Built from the wiki by a script, never edited by hand. Text marked 'demo text' was drafted by Claude and is to be replaced by human authors.",
-          'footer_right': 'AI-generated arguments appear only as verbatim quotes; see Provenance and AI use.'}
+          'footer_right': 'AI-generated arguments appear only as verbatim quotes; see How to contribute.'}
 if os.path.exists(CONFIG_PATH):
     CONFIG.update(json.load(open(CONFIG_PATH, encoding='utf-8')))
 REF_PREFIXES = ('thm-', 'prp-', 'lem-', 'cor-', 'def-', 'sec-')

@@ -309,11 +309,6 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./provenance-and-ai-use.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Provenance and AI use</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./literature.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Literature</span></a>
   </div>
 </li>
@@ -329,8 +324,8 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#setting" id="toc-setting" class="nav-link active" data-scroll-target="#setting">Setting</a></li>
-  <li><a href="#the-result" id="toc-the-result" class="nav-link" data-scroll-target="#the-result">The result</a></li>
+  <li><a href="#the-result" id="toc-the-result" class="nav-link active" data-scroll-target="#the-result">The result</a></li>
+  <li><a href="#notation-and-setting" id="toc-notation-and-setting" class="nav-link" data-scroll-target="#notation-and-setting">Notation and setting</a></li>
   <li><a href="#one-example-every-technique" id="toc-one-example-every-technique" class="nav-link" data-scroll-target="#one-example-every-technique">One example, every technique</a>
   <ul class="collapse">
   <li><a href="#explicit-solution" id="toc-explicit-solution" class="nav-link" data-scroll-target="#explicit-solution">Explicit solution</a></li>
@@ -367,26 +362,60 @@ window.Quarto = {
 
 
 <div class="module-meta">
-<p>Page team: to be named · Status: skeleton</p>
+<p>Contributors: Michele Dolce · Status: skeleton</p>
 </div>
 <div class="discuss">
-<a href="https://endipa.zulipchat.com/#narrow/channel/653113-examples/topic/Couette.20flow" class="zulip-btn"><i class="bi bi-chat-left-text" aria-hidden="true"></i> Discuss on Zulip</a> <span class="discuss-note">For project members: the Zulip and the wiki are by invitation.</span> <a href="https://endipa.miraheze.org/wiki/Couette_flow" class="edit-link"><i class="bi bi-pencil-square" aria-hidden="true"></i> This page in the wiki (members)</a> <a href="https://endipa.miraheze.org/wiki/Talk:Couette_flow?action=edit&amp;section=new&amp;preload=Template:Proposal/Preload-block&amp;preloadtitle=Proposal%3A+" class="edit-link propose-link" title="A new proposal on the talk page of this page in the wiki (members)"><i class="bi bi-journal-plus" aria-hidden="true"></i> Propose a change</a> <a href="tex/couette-flow.tex" class="edit-link tex-link" download="couette-flow.tex"><i class="bi bi-file-earmark-code" aria-hidden="true"></i> TeX source</a> <a href="tex/couette-flow.pdf" class="edit-link pdf-link" download="couette-flow.pdf"><i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> PDF</a>
+<a href="https://endipa.zulipchat.com/#narrow/channel/653113-examples/topic/Couette.20flow" class="zulip-btn"><i class="bi bi-chat-left-text" aria-hidden="true"></i> Discuss on Zulip</a> <span class="discuss-note">For project members: the Zulip and the wiki are by invitation.</span> <a href="https://endipa.miraheze.org/wiki/Couette_flow" class="edit-link"><i class="bi bi-pencil-square" aria-hidden="true"></i> This page in the wiki (members)</a> <a href="https://endipa.miraheze.org/wiki/Talk:Couette_flow?action=edit&amp;section=new&amp;preload=Template:Proposal/Preload-block&amp;preloadtitle=Proposal%3A+" class="edit-link propose-link" title="A new proposal on the talk page of this page in the wiki (members)"><i class="bi bi-journal-plus" aria-hidden="true"></i> Propose a change</a> <a href="tex/couette-flow.zip" class="edit-link tex-link" download="couette-flow.zip"><i class="bi bi-file-earmark-code" aria-hidden="true"></i> TeX source (zip, with figures)</a> <a href="tex/couette-flow.pdf" class="edit-link pdf-link" download="couette-flow.pdf"><i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> PDF</a>
 </div>
-<div class="edit-unit" data-unit="p77352ef7">
-<div class="placeholder">
-<p>Lead: what this example shows, in three lines.</p>
-<p><a href="https://endipa.miraheze.org/wiki/Talk:Couette_flow?action=edit&amp;section=new&amp;preload=Template:Proposal/Preload-block&amp;preloadtitle=Proposal%3A+" class="propose">Propose a text →</a></p>
+<div class="edit-unit" data-unit="pf319ae46">
+<p>The Couette flow is the linear shear <span class="math inline">\(u=(y,0)\)</span>, considered here in the simplest possible domain for this problem, <span class="math inline">\((x,y)\in\mathbb{T}\times\mathbb{R}\)</span>. The equation under study then reduces to <span class="math display">\[\partial_t f+y\partial_xf=\nu\Delta f, \qquad f|_{t=0}=f^{\rm in}, \qquad (x,y)\in \mathbb{T}\times\mathbb{R}.\]</span> This is a foundational model in the field, because the same equation governs the vorticity of the two-dimensional Navier–Stokes equations linearized around the Couette flow. In that context Kelvin already solved it explicitly in 1887 (see <a href="./literature.html#Kelvin1887">Kelvin (1887, eq. (34)–(35))</a> and <a href="./history-of-the-problem.html">History of the problem</a>).</p>
+</div>
+<div class="edit-unit" data-unit="p7f15543c">
+<p>We use this model to illustrate what typical mixing and enhanced dissipation results look like, and how the two are related. The model is simple enough that each proof technique can be carried out in full. They are all presented below on this single example.</p>
+</div>
+<div class="lvl-note callout callout-style-default callout-note callout-titled" title="Why this domain?">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Why this domain?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="edit-unit" data-unit="p4f971e40">
+<p>The domain <span class="math inline">\(\mathbb{T}\times\mathbb{R}\)</span> is mathematically convenient: there are no boundaries, and one can take the Fourier transform in both variables.</p>
+</div>
+<div class="edit-unit" data-unit="pa3abd93b">
+<p>There is also a more geometric motivation. Consider a circular flow in the plane, <span class="math inline">\(u=rV(r)e_\theta\)</span>, for which the equation reads <span class="math inline">\(\partial_tf+V(r)\partial_\theta f=\nu\Delta f\)</span>. The log-polar coordinates <span class="math inline">\(X=e^s\cos(\theta)\)</span>, <span class="math inline">\(Y=e^s\sin(\theta)\)</span> identify <span class="math inline">\(\mathbb{R}^2\setminus\{0\}\)</span> with <span class="math inline">\((\theta,s)\in\mathbb{T}\times\mathbb{R}\)</span>, as shown in the figure below.</p>
+</div>
+<div class="edit-unit" data-unit="pbe7126ac">
+<div class="media-figure media-image">
+<img class="media-img" src="media/log-polar-map.svg" alt="Left: the plane, with two annuli of the same width and a ray (dashed) carried by a circular flow for some time (solid). Right: the same picture in log-polar coordinates. The annuli become strips, and the circular flow becomes a shear flow." loading="lazy">
+<div class="media-caption">
+<p>Left: the plane, with two annuli of the same width and a ray (dashed) carried by a circular flow for some time (solid). Right: the same picture in log-polar coordinates. The annuli become strips, and the circular flow becomes a shear flow.</p>
 </div>
 </div>
-<section id="setting" class="level2">
-<h2 class="anchored" data-anchor-id="setting">Setting</h2>
-<div class="edit-unit" data-unit="p7d9b22ef">
-<div class="placeholder">
-<p>The flow <span class="math inline">\(u=(y,0)\)</span> on <span class="math inline">\(\mathbb{T}\times\mathbb{R}\)</span>: the equation, the Fourier modes, what decays.</p>
-<p><a href="https://endipa.miraheze.org/wiki/Talk:Couette_flow?action=edit&amp;section=new&amp;preload=Template:Proposal/Preload-block&amp;preloadtitle=Proposal%3A+" class="propose">Propose a text →</a></p>
+</div>
+<div class="edit-unit" data-unit="pbaef9726">
+<p>Note that this is a conformal change of variables, so the Laplacian only gains a scalar factor, and the equation becomes <span class="math display">\[\partial_t f+V(e^s)\partial_\theta f=\nu e^{-2s}(\partial_\theta^2+\partial_s^2)f,\qquad (\theta,s)\in\mathbb{T}\times\mathbb{R}.\]</span> If we localize near a radius <span class="math inline">\(r_0=e^{s_0}\)</span> where <span class="math inline">\(V'(r_0)\neq0\)</span>, then to leading order, and up to constants, we recover the equation for the Couette flow. In this sense, the Couette flow can be seen as a first local approximation of a radial vortex in <span class="math inline">\(\mathbb{R}^2\)</span>, in a region where the angular velocity is strictly monotone. Below is a video showing the effect of the conformal mapping.</p>
+</div>
+<div class="edit-unit" data-unit="p452eb7d4">
+<div class="media-figure media-video">
+<video class="media-video" controls="" muted="" loop="" playsinline="" preload="metadata" poster="media/log-polar-poster.png" aria-label="Left: a scalar transported and diffused by the circular flow with V(r)=1/(1+r^2). Right: the same solution in log-polar coordinates, where the flow is a shear flow."><source src="media/log-polar.mp4" type="video/mp4">Your browser cannot play this video: <a href="media/log-polar.mp4">download it</a>.</video>
+<div class="media-caption">
+<p>Left: a scalar transported and diffused by the circular flow with <span class="math inline">\(V(r)=1/(1+r^2)\)</span>. Right: the same solution in log-polar coordinates, where the flow is a shear flow.</p>
+</div>
+<div class="media-record">
+<p><a href="./numerical-methods.html#num-log-polar">How this was made →</a></p>
 </div>
 </div>
-</section>
+</div>
+</div>
+</div>
+</div>
 <section id="the-result" class="level2">
 <h2 class="anchored" data-anchor-id="the-result">The result</h2>
 <div id="thm-couette" class="theorem">
@@ -399,7 +428,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="lvl-idea callout callout-style-default callout-tip callout-titled" title="Idea">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -408,7 +437,7 @@ window.Quarto = {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="edit-unit" data-unit="pfc75aa2b">
 <div class="placeholder">
@@ -419,25 +448,13 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<div class="lvl-arch callout callout-style-default callout-note callout-titled" title="Proof architecture">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Proof architecture
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="edit-unit" data-unit="p49f04760">
+</section>
+<section id="notation-and-setting" class="level2">
+<h2 class="anchored" data-anchor-id="notation-and-setting">Notation and setting</h2>
+<div class="edit-unit" data-unit="p7d9b22ef">
 <div class="placeholder">
-<p>The proof as a short chain of steps, and its diagram.</p>
+<p>The flow <span class="math inline">\(u=(y,0)\)</span> on <span class="math inline">\(\mathbb{T}\times\mathbb{R}\)</span>: the equation, the Fourier modes, what decays.</p>
 <p><a href="https://endipa.miraheze.org/wiki/Talk:Couette_flow?action=edit&amp;section=new&amp;preload=Template:Proposal/Preload-block&amp;preloadtitle=Proposal%3A+" class="propose">Propose a text →</a></p>
-</div>
-</div>
-</div>
 </div>
 </div>
 </section>
@@ -590,9 +607,12 @@ window.Quarto = {
 </section>
 <section id="references" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="references">References</h2>
-<!-- refs-begin: -->
+<!-- refs-begin: Kelvin1887 -->
+<ol type="1">
+<li>W. Thomson (Lord Kelvin), <em>Stability of fluid motion: rectilineal motion of viscous fluid between two parallel planes</em>, Philosophical Magazine (5) <strong>24</strong> (1887), 188–196, <a href="https://doi.org/10.1080/14786448708628078">doi:10.1080/14786448708628078</a>.</li>
+</ol>
 <!-- refs-end -->
-<script type="application/json" id="edit-units">{"page": "Couette flow", "talk": "Talk:Couette flow", "edit": "https://endipa.miraheze.org/wiki/", "preload": "Template:Proposal/Preload", "units": {"p77352ef7": "\\placeholder{Lead: what this example shows, in three lines.}", "p7d9b22ef": "\\placeholder{The flow $u=(y,0)$ on $\\mathbb{T}\\times\\mathbb{R}$: the equation, the Fourier modes, what decays.}", "pe88952bc": "\\placeholder{The statement.}", "pfc75aa2b": "\\placeholder{The key mechanism in a few lines.}", "p49f04760": "\\placeholder{The proof as a short chain of steps, and its diagram.}", "pa96c77f0": "Each proof below is written for this example only, to show the mechanism; the general results, with complete proofs, are in the part \\emph{Techniques and general results}.", "pc41f4373": "\\placeholder{The proof.}", "pc2271c56": "\\placeholder{The proof.}", "p1248286a": "General theory: \\wikilink{Spectral methods}{}.", "p13a8a5ea": "\\placeholder{The proof.}", "p7e43a2fe": "General theory: \\wikilink{Hypocoercivity}{}.", "p0b3bbc19": "\\placeholder{The proof.}", "pf5aae2f8": "General theory: \\wikilink{Stochastic methods}{}.", "pfe27f5e1": "\\placeholder{The proof.}", "pc443ad50": "General theory: \\wikilink{Hörmander theory}{}.", "pfdf73780": "\\placeholder{What the example shows, and what the general theory keeps of it.}"}}</script>
+<script type="application/json" id="edit-units">{"page": "Couette flow", "talk": "Talk:Couette flow", "edit": "https://endipa.miraheze.org/wiki/", "preload": "Template:Proposal/Preload", "units": {"pf319ae46": "The Couette flow is the linear shear $u=(y,0)$, considered here in the simplest possible domain for this problem, $(x,y)\\in\\mathbb{T}\\times\\mathbb{R}$. The equation under study then reduces to\n\\[\\partial_t f+y\\partial_xf=\\nu\\Delta f, \\qquad f|_{t=0}=f^{\\rm in}, \\qquad (x,y)\\in \\mathbb{T}\\times\\mathbb{R}.\\]\nThis is a foundational model in the field, because the same equation governs the vorticity of the two-dimensional Navier–Stokes equations linearized around the Couette flow. In that context Kelvin already solved it explicitly in 1887 (see \\wikilink{Literature\\#Kelvin1887}{Kelvin (1887, eq. (34)–(35))} and \\wikilink{History of the problem}{}).", "p7f15543c": "We use this model to illustrate what typical mixing and enhanced dissipation results look like, and how the two are related. The model is simple enough that each proof technique can be carried out in full. They are all presented below on this single example.", "p4f971e40": "The domain $\\mathbb{T}\\times\\mathbb{R}$ is mathematically convenient: there are no boundaries, and one can take the Fourier transform in both variables.", "pa3abd93b": "There is also a more geometric motivation. Consider a circular flow in the plane, $u=rV(r)e_\\theta$, for which the equation reads $\\partial_tf+V(r)\\partial_\\theta f=\\nu\\Delta f$. The log-polar coordinates $X=e^s\\cos(\\theta)$, $Y=e^s\\sin(\\theta)$ identify $\\mathbb{R}^2\\setminus\\{0\\}$ with $(\\theta,s)\\in\\mathbb{T}\\times\\mathbb{R}$, as shown in the figure below.", "pbe7126ac": "\\media{image}{log-polar-map.svg}{Left: the plane, with two annuli of the same width and a ray (dashed) carried by a circular flow for some time (solid). Right: the same picture in log-polar coordinates. The annuli become strips, and the circular flow becomes a shear flow.}", "pbaef9726": "Note that this is a conformal change of variables, so the Laplacian only gains a scalar factor, and the equation becomes\n\\[\\partial_t f+V(e^s)\\partial_\\theta f=\\nu e^{-2s}(\\partial_\\theta^2+\\partial_s^2)f,\\qquad (\\theta,s)\\in\\mathbb{T}\\times\\mathbb{R}.\\]\nIf we localize near a radius $r_0=e^{s_0}$ where $V'(r_0)\\neq0$, then to leading order, and up to constants, we recover the equation for the Couette flow. In this sense, the Couette flow can be seen as a first local approximation of a radial vortex in $\\mathbb{R}^2$, in a region where the angular velocity is strictly monotone. Below is a video showing the effect of the conformal mapping.", "p452eb7d4": "\\media[poster=log-polar-poster.png,record=num-log-polar]{video}{log-polar.mp4}{Left: a scalar transported and diffused by the circular flow with $V(r)=1/(1+r^2)$. Right: the same solution in log-polar coordinates, where the flow is a shear flow.}", "pe88952bc": "\\placeholder{The statement.}", "pfc75aa2b": "\\placeholder{The key mechanism in a few lines.}", "p7d9b22ef": "\\placeholder{The flow $u=(y,0)$ on $\\mathbb{T}\\times\\mathbb{R}$: the equation, the Fourier modes, what decays.}", "pa96c77f0": "Each proof below is written for this example only, to show the mechanism; the general results, with complete proofs, are in the part \\emph{Techniques and general results}.", "pc41f4373": "\\placeholder{The proof.}", "pc2271c56": "\\placeholder{The proof.}", "p1248286a": "General theory: \\wikilink{Spectral methods}{}.", "p13a8a5ea": "\\placeholder{The proof.}", "p7e43a2fe": "General theory: \\wikilink{Hypocoercivity}{}.", "p0b3bbc19": "\\placeholder{The proof.}", "pf5aae2f8": "General theory: \\wikilink{Stochastic methods}{}.", "pfe27f5e1": "\\placeholder{The proof.}", "pc443ad50": "General theory: \\wikilink{Hörmander theory}{}.", "pfdf73780": "\\placeholder{What the example shows, and what the general theory keeps of it.}"}}</script>
 <style>
 .edit-unit { position: relative; }
 .edit-unit > .edit-btn { position: absolute; top: 0.1rem; right: -2.1rem; width: 1.7rem; height: 1.7rem; padding: 0; border: 1px solid #c9cfd8;

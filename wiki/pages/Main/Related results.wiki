@@ -1,4 +1,4 @@
-<div class="mod-meta">Page team: to be named · Status: skeleton</div>
+<div class="mod-meta">Contributors: to be named · Status: skeleton</div>
 {{Discuss|channel=advances}}
 
 Results related to enhanced dissipation and not yet part of the established theory. Each entry gives the statement, a label ({{Published}}, {{Preprint}} or {{Raw}}), the date it was added, its source, and where it would go in the established theory.

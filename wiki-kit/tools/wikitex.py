@@ -116,6 +116,10 @@ def cite_info(entry):
         return None
     names = []
     for a in re.split(r', | and ', entry[:k]):
+        lord = re.search(r'\(Lord ([^)]+)\)\s*$', a)
+        if lord:                               # 'W. Thomson (Lord Kelvin)' is cited as Kelvin
+            names.append(lord.group(1).strip())
+            continue
         toks = a.split()
         while len(toks) > 1 and toks[0].endswith('.'):
             toks = toks[1:]
@@ -1614,14 +1618,19 @@ def cmd_apply_proposal(pdir, title, topic_path, write=False):
             sys.exit('the proposal names the page %r, not %r' % (m.group(1).strip(), title))
         if not m:
             tex = '\\title{%s}\n%s' % (title, tex)
-    path = topic_path + '.proposal.tex'
-    open(path, 'w', encoding='utf-8', newline='\n').write(tex + '\n')
+    import tempfile                            # the TeX goes to the temporary folder of the system, not next to the topic
+    fd, path = tempfile.mkstemp(suffix='.proposal.tex')
+    with os.fdopen(fd, 'w', encoding='utf-8', newline='\n') as f:
+        f.write(tex + '\n')
     try:
         if uid:
             return cmd_apply_unit(pdir, title, uid, path, write)
         return cmd_apply(pdir, path, write)
     finally:
-        os.remove(path)
+        try:
+            os.remove(path)
+        except OSError:
+            pass
 
 
 def cmd_units(pdir):

@@ -26,7 +26,6 @@
 * About this wiki
 ** How to contribute|How to contribute
 ** Contributors|Contributors
-** Provenance and AI use|Provenance and AI use
 ** Literature|Literature
 * SEARCH
 * TOOLBOX

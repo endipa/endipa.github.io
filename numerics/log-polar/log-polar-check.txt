@@ -1,0 +1,6 @@
+V(r) = 1/(1+r^2), datum cos(2 theta) exp(-(s/0.8)^4), nu = 0.001, T = 40
+N = 1500 intervals in s on [-3.2, 2.8], dt = 0.01 (Crank-Nicolson, centred differences)
+norm ratio at t = T: with the vortex 1.047491e-01, without the flow 8.519850e-01
+largest relative difference of the norms with N = 3000, dt = 0.005: 2.60e-04
+largest energy-balance residual (relative to the initial energy): N = 1500: 1.63e-05; N = 3000: 4.06e-06; no flow: 1.73e-09
+largest |g| at the two ends of the grid over the frames: 2.11e-05

@@ -1,4 +1,4 @@
-<div class="mod-meta">Page team: to be named · Status: draft · Checks: none recorded yet</div>
+<div class="mod-meta">Contributors: to be named · Status: draft · Checks: none recorded yet</div>
 {{Discuss|channel=CHANNEL}}
 
 {{Placeholder start}}Lead: what this page is about, in three lines.{{Placeholder end}}

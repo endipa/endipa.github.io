@@ -1,13 +1,13 @@
-<div class="mod-meta">Page team: Michele Dolce · Status: proposal, to be agreed with the editorial board · Text: {{Demo}}</div>
+<div class="mod-meta">Contributors: Michele Dolce · Status: proposal, to be agreed with the editorial board · Text: {{Demo}}</div>
 {{Discuss|channel=contributing}}
 
-This wiki is written from the bottom up, the way a journal works: members of the community propose changes on the talk page of the page they change, proposals are discussed and reviewed there in the open, an associate editor decides, and accepted changes are written into the wiki. The roles, and who holds them, are on [[Contributors]]. {{Demo}}
+This wiki is written from the bottom up, the way a journal works: members of the community propose changes on the talk page of the page they change, proposals are discussed and reviewed there in the open, an associate editor decides, and accepted changes are written into the wiki. The roles, and who holds them, are on [[Contributors]]. Short answers to practical questions are in the [[#FAQ|FAQ]] at the end of this page. {{Demo}}
 
 == Roles ==
 * '''Editorial board''': the scope and the structure of the wiki; appoints the associate editors; settles discussions that end without consensus.
 * '''Associate editors''': one or more per part, following the talk pages of its pages and its Zulip channel. They run the discussion of each proposal, ask members of the community for a review when it helps, and decide.
 * '''Community''': propose, review and discuss. Every member can endorse a new member. Editors can remove a member whose participation disturbs the work rather than helping it.
-The first line of each page names its team. As the wiki grows, busy parts and pages get more associate editors; the roles stay the same.
+The first line of each page names its contributors. As the wiki grows, busy parts and pages get more associate editors; the roles stay the same.
 On the wiki, everyone with a role is a ''member'' (reads every page and writes on talk pages); the editorial board and the associate editors are also ''editors'' (edit articles and templates, and write accepted proposals into the pages); administrators give these rights.
 
 == Proposing a change ==
@@ -75,14 +75,37 @@ The proof of the claim, folded inside the proof that uses it.
 {{Proof end}}
 
 == Labels ==
-* {{Demo}}: text drafted by Claude (AI), until a member of the page team replaces or approves it.
+* {{Demo}}: text drafted by Claude (AI), until a contributor of the page replaces or approves it.
 * {{Heuristic}}: a non-rigorous explanation, kept apart from what is proved.
 * {{Numeric}}: a computation, with its record on [[Numerical methods]].
 * {{Published}}, {{Preprint}}, {{Raw}}: the status of an entry on [[Related results]] and [[Raw data]]: refereed; posted but not refereed; neither posted nor checked by a human (an AI-generated proof, a numerical observation, a sketch).
 * Grey quote boxes: AI-generated text, quoted verbatim with its source and date.
 
+== Provenance and AI use ==
+Where each piece of the wiki comes from, and who has checked what; the labels are those of the section above. {{Demo}}
+* Text drafted by Claude (AI) carries {{Demo}} until a contributor of the page replaces or approves it.
+* Arguments produced by AI systems appear only as verbatim quotations, with source and date, or as entries labelled {{Raw}} on [[Raw data]].
+* The first line of each page records its contributors, its status and the checks made. A machine check is recorded as such and never counts as a human check.
+* Statements attributed to a paper give its theorem number; synthesis proofs say which papers they follow.
+* Every accepted proposal is linked, in the summary of the edit that applies it, to the topic of the talk page where it was discussed.
+
+=== This version of the wiki ===
+On 8 November 2026 the wiki was reorganized into the parts drawn on the [[Overview#Map of the wiki|map]], and its pages were reduced to a skeleton, to be filled by the editorial board and contributors. The first version (6 November 2026: Couette flow with three proofs, a hypocoercivity page, the toolkit, the history) is kept in the project folder, in <code>archive/2026-11-06-first-version</code>. The computed pictures and videos, each with its record on [[Numerical methods]], were made by Claude (AI) and are not yet checked by a human. The TeX source of each page is generated from the wiki by a script.
+
+=== AI-generated documents ===
+{| class="wikitable"
+! Document !! Date !! Contents !! Checks recorded
+|-
+| none || — || — || —
+|}
+
+=== How a result becomes checked ===
+{{Placeholder start}}To be agreed with the editorial board: how many readers a proof needs before it loses its label, and whether a page records who read which proof.{{Placeholder end}}
+
 == Pictures, videos and numerics ==
 A picture, a video or a diagram is one line in the wiki, the template [[Template:Media|Media]]; in TeX, <code><nowiki>\media{video}{file}{caption}</nowiki></code>. The files are kept in the folder <code>wiki/media</code> of the project; the edition shows them, the wiki shows a box with the caption. Every computed picture or video has a record on [[Numerical methods]], with the method, the parameters, the checks and the code.
+
+A proposal that adds or replaces a picture or a video names the file in its <code><nowiki>\media</nowiki></code> line; the file itself is sent separately, since the text of a proposal cannot carry it. A picture (png, svg, jpg or pdf) is [[Special:Upload|uploaded to the wiki]] and linked in the topic of the proposal. A video (mp4), which the wiki does not accept, is attached to a message in the Zulip topic of the page, where the other members can watch it before the proposal is decided; the topic of the proposal gives the link to that message. For a computed picture or video, attach to the same message the code that produced it, with its parameters and its checks: they make its record on [[Numerical methods]]. When the proposal is accepted, an editor adds the files to the edition together with the text. {{Demo}}
 
 == Discussion and conduct ==
 Proposals are discussed on the talk page of the page they change, so that the discussion stays next to the text and in its history. Zulip is the forum for the mathematics: questions and clarifications, ideas for new results and how they fit the established theory, and larger changes to the structure of the wiki, discussed there before they become proposals. It has one channel per part and one topic per question or idea; the link under the title of each page opens the topic named after the page, for questions about it.
@@ -113,3 +136,14 @@ For editors who write the wiki's own format.
 
 == The edition ==
 A static edition of this wiki, with the pictures, the videos and the TeX source of every page, is built from the wiki's text by a script and never edited by hand: [https://endipa.github.io endipa.github.io].
+
+== FAQ ==
+Practical questions, answered briefly; the list grows with the wiki. {{Demo}}
+{{Fold start|kind=note|title=How do I propose a change to one paragraph?}}
+# Open the page in the [https://endipa.github.io edition] and move the pointer over the paragraph, or the figure: a pencil button appears on its right. On a phone or a tablet the button is always shown.
+# Click it: a box opens with the TeX of the paragraph. Change the TeX, and check the result in the preview below it.
+# In the last field, say in one line why. To ask for a change without writing it (a clearer picture, a shorter video), leave the TeX as it is and describe the change in that field.
+# Click ''Open the proposal on the talk page''. The wiki opens in a new tab (log in if it asks), with a new topic on the talk page of the page, already filled in: check it and click ''Save changes''.
+# The other members reply in the topic with ''Support'', ''Oppose'' or ''Comment'', and an associate editor accepts or declines. An editor then writes the accepted change into the page, and it appears in the edition when this is next rebuilt.
+On a part still to be written, the same button opens an empty box for the missing text. For a whole section, a statement or a proof, see [[#Proposing a change|Proposing a change]].
+{{Fold end}}

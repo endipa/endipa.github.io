@@ -112,10 +112,10 @@
 \author{Wiki \emph{Enhanced dissipation for passive scalars}}
 \date{10 November 2026}
 \maketitle
-\pagestatus{Page team: Michele Dolce · Status: proposal, to be agreed with the editorial board · Text: \demo{}}
+\pagestatus{Contributors: Michele Dolce · Status: proposal, to be agreed with the editorial board · Text: \demo{}}
 \zulip{contributing}
 
-This wiki is written from the bottom up, the way a journal works: members of the community propose changes on the talk page of the page they change, proposals are discussed and reviewed there in the open, an associate editor decides, and accepted changes are written into the wiki. The roles, and who holds them, are on \wikilink{Contributors}{}. \demo{}
+This wiki is written from the bottom up, the way a journal works: members of the community propose changes on the talk page of the page they change, proposals are discussed and reviewed there in the open, an associate editor decides, and accepted changes are written into the wiki. The roles, and who holds them, are on \wikilink{Contributors}{}. Short answers to practical questions are in the \wikilink{\#FAQ}{FAQ} at the end of this page. \demo{}
 
 \section{Roles}
 \begin{itemize}
@@ -123,7 +123,7 @@ This wiki is written from the bottom up, the way a journal works: members of the
   \item \textbf{Associate editors}: one or more per part, following the talk pages of its pages and its Zulip channel. They run the discussion of each proposal, ask members of the community for a review when it helps, and decide.
   \item \textbf{Community}: propose, review and discuss. Every member can endorse a new member. Editors can remove a member whose participation disturbs the work rather than helping it.
 \end{itemize}
-The first line of each page names its team. As the wiki grows, busy parts and pages get more associate editors; the roles stay the same.
+The first line of each page names its contributors. As the wiki grows, busy parts and pages get more associate editors; the roles stay the same.
 On the wiki, everyone with a role is a \emph{member} (reads every page and writes on talk pages); the editorial board and the associate editors are also \emph{editors} (edit articles and templates, and write accepted proposals into the pages); administrators give these rights.
 
 \section{Proposing a change}
@@ -197,15 +197,39 @@ The proof of the claim, folded inside the proof that uses it.
 
 \section{Labels}
 \begin{itemize}
-  \item \demo{}: text drafted by Claude (AI), until a member of the page team replaces or approves it.
+  \item \demo{}: text drafted by Claude (AI), until a contributor of the page replaces or approves it.
   \item \heuristic{}: a non-rigorous explanation, kept apart from what is proved.
   \item \numerics{}: a computation, with its record on \wikilink{Numerical methods}{}.
   \item \published{}, \preprint{}, \raw{}: the status of an entry on \wikilink{Related results}{} and \wikilink{Raw data}{}: refereed; posted but not refereed; neither posted nor checked by a human (an AI-generated proof, a numerical observation, a sketch).
   \item Grey quote boxes: AI-generated text, quoted verbatim with its source and date.
 \end{itemize}
 
+\section{Provenance and AI use}
+Where each piece of the wiki comes from, and who has checked what; the labels are those of the section above. \demo{}
+\begin{itemize}
+  \item Text drafted by Claude (AI) carries \demo{} until a contributor of the page replaces or approves it.
+  \item Arguments produced by AI systems appear only as verbatim quotations, with source and date, or as entries labelled \raw{} on \wikilink{Raw data}{}.
+  \item The first line of each page records its contributors, its status and the checks made. A machine check is recorded as such and never counts as a human check.
+  \item Statements attributed to a paper give its theorem number; synthesis proofs say which papers they follow.
+  \item Every accepted proposal is linked, in the summary of the edit that applies it, to the topic of the talk page where it was discussed.
+\end{itemize}
+
+\subsection{This version of the wiki}
+On 8 November 2026 the wiki was reorganized into the parts drawn on the \wikilink{Overview\#Map of the wiki}{map}, and its pages were reduced to a skeleton, to be filled by the editorial board and contributors. The first version (6 November 2026: Couette flow with three proofs, a hypocoercivity page, the toolkit, the history) is kept in the project folder, in \texttt{archive/2026-11-06-first-version}. The computed pictures and videos, each with its record on \wikilink{Numerical methods}{}, were made by Claude (AI) and are not yet checked by a human. The TeX source of each page is generated from the wiki by a script.
+
+\subsection{AI-generated documents}
+\begin{wikitable}{4}
+\header{Document & Date & Contents & Checks recorded}
+\row{none & — & — & —}
+\end{wikitable}
+
+\subsection{How a result becomes checked}
+\placeholder{To be agreed with the editorial board: how many readers a proof needs before it loses its label, and whether a page records who read which proof.}
+
 \section{Pictures, videos and numerics}
 A picture, a video or a diagram is one line in the wiki, the template \wikilink{Template:Media}{Media}; in TeX, \nowikicode{\textbackslash{}media\{video\}\allowbreak{}\{file\}\allowbreak{}\{caption\}}. The files are kept in the folder \texttt{wiki/media} of the project; the edition shows them, the wiki shows a box with the caption. Every computed picture or video has a record on \wikilink{Numerical methods}{}, with the method, the parameters, the checks and the code.
+
+A proposal that adds or replaces a picture or a video names the file in its \nowikicode{\textbackslash{}media} line; the file itself is sent separately, since the text of a proposal cannot carry it. A picture (png, svg, jpg or pdf) is \wikilink{Special:Upload}{uploaded to the wiki} and linked in the topic of the proposal. A video (mp4), which the wiki does not accept, is attached to a message in the Zulip topic of the page, where the other members can watch it before the proposal is decided; the topic of the proposal gives the link to that message. For a computed picture or video, attach to the same message the code that produced it, with its parameters and its checks: they make its record on \wikilink{Numerical methods}{}. When the proposal is accepted, an editor adds the files to the edition together with the text. \demo{}
 
 \section{Discussion and conduct}
 Proposals are discussed on the talk page of the page they change, so that the discussion stays next to the text and in its history. Zulip is the forum for the mathematics: questions and clarifications, ideas for new results and how they fit the established theory, and larger changes to the structure of the wiki, discussed there before they become proposals. It has one channel per part and one topic per question or idea; the link under the title of each page opens the topic named after the page, for questions about it.
@@ -231,4 +255,17 @@ For editors who write the wiki's own format.
 
 \section{The edition}
 A static edition of this wiki, with the pictures, the videos and the TeX source of every page, is built from the wiki's text by a script and never edited by hand: \href{https://endipa.github.io}{endipa.github.io}.
+
+\section{FAQ}
+Practical questions, answered briefly; the list grows with the wiki. \demo{}
+\begin{note}[How do I propose a change to one paragraph?]
+\begin{enumerate}
+  \item Open the page in the \href{https://endipa.github.io}{edition} and move the pointer over the paragraph, or the figure: a pencil button appears on its right. On a phone or a tablet the button is always shown.
+  \item Click it: a box opens with the TeX of the paragraph. Change the TeX, and check the result in the preview below it.
+  \item In the last field, say in one line why. To ask for a change without writing it (a clearer picture, a shorter video), leave the TeX as it is and describe the change in that field.
+  \item Click \emph{Open the proposal on the talk page}. The wiki opens in a new tab (log in if it asks), with a new topic on the talk page of the page, already filled in: check it and click \emph{Save changes}.
+  \item The other members reply in the topic with \emph{Support}, \emph{Oppose} or \emph{Comment}, and an associate editor accepts or declines. An editor then writes the accepted change into the page, and it appears in the edition when this is next rebuilt.
+\end{enumerate}
+On a part still to be written, the same button opens an empty box for the missing text. For a whole section, a statement or a proof, see \wikilink{\#Proposing a change}{Proposing a change}.
+\end{note}
 \end{document}

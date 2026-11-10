@@ -1,4 +1,4 @@
-<div class="mod-meta">Page team: to be named · Status: skeleton, one record</div>
+<div class="mod-meta">Contributors: to be named · Status: skeleton, three records</div>
 {{Discuss|channel=numerics}}
 
 Every computed picture and video of this wiki has a record on this page: what was computed, how, with which parameters and checks, and the code that produced it.
@@ -223,6 +223,24 @@ if __name__ == "__main__":
 | Status || computed by Claude (AI) on 8 November 2026; not yet checked by a human {{Demo}}
 |}
 {{Media|kind=image|file=alternating-shears-check.png|caption=Left: the norms for <math display="inline">\nu=10^{-4}</math>, with two resolutions for the alternating shears. Right: the time for the norm to halve, against <math display="inline">1/\nu</math>, logarithmic scales.}}
+
+=== A vortex in log-polar coordinates {{Anchor|num-log-polar}} ===
+{| class="levels"
+| Produces || the video in the note ''Why this domain?'' of [[Couette flow]] (<code>log-polar.mp4</code>) and the check figure below; the same script draws the figure of that note (<code>log-polar-map.svg</code>) from the explicit formulas, without any computation
+|-
+| Equation || <math display="inline">\partial_t f+V(r)\partial_\theta f=\nu\Delta f</math> in the plane, with <math display="inline">V(r)=1/(1+r^2)</math>; in the coordinates <math display="inline">r=e^s</math> it is <math display="inline">\partial_t f+V(e^s)\partial_\theta f=\nu e^{-2s}(\partial_\theta^2+\partial_s^2)f</math> on <math display="inline">(\theta,s)\in\mathbb{T}\times\mathbb{R}</math>; datum <math display="inline">f_0=\cos(2\theta)\exp(-(s/0.8)^4)</math>. The checks compare with the same equation without the flow (<math display="inline">V=0</math>)
+|-
+| Parameters || <math display="inline">\nu=10^{-3}</math>, times <math display="inline">0\le t\le 40</math>; video of 15 s at 24 frames per second, time running uniformly, last frame held 1.5 s
+|-
+| Method || one Fourier mode in <math display="inline">\theta</math>: <math display="inline">f=\operatorname{Re}(g(t,s)e^{2i\theta})</math> with <math display="inline">e^{2s}\partial_t g=-2iV(e^s)e^{2s}g+\nu(\partial_s^2-4)g</math> for <math display="inline">-3.2\le s\le 2.8</math> and <math display="inline">g=0</math> at the two ends; centred second-order differences with 1500 intervals in <math display="inline">s</math>; Crank–Nicolson scheme with time step 0.01
+|-
+| Checks || with 3000 intervals and time step 0.005 the norms agree to a relative <math display="inline">2.6\cdot10^{-4}</math>; the energy balance <math display="inline">\int|g(t)|^2e^{2s}ds+2\nu\int_0^t\!\!\int(|\partial_s g|^2+4|g|^2)\,ds\,dt'=\int|g(0)|^2e^{2s}ds</math> holds to <math display="inline">1.6\cdot10^{-5}</math> of its initial value; <math display="inline">|g|</math> at the two ends of the grid stays below <math display="inline">2.2\cdot10^{-5}</math>. The norm is that of <math display="inline">L^2</math> of the plane, <math display="inline">\|f(t)\|^2=\int|g(t)|^2e^{2s}ds</math> up to a constant; at <math display="inline">t=40</math> it is 0.105 times its initial value, and 0.852 times without the flow
+|-
+| Code || [https://github.com/endipa/endipa.github.io/blob/main/numerics/log-polar/log_polar.py numerics/log-polar/log_polar.py] in the repository (Python 3, NumPy, SciPy, Matplotlib, ffmpeg); <code>python3 log_polar.py --out ../../wiki/media</code>
+|-
+| Status || computed by Claude (AI) on 10 November 2026; not yet checked by a human {{Demo}}
+|}
+{{Media|kind=image|file=log-polar-check.png|caption=Left: the norms with the vortex, at two resolutions, and without the flow. Right: the relative difference of the two runs and the energy-balance residual.}}
 
 == Solvers ==
 {{Placeholder start}}The methods used across the records, with their strengths and limits.{{Placeholder end}}
