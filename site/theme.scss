@@ -122,6 +122,17 @@ a.edit-link:hover, a.edit-link:focus { text-decoration: underline; }
 .discuss-sep { align-self: stretch; border-left: 1px solid #c9cfd8; margin: 0.25rem 0; }
 @media (max-width: 575.98px) { .discuss-sep { display: none; } }
 
+// Zulip (11 November 2026; the hosting of the project's Zulip is sponsored by Zulip): the round Zulip icon on the
+// "Discuss on Zulip" link, and the line of acknowledgement at the end of the Overview and of the Contributors page
+// (both written by page-links.lua)
+img.zulip-mark { width: 1.15em; height: 1.15em; flex: none; }
+.site-ack { margin: 2.8rem 0 0.4rem; padding-top: 0.7rem; border-top: 1px solid #d5dbe3; font-family: $font-family-sans-serif; font-size: 0.85rem; color: #59616e; }
+.site-ack-label { display: block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.2rem; }
+.site-ack p { margin: 0; }
+html.reading main.content .site-ack p { text-align: left; }
+.site-ack a { white-space: nowrap; }
+.site-ack img.zulip-mark { vertical-align: -0.2em; margin-right: 0.3em; }
+
 // Definition lists (history outlines)
 dl dt { font-family: $font-family-sans-serif; font-size: 0.9rem; margin-top: 0.5rem; }
 dl dd { margin-left: 1.2rem; }

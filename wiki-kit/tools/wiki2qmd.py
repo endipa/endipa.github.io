@@ -66,8 +66,9 @@ BADGES = {'Demo': '[demo text]{.badge-demo}', 'Claim': '[claimed · under study]
 problems = []
 ZULIP_HOST = CONFIG['zulip_host']   # e.g. 'myproject.zulipchat.com'; empty: no Zulip links
 LABEL_RENAME = {}   # wiki ids -> Quarto labels (prop-x -> prp-x); filled in main()
+PLAIN_LABELS = set()   # results shown without a number: the only one of their kind on their page; filled in main()
 KIND_PREFIX = {'Theorem': 'thm-', 'Lemma': 'lem-', 'Proposition': 'prp-', 'Corollary': 'cor-', 'Definition': 'def-'}
-THEOREM_TITLE = re.compile(r'^(Theorem|Lemma|Proposition|Corollary|Definition)\s*\((.*)\)\.?$', re.S)
+THEOREM_TITLE = re.compile(r'^(Theorem|Lemma|Proposition|Corollary|Definition)\s*(?:\((.*)\))?\.?$', re.S)   # the name is optional
 UNNUMBERED_TITLE = re.compile(r'^(Claim|Remark|Conjecture|Example)\s*(?:\((.*)\))?\.?$', re.S)   # boxes Quarto does not number
 ZULIP_CHANNELS = CONFIG.get('zulip_channels', {})   # short name -> "<id>-<name>" once the Zulip exists (optional)
 # Edit buttons (kit, November 2026): with "edit_paragraphs": {"preload": "Template:Proposal/Preload"} in edition.json,
@@ -476,7 +477,7 @@ def inline(s, in_table=False):
         elif name == 'Ref':
             label = pos[0]
             text = pos[1] if len(pos) > 1 else label
-            if label.startswith(REF_PREFIXES):
+            if label.startswith(REF_PREFIXES) and LABEL_RENAME.get(label, label) not in PLAIN_LABELS:
                 # in a table the number alone says too little: "Lemma 4.6 (finite energy)"
                 pieces.append('@' + label + (f' ({inline(text, in_table)})' if in_table and len(pos) > 1 else ''))
             else:
@@ -652,13 +653,18 @@ def convert_page(title, text, statements):
                 mk = THEOREM_TITLE.match(named.get('title', '').strip())
                 mu = UNNUMBERED_TITLE.match(named.get('title', '').strip())
                 if mk:
-                    kind, head_txt = mk.group(1), mk.group(2).strip()
+                    kind, head_txt = mk.group(1), (mk.group(2) or '').strip()
                 elif mu:
                     kind, head_txt = mu.group(1), (mu.group(2) or '').strip()
                 else:
                     kind, head_txt = 'Theorem', named.get('title', '').strip().rstrip('.')
                 label = LABEL_RENAME.get(named.get('id', ''), named.get('id', ''))
-                if label.startswith(THEOREM_PREFIXES):
+                if label in PLAIN_LABELS:
+                    # the only result of its kind on the page: the same box, without a number (Quarto numbers a div whose
+                    # id is thm-..., so the anchor goes on an empty span)
+                    fence('::: {.theorem' + ('' if kind == 'Theorem' else ' .' + kind.lower()) + '}')
+                    out += ['[]{#' + label + ' style="scroll-margin-top: 1.2rem"}[**' + kind + (' (' + inline(head_txt) + ')' if head_txt else '') + '**]{.theorem-title} &nbsp;', '']
+                elif label.startswith(THEOREM_PREFIXES):
                     fence('::: {#' + label + '}')
                     if head_txt:
                         out += ['## ' + inline(head_txt), '']
@@ -835,7 +841,8 @@ filters:
 wiki-url: {wiki_url}
 
 # No numbers on the website (10 November 2026): pages and sections are not numbered, and results are numbered within
-# their page (Theorem 1, Lemma 2); the TeX sources and their PDFs keep the numbering of a paper.
+# their page (Lemma 1, Lemma 2), except a result that is the only one of its kind on its page, which has no number
+# (11 November 2026); the TeX sources and their PDFs keep the numbering of a paper.
 crossref:
   chapters: false
 
@@ -923,6 +930,18 @@ def main():
             out_lines.append(ln)
         return '\n'.join(out_lines)
     articles = [t for t in pages if ':' not in t.split('/')[0] and t != 'Main Page']
+    # a result that is the only one of its kind on its page (one theorem, one lemma, ...) is shown without a number;
+    # as soon as a page has two of a kind, Quarto numbers them (Lemma 1, Lemma 2)
+    for t in articles:
+        kinds = collections.defaultdict(list)
+        for a, b, name, pos, named in templates_in(no_pre(pages[t])):
+            if name in ('Theorem start', 'Result start') and named.get('id'):
+                label = LABEL_RENAME.get(named['id'], named['id'])
+                if label.startswith(THEOREM_PREFIXES):
+                    kinds[label.split('-', 1)[0]].append((name, label))
+        for group in kinds.values():
+            if len(group) == 1 and group[0][0] == 'Theorem start':
+                PLAIN_LABELS.add(group[0][1])
     lit = wikitex.literature({t: pages[t] for t in articles}) if EDIT else {}
     ARTICLES.update(articles)
     for t, txt in pages.items():

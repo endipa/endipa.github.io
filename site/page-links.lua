@@ -12,7 +12,8 @@
 --
 -- The filter adds, after the page's module-meta block (or inside an empty `::: {.discuss}` div
 -- on pages without one):
---   * a "Discuss on Zulip" link, when the page has a Zulip topic (a filled button until 10 November 2026),
+--   * a "Discuss on Zulip" link, when the page has a Zulip topic (a filled button until 10 November 2026; since
+--     11 November 2026 it carries the round Zulip icon instead of a speech bubble),
 --   * a "This page in the wiki" link: the wiki is where the text is edited; this edition is
 --     rebuilt from it by a script and never edited by hand (wiki-note, from edition.json, e.g. "members" for a
 --     wiki by invitation: when the link goes to the real wiki, the line opens with "For members:"),
@@ -24,10 +25,29 @@
 --   * (November 2026) a "Propose a change" link, when _quarto.yml sets propose-preload (edition.json, edit_paragraphs.preload_block)
 --     and the wiki is the real one: a new topic on the page's talk page, filled in with that preload page,
 -- and a "Propose a text" link at the end of every placeholder: the same new topic, or the Zulip topic when there is none.
+--
+-- 11 November 2026: the hosting of the project's Zulip is sponsored by Zulip (Zulip Cloud Standard, free of charge).
+-- Following https://zulip.com/help/linking-to-zulip-website (round Zulip icon, link to zulip.com), the pages named in
+-- ACK_PAGES end with a line of acknowledgement. The line is written by this filter, not in the wiki: the wiki pages,
+-- their TeX sources and their PDFs do not have it.
 
 local zulip, related, wiki, tex, pdf, wiki_note, wiki_real = nil, nil, nil, nil, nil, nil, false
 local book_pdf, book_zip = nil, nil
 local propose_preload, propose = nil, nil
+local page_title = nil   -- the title of the page in the wiki (wiki-page in the front matter)
+
+-- The round Zulip icon: the file static/images/logo/zulip-icon-circle.svg of Zulip, unchanged (a copy is next to this
+-- file, zulip-icon-circle.svg, SHA-1 348706c36fba0fabf3e934a271fddcf9a1ff19d3), written as a data address so that the
+-- build needs no extra file. Its size is set in theme.scss (img.zulip-mark).
+local ZULIP_ICON = '<img class="zulip-mark" alt="" aria-hidden="true" width="16" height="16" src="data:image/svg+xml;base64,'
+  .. 'PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3NzMuMTIgNzczLjEyIj48bGluZWFyR3JhZGllbnQgaWQ9ImEiIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiM1MGFkZmYiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM3ODc3ZmMiLz48L2xpbmVhckdyYWRpZW50PjxjaXJjbGUgY3g9IjM4Ni41NiIgY3k9IjM4Ni41NiIgcj0iMzg2LjU2IiBmaWxsPSJ1cmwoI2EpIi8+PHBhdGggZD0iTTU2Ni42NiA1MjcuMjVjMCAzMy4wMy0yNC4yMyA2MC4wNS01My44NCA2MC4wNUgyNjAuMjljLTI5LjYxIDAtNTMuODQtMjcuMDItNTMuODQtNjAuMDUgMC0yMC4yMiA5LjA5LTM4LjIgMjIuOTMtNDkuMDlsMTM0LjM3LTEyMGMyLjUtMi4xNCA1Ljc0IDEuMzEgMy45NCA0LjE5bC00OS4yOSA5OC42OWMtMS4zOCAyLjc2LjQxIDYuMTYgMy4yNSA2LjE2aDE5MS4xOGMyOS42MSAwIDUzLjgzIDI3LjAzIDUzLjgzIDYwLjA1em0wLTI4MS4zOWMwIDIwLjIyLTkuMDkgMzguMi0yMi45MyA0OS4wOWwtMTM0LjM3IDEyMGMtMi41IDIuMTQtNS43NC0xLjMxLTMuOTQtNC4xOWw0OS4yOS05OC42OWMxLjM4LTIuNzYtLjQxLTYuMTYtMy4yNS02LjE2SDI2MC4yOWMtMjkuNjEgMC01My44NC0yNy4wMi01My44NC02MC4wNXMyNC4yMy02MC4wNSA1My44NC02MC4wNWgyNTIuNTRjMjkuNjEgMCA1My44MyAyNy4wMiA1My44MyA2MC4wNXoiIGZpbGw9IiNmZmYiLz48L3N2Zz4='
+  .. '">'
+-- The acknowledgement of the sponsored hosting, at the end of these pages (titles as in the wiki).
+local ACK_PAGES = { ["Overview"] = true, ["Contributors"] = true }
+local ACK_HTML = '<div class="site-ack">\n<span class="site-ack-label">Acknowledgements</span>\n'
+  .. '<p>The discussion forum runs on <a class="site-ack-link" href="https://zulip.com/" '
+  .. 'title="Zulip is an organized team chat app designed for efficient communication.">' .. ZULIP_ICON
+  .. 'Zulip</a>, with hosting sponsored by Zulip.</p>\n</div>'
 
 -- MediaWiki page address: spaces become underscores, other characters are percent-encoded.
 local function wiki_title(t)
@@ -37,6 +57,7 @@ end
 
 local function read_meta(m)
   if m.zulip then zulip = pandoc.utils.stringify(m.zulip) end
+  if m["wiki-page"] then page_title = pandoc.utils.stringify(m["wiki-page"]) end
   if m["zulip-related"] then related = m["zulip-related"] end
   if m["tex-source"] then tex = pandoc.utils.stringify(m["tex-source"]) end   -- kit v2.1
   if m["book-pdf"] then book_pdf = pandoc.utils.stringify(m["book-pdf"]) end
@@ -75,14 +96,15 @@ local function links_row()
     table.insert(inlines, el)
   end
   local function link(icon, label, target, title, classes, attrs)
-    local i = pandoc.RawInline("html", '<i class="bi bi-' .. icon .. '" aria-hidden="true"></i>')
+    -- icon: the name of a Bootstrap icon, or ready HTML (the Zulip icon)
+    local i = pandoc.RawInline("html", icon:sub(1, 1) == "<" and icon or ('<i class="bi bi-' .. icon .. '" aria-hidden="true"></i>'))
     return pandoc.Link({i, pandoc.Space(), pandoc.Str(label)}, target, title or "", pandoc.Attr("", classes, attrs or {}))
   end
   local who = (wiki_real and wiki_note and wiki_note ~= "") and wiki_note or nil   -- e.g. "members": Zulip and wiki by invitation
   if who and (zulip or wiki) then add(note({pandoc.Str("For " .. who .. ":")})) end
   if zulip then
     -- the class zulip-btn is kept for site-check.js; it is styled as the other links
-    add(link("chat-left-text", "Discuss on Zulip", zulip,
+    add(link(ZULIP_ICON, "Discuss on Zulip", zulip,
              "The Zulip topic of this page" .. (who and " (the Zulip is by invitation)" or ""), {"edit-link", "zulip-btn"}))
   end
   if wiki then
@@ -276,6 +298,9 @@ local READING_SCRIPT = [=[
 ]=]
 
 local function add_script(doc)
+  if page_title and ACK_PAGES[page_title] and quarto and quarto.doc and quarto.doc.is_format and quarto.doc.is_format("html") then
+    doc.blocks:insert(pandoc.RawBlock("html", ACK_HTML))
+  end
   doc.blocks:insert(pandoc.RawBlock("html", FOLD_SCRIPT))
   if quarto and quarto.doc and quarto.doc.is_format and quarto.doc.is_format("html") then
     quarto.doc.include_text("in-header", READING_HEAD)
