@@ -28,7 +28,7 @@ The papers of the reference catalogue, one line each, grouped by theme; in each 
 * {{Anchor|BeckChaudharyWayne2020}} M. Beck, O. Chaudhary and C. E. Wayne, ''Rigorous justification of Taylor dispersion via center manifolds and hypocoercivity'', Archive for Rational Mechanics and Analysis '''235''' (2020), 1105–1149, [https://arxiv.org/abs/1804.06916 arXiv:1804.06916].
 * {{Anchor|BedrossianCotiZelati2017}} J. Bedrossian and M. Coti Zelati, ''Enhanced dissipation, hypoellipticity, and anomalous small noise inviscid limits in shear flows'', Archive for Rational Mechanics and Analysis '''224''' (2017), 1161–1204, [https://arxiv.org/abs/1510.08098 arXiv:1510.08098].
 * {{Anchor|BeckChaudharyWayne2015}} M. Beck, O. Chaudhary and C. E. Wayne, ''Analysis of enhanced diffusion in Taylor dispersion via a model problem'', Hamiltonian Partial Differential Equations and Applications, Fields Institute Communications '''75''' (2015), pp. 31–71, [https://arxiv.org/abs/1501.05877 arXiv:1501.05877].
-* {{Anchor|Kolmogorov1934}} A. Kolmogoroff, ''Zufällige Bewegungen (Zur Theorie der Brownschen Bewegung)'', Annals of Mathematics (2) '''35''' (1934), 116–117, [https://doi.org/10.2307/1968123 doi:10.2307/1968123].
+* {{Anchor|Kolmogorov1934}} A. Kolmogorov, ''Zufällige Bewegungen (Zur Theorie der Brownschen Bewegung)'', Annals of Mathematics (2) '''35''' (1934), 116–117, [https://doi.org/10.2307/1968123 doi:10.2307/1968123].
 * {{Anchor|Kelvin1887}} W. Thomson (Lord Kelvin), ''Stability of fluid motion: rectilineal motion of viscous fluid between two parallel planes'', Philosophical Magazine (5) '''24''' (1887), 188–196, [https://doi.org/10.1080/14786448708628078 doi:10.1080/14786448708628078].
 {{Fold end}}
 {{Fold start|kind=note|title=Other smooth flows (4)}}

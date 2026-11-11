@@ -58,9 +58,62 @@ The Sobolev norms in the theorem are <math display="inline">\|g\|_{H^1}^2=\|g\|_
 == One example, every technique ==
 Each proof below is written for this example only, to show the mechanism; the general results, with complete proofs, are in the part ''Techniques and general results''.
 
+{{Fold start|kind=note|title=The estimates mode by mode}}
+Since each <math display="inline">k</math>-mode evolves independently, the estimates of the theorem can be stated for each mode separately, keeping track of the dependence on <math display="inline">k</math>. There exist constants <math display="inline">c,C>0</math>, independent of <math display="inline">\nu</math> and <math display="inline">k</math>, such that for all <math display="inline">k\neq0</math> and <math display="inline">t\geq0</math>
+<math display="block">\|f_k(t)\|_{L^2(\mathbb{R})}\leq Ce^{-c\nu^{1/3}|k|^{2/3}t}\|f_k^{\rm in}\|_{L^2(\mathbb{R})},</math>
+<math display="block">\|f_k(t)\|_{H^{-1}(\mathbb{R})}\leq\frac{C}{1+|k|t}e^{-c\nu^{1/3}|k|^{2/3}t}\|f_k^{\rm in}\|_{H^{1}(\mathbb{R})},</math>
+where <math display="inline">H^{\pm1}(\mathbb{R})</math> are the Sobolev norms in <math display="inline">y</math> only. Higher modes are therefore mixed and dissipated faster. The theorem follows by summing over <math display="inline">k\neq0</math>, since <math display="inline">|k|\geq1</math>.
+{{Fold end}}
+
 === Explicit solution ===
 {{Proof start|id=proof-couette-explicit|title=Proof by the explicit solution}}
-{{Placeholder start}}The proof.{{Placeholder end}}
+In this proof we take full advantage of the simplicity of the mathematical setting, which is also what allowed Kelvin and Kolmogorov to write down the solution explicitly.
+
+For the equation at mode <math display="inline">k</math>, we can also take the Fourier transform in <math display="inline">y</math>, with the notation
+<math display="block">\hat f_k(t,\eta)=\int_{\mathbb{R}}f_k(t,y)e^{-i\eta y}\,dy,\qquad f_k(t,y)=\frac{1}{2\pi}\int_{\mathbb{R}}\hat f_k(t,\eta)e^{i\eta y}\,d\eta,</math>
+so that <math display="inline">\|f\|_{L^2}^2=\sum_{k\in\mathbb{Z}}\|\hat f_k\|_{L^2(\mathbb{R})}^2</math>. By elementary properties of the Fourier transform (multiplication by <math display="inline">y</math> becomes <math display="inline">i\partial_\eta</math>), the equation becomes
+<math display="block">\partial_t\hat f_k-k\partial_\eta\hat f_k=-\nu(k^2+\eta^2)\hat f_k.</math>
+This is an advection equation in Fourier, with a damping term. We can then follow the characteristics in <math display="inline">\eta</math>, which are the lines <math display="inline">\eta+kt=\text{const}</math>, and deduce that the explicit solution is given by
+<math display="block">\hat f_k(t,\eta)=\exp\Big(-\nu\int_0^t\big(k^2+(\eta+k\tau)^2\big)\,d\tau\Big)\,\hat f^{\rm in}_k(\eta+kt).</math>
+{{Fold start|kind=note|title=Where the non-commutation enters}}
+In Fourier, the transport is the translation <math display="inline">\eta\mapsto\eta+kt</math> and the diffusion is the multiplication by <math display="inline">-\nu(k^2+\eta^2)</math>. The lack of commutation is simply reflected in the fact that the damping is not constant along the characteristics:
+<math display="block">\frac{d}{d\tau}\Big[-\big(k^2+(\eta+k\tau)^2\big)\Big]=-2k(\eta+k\tau),</math>
+which is exactly the symbol of the commutator <math display="inline">[\Delta,y\partial_x]=2\partial_x\partial_y</math> at the frequency <math display="inline">(k,\eta+k\tau)</math>. If the two operators commuted, the damping would be constant along the characteristics, the integral in the exponent would be trivial, and we would only recover the decay of the heat equation, as in the idea above. Instead, the frequency in <math display="inline">y</math> grows linearly in time along the characteristics, so the damping grows like <math display="inline">\nu k^2\tau^2</math> and its integral like <math display="inline">\nu k^2t^3</math>.
+{{Fold end}}
+The only thing left is therefore to estimate the integral in the exponent, for which we claim that
+<math display="block">\int_0^t\big(k^2+(\eta+k\tau)^2\big)\,d\tau\geq k^2t+\frac{1}{12}k^2t^3\qquad\text{for all }\eta\in\mathbb{R}.</math>
+{{Proof start|id=proof-couette-explicit-claim|title=Proof of the claim}}
+Computing the integral and completing the square in <math display="inline">\eta</math>,
+<math display="block">\int_0^t(\eta+k\tau)^2\,d\tau=\eta^2t+\eta kt^2+\frac{1}{3}k^2t^3=t\Big(\eta+\frac{kt}{2}\Big)^2+\frac{1}{12}k^2t^3\geq\frac{1}{12}k^2t^3,</math>
+with equality only for <math display="inline">\eta=-kt/2</math>.
+{{Proof end}}
+Therefore, using that <math display="inline">f-\langle f\rangle_x=\sum_{k\in\mathbb{Z}\setminus\{0\}}f_ke^{ikx}</math>, by Plancherel, the fact that <math display="inline">|k|\geq1</math> and that <math display="inline">\nu t^3\geq3\nu^{1/3}t-2</math>, we get
+<math display="block">\begin{aligned}\|(f-\langle f\rangle_x)(t)\|_{L^2}^2&=\sum_{k\neq0}\int_{\mathbb{R}}e^{-2\nu\int_0^t(k^2+(\eta+k\tau)^2)\,d\tau}\,|\hat f^{\rm in}_k(\eta+kt)|^2\,d\eta\\&\leq C^2e^{-2c\nu^{1/3}t}\,\|f^{\rm in}-\langle f^{\rm in}\rangle_x\|_{L^2}^2.\end{aligned}</math>
+This proves the desired enhanced dissipation estimate. The constants can be explicitly computed.
+{{Fold start|kind=note|title=The constants}}
+Indeed, the claim and <math display="inline">|k|\geq1</math> give the more precise bound
+<math display="block">\|(f-\langle f\rangle_x)(t)\|_{L^2}^2\leq e^{-2\nu t-\frac{1}{6}\nu t^3}\,\|f^{\rm in}-\langle f^{\rm in}\rangle_x\|_{L^2}^2.</math>
+Moreover, <math display="inline">s^3-3s+2=(s-1)^2(s+2)\geq0</math> for <math display="inline">s\geq0</math>, which for <math display="inline">s=\nu^{1/3}t</math> is the inequality <math display="inline">\nu t^3\geq3\nu^{1/3}t-2</math>. Hence <math display="inline">e^{-\frac{1}{6}\nu t^3}\leq e^{\frac{1}{3}}e^{-\frac{1}{2}\nu^{1/3}t}</math>, and one can take <math display="inline">c=1/4</math> and <math display="inline">C=e^{1/6}</math>.
+{{Fold end}}
+
+For the mixing estimate, one can directly use the characterization of the Sobolev norms in Fourier, namely
+<math display="block">\|g\|_{H^{s}}^2=\sum_{k\in\mathbb{Z}}\int_{\mathbb{R}}(1+k^2+\eta^2)^{s}\,|\hat g_k(\eta)|^2\,d\eta,</math>
+which for <math display="inline">s=\pm1</math> are the norms of the theorem. Since <math display="inline">|k|\geq1</math> and <math display="inline">|k|t\leq|\eta|+|\eta+kt|</math>, by Cauchy–Schwarz we have
+<math display="block">\begin{aligned}(1+t)^2\leq(1+|k|t)^2&\leq\big(1+|\eta|+|\eta+kt|\big)^2\leq\big(2+\eta^2\big)\big(2+(\eta+kt)^2\big)\\&\leq\big(1+k^2+\eta^2\big)\big(1+k^2+(\eta+kt)^2\big).\end{aligned}</math>
+Therefore, bounding the exponential as before,
+<math display="block">\begin{aligned}\|(f-\langle f\rangle_x)(t)\|_{H^{-1}}^2&=\sum_{k\neq0}\int_{\mathbb{R}}\frac{e^{-2\nu\int_0^t(k^2+(\eta+k\tau)^2)\,d\tau}}{1+k^2+\eta^2}\,|\hat f^{\rm in}_k(\eta+kt)|^2\,d\eta\\&\leq\frac{C^2e^{-2c\nu^{1/3}t}}{(1+t)^2}\sum_{k\neq0}\int_{\mathbb{R}}\big(1+k^2+(\eta+kt)^2\big)|\hat f^{\rm in}_k(\eta+kt)|^2\,d\eta\\&=\frac{C^2e^{-2c\nu^{1/3}t}}{(1+t)^2}\,\|f^{\rm in}-\langle f^{\rm in}\rangle_x\|_{H^1}^2,\end{aligned}</math>
+which is the mixing estimate.
+
+In fact, the mode-by-mode estimates can be obtained in the same way, by keeping track of <math display="inline">k</math>.
+{{Fold start|kind=note|title=The solution in physical space}}
+For <math display="inline">\nu>0</math>, inverting the Fourier transform in <math display="inline">y</math> in the explicit solution is a Gaussian integral, which gives
+<math display="block">f_k(t,y)=e^{-\nu k^2t-\frac{1}{12}\nu k^2t^3}\int_{\mathbb{R}}\frac{1}{\sqrt{4\pi\nu t}}\,e^{-\frac{(y-y')^2}{4\nu t}}\,e^{-ikt\frac{y+y'}{2}}f_k^{\rm in}(y')\,dy'.</math>
+Summing over <math display="inline">k</math>, by the Poisson summation formula we get
+<math display="block">f(t,x,y)=\int_{\mathbb{T}\times\mathbb{R}}G_t(x,y,x',y')f^{\rm in}(x',y')\,dx'dy',</math>
+with
+<math display="block">\begin{aligned}G_t(x,y,x',y')&=\frac{1}{\sqrt{4\pi\nu t}}\,e^{-\frac{(y-y')^2}{4\nu t}}\sum_{n\in\mathbb{Z}}\frac{1}{\sqrt{2\pi\sigma_t^2}}\exp\Big(-\frac{\big(x-x'-t\frac{y+y'}{2}+2\pi n\big)^2}{2\sigma_t^2}\Big),\\\sigma_t^2&=2\nu t+\frac{1}{6}\nu t^3.\end{aligned}</math>
+Without the diffusion in <math display="inline">x</math>, namely with <math display="inline">\sigma_t^2=\frac{1}{6}\nu t^3</math>, and on the whole plane, namely keeping only the term <math display="inline">n=0</math>, this is the fundamental solution written by [[Literature#Kolmogorov1934|Kolmogorov (1934)]]. In the variable <math display="inline">x</math> the solution spreads over the length <math display="inline">\sqrt{\nu t^3}</math>, much larger than the diffusive one <math display="inline">\sqrt{\nu t}</math>. For <math display="inline">t\gg\nu^{-1/3}</math> this length exceeds the size of the torus and the kernel is almost independent of <math display="inline">x</math>: this is the enhanced dissipation seen in physical space.
+{{Fold end}}
 {{Proof end}}
 
 === Spectral methods ===
@@ -92,6 +145,6 @@ General theory: [[Hörmander theory]].
 
 == References ==
 <!-- refs-begin: Kelvin1887 Kolmogorov1934 -->
-# A. Kolmogoroff, ''Zufällige Bewegungen (Zur Theorie der Brownschen Bewegung)'', Annals of Mathematics (2) '''35''' (1934), 116–117, [https://doi.org/10.2307/1968123 doi:10.2307/1968123].
+# A. Kolmogorov, ''Zufällige Bewegungen (Zur Theorie der Brownschen Bewegung)'', Annals of Mathematics (2) '''35''' (1934), 116–117, [https://doi.org/10.2307/1968123 doi:10.2307/1968123].
 # W. Thomson (Lord Kelvin), ''Stability of fluid motion: rectilineal motion of viscous fluid between two parallel planes'', Philosophical Magazine (5) '''24''' (1887), 188–196, [https://doi.org/10.1080/14786448708628078 doi:10.1080/14786448708628078].
 <!-- refs-end -->

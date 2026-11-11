@@ -1274,7 +1274,7 @@
       "key": "Kolmogorov1934",
       "title": "Zufällige Bewegungen (Zur Theorie der Brownschen Bewegung)",
       "authors": [
-        "A. Kolmogoroff"
+        "A. Kolmogorov"
       ],
       "arxiv": null,
       "preprint_year": null,
@@ -1287,7 +1287,7 @@
       ],
       "topic": "history; Kolmogorov equation; Brownian motion; Fokker–Planck equation; explicit fundamental solution",
       "priority": "historical",
-      "annotation": "Two-page note (received 9 September 1933) that applies Kolmogorov's theory of continuous random processes to random motions in which the coordinates and also their time derivatives change continuously. The transition density solves a Fokker–Planck equation with second derivatives only in the velocities (eq. (9)); for one degree of freedom and constant coefficients (eq. (10), with no force) it is the equation of the Couette flow without the diffusion along the streamlines, the velocity in the role of y. He writes its fundamental solution (eq. (11)) and reads off that the velocity changes by an amount of order (Δt)^(1/2) while the position deviates from the free motion by an amount of order (Δt)^(3/2) (eq. (12)). Nothing on smoothness or hypoellipticity: that reading is Hörmander's (1967). Cited on the page Couette flow for the history of the model. Formula (11) as printed has misprints in the constants (k³ where k should be, prefactor 2√3/(πk²(t'−t)²) instead of √3/(2πk(t'−t)²)): checked symbolically on 11 November 2026; use the corrected formula. The author's name is printed A. Kolmogoroff; cited in the text as Kolmogorov (1934). Title in Crossref without the umlaut.",
+      "annotation": "Two-page note (received 9 September 1933) that applies Kolmogorov's theory of continuous random processes to random motions in which the coordinates and also their time derivatives change continuously. The transition density solves a Fokker–Planck equation with second derivatives only in the velocities (eq. (9)); for one degree of freedom and constant coefficients (eq. (10), with no force) it is the equation of the Couette flow without the diffusion along the streamlines, the velocity in the role of y. He writes its fundamental solution (eq. (11)) and reads off that the velocity changes by an amount of order (Δt)^(1/2) while the position deviates from the free motion by an amount of order (Δt)^(3/2) (eq. (12)). Nothing on smoothness or hypoellipticity: that reading is Hörmander's (1967). Cited on the page Couette flow for the history of the model. Formula (11) as printed has misprints in the constants (k³ where k should be, prefactor 2√3/(πk²(t'−t)²) instead of √3/(2πk(t'−t)²)): checked symbolically on 11 November 2026; use the corrected formula. The author's name is printed A. Kolmogoroff; written Kolmogorov in the reference lists and in the text (M. Dolce, 11 November 2026). Title in Crossref without the umlaut.",
       "checked_on": "2026-11-11",
       "topic_group": "Deterministic enhanced dissipation",
       "publication_status": "published",

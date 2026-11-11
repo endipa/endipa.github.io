@@ -297,6 +297,36 @@ local READING_SCRIPT = [=[
 </script>
 ]=]
 
+-- (11 November 2026) An inline formula stays on the line of the text glued to it: the comma, full stop or bracket
+-- after it, the bracket before it, the rest of a word such as "k-mode". For a browser a formula is a box of its own,
+-- and it may break the line between the box and the punctuation, which then starts the next line. The formula and
+-- the text glued to it (everything up to the next space, on both sides) go into <span class="math-glue">
+-- (white-space: nowrap, theme.scss). Only the HTML edition changes: the wiki, the TeX sources and the PDFs do not.
+local function is_inline_math(el) return el.t == "Math" and tostring(el.mathtype) == "InlineMath" end
+local function glue_math(inlines)
+  local out, i, n, changed = pandoc.List(), 1, #inlines, false
+  while i <= n do
+    local el = inlines[i]
+    if is_inline_math(el) then
+      local group = pandoc.List()
+      if #out > 0 and out[#out].t == "Str" then group:insert(out:remove()) end
+      group:insert(el)
+      i = i + 1
+      while i <= n and (inlines[i].t == "Str" or is_inline_math(inlines[i])) do group:insert(inlines[i]); i = i + 1 end
+      if #group > 1 then out:insert(pandoc.Span(group, pandoc.Attr("", {"math-glue"}))); changed = true else out:insert(el) end
+    else
+      out:insert(el); i = i + 1
+    end
+  end
+  if changed then return out end
+end
+local function glue_all(doc)
+  if quarto and quarto.doc and quarto.doc.is_format and quarto.doc.is_format("html") then
+    doc.blocks = doc.blocks:walk({ Inlines = glue_math })
+  end
+  return doc
+end
+
 local function add_script(doc)
   if page_title and ACK_PAGES[page_title] and quarto and quarto.doc and quarto.doc.is_format and quarto.doc.is_format("html") then
     doc.blocks:insert(pandoc.RawBlock("html", ACK_HTML))
@@ -309,4 +339,4 @@ local function add_script(doc)
   return doc
 end
 
-return { {Meta = read_meta}, {Div = div}, {Pandoc = add_script} }
+return { {Meta = read_meta}, {Div = div}, {Pandoc = glue_all}, {Pandoc = add_script} }

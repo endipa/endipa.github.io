@@ -134,6 +134,9 @@ mjx-container[jax="CHTML"][display="true"] { overflow-x: auto; overflow-y: hidde
 @media (max-width: 576px) {
   mjx-container[jax="CHTML"]:not([display="true"]) { display: inline-block; max-width: 100%; overflow-x: auto; overflow-y: hidden; vertical-align: middle; }
 }
+// An inline formula stays on the line of the text glued to it (the comma or bracket after it, "k-mode"):
+// page-links.lua wraps the formula and that text in span.math-glue
+span.math-glue { white-space: nowrap; }
 
 // Long code fragments (addresses, file names) wrap instead of widening the page
 main :not(pre) > code { white-space: pre-wrap; overflow-wrap: anywhere; }
