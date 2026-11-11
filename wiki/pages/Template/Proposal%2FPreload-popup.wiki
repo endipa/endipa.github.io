@@ -1,0 +1,5 @@
+{{Proposal|status=open$1}}
+$2
+
+~~<includeonly>~~</includeonly><noinclude>
+The text of a proposal made from the edition with one of its pop-ups: the edit button of a paragraph, or ''Propose a change'' under the title of a page. The pop-up writes the text of the topic, with only the parts that were filled in, and this page adds the box and the signature (1: the parameters of the box, <code>|paragraph=</code> and the id of the paragraph, or <code>|request=yes</code> for a change asked for in words; 2: the text). A proposal for one paragraph is applied with <code>wikitex.py apply-proposal</code>, which uses the id of the paragraph and the proposed text; a change asked for in words is written into the page by an editor. The split signature at the end becomes four tildes in the new topic. See [[How to contribute#Proposing a change|How to contribute]].</noinclude>

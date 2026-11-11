@@ -36,7 +36,10 @@ This script writes the TeX sources, converts TeX back to wikitext, and applies a
         a proposal from the talk page of <page>: the wikitext of its topic, which starts with {{Proposal|...}} and
         contains '''Proposed text''' followed by <pre>...</pre>. With paragraph=<id> in the box (made with the edit
         button of the website) it is applied as apply-unit; otherwise the TeX in <pre> is a set of blocks, applied as
-        apply (\title{<page>} is added if missing). --write refuses a proposal whose status is not "accepted"
+        apply (\title{<page>} is added if missing). --write refuses a proposal whose status is not "accepted".
+        The lines of the box '''New references''' (papers not yet on the Literature page, \bibitem{Key} ...) are listed:
+        they go into the reference catalogue first. A request in words (''Request:'', made with "Propose a change" on
+        the website) has no TeX for the script: an editor writes the change
   units <pages-dir>
         check the editable paragraphs of every page (TeX -> wiki must give back each paragraph)
   zips <tex-dir> [<pictures-dir>]
@@ -864,7 +867,9 @@ class T2W:
 
     def document(self, tex):
         """The wikitext of a TeX page or proposal."""
-        self.refs.update(bibitem_refs(tex))
+        for k, v in bibitem_refs(tex).items():   # a plain \bibitem{key} says nothing about the names: it does not replace
+            if v[1] != '?' or k not in self.refs:   # what the Literature page says about the key
+                self.refs[k] = v
         lines = tex.split('\n')
         if any(l.strip().startswith(r'\begin{document}') for l in lines):
             k = next(i for i, l in enumerate(lines) if l.strip().startswith(r'\begin{document}'))
@@ -1329,6 +1334,8 @@ def proposal_blocks(tex):
                     break
                 if re.match(r'^%%\s*after:', lines[j].strip()):
                     break
+                if lines[j].strip().startswith(r'\begin{thebibliography}'):   # skipped below: not part of the section
+                    break
                 j += 1
             key = 'section:' + wikikit.plain(T2W().inline(h))
             blocks.append((key, after, lines[i:j])); after = None; i = j; continue
@@ -1562,7 +1569,10 @@ def cmd_apply_unit(pdir, title, uid, tex_path, write=False):
                  'apply the proposal by hand' % (uid, title))
     a, b, w, _ = found[uid]
     conv = T2W(refs)
-    wiki = conv.document(open(tex_path, encoding='utf-8').read()).strip('\n').split('\n')
+    tex = open(tex_path, encoding='utf-8').read()
+    # a bibliography typed with the paragraph is not part of it: new references go in the box "New references"
+    tex = re.sub(r'\\begin\{thebibliography\}.*?\\end\{thebibliography\}[ \t]*\n?', '', tex, flags=re.S)
+    wiki = conv.document(tex).strip('\n').split('\n')
     lines = old.split('\n')
     if normalize('\n'.join(wiki)).strip('\n') == normalize(w).strip('\n'):
         print('(no change to the text: the proposed TeX gives back the element %s of %s; if the proposal asks for something '
@@ -1599,10 +1609,29 @@ def proposal_parts(topic):
     return params, (m.group(1).strip('\n') if m else None)
 
 
+def proposal_references(topic):
+    """The lines of the box '''New references''' of a topic: the papers that are not yet on the Literature page."""
+    m = re.search(r"'''New references'''.*?<pre>(.*?)</pre>", topic, re.S)
+    return [l.strip() for l in m.group(1).split('\n') if l.strip()] if m else []
+
+
 def cmd_apply_proposal(pdir, title, topic_path, write=False):
     """A proposal from a talk page: one paragraph (paragraph=<id> in its box) or blocks of TeX."""
-    params, tex = proposal_parts(open(topic_path, encoding='utf-8').read())
+    topic = open(topic_path, encoding='utf-8').read()
+    params, tex = proposal_parts(topic)
+    new_refs = proposal_references(topic)
+    if new_refs:
+        lit = literature({t: v[3] for t, v in wikikit.read_pages(pdir).items()})
+        print('new references given with the proposal (they go into the reference catalogue, then on the Literature page, '
+              'before the proposal is applied):')
+        for l in new_refs:
+            m = BIBITEM.match(l)
+            key = m.group(2).strip() if m else ''
+            print('  %-26s %s' % ('[on the Literature page]' if key in lit else '[TO ADD]' if key else '[no \\bibitem{Key}]', l))
     if not tex or not tex.strip():
+        if params.get('request') or re.search(r"^''Request:''", topic, re.M):
+            sys.exit('a request in words (made with "Propose a change" on the website): there is no TeX for the script to apply; '
+                     'an editor writes the change into the page, then marks the proposal applied')
         sys.exit("no proposed text: the topic must contain '''Proposed text''' followed by <pre>...</pre>")
     if 'PASTE THE TEXT HERE' in tex:
         sys.exit('the proposed text was not pasted into the topic (it still says "PASTE THE TEXT HERE"): ask the author to paste it')

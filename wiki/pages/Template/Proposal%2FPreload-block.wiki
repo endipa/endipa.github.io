@@ -11,5 +11,9 @@
 The new text of the section.
 </pre>
 
+'''New references''' (papers that are not yet on [[Literature]], one per line: \bibitem{AuthorYear} A. Author and B. Author, Title of the paper, Journal 12 (2020), 345–678, doi:... or arXiv:...; cite them in the text with the same key):
+<pre>
+</pre>
+
 ~~<includeonly>~~</includeonly><noinclude>
-The form of a new proposal, opened by the link ''new proposal'' under the title of a page (and ''Propose a change'' in the edition). Once the proposal is accepted, an editor applies it with <code>wikitex.py apply-proposal</code>, which reads the blocks in the box ''Proposed text''. The split signature at the end becomes four tildes in the new topic. See [[How to contribute#Proposing a change|How to contribute]].</noinclude>
+The form of a new proposal, opened by the link ''new proposal'' under the title of a page in the wiki (''Propose a change'' in the edition opens a box of its own, see [[Template:Proposal/Preload-popup]]). Once the proposal is accepted, an editor applies it with <code>wikitex.py apply-proposal</code>, which reads the blocks in the box ''Proposed text'' and lists the lines of the box ''New references'' (they go into the reference catalogue first). The split signature at the end becomes four tildes in the new topic. See [[How to contribute#Proposing a change|How to contribute]].</noinclude>

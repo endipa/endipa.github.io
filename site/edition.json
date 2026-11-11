@@ -32,6 +32,7 @@
   },
   "edit_paragraphs": {
     "preload": "Template:Proposal/Preload",
-    "preload_block": "Template:Proposal/Preload-block"
+    "preload_block": "Template:Proposal/Preload-block",
+    "preload_popup": "Template:Proposal/Preload-popup"
   }
 }

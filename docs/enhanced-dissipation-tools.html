@@ -350,7 +350,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="unnumbered anchored" data-anchor-id="references">References</h2>
 <!-- refs-begin: -->
 <!-- refs-end -->
-<script type="application/json" id="edit-units">{"page": "Enhanced-dissipation tools", "talk": "Talk:Enhanced-dissipation tools", "edit": "https://endipa.miraheze.org/wiki/", "preload": "Template:Proposal/Preload", "units": {"p80597b03": "Tools specific to enhanced dissipation. A statement comes to the Toolkit when several proofs use it, or when it holds in more generality than one result; a step used by one proof only is a claim inside that proof. Each statement is given once, with its proof or a reference, and the proofs elsewhere link to it.", "pbf241ed2": "\\placeholder{For instance spectral-gap and resolvent lemmas, and the link between mixing and enhanced dissipation.}"}}</script>
+<script type="application/json" id="edit-units">{"page": "Enhanced-dissipation tools", "talk": "Talk:Enhanced-dissipation tools", "edit": "https://endipa.miraheze.org/wiki/", "preload": "Template:Proposal/Preload", "units": {"p80597b03": "Tools specific to enhanced dissipation. A statement comes to the Toolkit when several proofs use it, or when it holds in more generality than one result; a step used by one proof only is a claim inside that proof. Each statement is given once, with its proof or a reference, and the proofs elsewhere link to it.", "pbf241ed2": "\\placeholder{For instance spectral-gap and resolvent lemmas, and the link between mixing and enhanced dissipation.}"}, "popup": "Template:Proposal/Preload-popup", "keys": ["ACM2019", "AlbrittonBeekieNovack2022", "BCZG2023", "BeckChaudharyWayne2015", "BeckChaudharyWayne2020", "BedrossianBlumenthalPunshonSmith2021", "BedrossianCotiZelati2017", "BedrossianHeIyerWang2025", "BenthausCocliteNobili2026", "BenthausNobili2026", "BrueCotiZelatiMarconi2024", "CEIM2022", "CKRZ2008", "CZCIM2024", "CZDE2020", "CobleHe2024", "ColomboCotiZelatiWidmayer2021", "CoopermanIyerRowanSon2025", "CoopermanIyerSon2025", "CotiZelati2020StableMixing", "CotiZelatiDolce2020", "CotiZelatiDolceLo2024", "CotiZelatiDrivas2021", "CotiZelatiGallay2023", "CotiZelatiHairerVillringer2025", "DEIJ2022", "DelZottoNualart2026", "DolceJohanssonSorella2025", "EL2024", "ELM2025", "EZ2019", "FI2019", "FM2025", "FMN2023", "FlandoliLuo2026", "GaleatiGubinelli2023", "He2022Fractional", "He2026Localized", "IKX2014", "IZ2023", "Kelvin1887", "MFN2026survey", "NP2022", "RomitoRoveri2025", "Seis2023", "Wei2021Resolvent"]}</script>
 <style>
 .edit-unit { position: relative; }
 .edit-unit > .edit-btn { position: absolute; top: 0.1rem; right: -2.1rem; width: 1.7rem; height: 1.7rem; padding: 0; border: 1px solid #c9cfd8;
@@ -381,6 +381,12 @@ ul.task-list li input[type="checkbox"] {
 .edit-actions button { border-radius: 4px; padding: .35rem .8rem; font-size: .88rem; border: 1px solid #c9cfd8; background: #fff; cursor: pointer; }
 .edit-actions button.edit-send { background: #1f4e79; border-color: #1f4e79; color: #fff; }
 .edit-status { font-size: .82rem; color: #59616e; }
+.edit-dialog textarea.edit-refs { min-height: 3.1rem; }
+.edit-dialog textarea.edit-ask { min-height: 6.5rem; font-family: inherit; font-size: .93rem; }
+.edit-dialog textarea.edit-tex { min-height: 6rem; }
+.edit-dialog .edit-refnote { font-size: .8rem; color: #8a4b00; margin-top: .2rem; }
+.edit-dialog label.edit-check { display: flex; gap: .45rem; align-items: baseline; font-size: .85rem; color: #3f4855; margin: .8rem 0 0; }
+.edit-dialog label.edit-check input { flex: none; }
 @media print { .edit-btn { display: none !important; } }
 </style>
 <script>
@@ -419,6 +425,47 @@ ul.task-list li input[type="checkbox"] {
       + (ins.length ? ' <ins>' + nw(ins) + '</ins>' : '') + ' ' + nw(x.slice(x.length - s, x.length - s + 4)) + (s > 4 ? ' …' : '');
   }
   var PASTE = 'PASTE THE TEXT HERE: it was copied to the clipboard';
+  // 11 Nov 2026, with "preload_popup" in edition.json: the popups write the text of the topic, new references have a field
+  // of their own, and "Propose a change" under the title opens a popup (a request in words)
+  var KEYS = {}; (data.keys || []).forEach(function (k) { KEYS[k] = 1; });
+  var REF_EXAMPLE = '\\bibitem{AuthorYear} A. Author and B. Author, Title of the paper, Journal 12 (2020), 345–678, doi:... or arXiv:...';
+  function citedKeys(tex) {
+    var out = [], m, re = /\\cite[a-zA-Z]*\*?(?:\[[^\]]*\])*\{([^{}]*)\}/g;
+    while ((m = re.exec(tex))) { m[1].split(',').forEach(function (k) { k = k.trim(); if (k && out.indexOf(k) < 0) out.push(k); }); }
+    return out;
+  }
+  function refKeys(refs) {
+    var out = [], m, re = /\\bibitem\s*(?:\[[^\]]*\])?\s*\{([^{}]*)\}/g;
+    while ((m = re.exec(refs))) { out.push(m[1].trim()); }
+    return out;
+  }
+  // the keys cited in the TeX that are neither on the Literature page nor in the field "New references"
+  function missingRefs(tex, refs) {
+    var given = refKeys(refs);
+    return citedKeys(tex).filter(function (k) { return !KEYS[k] && given.indexOf(k) < 0; });
+  }
+  function newKeysNote(tex, refs) {
+    var miss = missingRefs(tex, refs);
+    return miss.length ? 'Not on the Literature page: ' + miss.join(', ') + '. Add a line for ' + (miss.length > 1 ? 'each' : 'it')
+      + ' in the field “New references”: ' + miss.map(function (k) { return '\\bibitem{' + k + '}'; }).join(', ') + ' followed by the reference.' : '';
+  }
+  function refsField() {
+    return '<label>New references, one per line: only for papers that are not yet on the Literature page; cite them in the text with the same'
+      + ' key, as in <code>\\citet{AuthorYear}</code></label><textarea class="edit-refs" spellcheck="false" placeholder="' + esc(REF_EXAMPLE) + '"></textarea>'
+      + '<div class="edit-refnote"></div>';
+  }
+  function topicLink(title, box, text) {
+    return data.edit + encodeURIComponent(data.talk.replace(/ /g, '_')) + '?action=edit&section=new'
+      + '&preloadtitle=' + encodeURIComponent('Proposal: ' + title) + '&preload=' + encodeURIComponent(data.popup)
+      + '&preloadparams%5B%5D=' + encodeURIComponent(box) + '&preloadparams%5B%5D=' + encodeURIComponent(text);
+  }
+  function copyText(t) {
+    function old() {
+      var x = document.createElement('textarea'); x.value = t; x.style.position = 'fixed'; x.style.opacity = '0'; document.body.appendChild(x);
+      x.select(); try { document.execCommand('copy'); } catch (e) {} x.remove();
+    }
+    try { (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).catch(old); } catch (e) { old(); }
+  }
   // a placeholder (a part still to be written): its description, and a few words of it for the titles
   function todo(tex) { var m = tex.match(/^\\placeholder\{([\s\S]*)\}\s*$/); return m ? m[1] : null; }
   function words(s, n) {
@@ -443,20 +490,24 @@ ul.task-list li input[type="checkbox"] {
       + '<label>Preview (formulas and basic formatting)</label><div class="edit-preview"></div>'
       + '<label>' + (ph ? 'Note for the editors (optional, one line)' : 'Reason, or the change you ask for (one line)')
       + '</label><input type="text" maxlength="500">'
+      + (data.popup ? refsField() : '')
       + '<div class="edit-actions"><button type="button" class="edit-send">Open the proposal on the talk page</button>'
       + '<button type="button" class="edit-copy">Copy the TeX</button><button type="button" class="edit-cancel">Cancel</button>'
       + '<span class="edit-status"></span></div></div>';
     document.body.appendChild(ov);
     var ta = ov.querySelector('textarea'), pv = ov.querySelector('.edit-preview'), reason = ov.querySelector('input'),
-        status = ov.querySelector('.edit-status'), timer = null;
+        status = ov.querySelector('.edit-status'), timer = null, refs = ov.querySelector('.edit-refs'),
+        refnote = ov.querySelector('.edit-refnote');
     ta.value = ph === null ? old : '';
     var todoEl = ov.querySelector('.edit-todo');
     if (todoEl && window.MathJax && MathJax.typesetPromise) { MathJax.typesetPromise([todoEl]).catch(function () {}); }
     function render() {
       pv.innerHTML = preview(ta.value);
       if (window.MathJax && MathJax.typesetPromise) { MathJax.typesetPromise([pv]).catch(function () {}); }
+      if (refs) refnote.textContent = newKeysNote(ta.value, refs.value);
     }
     ta.addEventListener('input', function () { clearTimeout(timer); timer = setTimeout(render, 300); });
+    if (refs) refs.addEventListener('input', function () { refnote.textContent = newKeysNote(ta.value, refs.value); });
     // the buttons "Add after the text": a note (a folded box, as on the Overview: its title is selected, to be typed over) or a
     // claim (a dashed box: the cursor in its first line); statements, proofs and formulas are written in TeX as usual
     var SNIP = { note: ['\\begin{note}[', 'Title', ']\n', '\n\\end{note}'], claim: ['\\begin{claim}\n', '', '', '\n\\end{claim}'] };
@@ -485,6 +536,8 @@ ul.task-list li input[type="checkbox"] {
       var same = neu === old.replace(/\s+$/, ''), why = reason.value.trim();
       if (ph !== null && !neu) { status.textContent = 'Write the text first.'; return; }
       if (same && !why) { status.textContent = 'Change the TeX, or describe the change you ask for in the field below.'; return; }
+      var rf = refs ? refs.value.replace(/\s+$/, '') : '';
+      if (refs && missingRefs(neu, rf).length) { status.textContent = 'A reference is missing: see under “New references”.'; refs.focus(); return; }
       var fig = old.match(/^\\media(?:\[[^\]]*\])?\{[^}]*\}\{([^}]*)\}/);
       var title = ph !== null ? 'text for “' + words(ph, 6) + '”' : same ? why.split(/\s+/).slice(0, 6).join(' ')
                   : fig ? 'figure ' + fig[1] : words(neu, 6) + '…';
@@ -492,6 +545,10 @@ ul.task-list li input[type="checkbox"] {
                     ph !== null ? 'a new text in place of the placeholder “' + words(ph, 10) + '”'
                     : same ? '(no change to the TeX: the change asked for is in the reason)' : change(old, neu)];
       function link(p) {
+        if (data.popup) {   // the text of Template:Proposal/Preload, written here, with the new references when there are some
+          return topicLink(title, '|paragraph=' + p[1], "''Change:'' " + p[5] + "\n\n''Reason:'' " + p[4] + "\n\n'''Proposed text''' (TeX):\n<pre>"
+            + p[3] + '</pre>\n\n' + (rf ? "'''New references''':\n<pre>" + rf + '</pre>\n\n' : '') + "'''Current text''' (TeX):\n<pre>" + p[2] + '</pre>');
+        }
         return data.edit + encodeURIComponent(data.talk.replace(/ /g, '_')) + '?action=edit&section=new'
           + '&preloadtitle=' + encodeURIComponent('Proposal: ' + title)
           + '&preload=' + encodeURIComponent(data.preload)
@@ -511,6 +568,82 @@ ul.task-list li input[type="checkbox"] {
         + '" with it (paste), then click Save.' : 'Opened in a new tab: check it there and click Save.';
     };
     ta.focus();
+  }
+  // "Propose a change" under the title: a request in words (a new box, another order, something to add, to move or to cut),
+  // with the new text in TeX if there is one; a whole section or a long text comes as a PDF attached to the topic in the
+  // wiki. What is typed is kept in this browser until the proposal is opened: a request can be written in several goes.
+  function request() {
+    var DRAFT = 'wiki-request:' + data.page, saved = {};
+    try { saved = JSON.parse(window.localStorage.getItem(DRAFT) || '{}') || {}; } catch (e) {}
+    var ov = document.createElement('div'); ov.className = 'edit-overlay';
+    ov.innerHTML = '<div class="edit-dialog" role="dialog" aria-modal="true" aria-label="Propose a change to this page">'
+      + '<h3>Propose a change to this page</h3>'
+      + '<p class="edit-note">Say in your own words what should change: a new box, another order, something to add, to move or to cut. If you'
+      + ' have the new text, give it below in TeX. For a single paragraph, its pencil button is quicker. Then open the proposal on the talk'
+      + ' page of <em>' + esc(data.page) + '</em> in the wiki (members, logged in): it is saved only when you click <em>Save</em> there, and it'
+      + ' is discussed before an editor applies it.</p>'
+      + '<label>What should change</label><textarea class="edit-ask"></textarea>'
+      + '<label>New text, in TeX (optional)</label><textarea class="edit-tex" spellcheck="false"></textarea>'
+      + '<div class="edit-pvwrap" hidden><label>Preview (formulas and basic formatting)</label><div class="edit-preview"></div></div>'
+      + refsField()
+      + '<label class="edit-check"><input type="checkbox"><span>A whole new section, or a long text: I will attach its PDF to the proposal'
+      + ' in the wiki (the proposal that opens says how).</span></label>'
+      + '<div class="edit-actions"><button type="button" class="edit-send">Open the proposal on the talk page</button>'
+      + '<button type="button" class="edit-cancel">Cancel</button><span class="edit-status"></span></div></div>';
+    document.body.appendChild(ov);
+    var ask = ov.querySelector('.edit-ask'), tex = ov.querySelector('.edit-tex'), refs = ov.querySelector('.edit-refs'),
+        refnote = ov.querySelector('.edit-refnote'), pdf = ov.querySelector('.edit-check input'), wrap = ov.querySelector('.edit-pvwrap'),
+        pv = ov.querySelector('.edit-preview'), status = ov.querySelector('.edit-status'), timer = null;
+    ask.value = saved.ask || ''; tex.value = saved.tex || ''; refs.value = saved.refs || ''; pdf.checked = !!saved.pdf;
+    function keep() {
+      try { window.localStorage.setItem(DRAFT, JSON.stringify({ ask: ask.value, tex: tex.value, refs: refs.value, pdf: pdf.checked })); } catch (e) {}
+    }
+    function show() {
+      wrap.hidden = !tex.value.trim();
+      if (!wrap.hidden) {
+        pv.innerHTML = preview(tex.value);
+        if (window.MathJax && MathJax.typesetPromise) { MathJax.typesetPromise([pv]).catch(function () {}); }
+      }
+      refnote.textContent = newKeysNote(tex.value, refs.value);
+    }
+    [ask, tex, refs].forEach(function (f) {
+      f.addEventListener('input', function () { keep(); status.textContent = ''; clearTimeout(timer); timer = setTimeout(show, 300); });
+    });
+    pdf.addEventListener('change', keep);
+    show();
+    function close() { ov.remove(); document.removeEventListener('keydown', onkey); }
+    function onkey(e) { if (e.key === 'Escape') close(); }
+    document.addEventListener('keydown', onkey);
+    // a click outside the box closes it only while it is empty (what is typed is kept anyway)
+    ov.addEventListener('click', function (e) { if (e.target === ov && !ask.value.trim() && !tex.value.trim()) close(); });
+    ov.querySelector('.edit-cancel').onclick = close;
+    ov.querySelector('.edit-send').onclick = function () {
+      var a = ask.value.trim(), t = tex.value.replace(/\s+$/, ''), rf = refs.value.replace(/\s+$/, '');
+      if (!a) { status.textContent = 'Say first what should change.'; ask.focus(); return; }
+      if (missingRefs(t, rf).length) { status.textContent = 'A reference is missing: see under “New references”.'; refs.focus(); return; }
+      var w = a.split(/\s+/), title = w.slice(0, 6).join(' ') + (w.length > 6 ? '…' : '');
+      var text = "''Request:'' " + a + (t ? "\n\n'''New text''' (TeX):\n<pre>" + t + '</pre>' : '')
+        + (rf ? "\n\n'''New references''':\n<pre>" + rf + '</pre>' : '')
+        + (pdf.checked ? "\n\n''PDF:'' [[Special:Upload|upload it]], then replace this line with its name, as in "
+                         + '<nowiki>[[Media:Name of the file.pdf]]</nowiki>.' : '');
+      // a link to the wiki holds about 7500 characters: a longer text is copied to the clipboard and pasted in the wiki
+      var u = topicLink(title, '|request=yes', text), pasted = false;
+      if (u.length > 7500) { u = topicLink(title, '|request=yes', PASTE); pasted = true; copyText(text); }
+      window.open(u, '_blank', 'noopener');
+      try { window.localStorage.removeItem(DRAFT); } catch (e) {}
+      status.textContent = pasted ? 'The text is too long for a link: it has been copied. In the new tab, replace the line "' + PASTE
+        + '" with it (paste), then click Save.' : 'Opened in a new tab: check it there' + (pdf.checked ? ', attach the PDF,' : '') + ' and click Save.';
+    };
+    ask.focus();
+  }
+  if (data.popup) {
+    document.querySelectorAll('a.propose-link').forEach(function (a) {
+      a.title = 'Say what should change on this page: a form opens here, then the proposal on the talk page in the wiki (members)';
+      a.addEventListener('click', function (e) {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        e.preventDefault(); request();
+      });
+    });
   }
   document.querySelectorAll('.edit-unit').forEach(function (u) {
     var id = u.getAttribute('data-unit'); if (!data.units[id]) return;
