@@ -1269,6 +1269,33 @@
       "local_pdf_version": null,
       "topic_subgroup": "Shear, radial and other symmetric flows",
       "date": "1887-08"
+    },
+    {
+      "key": "Kolmogorov1934",
+      "title": "Zufällige Bewegungen (Zur Theorie der Brownschen Bewegung)",
+      "authors": [
+        "A. Kolmogoroff"
+      ],
+      "arxiv": null,
+      "preprint_year": null,
+      "publication_year": 1934,
+      "journal": "Annals of Mathematics (2) 35, 116–117",
+      "doi": "10.2307/1968123",
+      "source_urls": [
+        "https://doi.org/10.2307/1968123",
+        "https://www.jstor.org/stable/1968123"
+      ],
+      "topic": "history; Kolmogorov equation; Brownian motion; Fokker–Planck equation; explicit fundamental solution",
+      "priority": "historical",
+      "annotation": "Two-page note (received 9 September 1933) that applies Kolmogorov's theory of continuous random processes to random motions in which the coordinates and also their time derivatives change continuously. The transition density solves a Fokker–Planck equation with second derivatives only in the velocities (eq. (9)); for one degree of freedom and constant coefficients (eq. (10), with no force) it is the equation of the Couette flow without the diffusion along the streamlines, the velocity in the role of y. He writes its fundamental solution (eq. (11)) and reads off that the velocity changes by an amount of order (Δt)^(1/2) while the position deviates from the free motion by an amount of order (Δt)^(3/2) (eq. (12)). Nothing on smoothness or hypoellipticity: that reading is Hörmander's (1967). Cited on the page Couette flow for the history of the model. Formula (11) as printed has misprints in the constants (k³ where k should be, prefactor 2√3/(πk²(t'−t)²) instead of √3/(2πk(t'−t)²)): checked symbolically on 11 November 2026; use the corrected formula. The author's name is printed A. Kolmogoroff; cited in the text as Kolmogorov (1934). Title in Crossref without the umlaut.",
+      "checked_on": "2026-11-11",
+      "topic_group": "Deterministic enhanced dissipation",
+      "publication_status": "published",
+      "verification_level": "the paper read (PDF from JSTOR supplied by M. Dolce); bibliographic metadata from the Crossref record of the DOI",
+      "local_pdf": null,
+      "local_pdf_version": null,
+      "topic_subgroup": "Shear, radial and other symmetric flows",
+      "date": "1934-01"
     }
   ]
 }

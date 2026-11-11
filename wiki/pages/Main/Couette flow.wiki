@@ -3,7 +3,7 @@
 
 The Couette flow is the linear shear <math display="inline">u=(y,0)</math>, considered here in the simplest possible domain for this problem, <math display="inline">(x,y)\in\mathbb{T}\times\mathbb{R}</math>. The equation under study then reduces to
 <math display="block">\partial_t f+y\partial_xf=\nu\Delta f, \qquad f|_{t=0}=f^{\rm in}, \qquad (x,y)\in \mathbb{T}\times\mathbb{R}.</math>
-This is a foundational model in the field, because the same equation governs the vorticity of the two-dimensional Navier–Stokes equations linearized around the Couette flow. In that context Kelvin already solved it explicitly in 1887 (see [[Literature#Kelvin1887|Kelvin (1887, eq. (34)–(35))]] and [[History of the problem]]).
+This is a foundational model in the field, because the same equation governs the vorticity of the two-dimensional Navier–Stokes equations linearized around the Couette flow. In that context Kelvin already solved it explicitly in 1887 (see [[Literature#Kelvin1887|Kelvin (1887, eq. (34)–(35))]]). Moreover, the same model, without the diffusion in <math display="inline">x</math>, was derived by [[Literature#Kolmogorov1934|Kolmogorov (1934)]] when developing his theory of Brownian motion, and the equation is also of Fokker–Planck type. See also [[History of the problem]].
 
 We use this model to illustrate what typical mixing and enhanced dissipation results look like, and how the two are related. The model is simple enough that each proof technique can be carried out in full. They are all presented below on this single example.
 
@@ -22,14 +22,38 @@ If we localize near a radius <math display="inline">r_0=e^{s_0}</math> where <ma
 {{Fold end}}
 
 == The result ==
-{{Theorem start|id=thm-couette|title=Theorem (enhanced dissipation for Couette flow).}}
-{{Placeholder start}}The statement.{{Placeholder end}}
+Before introducing the main theorem, it is useful to observe that, taking the <math display="inline">x</math>-average, one is left with the standard heat equation on <math display="inline">\mathbb{R}</math>. Namely,
+<math display="block">\langle f\rangle_x=\frac{1}{2\pi}\int_{\mathbb{T}}f(x,y)\,dx\quad\Longrightarrow\quad\langle f(t)\rangle_x=e^{\nu t\partial_{yy}}\langle f^{\rm in}\rangle_x.</math>
+For this part of the solution there is therefore nothing new to say, and it enjoys the standard diffusive estimates. Hence, the quantity to measure is how fast the solution approaches its <math display="inline">x</math>-average.
+
+{{Theorem start|id=thm-couette|title=Theorem.}}
+Let <math display="inline">\nu\in[0,1)</math> and let <math display="inline">f</math> be the solution with initial datum <math display="inline">f^{\rm in}\in L^2(\mathbb{T}\times\mathbb{R})</math>. There exist constants <math display="inline">c,C>0</math>, independent of <math display="inline">\nu</math>, such that for all <math display="inline">t\geq0</math> the following inequality holds true:
+<math display="block">\|(f-\langle f\rangle_x)(t)\|_{L^2}\leq Ce^{-c\nu^{1/3}t}\|f^{\rm in}-\langle f^{\rm in}\rangle_x\|_{L^2}.</math>
+Moreover, if <math display="inline">f^{\rm in}\in H^1(\mathbb{T}\times\mathbb{R})</math>, the following mixing estimate, uniform in <math display="inline">\nu</math>, holds true:
+<math display="block">\|(f-\langle f\rangle_x)(t)\|_{H^{-1}}\leq\frac{C}{1+t}e^{-c\nu^{1/3}t}\|f^{\rm in}-\langle f^{\rm in}\rangle_x\|_{H^1}.</math>
 {{Theorem end}}
+{{Fold start|kind=note|title=The x-average as a projection}}
+The <math display="inline">x</math>-average is in fact nothing more than the orthogonal projection in <math display="inline">L^2</math> onto the kernel of the transport operator <math display="inline">y\partial_x</math>: the functions in the kernel are exactly those that do not depend on <math display="inline">x</math>. When the transport operator has a non-trivial kernel, we cannot expect the elements of the kernel to experience any mixing at all from the transport. The interaction with the dissipation is however much more subtle, and it relies heavily on the commutation properties of this projection with the diffusion operator. In this very simple case everything trivializes: the projection commutes with <math display="inline">\nu\Delta</math>, so the <math display="inline">x</math>-average solves the heat equation and <math display="inline">f-\langle f\rangle_x</math> solves the same equation as <math display="inline">f</math>. But the mathematical structure behind the convergence towards the <math display="inline">x</math>-average lies in the fact that the transport operator has a non-trivial kernel.
+{{Fold end}}
+{{Fold start|kind=note|title=Why negative Sobolev norms measure mixing}}
+The <math display="inline">L^2</math> norm does not see mixing: for <math display="inline">\nu=0</math> it is conserved, whatever the flow does. The norm of <math display="inline">H^{-1}</math> does, because it measures how much of a function has been sent to high frequencies: in Fourier, it weighs each mode by the inverse of the size of its frequency, so it is small when the function lives at high frequencies, even if its <math display="inline">L^2</math> norm is not. On the physical side, negative Sobolev norms scale as powers of a length: the ratio <math display="inline">\|g\|_{H^{-1}}/\|g\|_{L^2}</math> can be thought of as the length at which <math display="inline">g</math> oscillates. For <math display="inline">\nu=0</math>, the theorem says that this length decays like <math display="inline">1/t</math>. See also the note on mixing in the [[Overview]].
+{{Fold end}}
+{{Fold start|kind=note|title=Other function spaces}}
+The theorem is stated in spaces based on <math display="inline">L^2</math>. Since the flow is incompressible, the equation does not increase any <math display="inline">L^p</math> norm. For <math display="inline">1<p<\infty</math>, enhanced dissipation in <math display="inline">L^p</math> then follows from the <math display="inline">L^2</math> estimate by interpolation, with a rate that degenerates as <math display="inline">p\to1</math> and as <math display="inline">p\to\infty</math>. Some techniques give the estimate in <math display="inline">L^p</math> directly, without this loss. For the Couette flow, the explicit solution gives the first estimate of the theorem with <math display="inline">L^p</math> in place of <math display="inline">L^2</math> for every <math display="inline">p\in[1,\infty]</math>, with constants independent of <math display="inline">p</math>.
+{{Fold end}}
 {{Fold start|kind=idea|title=Idea}}
-{{Placeholder start}}The key mechanism in a few lines.{{Placeholder end}}
+The key idea underlying all the methods below is that the transport operator <math display="inline">y\partial_x</math> does not commute with the diffusion <math display="inline">\nu\Delta</math>: indeed, <math display="inline">[\Delta,y\partial_x]=2\partial_x\partial_y</math>. If the two commuted, the solution would be <math display="inline">e^{-ty\partial_x}e^{\nu t\Delta}f^{\rm in}</math> and, since the transport preserves the <math display="inline">L^2</math> norm, the flow would have no effect on the decay. We will highlight in each method where this lack of commutation enters.
+
+At first sight, operators that do not commute look like an annoying technical problem. This is a typical instance where a seemingly unfavorable property, looked at in the right way, turns out to be exactly what helps.
 {{Fold end}}
 == Notation and setting ==
-{{Placeholder start}}The flow <math display="inline">u=(y,0)</math> on <math display="inline">\mathbb{T}\times\mathbb{R}</math>: the equation, the Fourier modes, what decays.{{Placeholder end}}
+Throughout, <math display="inline">\mathbb{T}=\mathbb{R}/2\pi\mathbb{Z}</math>. For the Fourier transform in <math display="inline">x</math> we write
+<math display="block">f(t,x,y)=\sum_{k\in\mathbb{Z}}f_k(t,y)e^{ikx},\qquad f_k(t,y)=\frac{1}{2\pi}\int_{\mathbb{T}}f(t,x,y)e^{-ikx}\,dx,</math>
+so that <math display="inline">f_0=\langle f\rangle_x</math> and <math display="inline">\|f\|_{L^2}^2=2\pi\sum_{k}\|f_k\|_{L^2(\mathbb{R})}^2</math>. Note that in this model each <math display="inline">k</math>-mode evolves independently of the others:
+<math display="block">\partial_tf_k+ikyf_k=\nu(\partial_{yy}-k^2)f_k,\qquad k\in\mathbb{Z}.</math>
+
+The Sobolev norms in the theorem are <math display="inline">\|g\|_{H^1}^2=\|g\|_{L^2}^2+\|\nabla g\|_{L^2}^2</math> and its dual,
+<math display="block">\|g\|_{H^{-1}}=\sup\Big\{\int_{\mathbb{T}\times\mathbb{R}}g\varphi\,dx\,dy\ :\ \|\varphi\|_{H^1}\leq1\Big\}.</math>
 
 == One example, every technique ==
 Each proof below is written for this example only, to show the mechanism; the general results, with complete proofs, are in the part ''Techniques and general results''.
@@ -67,6 +91,7 @@ General theory: [[Hörmander theory]].
 {{Placeholder start}}What the example shows, and what the general theory keeps of it.{{Placeholder end}}
 
 == References ==
-<!-- refs-begin: Kelvin1887 -->
+<!-- refs-begin: Kelvin1887 Kolmogorov1934 -->
+# A. Kolmogoroff, ''Zufällige Bewegungen (Zur Theorie der Brownschen Bewegung)'', Annals of Mathematics (2) '''35''' (1934), 116–117, [https://doi.org/10.2307/1968123 doi:10.2307/1968123].
 # W. Thomson (Lord Kelvin), ''Stability of fluid motion: rectilineal motion of viscous fluid between two parallel planes'', Philosophical Magazine (5) '''24''' (1887), 188–196, [https://doi.org/10.1080/14786448708628078 doi:10.1080/14786448708628078].
 <!-- refs-end -->
