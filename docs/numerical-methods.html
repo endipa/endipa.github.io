@@ -82,7 +82,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-17888a1159294d3eb470f19f6f52f5a5.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-9e6acef0b9d6bf57955b2661cb44bd16.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-35c387a814f040135c5dad5d97405735.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -114,7 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script>
 (function () { try { var d = document.documentElement, s = window.localStorage, t = parseFloat(s.getItem('wiki-text-scale'));
   if (s.getItem('wiki-reading') === '1') d.classList.add('reading');
-  if (t >= 0.8 && t <= 1.5 && t !== 1) d.style.setProperty('--text-scale', t); } catch (e) {} })();
+  if (t >= 0.8 && t <= 2 && t !== 1) d.style.setProperty('--text-scale', t); } catch (e) {} })();
 </script>
 
   <script defer="" src="mathjax/tex-chtml-full.js" type="text/javascript"></script>
@@ -1015,8 +1015,11 @@ window.Quarto = {
 
 <script>
 (function () {
-  var R = 'wiki-reading', T = 'wiki-text-scale', STEPS = [0.85, 0.92, 1, 1.1, 1.2, 1.32, 1.45];
+  var R = 'wiki-reading', T = 'wiki-text-scale', STEPS = [0.85, 0.92, 1, 1.1, 1.2, 1.32, 1.45, 1.6, 1.75, 2];
   var root = document.documentElement, panels = [], menuBtn = null;
+  // the sizes above 145% (12 November 2026) are offered on tablets and computers only: on a phone long links and
+  // titles no longer fit in the width of the screen
+  function top() { return window.innerWidth < 768 ? STEPS.indexOf(1.45) : STEPS.length - 1; }
   function put(k, v) { try { window.localStorage.setItem(k, v); } catch (e) {} }
   function step() {
     var s = parseFloat(root.style.getPropertyValue('--text-scale')) || 1, best = 0;
@@ -1039,7 +1042,7 @@ window.Quarto = {
       b.querySelector('i').className = on ? 'bi bi-x-lg' : 'bi bi-book';
       b.title = on ? 'Show the menu and the editing tools again' : 'The text as in a paper: the menu folded away, no editing tools';
       var m = p.querySelector('.vt-minus'), q = p.querySelector('.vt-plus');
-      m.disabled = i === 0; q.disabled = i === STEPS.length - 1;
+      m.disabled = i === 0; q.disabled = i >= top();
       m.title = 'Smaller text (now ' + pct + ')'; q.title = 'Larger text (now ' + pct + ')';
     });
   }
@@ -1060,7 +1063,7 @@ window.Quarto = {
     clearTimeout(p.vtTimer);
     var done = function () {
       p.classList.remove('held', 'gliding'); p.style.left = p.style.top = p.style.width = '';
-      if (p.vtSlot) { p.vtSlot.remove(); p.vtSlot = null; }
+      if (p.vtSlot) { p.vtSlot.remove(); p.vtSlot = null; p.parentNode.classList.remove('vt-holding'); }
       p.vtHeld = false;
     };
     if (now || !p.vtSlot) { done(); return; }
@@ -1078,7 +1081,7 @@ window.Quarto = {
       if (cs.position === 'static') {
         p.vtSlot = document.createElement('div');
         p.vtSlot.style.height = r.height + 'px'; p.vtSlot.style.marginBottom = cs.marginBottom;
-        p.parentNode.insertBefore(p.vtSlot, p);
+        p.parentNode.insertBefore(p.vtSlot, p); p.parentNode.classList.add('vt-holding');
       }
       p.style.left = r.left + 'px'; p.style.top = r.top + 'px'; p.style.width = r.width + 'px';
       p.classList.add('held'); p.vtHeld = true;
@@ -1092,7 +1095,7 @@ window.Quarto = {
     });
   }
   function setStep(i, p, e) {
-    i = Math.max(0, Math.min(STEPS.length - 1, i));
+    i = Math.max(0, Math.min(i, Math.max(top(), step())));
     keepUnder(p, e, function () {
       keepPlace(function () { if (STEPS[i] === 1) root.style.removeProperty('--text-scale'); else root.style.setProperty('--text-scale', STEPS[i]); });
       put(T, String(STEPS[i])); render();
@@ -1154,7 +1157,7 @@ window.Quarto = {
       });
     });
     document.addEventListener('pointerdown', function (e) { panels.forEach(function (p) { if (!p.contains(e.target)) release(p); }); }, true);
-    window.addEventListener('resize', function () { panels.forEach(function (p) { release(p, true); }); });
+    window.addEventListener('resize', function () { panels.forEach(function (p) { release(p, true); }); render(); });
     render();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();

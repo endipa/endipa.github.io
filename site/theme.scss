@@ -234,6 +234,8 @@ $vt: $font-size-root;
 #quarto-header .view-tools button { font-size: 0.9 * $vt; padding: 0.4 * $vt 0.7 * $vt; }
 .view-tools.held { position: fixed !important; right: auto !important; margin: 0 !important; z-index: 1041; }
 .view-tools.held.gliding { transition: left 0.16s ease, top 0.16s ease; }
+// the column of a held group comes above the top bar of tablets, which may slide back over the group after a click
+.vt-holding { z-index: 1041 !important; }
 @media (min-width: 768px) { .vt-open, #quarto-header .view-tools, #quarto-header .view-tools.open { display: none !important; } }
 .vt-menu { display: none; font-family: $font-family-sans-serif; }
 @media print { .view-tools, .vt-open, .vt-menu { display: none !important; } }

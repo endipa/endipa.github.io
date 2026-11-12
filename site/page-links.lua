@@ -188,6 +188,7 @@ local FOLD_SCRIPT = [=[
 -- there; the styles are in theme.scss. In reading mode on a computer the menu is folded into the button "Menu" at the
 -- top left (class "menu-open" on <html> while it is open; not remembered: every page opens with the menu folded). Both are remembered in the browser (localStorage; without it they last for the
 -- page only). READING_HEAD runs in the <head>, so that a page opens directly in the chosen mode and size.
+-- (12 November 2026) Three more sizes, 160%, 175% and 200% (the largest was 145%); READING_HEAD accepts them.
 -- (12 November 2026) The buttons stay under the pointer: a click changes the size of the text or the mode, hence the
 -- place of the column of the buttons (in reading mode the column follows the width of the text, and the line of the
 -- buttons may fold), so a second click without moving the mouse used to land elsewhere: after A+, on A-. Now the
@@ -200,15 +201,18 @@ local READING_HEAD = [=[
 <script>
 (function () { try { var d = document.documentElement, s = window.localStorage, t = parseFloat(s.getItem('wiki-text-scale'));
   if (s.getItem('wiki-reading') === '1') d.classList.add('reading');
-  if (t >= 0.8 && t <= 1.5 && t !== 1) d.style.setProperty('--text-scale', t); } catch (e) {} })();
+  if (t >= 0.8 && t <= 2 && t !== 1) d.style.setProperty('--text-scale', t); } catch (e) {} })();
 </script>
 ]=]
 
 local READING_SCRIPT = [=[
 <script>
 (function () {
-  var R = 'wiki-reading', T = 'wiki-text-scale', STEPS = [0.85, 0.92, 1, 1.1, 1.2, 1.32, 1.45];
+  var R = 'wiki-reading', T = 'wiki-text-scale', STEPS = [0.85, 0.92, 1, 1.1, 1.2, 1.32, 1.45, 1.6, 1.75, 2];
   var root = document.documentElement, panels = [], menuBtn = null;
+  // the sizes above 145% (12 November 2026) are offered on tablets and computers only: on a phone long links and
+  // titles no longer fit in the width of the screen
+  function top() { return window.innerWidth < 768 ? STEPS.indexOf(1.45) : STEPS.length - 1; }
   function put(k, v) { try { window.localStorage.setItem(k, v); } catch (e) {} }
   function step() {
     var s = parseFloat(root.style.getPropertyValue('--text-scale')) || 1, best = 0;
@@ -231,7 +235,7 @@ local READING_SCRIPT = [=[
       b.querySelector('i').className = on ? 'bi bi-x-lg' : 'bi bi-book';
       b.title = on ? 'Show the menu and the editing tools again' : 'The text as in a paper: the menu folded away, no editing tools';
       var m = p.querySelector('.vt-minus'), q = p.querySelector('.vt-plus');
-      m.disabled = i === 0; q.disabled = i === STEPS.length - 1;
+      m.disabled = i === 0; q.disabled = i >= top();
       m.title = 'Smaller text (now ' + pct + ')'; q.title = 'Larger text (now ' + pct + ')';
     });
   }
@@ -252,7 +256,7 @@ local READING_SCRIPT = [=[
     clearTimeout(p.vtTimer);
     var done = function () {
       p.classList.remove('held', 'gliding'); p.style.left = p.style.top = p.style.width = '';
-      if (p.vtSlot) { p.vtSlot.remove(); p.vtSlot = null; }
+      if (p.vtSlot) { p.vtSlot.remove(); p.vtSlot = null; p.parentNode.classList.remove('vt-holding'); }
       p.vtHeld = false;
     };
     if (now || !p.vtSlot) { done(); return; }
@@ -270,7 +274,7 @@ local READING_SCRIPT = [=[
       if (cs.position === 'static') {
         p.vtSlot = document.createElement('div');
         p.vtSlot.style.height = r.height + 'px'; p.vtSlot.style.marginBottom = cs.marginBottom;
-        p.parentNode.insertBefore(p.vtSlot, p);
+        p.parentNode.insertBefore(p.vtSlot, p); p.parentNode.classList.add('vt-holding');
       }
       p.style.left = r.left + 'px'; p.style.top = r.top + 'px'; p.style.width = r.width + 'px';
       p.classList.add('held'); p.vtHeld = true;
@@ -284,7 +288,7 @@ local READING_SCRIPT = [=[
     });
   }
   function setStep(i, p, e) {
-    i = Math.max(0, Math.min(STEPS.length - 1, i));
+    i = Math.max(0, Math.min(i, Math.max(top(), step())));
     keepUnder(p, e, function () {
       keepPlace(function () { if (STEPS[i] === 1) root.style.removeProperty('--text-scale'); else root.style.setProperty('--text-scale', STEPS[i]); });
       put(T, String(STEPS[i])); render();
@@ -346,7 +350,7 @@ local READING_SCRIPT = [=[
       });
     });
     document.addEventListener('pointerdown', function (e) { panels.forEach(function (p) { if (!p.contains(e.target)) release(p); }); }, true);
-    window.addEventListener('resize', function () { panels.forEach(function (p) { release(p, true); }); });
+    window.addEventListener('resize', function () { panels.forEach(function (p) { release(p, true); }); render(); });
     render();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
