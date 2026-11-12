@@ -1401,6 +1401,33 @@
       "local_pdf_version": null,
       "topic_subgroup": "General criteria and limits",
       "date": "1983-12"
+    },
+    {
+      "key": "Villani2009",
+      "title": "Hypocoercivity",
+      "authors": [
+        "Cédric Villani"
+      ],
+      "arxiv": "math/0609050",
+      "preprint_year": 2006,
+      "publication_year": 2009,
+      "journal": "Memoirs of the American Mathematical Society 202, no. 950",
+      "doi": "10.1090/S0065-9266-09-00567-5",
+      "source_urls": [
+        "https://doi.org/10.1090/S0065-9266-09-00567-5",
+        "https://arxiv.org/abs/math/0609050"
+      ],
+      "topic": "hypocoercivity; degenerate diffusive equations; Lyapunov functionals; kinetic equations",
+      "priority": "adjacent",
+      "annotation": "Memoir that develops a systematic theory of convergence to equilibrium for degenerate diffusive equations (kinetic Fokker–Planck, Boltzmann) through well-chosen Lyapunov functionals with mixed terms; the standard reference for the name and the method of hypocoercivity. Cited on the page Couette flow (proof by hypocoercivity).",
+      "checked_on": "2026-11-12",
+      "topic_group": "Deterministic enhanced dissipation",
+      "publication_status": "published",
+      "verification_level": "bibliographic metadata from the Crossref record of the DOI and the arXiv record; the memoir itself not read for this entry",
+      "local_pdf": null,
+      "local_pdf_version": null,
+      "topic_subgroup": "General criteria and limits",
+      "date": "2006-09"
     }
   ]
 }

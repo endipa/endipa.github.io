@@ -68,9 +68,8 @@ where <math display="inline">H^{\pm1}(\mathbb{R})</math> are the Sobolev norms i
 {{Fold end}}
 
 === Explicit solution ===
-{{Proof start|id=proof-couette-explicit|title=Proof by the explicit solution}}
 In this proof we take full advantage of the simplicity of the mathematical setting, which is also what allowed Kelvin and Kolmogorov to write down the solution explicitly.
-
+{{Proof start|id=proof-couette-explicit|title=Proof by the explicit solution}}
 For the equation at mode <math display="inline">k</math>, we can also take the Fourier transform in <math display="inline">y</math>, with the notation
 <math display="block">\hat f_k(t,\eta)=\int_{\mathbb{R}}f_k(t,y)e^{-i\eta y}\,dy,\qquad f_k(t,y)=\frac{1}{2\pi}\int_{\mathbb{R}}\hat f_k(t,\eta)e^{i\eta y}\,d\eta,</math>
 so that <math display="inline">\|f\|_{L^2}^2=\sum_{k\in\mathbb{Z}}\|\hat f_k\|_{L^2(\mathbb{R})}^2</math>. By elementary properties of the Fourier transform (multiplication by <math display="inline">y</math> becomes <math display="inline">i\partial_\eta</math>), the equation becomes
@@ -98,13 +97,13 @@ Indeed, the claim and <math display="inline">|k|\geq1</math> give the more preci
 Moreover, <math display="inline">s^3-3s+2=(s-1)^2(s+2)\geq0</math> for <math display="inline">s\geq0</math>, which for <math display="inline">s=\nu^{1/3}t</math> is the inequality <math display="inline">\nu t^3\geq3\nu^{1/3}t-2</math>. Hence <math display="inline">e^{-\frac{1}{6}\nu t^3}\leq e^{\frac{1}{3}}e^{-\frac{1}{2}\nu^{1/3}t}</math>, and one can take <math display="inline">c=1/4</math> and <math display="inline">C=e^{1/6}</math>.
 {{Fold end}}
 
-For the mixing estimate, one can directly use the characterization of the Sobolev norms in Fourier, namely
+For the uniform mixing estimate, one can directly use the characterization of the Sobolev norms in Fourier, namely
 <math display="block">\|g\|_{H^{s}}^2=\sum_{k\in\mathbb{Z}}\int_{\mathbb{R}}(1+k^2+\eta^2)^{s}\,|\hat g_k(\eta)|^2\,d\eta,</math>
 which for <math display="inline">s=\pm1</math> are the norms of the theorem. Since <math display="inline">|k|\geq1</math> and <math display="inline">|k|t\leq|\eta|+|\eta+kt|</math>, by Cauchy–Schwarz we have
 <math display="block">\begin{aligned}(1+t)^2\leq(1+|k|t)^2&\leq\big(1+|\eta|+|\eta+kt|\big)^2\leq\big(2+\eta^2\big)\big(2+(\eta+kt)^2\big)\\&\leq\big(1+k^2+\eta^2\big)\big(1+k^2+(\eta+kt)^2\big).\end{aligned}</math>
 Therefore, bounding the exponential as before,
 <math display="block">\begin{aligned}\|(f-\langle f\rangle_x)(t)\|_{H^{-1}}^2&=\sum_{k\neq0}\int_{\mathbb{R}}\frac{e^{-2\nu\int_0^t(k^2+(\eta+k\tau)^2)\,d\tau}}{1+k^2+\eta^2}\,|\hat f^{\rm in}_k(\eta+kt)|^2\,d\eta\\&\leq\frac{C^2e^{-2c\nu^{1/3}t}}{(1+t)^2}\sum_{k\neq0}\int_{\mathbb{R}}\big(1+k^2+(\eta+kt)^2\big)|\hat f^{\rm in}_k(\eta+kt)|^2\,d\eta\\&=\frac{C^2e^{-2c\nu^{1/3}t}}{(1+t)^2}\,\|f^{\rm in}-\langle f^{\rm in}\rangle_x\|_{H^1}^2,\end{aligned}</math>
-which is the mixing estimate.
+which is the uniform mixing estimate.
 
 In fact, the mode-by-mode estimates can be obtained in the same way, by keeping track of <math display="inline">k</math>.
 {{Fold start|kind=note|title=The solution in physical space}}
@@ -119,9 +118,8 @@ Without the diffusion in <math display="inline">x</math>, namely with <math disp
 {{Proof end}}
 
 === Hypocoercivity ===
+This proof builds on elementary techniques, in the spirit of the hypocoercivity theory of [[Literature#Villani2009|Villani (2009)]]: it only uses energy estimates, namely integrations by parts and the Cauchy–Schwarz inequality. The key point is that the transport does not commute with the operator that generates the dissipation, which here is, morally, <math display="inline">\partial_y</math>.
 {{Proof start|id=proof-couette-hypocoercivity|title=Proof by hypocoercivity}}
-This proof builds on elementary techniques: it only uses energy estimates, namely integrations by parts and the Cauchy–Schwarz inequality. The key point is that the transport does not commute with the operator that generates the dissipation, which here is, morally, <math display="inline">\partial_y</math>.
-
 We first simplify the setting by ignoring the diffusion in <math display="inline">x</math>. In fact, since <math display="inline">\partial_{xx}</math> commutes with all the other operators in the equation, we have <math display="inline">f=e^{\nu t\partial_{xx}}g</math>, where <math display="inline">g</math> solves the equation without the diffusion in <math display="inline">x</math>, with <math display="inline">g^{\rm in}=f^{\rm in}</math>, and <math display="inline">e^{\nu t\partial_{xx}}</math> does not increase the <math display="inline">L^2</math> norm. It is therefore enough, and somewhat more instructive, to prove the estimate for
 <math display="block">\partial_tg+y\partial_xg=\nu\partial_{yy}g,</math>
 with <math display="inline">\nu>0</math>, since for <math display="inline">\nu=0</math> there is nothing to prove. Without loss of generality, we also assume that <math display="inline">g</math> has zero <math display="inline">x</math>-average, since the <math display="inline">x</math>-average solves a decoupled equation and a zero <math display="inline">x</math>-average is preserved in time. Note that on functions with zero <math display="inline">x</math>-average we have the Poincaré inequality in <math display="inline">x</math>, namely <math display="inline">\|h\|\leq\|\partial_xh\|</math>.
@@ -176,11 +174,22 @@ The smoothing step can be avoided by letting the coefficients depend on time, ex
 the functional <math display="inline">E</math> at the initial time is just <math display="inline">\frac12\|\partial_xg^{\rm in}\|^2</math>, so nothing is asked of <math display="inline">\partial_yg^{\rm in}</math>. For <math display="inline">t\ll\nu^{-1/3}</math> the weights behave like <math display="inline">\nu t</math> and <math display="inline">\nu t^2</math>, as for the heat equation, and for <math display="inline">t\gg\nu^{-1/3}</math> they are the constant ones used above. The price is two new terms, coming from the time derivatives of the weights, which are absorbed by the good terms we already have if <math display="inline">a</math> and <math display="inline">b</math> are small enough (we leave this as an exercise). A functional of this kind measures the solution at each time at the right scale, and gives the decay and the gain of regularity at once.
 {{Fold end}}
 
+'''Uniform mixing estimate.''' It remains to prove the uniform mixing estimate. We go back to <math display="inline">f</math>, which has zero <math display="inline">x</math>-average, and use a vector field that commutes with the equation, namely
+<math display="block">Z:=\partial_y+t\partial_x.</math>
+Indeed, <math display="inline">[\partial_t+y\partial_x,Z]=\partial_x-\partial_x=0</math>, and <math display="inline">Z</math> has constant coefficients in <math display="inline">x</math> and <math display="inline">y</math>, so it also commutes with <math display="inline">\nu\Delta</math>. For <math display="inline">\nu=0</math> we have <math display="inline">Zf(t,x,y)=(\partial_yf^{\rm in})(x-ty,y)</math>: <math display="inline">Z</math> is the derivative in <math display="inline">y</math> in the coordinates that move with the flow. Hence <math display="inline">Zf</math> solves exactly the same equation as <math display="inline">f</math>, with datum <math display="inline">\partial_yf^{\rm in}</math> and zero <math display="inline">x</math>-average, and the enhanced dissipation estimate gives
+<math display="block">\|Zf(t)\|\leq2e^{1/6}e^{-\frac16\nu^{1/3}t}\|\partial_yf^{\rm in}\|.</math>
+To bound the <math display="inline">H^{-1}</math> norm we argue by duality. Let <math display="inline">\varphi\in H^1(\mathbb{T}\times\mathbb{R})</math>. Since <math display="inline">f</math> has zero <math display="inline">x</math>-average, we can replace <math display="inline">\varphi</math> by <math display="inline">\varphi-\langle\varphi\rangle_x=\partial_x\Phi</math>, where <math display="inline">\Phi</math> is the primitive in <math display="inline">x</math> with zero <math display="inline">x</math>-average. By the Poincaré inequality in <math display="inline">x</math>, <math display="inline">\|\Phi\|\leq\|\varphi\|</math> and <math display="inline">\|\partial_y\Phi\|\leq\|\partial_y\varphi\|</math>. Integrating by parts and using <math display="inline">t\partial_x=Z-\partial_y</math>,
+<math display="block">t\int_{\mathbb{T}\times\mathbb{R}}f\varphi\,dx\,dy=-\int_{\mathbb{T}\times\mathbb{R}}(t\partial_xf)\Phi\,dx\,dy=-\int_{\mathbb{T}\times\mathbb{R}}(Zf)\Phi\,dx\,dy-\int_{\mathbb{T}\times\mathbb{R}}f\,\partial_y\Phi\,dx\,dy.</math>
+Therefore <math display="inline">t\|f(t)\|_{H^{-1}}\leq\|Zf(t)\|+\|f(t)\|</math>. Since also <math display="inline">\|f(t)\|_{H^{-1}}\leq\|f(t)\|</math>, the enhanced dissipation estimates for <math display="inline">f</math> and <math display="inline">Zf</math> give
+<math display="block">(1+t)\|f(t)\|_{H^{-1}}\leq2\|f(t)\|+\|Zf(t)\|\leq6e^{1/6}e^{-\frac16\nu^{1/3}t}\|f^{\rm in}\|_{H^1},</math>
+which is the uniform mixing estimate.
+
 The mode-by-mode estimates can be obtained in the same way: on a single mode <math display="inline">k</math> the Poincaré inequality in <math display="inline">x</math> becomes the identity <math display="inline">\|\partial_xh\|=|k|\|h\|</math>, and the argument can be repeated with <math display="inline">\nu k^2</math> in place of <math display="inline">\nu</math> in the choice of <math display="inline">\alpha</math>, <math display="inline">\beta</math> and <math display="inline">T</math>, which gives the rate <math display="inline">\nu^{1/3}|k|^{2/3}</math>.
 {{Proof end}}
 General theory: [[Hypocoercivity]].
 
 === Resolvent method ===
+This proof builds on resolvent estimates for the operator <math display="inline">-\nu\partial_{yy}+iky</math>, uniform along the imaginary axis. In fact, estimates on the decay of the associated semigroup are tied to resolvent bounds by Gearhart–Prüss type theorems, in the spirit of [[Literature#HelfferSjostrand2010|Helffer and Sjöstrand (2010)]] and [[Literature#Wei2021Resolvent|Wei (2021)]]. The key point is that <math display="inline">\partial_y</math> does not commute with the multiplication by <math display="inline">y</math>, so a function cannot concentrate near the critical layer, where <math display="inline">iky</math> equals the spectral parameter, unless of course its derivative is large, in which case the dissipation kicks in.
 {{Proof start|id=proof-couette-resolvent|title=Proof by the resolvent method}}
 We fix <math display="inline">k\neq0</math> and write <math display="inline">f_k=e^{-\nu k^2t}g</math>. Then the function <math display="inline">g</math> solves
 <math display="block">\partial_tg+H_kg=0,\qquad H_k:=-\nu\partial_{yy}+iky\quad\text{on }L^2(\mathbb{R}).</math>
@@ -258,7 +267,7 @@ General theory: [[Hörmander theory]].
 {{Placeholder start}}What the example shows, and what the general theory keeps of it.{{Placeholder end}}
 
 == References ==
-<!-- refs-begin: Kelvin1887 Kolmogorov1934 TrefethenEmbree2005 HelfferSjostrand2010 Wei2021Resolvent Gallay2022Bourbaki CotiZelatiGallay2023 Kawashima1983 -->
+<!-- refs-begin: Kelvin1887 Kolmogorov1934 TrefethenEmbree2005 HelfferSjostrand2010 Wei2021Resolvent Gallay2022Bourbaki CotiZelatiGallay2023 Kawashima1983 Villani2009 -->
 # M. Coti Zelati and T. Gallay, ''Enhanced dissipation and Taylor dispersion in higher-dimensional parallel shear flows'', Journal of the London Mathematical Society '''108''' (2023), 1358–1392, [https://arxiv.org/abs/2108.11192 arXiv:2108.11192].
 # T. Gallay, ''Estimations pseudo-spectrales et stabilité des tourbillons plans (d'après Te Li, Dongyi Wei et Zhifei Zhang)'', Séminaire Bourbaki, exposé n°1167, Astérisque (2022), [https://doi.org/10.24033/ast.1156 doi:10.24033/ast.1156].
 # B. Helffer and J. Sjöstrand, ''From resolvent bounds to semigroup bounds'', preprint (2010), [https://arxiv.org/abs/1001.4171 arXiv:1001.4171].
@@ -266,5 +275,6 @@ General theory: [[Hörmander theory]].
 # A. Kolmogorov, ''Zufällige Bewegungen (Zur Theorie der Brownschen Bewegung)'', Annals of Mathematics (2) '''35''' (1934), 116–117, [https://doi.org/10.2307/1968123 doi:10.2307/1968123].
 # W. Thomson (Lord Kelvin), ''Stability of fluid motion: rectilineal motion of viscous fluid between two parallel planes'', Philosophical Magazine (5) '''24''' (1887), 188–196, [https://doi.org/10.1080/14786448708628078 doi:10.1080/14786448708628078].
 # L. N. Trefethen and M. Embree, ''Spectra and Pseudospectra: The Behavior of Nonnormal Matrices and Operators'', Princeton University Press (2005), [https://doi.org/10.1515/9780691213101 doi:10.1515/9780691213101].
+# C. Villani, ''Hypocoercivity'', Memoirs of the American Mathematical Society '''202''' (2009), no. 950, [https://arxiv.org/abs/math/0609050 arXiv:math/0609050].
 # D. Wei, ''Diffusion and mixing in fluid flow via the resolvent estimate'', Science China Mathematics '''64''' (2021), 507–518, [https://arxiv.org/abs/1811.11904 arXiv:1811.11904].
 <!-- refs-end -->
