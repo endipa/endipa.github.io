@@ -45,7 +45,7 @@ The papers of the reference catalogue, one line each, grouped by theme; in each 
 * {{Anchor|ColomboCotiZelatiWidmayer2021}} M. Colombo, M. Coti Zelati and K. Widmayer, ''Mixing and diffusion for rough shear flows'', Ars Inveniendi Analytica, Paper No. '''2''' (2021), 21 pp., [https://arxiv.org/abs/2009.12268 arXiv:2009.12268].
 * {{Anchor|DEIJ2022}} T. D. Drivas, T. M. Elgindi, G. Iyer and I. Jeong, ''Anomalous dissipation in passive scalar transport'', Archive for Rational Mechanics and Analysis '''243''' (2022), 1151–1180, [https://arxiv.org/abs/1911.03271 arXiv:1911.03271].
 {{Fold end}}
-{{Fold start|kind=note|title=General criteria and limits (9)}}
+{{Fold start|kind=note|title=General criteria and limits (10)}}
 * {{Anchor|CoopermanIyerRowanSon2025}} W. Cooperman, G. Iyer, K. Rowan and S. Son, ''Exponentially mixing flows with slow enhanced dissipation'', preprint (2025), [https://arxiv.org/abs/2507.21305 arXiv:2507.21305].
 * {{Anchor|NP2022}} C. Nobili and S. Pottel, ''Lower bounds on mixing norms for the advection diffusion equation in Rd'', Nonlinear Differential Equations and Applications NoDEA '''29''' (2022), Article 12, [https://arxiv.org/abs/2006.04614 arXiv:2006.04614].
 * {{Anchor|Seis2023}} C. Seis, ''Bounds on the rate of enhanced dissipation'', Communications in Mathematical Physics '''399''' (2023), 2071–2081, [https://arxiv.org/abs/2003.08794 arXiv:2003.08794].
@@ -55,6 +55,7 @@ The papers of the reference catalogue, one line each, grouped by theme; in each 
 * {{Anchor|HelfferSjostrand2010}} B. Helffer and J. Sjöstrand, ''From resolvent bounds to semigroup bounds'', preprint (2010), [https://arxiv.org/abs/1001.4171 arXiv:1001.4171].
 * {{Anchor|CKRZ2008}} P. Constantin, A. Kiselev, L. Ryzhik and A. Zlatoš, ''Diffusion and mixing in fluid flow'', Annals of Mathematics '''168''' (2008), 643–674, [https://arxiv.org/abs/math/0509663 arXiv:math/0509663].
 * {{Anchor|TrefethenEmbree2005}} L. N. Trefethen and M. Embree, ''Spectra and Pseudospectra: The Behavior of Nonnormal Matrices and Operators'', Princeton University Press (2005), [https://doi.org/10.1515/9780691213101 doi:10.1515/9780691213101].
+* {{Anchor|Kawashima1983}} S. Kawashima, ''Systems of a Hyperbolic-Parabolic Composite Type, with Applications to the Equations of Magnetohydrodynamics'', Doctoral thesis, Kyoto University (1983), [https://doi.org/10.14989/doctor.k3193 doi:10.14989/doctor.k3193].
 {{Fold end}}
 
 == Stochastic enhanced dissipation ==

@@ -55,6 +55,8 @@ so that <math display="inline">f_0=\langle f\rangle_x</math> and <math display="
 The Sobolev norms in the theorem are <math display="inline">\|g\|_{H^1}^2=\|g\|_{L^2}^2+\|\nabla g\|_{L^2}^2</math> and its dual,
 <math display="block">\|g\|_{H^{-1}}=\sup\Big\{\int_{\mathbb{T}\times\mathbb{R}}g\varphi\,dx\,dy\ :\ \|\varphi\|_{H^1}\leq1\Big\}.</math>
 
+When there is no ambiguity, <math display="inline">\|\cdot\|</math> and <math display="inline">\langle\cdot,\cdot\rangle</math> denote the norm and the scalar product of <math display="inline">L^2(\mathbb{T}\times\mathbb{R})</math> or, for a single mode, of <math display="inline">L^2(\mathbb{R})</math>.
+
 == One example, every technique ==
 Each proof below is written for this example only, to show the mechanism; the general results, with complete proofs, are in the part ''Techniques and general results''.
 
@@ -115,6 +117,68 @@ with
 Without the diffusion in <math display="inline">x</math>, namely with <math display="inline">\sigma_t^2=\frac{1}{6}\nu t^3</math>, and on the whole plane, namely keeping only the term <math display="inline">n=0</math>, this is the fundamental solution written by [[Literature#Kolmogorov1934|Kolmogorov (1934)]]. In the variable <math display="inline">x</math> the solution spreads over the length <math display="inline">\sqrt{\nu t^3}</math>, much larger than the diffusive one <math display="inline">\sqrt{\nu t}</math>. For <math display="inline">t\gg\nu^{-1/3}</math> this length exceeds the size of the torus and the kernel is almost independent of <math display="inline">x</math>: this is the enhanced dissipation seen in physical space.
 {{Fold end}}
 {{Proof end}}
+
+=== Hypocoercivity ===
+{{Proof start|id=proof-couette-hypocoercivity|title=Proof by hypocoercivity}}
+This proof builds on elementary techniques: it only uses energy estimates, namely integrations by parts and the Cauchy–Schwarz inequality. The key point is that the transport does not commute with the operator that generates the dissipation, which here is, morally, <math display="inline">\partial_y</math>.
+
+We first simplify the setting by ignoring the diffusion in <math display="inline">x</math>. In fact, since <math display="inline">\partial_{xx}</math> commutes with all the other operators in the equation, we have <math display="inline">f=e^{\nu t\partial_{xx}}g</math>, where <math display="inline">g</math> solves the equation without the diffusion in <math display="inline">x</math>, with <math display="inline">g^{\rm in}=f^{\rm in}</math>, and <math display="inline">e^{\nu t\partial_{xx}}</math> does not increase the <math display="inline">L^2</math> norm. It is therefore enough, and somewhat more instructive, to prove the estimate for
+<math display="block">\partial_tg+y\partial_xg=\nu\partial_{yy}g,</math>
+with <math display="inline">\nu>0</math>, since for <math display="inline">\nu=0</math> there is nothing to prove. Without loss of generality, we also assume that <math display="inline">g</math> has zero <math display="inline">x</math>-average, since the <math display="inline">x</math>-average solves a decoupled equation and a zero <math display="inline">x</math>-average is preserved in time. Note that on functions with zero <math display="inline">x</math>-average we have the Poincaré inequality in <math display="inline">x</math>, namely <math display="inline">\|h\|\leq\|\partial_xh\|</math>.
+
+We now look at the equations satisfied by the derivatives of <math display="inline">g</math>. The derivative in <math display="inline">x</math> commutes with everything, so <math display="inline">\partial_xg</math> solves the same equation as <math display="inline">g</math>. The derivative in <math display="inline">y</math> does not commute with the transport, since <math display="inline">[\partial_y,y\partial_x]=\partial_x</math>, and we get
+<math display="block">\begin{aligned}\partial_t(\partial_xg)+y\partial_x(\partial_xg)&=\nu\partial_{yy}(\partial_xg),\\\partial_t(\partial_yg)+y\partial_x(\partial_yg)&=\nu\partial_{yy}(\partial_yg)-\partial_xg.\end{aligned}</math>
+This is a coupled system for <math display="inline">\partial_xg</math> and <math display="inline">\partial_yg</math>, and there is no direct dissipation for <math display="inline">\partial_xg</math>. However, the last term acts as a forcing in the equation for <math display="inline">\partial_yg</math>, and this is exactly the effect of the non-commutation between the transport and <math display="inline">\partial_y</math>.
+{{Fold start|kind=note|title=Relation to hyperbolic–parabolic systems}}
+Systems of this type, in which only part of the unknowns is directly dissipated, are the typical situation, for instance, in compressible fluids or for the Boltzmann equation. A general framework for such hyperbolic–parabolic systems was developed by [[Literature#Kawashima1983|Kawashima (1983)]] in his PhD thesis (see also the references therein). In fact, hypocoercivity and many other modern energy methods have analogies with the techniques employed by Kawashima.
+{{Fold end}}
+Since the transport is antisymmetric, the energy identity for the first equation is
+<math display="block">\frac12\frac{d}{dt}\|\partial_xg\|^2=-\nu\|\partial_y\partial_xg\|^2.</math>
+By the Poincaré inequality in <math display="inline">x</math>, the right-hand side clearly controls <math display="inline">\|\partial_yg\|^2</math>, but it does not directly control <math display="inline">\|\partial_xg\|^2</math>, because there is no Poincaré inequality when <math display="inline">y\in\mathbb{R}</math>. To get back some dissipation, one of the key ideas behind hypocoercivity is to exploit mixed inner products. Here,
+<math display="block">\frac{d}{dt}\langle\partial_xg,\partial_yg\rangle=-\|\partial_xg\|^2+\text{terms coming from the dissipation}.</math>
+The game is then to tailor an energy functional containing all the quantities needed to conclude:
+* <math display="inline">\|\partial_xg\|</math>, which is what we want to decay;
+* <math display="inline">\langle\partial_xg,\partial_yg\rangle</math>, which gives the dissipation of <math display="inline">\partial_xg</math>;
+* <math display="inline">\|\partial_yg\|</math>, which is needed to control the mixed product.
+For <math display="inline">\alpha,\beta>0</math> to be chosen, we define
+<math display="block">E(t)=\frac12\Big(\|\partial_xg\|^2+\alpha\|\partial_yg\|^2+2\beta\langle\partial_xg,\partial_yg\rangle\Big).</math>
+The identities for the last two terms are
+<math display="block">\frac12\frac{d}{dt}\|\partial_yg\|^2=-\nu\|\partial_{yy}g\|^2-\langle\partial_xg,\partial_yg\rangle,\qquad\frac{d}{dt}\langle\partial_xg,\partial_yg\rangle=-\|\partial_xg\|^2-2\nu\langle\partial_x\partial_yg,\partial_{yy}g\rangle,</math>
+and therefore
+<math display="block">\frac{d}{dt}E=-\nu\|\partial_x\partial_yg\|^2-\alpha\nu\|\partial_{yy}g\|^2-\beta\|\partial_xg\|^2-\alpha\langle\partial_xg,\partial_yg\rangle-2\beta\nu\langle\partial_x\partial_yg,\partial_{yy}g\rangle.</math>
+The first three terms have a good sign, and the third one is the dissipation of <math display="inline">\partial_xg</math> that was missing. The last two have no sign, and must be absorbed by the good ones. By the Cauchy–Schwarz and Young inequalities, and by the Poincaré inequality in <math display="inline">x</math> for the second bound,
+<math display="block">\begin{aligned}2\beta\nu|\langle\partial_x\partial_yg,\partial_{yy}g\rangle|&\leq\frac{\nu}{2}\|\partial_x\partial_yg\|^2+2\beta^2\nu\|\partial_{yy}g\|^2,\\\alpha|\langle\partial_xg,\partial_yg\rangle|&\leq\frac{\beta}{2}\|\partial_xg\|^2+\frac{\alpha^2}{2\beta}\|\partial_x\partial_yg\|^2.\end{aligned}</math>
+Therefore, if
+<math display="block">2\beta^2\leq\alpha\qquad\text{and}\qquad2\alpha^2\leq\beta\nu,</math>
+we obtain
+<math display="block">\frac{d}{dt}E\leq-\frac{\beta}{2}\|\partial_xg\|^2-\frac{\nu}{4}\|\partial_x\partial_yg\|^2.</math>
+Moreover, the first condition guarantees that <math display="inline">E</math> is comparable to the sum of its first two terms:
+<math display="block">\frac14\|\partial_xg\|^2\leq E\leq\frac34\|\partial_xg\|^2+\alpha\|\partial_yg\|^2.</math>
+The two conditions together force <math display="inline">8\beta^3\leq\nu</math>. Thus, the dissipation that we can obtain for <math display="inline">\partial_xg</math> is at most of order <math display="inline">\nu^{1/3}</math>, and this is where the rate comes from. We then choose
+<math display="block">\beta=\frac12\nu^{1/3},\qquad\alpha=\frac12\nu^{2/3}.</math>
+Using once more the Poincaré inequality in <math display="inline">x</math>,
+<math display="block">\frac{d}{dt}E\leq-\frac{\nu^{1/3}}{4}\Big(\|\partial_xg\|^2+\nu^{2/3}\|\partial_yg\|^2\Big)\leq-\frac{\nu^{1/3}}{3}E,</math>
+and hence, for all <math display="inline">t\geq s\geq0</math>,
+<math display="block">\|\partial_xg(t)\|^2\leq4E(t)\leq4e^{-\frac13\nu^{1/3}(t-s)}E(s).</math>
+{{Fold start|kind=note|title=The choice of the coefficients}}
+The powers of <math display="inline">\nu</math> can be guessed as follows. The transport turns derivatives in <math display="inline">x</math> into derivatives in <math display="inline">y</math>. For <math display="inline">\nu=0</math> the solution is <math display="inline">g^{\rm in}(x-ty,y)</math>, so that <math display="inline">\partial_yg\approx-t\partial_xg</math> for large times. The dissipation is then expected to satisfy <math display="inline">\nu\|\partial_yg\|^2\approx\nu t^2\|\partial_xg\|^2</math>. Once integrated up to a time <math display="inline">\tau</math>, this is comparable to <math display="inline">\|\partial_xg\|^2</math> when <math display="inline">\nu\tau^3\approx1</math>, that is <math display="inline">\tau=\nu^{-1/3}</math>. At that time the three terms of <math display="inline">E</math> have sizes <math display="inline">1</math>, <math display="inline">\alpha\tau^2</math> and <math display="inline">\beta\tau</math> relative to <math display="inline">\|\partial_xg\|^2</math>, and they are comparable exactly when <math display="inline">\alpha\approx\nu^{2/3}</math> and <math display="inline">\beta\approx\nu^{1/3}</math>. In other words, <math display="inline">E</math> measures <math display="inline">\partial_y</math> in units of <math display="inline">\nu^{1/3}</math>.
+{{Fold end}}
+It remains to remove <math display="inline">\|\partial_yg^{\rm in}\|</math>, which appears in <math display="inline">E(0)</math> and is not controlled by the norms stated in the theorem. For this we use the smoothing effect of the diffusion. Integrating in time the energy identity for <math display="inline">\partial_xg</math>, and using the Poincaré inequality in <math display="inline">x</math>, we get
+<math display="block">\nu\int_0^{T}\|\partial_yg(s)\|^2\,ds\leq\frac12\|\partial_xg^{\rm in}\|^2\qquad\text{for all }T>0.</math>
+We then take <math display="inline">T=\nu^{-1/3}</math>, the time scale of the decay. Hence there is a time <math display="inline">t_0\in(0,\nu^{-1/3}]</math> such that <math display="inline">\nu^{2/3}\|\partial_yg(t_0)\|^2\leq\frac12\|\partial_xg^{\rm in}\|^2</math> and therefore, since <math display="inline">\|\partial_xg\|</math> does not increase,
+<math display="block">E(t_0)\leq\frac34\|\partial_xg(t_0)\|^2+\frac12\nu^{2/3}\|\partial_yg(t_0)\|^2\leq\|\partial_xg^{\rm in}\|^2.</math>
+For <math display="inline">t\geq t_0</math> we use the decay of <math display="inline">E</math> starting from the time <math display="inline">t_0</math>, while for <math display="inline">t\leq t_0</math> we simply use that <math display="inline">\|\partial_xg\|</math> does not increase. Since <math display="inline">\nu^{1/3}t_0\leq1</math>, in both cases
+<math display="block">\|\partial_xg(t)\|\leq2e^{1/6}e^{-\frac16\nu^{1/3}t}\|\partial_xg^{\rm in}\|\qquad\text{for all }t\geq0.</math>
+Finally, since <math display="inline">\partial_x</math> commutes with the equation and is invertible on functions with zero <math display="inline">x</math>-average, the same estimate holds with <math display="inline">g</math> in place of <math display="inline">\partial_xg</math>, and hence for <math display="inline">f</math>, since <math display="inline">\|f(t)\|\leq\|g(t)\|</math> and <math display="inline">g^{\rm in}=f^{\rm in}</math>. This proves the enhanced dissipation estimate of the theorem.
+{{Fold start|kind=note|title=Avoiding the smoothing step}}
+The smoothing step can be avoided by letting the coefficients depend on time, exactly as one proves the gain of regularity for the heat equation through energy estimates with the weight <math display="inline">t</math> in front of <math display="inline">\|\partial_yg\|^2</math>. With
+<math display="block">q(t)=\frac{\nu^{1/3}t}{1+\nu^{1/3}t},\qquad\alpha(t)=a\,\nu^{2/3}q(t),\qquad\beta(t)=b\,\nu^{1/3}q(t)^2,</math>
+the functional <math display="inline">E</math> at the initial time is just <math display="inline">\frac12\|\partial_xg^{\rm in}\|^2</math>, so nothing is asked of <math display="inline">\partial_yg^{\rm in}</math>. For <math display="inline">t\ll\nu^{-1/3}</math> the weights behave like <math display="inline">\nu t</math> and <math display="inline">\nu t^2</math>, as for the heat equation, and for <math display="inline">t\gg\nu^{-1/3}</math> they are the constant ones used above. The price is two new terms, coming from the time derivatives of the weights, which are absorbed by the good terms we already have if <math display="inline">a</math> and <math display="inline">b</math> are small enough (we leave this as an exercise). A functional of this kind measures the solution at each time at the right scale, and gives the decay and the gain of regularity at once.
+{{Fold end}}
+
+The mode-by-mode estimates can be obtained in the same way: on a single mode <math display="inline">k</math> the Poincaré inequality in <math display="inline">x</math> becomes the identity <math display="inline">\|\partial_xh\|=|k|\|h\|</math>, and the argument can be repeated with <math display="inline">\nu k^2</math> in place of <math display="inline">\nu</math> in the choice of <math display="inline">\alpha</math>, <math display="inline">\beta</math> and <math display="inline">T</math>, which gives the rate <math display="inline">\nu^{1/3}|k|^{2/3}</math>.
+{{Proof end}}
+General theory: [[Hypocoercivity]].
 
 === Resolvent method ===
 {{Proof start|id=proof-couette-resolvent|title=Proof by the resolvent method}}
@@ -178,12 +242,6 @@ Therefore, since for <math display="inline">|k|t\leq1</math> there is nothing to
 {{Proof end}}
 General theory: [[Spectral methods]].
 
-=== Hypocoercivity ===
-{{Proof start|id=proof-couette-hypocoercivity|title=Proof by hypocoercivity}}
-{{Placeholder start}}The proof.{{Placeholder end}}
-{{Proof end}}
-General theory: [[Hypocoercivity]].
-
 === Stochastic methods ===
 {{Proof start|id=proof-couette-stochastic|title=Proof by stochastic methods}}
 {{Placeholder start}}The proof.{{Placeholder end}}
@@ -200,10 +258,11 @@ General theory: [[Hörmander theory]].
 {{Placeholder start}}What the example shows, and what the general theory keeps of it.{{Placeholder end}}
 
 == References ==
-<!-- refs-begin: Kelvin1887 Kolmogorov1934 TrefethenEmbree2005 HelfferSjostrand2010 Wei2021Resolvent Gallay2022Bourbaki CotiZelatiGallay2023 -->
+<!-- refs-begin: Kelvin1887 Kolmogorov1934 TrefethenEmbree2005 HelfferSjostrand2010 Wei2021Resolvent Gallay2022Bourbaki CotiZelatiGallay2023 Kawashima1983 -->
 # M. Coti Zelati and T. Gallay, ''Enhanced dissipation and Taylor dispersion in higher-dimensional parallel shear flows'', Journal of the London Mathematical Society '''108''' (2023), 1358–1392, [https://arxiv.org/abs/2108.11192 arXiv:2108.11192].
 # T. Gallay, ''Estimations pseudo-spectrales et stabilité des tourbillons plans (d'après Te Li, Dongyi Wei et Zhifei Zhang)'', Séminaire Bourbaki, exposé n°1167, Astérisque (2022), [https://doi.org/10.24033/ast.1156 doi:10.24033/ast.1156].
 # B. Helffer and J. Sjöstrand, ''From resolvent bounds to semigroup bounds'', preprint (2010), [https://arxiv.org/abs/1001.4171 arXiv:1001.4171].
+# S. Kawashima, ''Systems of a Hyperbolic-Parabolic Composite Type, with Applications to the Equations of Magnetohydrodynamics'', Doctoral thesis, Kyoto University (1983), [https://doi.org/10.14989/doctor.k3193 doi:10.14989/doctor.k3193].
 # A. Kolmogorov, ''Zufällige Bewegungen (Zur Theorie der Brownschen Bewegung)'', Annals of Mathematics (2) '''35''' (1934), 116–117, [https://doi.org/10.2307/1968123 doi:10.2307/1968123].
 # W. Thomson (Lord Kelvin), ''Stability of fluid motion: rectilineal motion of viscous fluid between two parallel planes'', Philosophical Magazine (5) '''24''' (1887), 188–196, [https://doi.org/10.1080/14786448708628078 doi:10.1080/14786448708628078].
 # L. N. Trefethen and M. Embree, ''Spectra and Pseudospectra: The Behavior of Nonnormal Matrices and Operators'', Princeton University Press (2005), [https://doi.org/10.1515/9780691213101 doi:10.1515/9780691213101].

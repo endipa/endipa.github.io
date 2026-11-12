@@ -1374,6 +1374,33 @@
       "publication_status": "published",
       "verification_level": "bibliographic metadata from the Crossref record of the DOI; the book itself not read",
       "topic_subgroup": "General criteria and limits"
+    },
+    {
+      "key": "Kawashima1983",
+      "title": "Systems of a Hyperbolic-Parabolic Composite Type, with Applications to the Equations of Magnetohydrodynamics",
+      "authors": [
+        "Shuichi Kawashima"
+      ],
+      "arxiv": null,
+      "preprint_year": null,
+      "publication_year": 1983,
+      "journal": "Doctoral thesis, Kyoto University",
+      "doi": "10.14989/doctor.k3193",
+      "source_urls": [
+        "https://doi.org/10.14989/doctor.k3193",
+        "http://hdl.handle.net/2433/97887"
+      ],
+      "topic": "hyperbolic–parabolic systems; energy method; partial dissipation; background for hypocoercivity",
+      "priority": "adjacent",
+      "annotation": "Doctoral thesis developing a general energy method for symmetric hyperbolic–parabolic systems in which only part of the unknowns is directly dissipated (compressible viscous fluids, magnetohydrodynamics); mixed inner products recover the missing dissipation. Cited on the page Couette flow (proof by hypocoercivity) as the general framework behind the analogy with hypocoercivity, with the references therein. The manuscript is dated December 1983 (title page of the PDF); the KURENAI record gives the conferral date 1984-09-25 and the DOI.",
+      "checked_on": "2026-11-12",
+      "topic_group": "Deterministic enhanced dissipation",
+      "publication_status": "published",
+      "verification_level": "bibliographic metadata from the KURENAI record (Kyoto University repository) and the title page of the PDF; content not checked for this entry",
+      "local_pdf": null,
+      "local_pdf_version": null,
+      "topic_subgroup": "General criteria and limits",
+      "date": "1983-12"
     }
   ]
 }
