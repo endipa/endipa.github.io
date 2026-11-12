@@ -47,7 +47,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-17888a1159294d3eb470f19f6f52f5a5.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-35c387a814f040135c5dad5d97405735.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-23b8e1dd1b474acb6d593cb1d2902cb8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -1005,6 +1005,73 @@ ul.task-list li input[type="checkbox"] {
     document.addEventListener('pointerdown', function (e) { panels.forEach(function (p) { if (!p.contains(e.target)) release(p); }); }, true);
     window.addEventListener('resize', function () { panels.forEach(function (p) { release(p, true); }); render(); });
     render();
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+})();
+</script>
+
+<script>
+(function () {
+  var TALL = 0.6;   // the button is shown when the open box is taller than this fraction of the window
+  function headOf(box) { return box.querySelector(':scope > .callout-header[data-bs-toggle="collapse"]'); }
+  // the top bar of phones and tablets (fixed) may come back when the page moves up: the title line goes below it
+  function topBar() {
+    var h = document.getElementById('quarto-header');
+    if (!h) return 0;
+    var p = window.getComputedStyle(h).position;
+    return (p === 'fixed' || p === 'sticky') ? h.offsetHeight : 0;
+  }
+  function scrollToY(y) {
+    var s = document.documentElement.style, old = s.scrollBehavior;
+    s.scrollBehavior = 'auto'; window.scrollTo(0, Math.max(0, y)); s.scrollBehavior = old;
+  }
+  function close(box, col, btn) {
+    var head = headOf(box);
+    if (!head || col.classList.contains('collapsing') || !col.classList.contains('show')) return;
+    var b = btn.getBoundingClientRect(), mid = (b.top + b.bottom) / 2;
+    col.classList.remove('show');
+    head.classList.add('collapsed'); head.setAttribute('aria-expanded', 'false');
+    var h = head.getBoundingClientRect(), half = h.height / 2;
+    mid = Math.max(mid, topBar() + half + 8);
+    scrollToY(window.scrollY + h.top + half - mid);
+    head.focus({ preventScroll: true });
+  }
+  function update(box) {
+    var col = box.querySelector(':scope > .callout-collapse'), btn = col && col.foldClose;
+    if (!btn) return;
+    var open = col.classList.contains('show') || col.classList.contains('collapsing');
+    var h = box.getBoundingClientRect().height - (btn.hidden ? 0 : btn.offsetHeight);
+    var show = open && h > TALL * window.innerHeight;
+    if (btn.hidden === show) btn.hidden = !show;
+  }
+  function init() {
+    var boxes = [].slice.call(document.querySelectorAll('main .callout')).filter(function (box) {
+      return headOf(box) && box.querySelector(':scope > .callout-collapse');
+    });
+    var ro = window.ResizeObserver ? new ResizeObserver(function (es) {
+      es.forEach(function (e) { update(e.target.parentElement); });
+    }) : null;
+    boxes.forEach(function (box) {
+      var head = headOf(box), col = box.querySelector(':scope > .callout-collapse');
+      var proof = box.classList.contains('lvl-proof');
+      var t = (head.querySelector('.callout-title-container') || head).cloneNode(true);
+      [].forEach.call(t.querySelectorAll('.screen-reader-only'), function (x) { x.remove(); });
+      var title = t.textContent.trim();
+      // the title line: reachable with the Tab key, opened and closed with Enter or Space
+      head.setAttribute('tabindex', '0'); head.setAttribute('role', 'button');
+      head.addEventListener('keydown', function (e) {
+        if ((e.key === 'Enter' || e.key === ' ') && e.target === head) { e.preventDefault(); head.click(); }
+      });
+      var btn = document.createElement('button');
+      btn.type = 'button'; btn.className = 'fold-close'; btn.hidden = true;
+      btn.innerHTML = '<span aria-hidden="true">▴</span> ' + (proof ? 'Close proof' : 'Close');
+      btn.setAttribute('aria-label', 'Close: ' + title);
+      btn.title = proof ? 'Fold this proof; its first line comes to where this button is' : 'Fold this box; its title comes to where this button is';
+      btn.addEventListener('click', function (e) { e.stopPropagation(); close(box, col, btn); });
+      col.appendChild(btn); col.foldClose = btn;
+      if (ro) ro.observe(col); else update(box);
+    });
+    window.addEventListener('resize', function () { boxes.forEach(update); });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();

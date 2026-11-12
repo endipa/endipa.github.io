@@ -358,6 +358,84 @@ local READING_SCRIPT = [=[
 </script>
 ]=]
 
+-- (12 November 2026) A long open box can be closed from its end: at the bottom right of an open folded box (a proof,
+-- a note, an idea) that is taller than 60% of the window, a quiet button "Close proof" (or "Close") folds it. The
+-- line of the title ("Proof.") then comes to where the button was, so the reader stays at the same place of the page
+-- and the pointer is on that line (a second click there opens the proof again); without this, folding the box
+-- from its end would pull the page up by the height of the box. The button sits on its own line, below the
+-- end-of-proof square, and closes its own box only (a proof inside a proof has its own). It is written by this
+-- script, so a page without JavaScript simply has no button. The title lines of the folded boxes become reachable
+-- with the Tab key (Enter or Space opens and closes the box), and after a close from the end the focus goes to the
+-- title line. Not printed (theme.scss).
+local CLOSE_SCRIPT = [=[
+<script>
+(function () {
+  var TALL = 0.6;   // the button is shown when the open box is taller than this fraction of the window
+  function headOf(box) { return box.querySelector(':scope > .callout-header[data-bs-toggle="collapse"]'); }
+  // the top bar of phones and tablets (fixed) may come back when the page moves up: the title line goes below it
+  function topBar() {
+    var h = document.getElementById('quarto-header');
+    if (!h) return 0;
+    var p = window.getComputedStyle(h).position;
+    return (p === 'fixed' || p === 'sticky') ? h.offsetHeight : 0;
+  }
+  function scrollToY(y) {
+    var s = document.documentElement.style, old = s.scrollBehavior;
+    s.scrollBehavior = 'auto'; window.scrollTo(0, Math.max(0, y)); s.scrollBehavior = old;
+  }
+  function close(box, col, btn) {
+    var head = headOf(box);
+    if (!head || col.classList.contains('collapsing') || !col.classList.contains('show')) return;
+    var b = btn.getBoundingClientRect(), mid = (b.top + b.bottom) / 2;
+    col.classList.remove('show');
+    head.classList.add('collapsed'); head.setAttribute('aria-expanded', 'false');
+    var h = head.getBoundingClientRect(), half = h.height / 2;
+    mid = Math.max(mid, topBar() + half + 8);
+    scrollToY(window.scrollY + h.top + half - mid);
+    head.focus({ preventScroll: true });
+  }
+  function update(box) {
+    var col = box.querySelector(':scope > .callout-collapse'), btn = col && col.foldClose;
+    if (!btn) return;
+    var open = col.classList.contains('show') || col.classList.contains('collapsing');
+    var h = box.getBoundingClientRect().height - (btn.hidden ? 0 : btn.offsetHeight);
+    var show = open && h > TALL * window.innerHeight;
+    if (btn.hidden === show) btn.hidden = !show;
+  }
+  function init() {
+    var boxes = [].slice.call(document.querySelectorAll('main .callout')).filter(function (box) {
+      return headOf(box) && box.querySelector(':scope > .callout-collapse');
+    });
+    var ro = window.ResizeObserver ? new ResizeObserver(function (es) {
+      es.forEach(function (e) { update(e.target.parentElement); });
+    }) : null;
+    boxes.forEach(function (box) {
+      var head = headOf(box), col = box.querySelector(':scope > .callout-collapse');
+      var proof = box.classList.contains('lvl-proof');
+      var t = (head.querySelector('.callout-title-container') || head).cloneNode(true);
+      [].forEach.call(t.querySelectorAll('.screen-reader-only'), function (x) { x.remove(); });
+      var title = t.textContent.trim();
+      // the title line: reachable with the Tab key, opened and closed with Enter or Space
+      head.setAttribute('tabindex', '0'); head.setAttribute('role', 'button');
+      head.addEventListener('keydown', function (e) {
+        if ((e.key === 'Enter' || e.key === ' ') && e.target === head) { e.preventDefault(); head.click(); }
+      });
+      var btn = document.createElement('button');
+      btn.type = 'button'; btn.className = 'fold-close'; btn.hidden = true;
+      btn.innerHTML = '<span aria-hidden="true">▴</span> ' + (proof ? 'Close proof' : 'Close');
+      btn.setAttribute('aria-label', 'Close: ' + title);
+      btn.title = proof ? 'Fold this proof; its first line comes to where this button is' : 'Fold this box; its title comes to where this button is';
+      btn.addEventListener('click', function (e) { e.stopPropagation(); close(box, col, btn); });
+      col.appendChild(btn); col.foldClose = btn;
+      if (ro) ro.observe(col); else update(box);
+    });
+    window.addEventListener('resize', function () { boxes.forEach(update); });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+})();
+</script>
+]=]
+
 -- (11 November 2026) An inline formula stays on the line of the text glued to it: the comma, full stop or bracket
 -- after it, the bracket before it, the rest of a word such as "k-mode". For a browser a formula is a box of its own,
 -- and it may break the line between the box and the punctuation, which then starts the next line. The formula and
@@ -396,6 +474,7 @@ local function add_script(doc)
   if quarto and quarto.doc and quarto.doc.is_format and quarto.doc.is_format("html") then
     quarto.doc.include_text("in-header", READING_HEAD)
     doc.blocks:insert(pandoc.RawBlock("html", READING_SCRIPT))
+    doc.blocks:insert(pandoc.RawBlock("html", CLOSE_SCRIPT))
   end
   return doc
 end

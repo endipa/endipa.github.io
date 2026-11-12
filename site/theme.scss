@@ -100,6 +100,24 @@ div.remark { border-left: 3px solid #d5dbe3; padding: 0.1rem 0.9rem; margin: 0.8
 .callout.lvl-proof > .callout-header .callout-title-container::after { content: "."; }
 .callout.lvl-proof > .callout-collapse > .callout-body-container { padding: 0.15rem 0 0 0.75rem !important; }
 .callout.lvl-proof > .callout-collapse > .callout-body-container::after { content: "\25A1"; display: block; text-align: right; line-height: 1; margin: -0.9rem 0 0.2rem; }
+// (12 November 2026) a proof that ends with a box (a note): the square goes under the box, not onto its corner
+.callout.lvl-proof > .callout-collapse > .callout-body-container:has(> .callout:last-child)::after { margin-top: 0.3rem; }
+// (12 November 2026) The lines of a proof are as long as those of the text around it: the thin rule of an open proof
+// hangs in the margin, 0.75rem left of the text, so the triangle and the text of the proof start where the paragraphs
+// of the page start (before, a proof lost 0.75rem of every line, a proof inside a proof 1.5rem). A proof inside another
+// box (a proof, a note) keeps its indent of 0.75rem, so that its rule stays apart from the rule of the outer proof.
+.callout.lvl-proof { margin-left: calc(-0.75rem - 1px) !important; }
+.callout .callout.lvl-proof { margin-left: 0 !important; }
+// (12 November 2026) The button "Close proof" (or "Close") at the end of a long open box, written by page-links.lua:
+// on its own line, at the right, below the end-of-proof square; quiet, in the grey of the rule
+.fold-close { display: block; margin: 0.15rem 0 0.4rem auto; padding: 0.1rem 0.3rem; border: 0; border-radius: 3px; background: transparent;
+  font-family: $font-family-sans-serif; font-size: 0.78rem; font-weight: 500; line-height: 1.3; color: #6b7280; cursor: pointer; white-space: nowrap; }
+.fold-close[hidden] { display: none; }
+.fold-close:hover, .fold-close:focus-visible { color: $primary; background: #eef3f8; }
+.fold-close span { font-size: 0.9em; }
+.callout:not(.lvl-proof) > .callout-collapse > .fold-close { margin-right: 0.5rem; margin-top: -0.3rem; }
+.callout > .callout-header[data-bs-toggle="collapse"]:focus-visible { outline: 2px solid #9fb3c8; outline-offset: 1px; }
+@media print { .fold-close { display: none !important; } }
 .lvl-formal { font-family: $font-family-sans-serif; font-size: 0.88rem; color: #59616e; border-top: 1px dashed #c9cfd8; padding-top: 0.5rem; margin-top: 1.2rem; }
 
 // Verbatim quotations from the AI-generated source
