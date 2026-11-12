@@ -5,7 +5,7 @@
 
 == The method ==
 {{Placeholder start}}The key mechanism, in a few lines.{{Placeholder end}}
-Worked example: [[Couette flow#Spectral methods|Couette flow]]. What changes with a critical point: [[Poiseuille flow#Spectral methods|Poiseuille flow]].
+Worked example: [[Couette flow#Resolvent method|Couette flow]]. What changes with a critical point: [[Poiseuille flow#Spectral methods|Poiseuille flow]].
 
 == General results ==
 {{Placeholder start}}The theorems, each written as a result (statement, idea, proof architecture, complete proof; see [[How to contribute#Anatomy of a result|How to contribute]]); lemmas of general use go to the ''Toolkit'' ([[Standard analysis]], [[Enhanced-dissipation tools]]).{{Placeholder end}}

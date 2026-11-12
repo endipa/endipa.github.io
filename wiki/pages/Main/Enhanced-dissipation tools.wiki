@@ -6,7 +6,52 @@ Tools specific to enhanced dissipation. A statement comes to the Toolkit when se
 == Tools ==
 {{Placeholder start}}For instance spectral-gap and resolvent lemmas, and the link between mixing and enhanced dissipation.{{Placeholder end}}
 
+=== From resolvent bounds to semigroup bounds ===
+{{Theorem start|id=def-m-accretive|title=Definition (m-accretive operator).}}
+A closed operator <math display="inline">H</math> on a complex Hilbert space <math display="inline">X</math> is m-accretive if, for every <math display="inline">\mu\in\mathbb{C}</math> with <math display="inline">\operatorname{Re}\mu>0</math>, the operator <math display="inline">H+\mu</math> is invertible and <math display="inline">\|(H+\mu)^{-1}\|\leq(\operatorname{Re}\mu)^{-1}</math>. Then <math display="inline">D(H)</math> is dense, <math display="inline">\operatorname{Re}\langle Hf,f\rangle\geq0</math> for <math display="inline">f\in D(H)</math>, and <math display="inline">-H</math> generates a semigroup of contractions <math display="inline">e^{-tH}</math>.
+{{Theorem end}}
+{{Theorem start|id=thm-gearhart-pruss-wei|title=Theorem (Gearhart–Prüss type bound, Wei).}}
+Let <math display="inline">H</math> be an m-accretive operator on <math display="inline">X</math>, and let
+<math display="block">\Psi(H):=\inf\big\{\|(H-i\lambda)f\|\ :\ f\in D(H),\ \|f\|=1,\ \lambda\in\mathbb{R}\big\}.</math>
+Then <math display="inline">\|e^{-tH}\|\leq e^{\pi/2}\,e^{-\Psi(H)t}</math> for all <math display="inline">t\geq0</math>.
+{{Theorem end}}
+{{Fold start|kind=idea|title=Idea}}
+Cut the solution in time: <math display="inline">\chi(s)e^{-sH}f</math> solves the equation with source <math display="inline">\chi'(s)e^{-sH}f</math>. After a Fourier transform in time the resolvent on the imaginary axis appears, and by Plancherel the definition of <math display="inline">\Psi</math> becomes a weighted inequality for the nonincreasing function <math display="inline">g(s)=\|e^{-sH}f\|^2</math>. With <math display="inline">\chi</math> exponential in the bulk this forces <math display="inline">g</math> to decay like <math display="inline">e^{-2\Psi s}</math>. Bringing <math display="inline">\chi</math> to zero at the two ends costs the constant <math display="inline">e^{\pi/2}</math>.
+{{Fold end}}
+{{Proof start|id=proof-gearhart-pruss-wei}}
+''Sources.'' [[Literature#Wei2021Resolvent|Wei (2021)]], Section 2, partly motivated by [[Literature#HelfferSjostrand2010|Helffer and Sjöstrand (2010)]].
+
+Let <math display="inline">\Psi=\Psi(H)</math>. Since <math display="inline">D(H)</math> is dense, it is enough to prove <math display="inline">\|e^{-tH}f\|\leq e^{\pi/2-\Psi t}\|f\|</math> for <math display="inline">f\in D(H)</math>. Fix such an <math display="inline">f</math> and let <math display="inline">g(s)=\|e^{-sH}f\|^2</math>, which is nonincreasing because the semigroup is a contraction. In particular there is nothing to prove if <math display="inline">\Psi t\leq\pi/2</math>, so we assume <math display="inline">\Psi t>\pi/2</math>.
+
+'''Step 1 (an inequality for <math display="inline">g</math>).'''
+{{Theorem start|id=clm-gearhart-pruss-wei|title=Claim.}}
+For every <math display="inline">l>0</math> and every real <math display="inline">\chi\in C^1([0,l])</math> with <math display="inline">\chi(0)=\chi(l)=0</math>,
+<math display="block">\int_0^l\chi'(s)^2g(s)\,ds\geq\Psi^2\int_0^l\chi(s)^2g(s)\,ds.</math>
+{{Theorem end}}
+{{Proof start|id=proof-clm-gearhart-pruss-wei|title=Proof of the claim}}
+Let <math display="inline">u(s)=\chi(s)e^{-sH}f</math> and <math display="inline">w(s)=\chi'(s)e^{-sH}f</math> on <math display="inline">[0,l]</math>, so that <math display="inline">\partial_su+Hu=w</math>. For <math display="inline">\lambda\in\mathbb{R}</math> let <math display="inline">\hat u(\lambda)=\int_0^lu(s)e^{-i\lambda s}\,ds</math>, and similarly <math display="inline">\hat w</math>. Since <math display="inline">H</math> is closed, <math display="inline">\hat u(\lambda)\in D(H)</math>. Integrating by parts in <math display="inline">s</math>, the boundary terms vanish because <math display="inline">\chi(0)=\chi(l)=0</math>, and
+<math display="block">(H+i\lambda)\hat u(\lambda)=\hat w(\lambda).</math>
+By the definition of <math display="inline">\Psi</math>, <math display="inline">\|\hat w(\lambda)\|\geq\Psi\|\hat u(\lambda)\|</math> for every <math display="inline">\lambda</math>. By Plancherel's theorem for functions with values in <math display="inline">X</math>,
+<math display="block">\int_0^l\|w(s)\|^2\,ds=\frac{1}{2\pi}\int_{\mathbb{R}}\|\hat w(\lambda)\|^2\,d\lambda\geq\frac{\Psi^2}{2\pi}\int_{\mathbb{R}}\|\hat u(\lambda)\|^2\,d\lambda=\Psi^2\int_0^l\|u(s)\|^2\,ds.</math>
+{{Proof end}}
+
+'''Step 2 (choice of <math display="inline">\chi</math>).''' Let
+<math display="block">t_1=\frac{\pi}{4\Psi},\qquad t_2=t-\frac{\pi}{4\Psi},\qquad t_3=t+\frac{\pi}{4\Psi},\qquad l=t+\frac{\pi}{2\Psi},</math>
+so that <math display="inline">t_1<t_2</math>, and
+<math display="block">\chi(s)=\begin{cases}\sin(\Psi s),&0\leq s\leq t_1,\\ \frac{1}{\sqrt2}\,e^{\Psi s-\pi/4},&t_1\leq s\leq t_2,\\ e^{\Psi t-\pi/2}\cos(\Psi(s-t)),&t_2\leq s\leq l.\end{cases}</math>
+This function is <math display="inline">C^1</math> and vanishes at <math display="inline">0</math> and <math display="inline">l</math>. Setting <math display="inline">h:=\chi'^2-\Psi^2\chi^2</math>, the claim reads <math display="inline">\int_0^lh\,g\,ds\geq0</math>, and
+<math display="block">h(s)=\begin{cases}\Psi^2\cos(2\Psi s),&0\leq s\leq t_1,\\ 0,&t_1\leq s\leq t_2,\\ -\Psi^2e^{2\Psi t-\pi}\cos(2\Psi(s-t)),&t_2\leq s\leq l.\end{cases}</math>
+Hence <math display="inline">h\geq0</math> on <math display="inline">[0,t_1]</math> and on <math display="inline">[t_3,l]</math>, <math display="inline">h\leq0</math> on <math display="inline">[t_2,t_3]</math>, and
+<math display="block">\int_0^{t_1}h\,ds=\frac{\Psi}{2},\qquad\int_{t_2}^{t}h\,ds=-\frac{\Psi}{2}e^{2\Psi t-\pi},\qquad\int_t^lh\,ds=0.</math>
+
+'''Step 3 (conclusion).''' Since <math display="inline">g</math> is nonincreasing, <math display="inline">hg\leq h\,g(0)</math> on <math display="inline">[0,t_1]</math>, <math display="inline">hg\leq h\,g(t)</math> on <math display="inline">[t_2,t]</math>, and <math display="inline">hg\leq h\,g(t_3)</math> on <math display="inline">[t,l]</math>. Therefore
+<math display="block">0\leq\int_0^lh\,g\,ds\leq\frac{\Psi}{2}\,g(0)-\frac{\Psi}{2}\,e^{2\Psi t-\pi}g(t),</math>
+that is <math display="inline">g(t)\leq e^{\pi-2\Psi t}g(0)</math>, which is the bound.
+{{Proof end}}
+
 
 == References ==
-<!-- refs-begin: -->
+<!-- refs-begin: Wei2021Resolvent HelfferSjostrand2010 -->
+# B. Helffer and J. Sjöstrand, ''From resolvent bounds to semigroup bounds'', preprint (2010), [https://arxiv.org/abs/1001.4171 arXiv:1001.4171].
+# D. Wei, ''Diffusion and mixing in fluid flow via the resolvent estimate'', Science China Mathematics '''64''' (2021), 507–518, [https://arxiv.org/abs/1811.11904 arXiv:1811.11904].
 <!-- refs-end -->

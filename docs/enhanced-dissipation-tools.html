@@ -82,6 +82,34 @@ ul.task-list li input[type="checkbox"] {
   if (t >= 0.8 && t <= 2 && t !== 1) d.style.setProperty('--text-scale', t); } catch (e) {} })();
 </script>
 
+  <script defer="" src="mathjax/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -301,7 +329,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#tools" id="toc-tools" class="nav-link active" data-scroll-target="#tools">Tools</a></li>
+  <li><a href="#tools" id="toc-tools" class="nav-link active" data-scroll-target="#tools">Tools</a>
+  <ul class="collapse">
+  <li><a href="#from-resolvent-bounds-to-semigroup-bounds" id="toc-from-resolvent-bounds-to-semigroup-bounds" class="nav-link" data-scroll-target="#from-resolvent-bounds-to-semigroup-bounds">From resolvent bounds to semigroup bounds</a></li>
+  </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
@@ -345,12 +376,103 @@ ul.task-list li input[type="checkbox"] {
 <p><a href="https://endipa.miraheze.org/wiki/Talk:Enhanced-dissipation_tools?action=edit&amp;section=new&amp;preload=Template:Proposal/Preload-block&amp;preloadtitle=Proposal%3A+" class="propose">Propose a text →</a></p>
 </div>
 </div>
+<section id="from-resolvent-bounds-to-semigroup-bounds" class="level3">
+<h3 class="anchored" data-anchor-id="from-resolvent-bounds-to-semigroup-bounds">From resolvent bounds to semigroup bounds</h3>
+<div class="theorem definition">
+<p><span id="def-m-accretive" style="scroll-margin-top: 1.2rem"></span><span class="theorem-title"><strong>Definition (m-accretive operator)</strong></span> &nbsp;</p>
+<div class="edit-unit" data-unit="pff8c15a9">
+<p>A closed operator <span class="math inline">\(H\)</span> on a complex Hilbert space <span class="math inline">\(X\)</span> is m-accretive if, for every <span class="math inline">\(\mu\in\mathbb{C}\)</span> with <span class="math-glue"><span class="math inline">\(\operatorname{Re}\mu&gt;0\)</span>,</span> the operator <span class="math inline">\(H+\mu\)</span> is invertible and <span class="math-glue"><span class="math inline">\(\|(H+\mu)^{-1}\|\leq(\operatorname{Re}\mu)^{-1}\)</span>.</span> Then <span class="math inline">\(D(H)\)</span> is dense, <span class="math inline">\(\operatorname{Re}\langle Hf,f\rangle\geq0\)</span> for <span class="math-glue"><span class="math inline">\(f\in D(H)\)</span>,</span> and <span class="math inline">\(-H\)</span> generates a semigroup of contractions <span class="math-glue"><span class="math inline">\(e^{-tH}\)</span>.</span></p>
+</div>
+</div>
+<div class="theorem">
+<p><span id="thm-gearhart-pruss-wei" style="scroll-margin-top: 1.2rem"></span><span class="theorem-title"><strong>Theorem (Gearhart–Prüss type bound, Wei)</strong></span> &nbsp;</p>
+<div class="edit-unit" data-unit="p77d479b9">
+<p>Let <span class="math inline">\(H\)</span> be an m-accretive operator on <span class="math-glue"><span class="math inline">\(X\)</span>,</span> and let <span class="math display">\[\Psi(H):=\inf\big\{\|(H-i\lambda)f\|\ :\ f\in D(H),\ \|f\|=1,\ \lambda\in\mathbb{R}\big\}.\]</span> Then <span class="math inline">\(\|e^{-tH}\|\leq e^{\pi/2}\,e^{-\Psi(H)t}\)</span> for all <span class="math-glue"><span class="math inline">\(t\geq0\)</span>.</span></p>
+</div>
+</div>
+<div class="lvl-idea callout callout-style-default callout-tip callout-titled" title="Idea">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Idea
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="edit-unit" data-unit="p16756446">
+<p>Cut the solution in time: <span class="math inline">\(\chi(s)e^{-sH}f\)</span> solves the equation with source <span class="math-glue"><span class="math inline">\(\chi'(s)e^{-sH}f\)</span>.</span> After a Fourier transform in time the resolvent on the imaginary axis appears, and by Plancherel the definition of <span class="math inline">\(\Psi\)</span> becomes a weighted inequality for the nonincreasing function <span class="math-glue"><span class="math inline">\(g(s)=\|e^{-sH}f\|^2\)</span>.</span> With <span class="math inline">\(\chi\)</span> exponential in the bulk this forces <span class="math inline">\(g\)</span> to decay like <span class="math-glue"><span class="math inline">\(e^{-2\Psi s}\)</span>.</span> Bringing <span class="math inline">\(\chi\)</span> to zero at the two ends costs the constant <span class="math-glue"><span class="math inline">\(e^{\pi/2}\)</span>.</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="lvl-proof callout callout-style-default callout-note no-icon callout-titled" title="Proof">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="edit-unit" data-unit="p3d7a5a28">
+<p><em>Sources.</em> <a href="./literature.html#Wei2021Resolvent">Wei (2021)</a>, Section 2, partly motivated by <a href="./literature.html#HelfferSjostrand2010">Helffer and Sjöstrand (2010)</a>.</p>
+</div>
+<div class="edit-unit" data-unit="pc962c49c">
+<p>Let <span class="math-glue"><span class="math inline">\(\Psi=\Psi(H)\)</span>.</span> Since <span class="math inline">\(D(H)\)</span> is dense, it is enough to prove <span class="math inline">\(\|e^{-tH}f\|\leq e^{\pi/2-\Psi t}\|f\|\)</span> for <span class="math-glue"><span class="math inline">\(f\in D(H)\)</span>.</span> Fix such an <span class="math inline">\(f\)</span> and let <span class="math-glue"><span class="math inline">\(g(s)=\|e^{-sH}f\|^2\)</span>,</span> which is nonincreasing because the semigroup is a contraction. In particular there is nothing to prove if <span class="math-glue"><span class="math inline">\(\Psi t\leq\pi/2\)</span>,</span> so we assume <span class="math-glue"><span class="math inline">\(\Psi t&gt;\pi/2\)</span>.</span></p>
+</div>
+<div class="edit-unit" data-unit="pd0309150">
+<p><strong>Step 1 (an inequality for <span class="math-glue"><span class="math inline">\(g\)</span>).</span></strong></p>
+</div>
+<div id="clm-gearhart-pruss-wei" class="claim">
+<p><strong>Claim.</strong></p>
+<div class="edit-unit" data-unit="ped5c956a">
+<p>For every <span class="math inline">\(l&gt;0\)</span> and every real <span class="math inline">\(\chi\in C^1([0,l])\)</span> with <span class="math-glue"><span class="math inline">\(\chi(0)=\chi(l)=0\)</span>,</span> <span class="math display">\[\int_0^l\chi'(s)^2g(s)\,ds\geq\Psi^2\int_0^l\chi(s)^2g(s)\,ds.\]</span></p>
+</div>
+</div>
+<div class="lvl-proof callout callout-style-default callout-note no-icon callout-titled" title="Proof of the claim">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Proof of the claim
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="edit-unit" data-unit="p5262e04d">
+<p>Let <span class="math inline">\(u(s)=\chi(s)e^{-sH}f\)</span> and <span class="math inline">\(w(s)=\chi'(s)e^{-sH}f\)</span> on <span class="math-glue"><span class="math inline">\([0,l]\)</span>,</span> so that <span class="math-glue"><span class="math inline">\(\partial_su+Hu=w\)</span>.</span> For <span class="math inline">\(\lambda\in\mathbb{R}\)</span> let <span class="math-glue"><span class="math inline">\(\hat u(\lambda)=\int_0^lu(s)e^{-i\lambda s}\,ds\)</span>,</span> and similarly <span class="math-glue"><span class="math inline">\(\hat w\)</span>.</span> Since <span class="math inline">\(H\)</span> is closed, <span class="math-glue"><span class="math inline">\(\hat u(\lambda)\in D(H)\)</span>.</span> Integrating by parts in <span class="math-glue"><span class="math inline">\(s\)</span>,</span> the boundary terms vanish because <span class="math-glue"><span class="math inline">\(\chi(0)=\chi(l)=0\)</span>,</span> and <span class="math display">\[(H+i\lambda)\hat u(\lambda)=\hat w(\lambda).\]</span> By the definition of <span class="math-glue"><span class="math inline">\(\Psi\)</span>,</span> <span class="math inline">\(\|\hat w(\lambda)\|\geq\Psi\|\hat u(\lambda)\|\)</span> for every <span class="math-glue"><span class="math inline">\(\lambda\)</span>.</span> By Plancherel’s theorem for functions with values in <span class="math-glue"><span class="math inline">\(X\)</span>,</span> <span class="math display">\[\int_0^l\|w(s)\|^2\,ds=\frac{1}{2\pi}\int_{\mathbb{R}}\|\hat w(\lambda)\|^2\,d\lambda\geq\frac{\Psi^2}{2\pi}\int_{\mathbb{R}}\|\hat u(\lambda)\|^2\,d\lambda=\Psi^2\int_0^l\|u(s)\|^2\,ds.\]</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="edit-unit" data-unit="p9b00072a">
+<p><strong>Step 2 (choice of <span class="math-glue"><span class="math inline">\(\chi\)</span>).</span></strong> Let <span class="math display">\[t_1=\frac{\pi}{4\Psi},\qquad t_2=t-\frac{\pi}{4\Psi},\qquad t_3=t+\frac{\pi}{4\Psi},\qquad l=t+\frac{\pi}{2\Psi},\]</span> so that <span class="math-glue"><span class="math inline">\(t_1&lt;t_2\)</span>,</span> and <span class="math display">\[\chi(s)=\begin{cases}\sin(\Psi s),&amp;0\leq s\leq t_1,\\ \frac{1}{\sqrt2}\,e^{\Psi s-\pi/4},&amp;t_1\leq s\leq t_2,\\ e^{\Psi t-\pi/2}\cos(\Psi(s-t)),&amp;t_2\leq s\leq l.\end{cases}\]</span> This function is <span class="math inline">\(C^1\)</span> and vanishes at <span class="math inline">\(0\)</span> and <span class="math-glue"><span class="math inline">\(l\)</span>.</span> Setting <span class="math-glue"><span class="math inline">\(h:=\chi'^2-\Psi^2\chi^2\)</span>,</span> the claim reads <span class="math-glue"><span class="math inline">\(\int_0^lh\,g\,ds\geq0\)</span>,</span> and <span class="math display">\[h(s)=\begin{cases}\Psi^2\cos(2\Psi s),&amp;0\leq s\leq t_1,\\ 0,&amp;t_1\leq s\leq t_2,\\ -\Psi^2e^{2\Psi t-\pi}\cos(2\Psi(s-t)),&amp;t_2\leq s\leq l.\end{cases}\]</span> Hence <span class="math inline">\(h\geq0\)</span> on <span class="math inline">\([0,t_1]\)</span> and on <span class="math-glue"><span class="math inline">\([t_3,l]\)</span>,</span> <span class="math inline">\(h\leq0\)</span> on <span class="math-glue"><span class="math inline">\([t_2,t_3]\)</span>,</span> and <span class="math display">\[\int_0^{t_1}h\,ds=\frac{\Psi}{2},\qquad\int_{t_2}^{t}h\,ds=-\frac{\Psi}{2}e^{2\Psi t-\pi},\qquad\int_t^lh\,ds=0.\]</span></p>
+</div>
+<div class="edit-unit" data-unit="p7e2d98f5">
+<p><strong>Step 3 (conclusion).</strong> Since <span class="math inline">\(g\)</span> is nonincreasing, <span class="math inline">\(hg\leq h\,g(0)\)</span> on <span class="math-glue"><span class="math inline">\([0,t_1]\)</span>,</span> <span class="math inline">\(hg\leq h\,g(t)\)</span> on <span class="math-glue"><span class="math inline">\([t_2,t]\)</span>,</span> and <span class="math inline">\(hg\leq h\,g(t_3)\)</span> on <span class="math-glue"><span class="math inline">\([t,l]\)</span>.</span> Therefore <span class="math display">\[0\leq\int_0^lh\,g\,ds\leq\frac{\Psi}{2}\,g(0)-\frac{\Psi}{2}\,e^{2\Psi t-\pi}g(t),\]</span> that is <span class="math-glue"><span class="math inline">\(g(t)\leq e^{\pi-2\Psi t}g(0)\)</span>,</span> which is the bound.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="references" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="references">References</h2>
-<!-- refs-begin: -->
+<!-- refs-begin: Wei2021Resolvent HelfferSjostrand2010 -->
+<ol type="1">
+<li>B. Helffer and J. Sjöstrand, <em>From resolvent bounds to semigroup bounds</em>, preprint (2010), <a href="https://arxiv.org/abs/1001.4171">arXiv:1001.4171</a>.</li>
+<li>D. Wei, <em>Diffusion and mixing in fluid flow via the resolvent estimate</em>, Science China Mathematics <strong>64</strong> (2021), 507–518, <a href="https://arxiv.org/abs/1811.11904">arXiv:1811.11904</a>.</li>
+</ol>
 <!-- refs-end -->
-<script type="application/json" id="edit-units">{"page": "Enhanced-dissipation tools", "talk": "Talk:Enhanced-dissipation tools", "edit": "https://endipa.miraheze.org/wiki/", "preload": "Template:Proposal/Preload", "units": {"p80597b03": "Tools specific to enhanced dissipation. A statement comes to the Toolkit when several proofs use it, or when it holds in more generality than one result; a step used by one proof only is a claim inside that proof. Each statement is given once, with its proof or a reference, and the proofs elsewhere link to it.", "pbf241ed2": "\\placeholder{For instance spectral-gap and resolvent lemmas, and the link between mixing and enhanced dissipation.}"}, "popup": "Template:Proposal/Preload-popup", "keys": ["ACM2019", "AlbrittonBeekieNovack2022", "BCZG2023", "BeckChaudharyWayne2015", "BeckChaudharyWayne2020", "BedrossianBlumenthalPunshonSmith2021", "BedrossianCotiZelati2017", "BedrossianHeIyerWang2025", "BenthausCocliteNobili2026", "BenthausNobili2026", "BrueCotiZelatiMarconi2024", "CEIM2022", "CKRZ2008", "CZCIM2024", "CZDE2020", "CobleHe2024", "ColomboCotiZelatiWidmayer2021", "CoopermanIyerRowanSon2025", "CoopermanIyerSon2025", "CotiZelati2020StableMixing", "CotiZelatiDolce2020", "CotiZelatiDolceLo2024", "CotiZelatiDrivas2021", "CotiZelatiGallay2023", "CotiZelatiHairerVillringer2025", "DEIJ2022", "DelZottoNualart2026", "DolceJohanssonSorella2025", "EL2024", "ELM2025", "EZ2019", "FI2019", "FM2025", "FMN2023", "FlandoliLuo2026", "GaleatiGubinelli2023", "He2022Fractional", "He2026Localized", "IKX2014", "IZ2023", "Kelvin1887", "Kolmogorov1934", "MFN2026survey", "NP2022", "RomitoRoveri2025", "Seis2023", "Wei2021Resolvent"]}</script>
+<script type="application/json" id="edit-units">{"page": "Enhanced-dissipation tools", "talk": "Talk:Enhanced-dissipation tools", "edit": "https://endipa.miraheze.org/wiki/", "preload": "Template:Proposal/Preload", "units": {"p80597b03": "Tools specific to enhanced dissipation. A statement comes to the Toolkit when several proofs use it, or when it holds in more generality than one result; a step used by one proof only is a claim inside that proof. Each statement is given once, with its proof or a reference, and the proofs elsewhere link to it.", "pbf241ed2": "\\placeholder{For instance spectral-gap and resolvent lemmas, and the link between mixing and enhanced dissipation.}", "pff8c15a9": "A closed operator $H$ on a complex Hilbert space $X$ is m-accretive if, for every $\\mu\\in\\mathbb{C}$ with $\\operatorname{Re}\\mu>0$, the operator $H+\\mu$ is invertible and $\\|(H+\\mu)^{-1}\\|\\leq(\\operatorname{Re}\\mu)^{-1}$. Then $D(H)$ is dense, $\\operatorname{Re}\\langle Hf,f\\rangle\\geq0$ for $f\\in D(H)$, and $-H$ generates a semigroup of contractions $e^{-tH}$.", "p77d479b9": "Let $H$ be an m-accretive operator on $X$, and let\n\\[\\Psi(H):=\\inf\\big\\{\\|(H-i\\lambda)f\\|\\ :\\ f\\in D(H),\\ \\|f\\|=1,\\ \\lambda\\in\\mathbb{R}\\big\\}.\\]\nThen $\\|e^{-tH}\\|\\leq e^{\\pi/2}\\,e^{-\\Psi(H)t}$ for all $t\\geq0$.", "p16756446": "Cut the solution in time: $\\chi(s)e^{-sH}f$ solves the equation with source $\\chi'(s)e^{-sH}f$. After a Fourier transform in time the resolvent on the imaginary axis appears, and by Plancherel the definition of $\\Psi$ becomes a weighted inequality for the nonincreasing function $g(s)=\\|e^{-sH}f\\|^2$. With $\\chi$ exponential in the bulk this forces $g$ to decay like $e^{-2\\Psi s}$. Bringing $\\chi$ to zero at the two ends costs the constant $e^{\\pi/2}$.", "p3d7a5a28": "\\emph{Sources.} \\citet{Wei2021Resolvent}, Section 2, partly motivated by \\citet{HelfferSjostrand2010}.", "pc962c49c": "Let $\\Psi=\\Psi(H)$. Since $D(H)$ is dense, it is enough to prove $\\|e^{-tH}f\\|\\leq e^{\\pi/2-\\Psi t}\\|f\\|$ for $f\\in D(H)$. Fix such an $f$ and let $g(s)=\\|e^{-sH}f\\|^2$, which is nonincreasing because the semigroup is a contraction. In particular there is nothing to prove if $\\Psi t\\leq\\pi/2$, so we assume $\\Psi t>\\pi/2$.", "pd0309150": "\\textbf{Step 1 (an inequality for $g$).}", "ped5c956a": "For every $l>0$ and every real $\\chi\\in C^1([0,l])$ with $\\chi(0)=\\chi(l)=0$,\n\\[\\int_0^l\\chi'(s)^2g(s)\\,ds\\geq\\Psi^2\\int_0^l\\chi(s)^2g(s)\\,ds.\\]", "p5262e04d": "Let $u(s)=\\chi(s)e^{-sH}f$ and $w(s)=\\chi'(s)e^{-sH}f$ on $[0,l]$, so that $\\partial_su+Hu=w$. For $\\lambda\\in\\mathbb{R}$ let $\\hat u(\\lambda)=\\int_0^lu(s)e^{-i\\lambda s}\\,ds$, and similarly $\\hat w$. Since $H$ is closed, $\\hat u(\\lambda)\\in D(H)$. Integrating by parts in $s$, the boundary terms vanish because $\\chi(0)=\\chi(l)=0$, and\n\\[(H+i\\lambda)\\hat u(\\lambda)=\\hat w(\\lambda).\\]\nBy the definition of $\\Psi$, $\\|\\hat w(\\lambda)\\|\\geq\\Psi\\|\\hat u(\\lambda)\\|$ for every $\\lambda$. By Plancherel's theorem for functions with values in $X$,\n\\[\\int_0^l\\|w(s)\\|^2\\,ds=\\frac{1}{2\\pi}\\int_{\\mathbb{R}}\\|\\hat w(\\lambda)\\|^2\\,d\\lambda\\geq\\frac{\\Psi^2}{2\\pi}\\int_{\\mathbb{R}}\\|\\hat u(\\lambda)\\|^2\\,d\\lambda=\\Psi^2\\int_0^l\\|u(s)\\|^2\\,ds.\\]", "p9b00072a": "\\textbf{Step 2 (choice of $\\chi$).} Let\n\\[t_1=\\frac{\\pi}{4\\Psi},\\qquad t_2=t-\\frac{\\pi}{4\\Psi},\\qquad t_3=t+\\frac{\\pi}{4\\Psi},\\qquad l=t+\\frac{\\pi}{2\\Psi},\\]\nso that $t_1<t_2$, and\n\\[\\chi(s)=\\begin{cases}\\sin(\\Psi s),&0\\leq s\\leq t_1,\\\\ \\frac{1}{\\sqrt2}\\,e^{\\Psi s-\\pi/4},&t_1\\leq s\\leq t_2,\\\\ e^{\\Psi t-\\pi/2}\\cos(\\Psi(s-t)),&t_2\\leq s\\leq l.\\end{cases}\\]\nThis function is $C^1$ and vanishes at $0$ and $l$. Setting $h:=\\chi'^2-\\Psi^2\\chi^2$, the claim reads $\\int_0^lh\\,g\\,ds\\geq0$, and\n\\[h(s)=\\begin{cases}\\Psi^2\\cos(2\\Psi s),&0\\leq s\\leq t_1,\\\\ 0,&t_1\\leq s\\leq t_2,\\\\ -\\Psi^2e^{2\\Psi t-\\pi}\\cos(2\\Psi(s-t)),&t_2\\leq s\\leq l.\\end{cases}\\]\nHence $h\\geq0$ on $[0,t_1]$ and on $[t_3,l]$, $h\\leq0$ on $[t_2,t_3]$, and\n\\[\\int_0^{t_1}h\\,ds=\\frac{\\Psi}{2},\\qquad\\int_{t_2}^{t}h\\,ds=-\\frac{\\Psi}{2}e^{2\\Psi t-\\pi},\\qquad\\int_t^lh\\,ds=0.\\]", "p7e2d98f5": "\\textbf{Step 3 (conclusion).} Since $g$ is nonincreasing, $hg\\leq h\\,g(0)$ on $[0,t_1]$, $hg\\leq h\\,g(t)$ on $[t_2,t]$, and $hg\\leq h\\,g(t_3)$ on $[t,l]$. Therefore\n\\[0\\leq\\int_0^lh\\,g\\,ds\\leq\\frac{\\Psi}{2}\\,g(0)-\\frac{\\Psi}{2}\\,e^{2\\Psi t-\\pi}g(t),\\]\nthat is $g(t)\\leq e^{\\pi-2\\Psi t}g(0)$, which is the bound."}, "popup": "Template:Proposal/Preload-popup", "keys": ["ACM2019", "AlbrittonBeekieNovack2022", "BCZG2023", "BeckChaudharyWayne2015", "BeckChaudharyWayne2020", "BedrossianBlumenthalPunshonSmith2021", "BedrossianCotiZelati2017", "BedrossianHeIyerWang2025", "BenthausCocliteNobili2026", "BenthausNobili2026", "BrueCotiZelatiMarconi2024", "CEIM2022", "CKRZ2008", "CZCIM2024", "CZDE2020", "CobleHe2024", "ColomboCotiZelatiWidmayer2021", "CoopermanIyerRowanSon2025", "CoopermanIyerSon2025", "CotiZelati2020StableMixing", "CotiZelatiDolce2020", "CotiZelatiDolceLo2024", "CotiZelatiDrivas2021", "CotiZelatiGallay2023", "CotiZelatiHairerVillringer2025", "DEIJ2022", "DelZottoNualart2026", "DolceJohanssonSorella2025", "EL2024", "ELM2025", "EZ2019", "FI2019", "FM2025", "FMN2023", "FlandoliLuo2026", "GaleatiGubinelli2023", "Gallay2022Bourbaki", "He2022Fractional", "He2026Localized", "HelfferSjostrand2010", "IKX2014", "IZ2023", "Kelvin1887", "Kolmogorov1934", "MFN2026survey", "NP2022", "RomitoRoveri2025", "Seis2023", "TrefethenEmbree2005", "Wei2021Resolvent"]}</script>
 <style>
 .edit-unit { position: relative; }
 .edit-unit > .edit-btn { position: absolute; top: 0.1rem; right: -2.1rem; width: 1.7rem; height: 1.7rem; padding: 0; border: 1px solid #c9cfd8;

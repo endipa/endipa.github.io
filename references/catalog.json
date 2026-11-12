@@ -1296,6 +1296,84 @@
       "local_pdf_version": null,
       "topic_subgroup": "Shear, radial and other symmetric flows",
       "date": "1934-01"
+    },
+    {
+      "key": "HelfferSjostrand2010",
+      "title": "From resolvent bounds to semigroup bounds",
+      "authors": [
+        "Bernard Helffer",
+        "Johannes Sjöstrand"
+      ],
+      "arxiv": "1001.4171",
+      "preprint_year": 2010,
+      "publication_year": null,
+      "journal": null,
+      "doi": null,
+      "source_urls": [
+        "https://arxiv.org/abs/1001.4171"
+      ],
+      "topic": "semigroups; quantitative Gearhart–Prüss theorem; resolvent bounds",
+      "priority": "adjacent",
+      "annotation": "Note that revisits the proof of the Gearhart–Prüss–Hwang–Greiner theorem and gives an explicit estimate of the norm of a semigroup in terms of bounds on the resolvent of its generator (from the abstract). Wei (2021) presents his Gearhart–Prüss type theorem as motivated by this note, and says that it contains applications to the complex Airy operator, the complex harmonic oscillator and the Fokker–Planck operator. Cited on the page Couette flow (resolvent method) and on Enhanced-dissipation tools (proof of Wei's theorem), as reference [10] of Wei's paper. arXiv record: math.FA, submitted 23 January 2010, authors Bernard Helffer and Johannes Sjoestrand, no journal reference; a later publication was not searched for.",
+      "checked_on": "2026-11-12",
+      "local_pdf": null,
+      "local_pdf_version": null,
+      "topic_group": "Deterministic enhanced dissipation",
+      "publication_status": "preprint",
+      "verification_level": "bibliographic metadata and abstract from the arXiv record; the paper itself not read",
+      "topic_subgroup": "General criteria and limits"
+    },
+    {
+      "key": "Gallay2022Bourbaki",
+      "title": "Estimations pseudo-spectrales et stabilité des tourbillons plans (d'après Te Li, Dongyi Wei et Zhifei Zhang)",
+      "authors": [
+        "Thierry Gallay"
+      ],
+      "arxiv": null,
+      "preprint_year": 2019,
+      "publication_year": 2022,
+      "journal": "Séminaire Bourbaki, exposé n°1167, Astérisque",
+      "doi": "10.24033/ast.1156",
+      "source_urls": [
+        "https://doi.org/10.24033/ast.1156",
+        "https://smf.emath.fr/publications/expose-bourbaki-1167-estimations-pseudo-spectrales-et-stabilite-des-tourbillons-plans"
+      ],
+      "topic": "survey; pseudospectral estimates; enhanced dissipation; stability of vortices",
+      "priority": "core",
+      "annotation": "Bourbaki seminar of November 2019 (72nd year, 2019–2020, no. 1167), in French. Section 1 sets up the abstract framework (a negative self-adjoint diffusion and an antisymmetric transport), defines enhanced dissipation and the stability threshold, and sketches the two ways of proving the linear estimates on the passive scalar in a channel: resolvent (pseudospectral) estimates on the imaginary axis, with a regularised sign function as test function and a splitting near and away from the critical layer (Proposition 1.9), and hypocoercivity. Section 2 is on the stability of the Lamb–Oseen vortices after Li, Wei and Zhang. Cited on the page Couette flow (resolvent method) for the splitting argument. Crossref record: Astérisque, published 10 May 2022, in the volume Séminaire Bourbaki, volume 2019/2021, exposés 1166–1180 (doi:10.24033/ast.1154); the Crossref record has no volume number and no pages, and the page of the publisher could not be read on 12 November 2026: to complete.",
+      "checked_on": "2026-11-12",
+      "local_pdf": null,
+      "local_pdf_version": null,
+      "topic_group": "Reviews",
+      "publication_status": "published",
+      "verification_level": "Section 1 read in the text of the exposé dated November 2019 (PDF supplied by M. Dolce); bibliographic metadata from the Crossref record of the DOI",
+      "date": "2022-05"
+    },
+    {
+      "key": "TrefethenEmbree2005",
+      "title": "Spectra and Pseudospectra: The Behavior of Nonnormal Matrices and Operators",
+      "authors": [
+        "Lloyd N. Trefethen",
+        "Mark Embree"
+      ],
+      "arxiv": null,
+      "preprint_year": null,
+      "publication_year": 2005,
+      "journal": "Princeton University Press",
+      "doi": "10.1515/9780691213101",
+      "source_urls": [
+        "https://doi.org/10.1515/9780691213101"
+      ],
+      "topic": "pseudospectra; nonnormal matrices and operators; book",
+      "priority": "adjacent",
+      "annotation": "Monograph on pseudospectra of matrices and operators that are not normal. Cited on the page Couette flow (resolvent method) as a general reference for the notion of pseudospectrum; no specific statement of the book is used. Crossref record: monograph, Princeton University Press, 2005, title Spectra and Pseudospectra with the subtitle The Behavior of Nonnormal Matrices and Operators.",
+      "checked_on": "2026-11-12",
+      "local_pdf": null,
+      "local_pdf_version": null,
+      "topic_group": "Deterministic enhanced dissipation",
+      "publication_status": "published",
+      "verification_level": "bibliographic metadata from the Crossref record of the DOI; the book itself not read",
+      "topic_subgroup": "General criteria and limits"
     }
   ]
 }

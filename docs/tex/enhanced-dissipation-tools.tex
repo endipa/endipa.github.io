@@ -120,8 +120,55 @@ Tools specific to enhanced dissipation. A statement comes to the Toolkit when se
 \section{Tools}
 \placeholder{For instance spectral-gap and resolvent lemmas, and the link between mixing and enhanced dissipation.}
 
+\subsection{From resolvent bounds to semigroup bounds}
+\begin{definition}[m-accretive operator]\label{def-m-accretive}
+A closed operator $H$ on a complex Hilbert space $X$ is m-accretive if, for every $\mu\in\mathbb{C}$ with $\operatorname{Re}\mu>0$, the operator $H+\mu$ is invertible and $\|(H+\mu)^{-1}\|\leq(\operatorname{Re}\mu)^{-1}$. Then $D(H)$ is dense, $\operatorname{Re}\langle Hf,f\rangle\geq0$ for $f\in D(H)$, and $-H$ generates a semigroup of contractions $e^{-tH}$.
+\end{definition}
+\begin{theorem}[Gearhart–Prüss type bound, Wei]\label{thm-gearhart-pruss-wei}
+Let $H$ be an m-accretive operator on $X$, and let
+\[\Psi(H):=\inf\big\{\|(H-i\lambda)f\|\ :\ f\in D(H),\ \|f\|=1,\ \lambda\in\mathbb{R}\big\}.\]
+Then $\|e^{-tH}\|\leq e^{\pi/2}\,e^{-\Psi(H)t}$ for all $t\geq0$.
+\end{theorem}
+\begin{idea}
+Cut the solution in time: $\chi(s)e^{-sH}f$ solves the equation with source $\chi'(s)e^{-sH}f$. After a Fourier transform in time the resolvent on the imaginary axis appears, and by Plancherel the definition of $\Psi$ becomes a weighted inequality for the nonincreasing function $g(s)=\|e^{-sH}f\|^2$. With $\chi$ exponential in the bulk this forces $g$ to decay like $e^{-2\Psi s}$. Bringing $\chi$ to zero at the two ends costs the constant $e^{\pi/2}$.
+\end{idea}
+\begin{proof}\label{proof-gearhart-pruss-wei}
+\emph{Sources.} \citet{Wei2021Resolvent}, Section 2, partly motivated by \citet{HelfferSjostrand2010}.
+
+Let $\Psi=\Psi(H)$. Since $D(H)$ is dense, it is enough to prove $\|e^{-tH}f\|\leq e^{\pi/2-\Psi t}\|f\|$ for $f\in D(H)$. Fix such an $f$ and let $g(s)=\|e^{-sH}f\|^2$, which is nonincreasing because the semigroup is a contraction. In particular there is nothing to prove if $\Psi t\leq\pi/2$, so we assume $\Psi t>\pi/2$.
+
+\textbf{Step 1 (an inequality for $g$).}
+\begin{claim}\label{clm-gearhart-pruss-wei}
+For every $l>0$ and every real $\chi\in C^1([0,l])$ with $\chi(0)=\chi(l)=0$,
+\[\int_0^l\chi'(s)^2g(s)\,ds\geq\Psi^2\int_0^l\chi(s)^2g(s)\,ds.\]
+\end{claim}
+\begin{proof}[Proof of the claim]\label{proof-clm-gearhart-pruss-wei}
+Let $u(s)=\chi(s)e^{-sH}f$ and $w(s)=\chi'(s)e^{-sH}f$ on $[0,l]$, so that $\partial_su+Hu=w$. For $\lambda\in\mathbb{R}$ let $\hat u(\lambda)=\int_0^lu(s)e^{-i\lambda s}\,ds$, and similarly $\hat w$. Since $H$ is closed, $\hat u(\lambda)\in D(H)$. Integrating by parts in $s$, the boundary terms vanish because $\chi(0)=\chi(l)=0$, and
+\[(H+i\lambda)\hat u(\lambda)=\hat w(\lambda).\]
+By the definition of $\Psi$, $\|\hat w(\lambda)\|\geq\Psi\|\hat u(\lambda)\|$ for every $\lambda$. By Plancherel's theorem for functions with values in $X$,
+\[\int_0^l\|w(s)\|^2\,ds=\frac{1}{2\pi}\int_{\mathbb{R}}\|\hat w(\lambda)\|^2\,d\lambda\geq\frac{\Psi^2}{2\pi}\int_{\mathbb{R}}\|\hat u(\lambda)\|^2\,d\lambda=\Psi^2\int_0^l\|u(s)\|^2\,ds.\]
+\end{proof}
+
+\textbf{Step 2 (choice of $\chi$).} Let
+\[t_1=\frac{\pi}{4\Psi},\qquad t_2=t-\frac{\pi}{4\Psi},\qquad t_3=t+\frac{\pi}{4\Psi},\qquad l=t+\frac{\pi}{2\Psi},\]
+so that $t_1<t_2$, and
+\[\chi(s)=\begin{cases}\sin(\Psi s),&0\leq s\leq t_1,\\ \frac{1}{\sqrt2}\,e^{\Psi s-\pi/4},&t_1\leq s\leq t_2,\\ e^{\Psi t-\pi/2}\cos(\Psi(s-t)),&t_2\leq s\leq l.\end{cases}\]
+This function is $C^1$ and vanishes at $0$ and $l$. Setting $h:=\chi'^2-\Psi^2\chi^2$, the claim reads $\int_0^lh\,g\,ds\geq0$, and
+\[h(s)=\begin{cases}\Psi^2\cos(2\Psi s),&0\leq s\leq t_1,\\ 0,&t_1\leq s\leq t_2,\\ -\Psi^2e^{2\Psi t-\pi}\cos(2\Psi(s-t)),&t_2\leq s\leq l.\end{cases}\]
+Hence $h\geq0$ on $[0,t_1]$ and on $[t_3,l]$, $h\leq0$ on $[t_2,t_3]$, and
+\[\int_0^{t_1}h\,ds=\frac{\Psi}{2},\qquad\int_{t_2}^{t}h\,ds=-\frac{\Psi}{2}e^{2\Psi t-\pi},\qquad\int_t^lh\,ds=0.\]
+
+\textbf{Step 3 (conclusion).} Since $g$ is nonincreasing, $hg\leq h\,g(0)$ on $[0,t_1]$, $hg\leq h\,g(t)$ on $[t_2,t]$, and $hg\leq h\,g(t_3)$ on $[t,l]$. Therefore
+\[0\leq\int_0^lh\,g\,ds\leq\frac{\Psi}{2}\,g(0)-\frac{\Psi}{2}\,e^{2\Psi t-\pi}g(t),\]
+that is $g(t)\leq e^{\pi-2\Psi t}g(0)$, which is the bound.
+\end{proof}
+
 
 \section*{References}
-%%wiki <!-- refs-begin: -->
+%%wiki <!-- refs-begin: Wei2021Resolvent HelfferSjostrand2010 -->
+\begin{thebibliography}{}
+\bibitem[Helffer and Sjöstrand(2010)]{HelfferSjostrand2010} B. Helffer and J. Sjöstrand, \emph{From resolvent bounds to semigroup bounds}, preprint (2010), \href{https://arxiv.org/abs/1001.4171}{arXiv:1001.4171}.
+\bibitem[Wei(2021)]{Wei2021Resolvent} D. Wei, \emph{Diffusion and mixing in fluid flow via the resolvent estimate}, Science China Mathematics \textbf{64} (2021), 507–518, \href{https://arxiv.org/abs/1811.11904}{arXiv:1811.11904}.
+\end{thebibliography}
 %%wiki <!-- refs-end -->
 \end{document}
