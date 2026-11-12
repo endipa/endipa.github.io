@@ -188,6 +188,14 @@ local FOLD_SCRIPT = [=[
 -- there; the styles are in theme.scss. In reading mode on a computer the menu is folded into the button "Menu" at the
 -- top left (class "menu-open" on <html> while it is open; not remembered: every page opens with the menu folded). Both are remembered in the browser (localStorage; without it they last for the
 -- page only). READING_HEAD runs in the <head>, so that a page opens directly in the chosen mode and size.
+-- (12 November 2026) The buttons stay under the pointer: a click changes the size of the text or the mode, hence the
+-- place of the column of the buttons (in reading mode the column follows the width of the text, and the line of the
+-- buttons may fold), so a second click without moving the mouse used to land elsewhere: after A+, on A-. Now the
+-- clicked button is put back where it was (keepUnder): the group is held there, fixed in the window (class "held";
+-- an empty box of its size keeps its place in the column), while the pointer is on it, and glides back to its place
+-- when the pointer leaves (release). It is held after every click, also when nothing moved at once: on tablets the top
+-- bar may come back a moment later and push the column down. The buttons themselves no longer grow with the text
+-- (theme.scss).
 local READING_HEAD = [=[
 <script>
 (function () { try { var d = document.documentElement, s = window.localStorage, t = parseFloat(s.getItem('wiki-text-scale'));
@@ -235,14 +243,52 @@ local READING_SCRIPT = [=[
     menuBtn.querySelector('i').className = open ? 'bi bi-x-lg' : 'bi bi-layout-text-sidebar-reverse';
     menuBtn.querySelector('span').textContent = open ? 'Close' : 'Menu';
   }
-  function setReading(on) {
-    if (!on) setMenu(false);
-    keepPlace(function () { root.classList.toggle('reading', on); }); put(R, on ? '1' : '0'); render();
+  // the buttons stay under the pointer: the group p is held where the clicked button was, until the pointer leaves it
+  function shift(p, dx, dy) {
+    p.style.left = (parseFloat(p.style.left) + dx) + 'px'; p.style.top = (parseFloat(p.style.top) + dy) + 'px';
   }
-  function setStep(i) {
+  function release(p, now) {
+    if (!p.vtHeld) return;
+    clearTimeout(p.vtTimer);
+    var done = function () {
+      p.classList.remove('held', 'gliding'); p.style.left = p.style.top = p.style.width = '';
+      if (p.vtSlot) { p.vtSlot.remove(); p.vtSlot = null; }
+      p.vtHeld = false;
+    };
+    if (now || !p.vtSlot) { done(); return; }
+    var to = p.vtSlot.getBoundingClientRect(), from = p.getBoundingClientRect();
+    p.classList.add('gliding'); shift(p, to.left - from.left, to.top - from.top);
+    p.vtTimer = setTimeout(done, 220);
+  }
+  function keepUnder(p, e, change) {
+    if (!e.detail && !p.vtHeld) { change(); return; }   // from the keyboard: there is no pointer to stay under
+    var b = e.currentTarget, a = b.getBoundingClientRect(), c;
+    clearTimeout(p.vtTimer); p.classList.remove('gliding');
+    change();
+    if (!p.vtHeld) {
+      var r = p.getBoundingClientRect(), cs = window.getComputedStyle(p);
+      if (cs.position === 'static') {
+        p.vtSlot = document.createElement('div');
+        p.vtSlot.style.height = r.height + 'px'; p.vtSlot.style.marginBottom = cs.marginBottom;
+        p.parentNode.insertBefore(p.vtSlot, p);
+      }
+      p.style.left = r.left + 'px'; p.style.top = r.top + 'px'; p.style.width = r.width + 'px';
+      p.classList.add('held'); p.vtHeld = true;
+    }
+    for (var k = 0; k < 2; k++) { c = b.getBoundingClientRect(); shift(p, a.left - c.left, a.top - c.top); }
+  }
+  function setReading(on, p, e) {
+    keepUnder(p, e, function () {
+      if (!on) setMenu(false);
+      keepPlace(function () { root.classList.toggle('reading', on); }); put(R, on ? '1' : '0'); render();
+    });
+  }
+  function setStep(i, p, e) {
     i = Math.max(0, Math.min(STEPS.length - 1, i));
-    keepPlace(function () { if (STEPS[i] === 1) root.style.removeProperty('--text-scale'); else root.style.setProperty('--text-scale', STEPS[i]); });
-    put(T, String(STEPS[i])); render();
+    keepUnder(p, e, function () {
+      keepPlace(function () { if (STEPS[i] === 1) root.style.removeProperty('--text-scale'); else root.style.setProperty('--text-scale', STEPS[i]); });
+      put(T, String(STEPS[i])); render();
+    });
   }
   function panel() {
     var p = document.createElement('div');
@@ -250,9 +296,9 @@ local READING_SCRIPT = [=[
     p.innerHTML = '<button type="button" class="vt-read"><i aria-hidden="true"></i><span></span></button>' +
       '<span class="vt-sizes"><button type="button" class="vt-minus" aria-label="Smaller text">A−</button>' +
       '<button type="button" class="vt-plus" aria-label="Larger text">A+</button></span>';
-    p.querySelector('.vt-read').addEventListener('click', function () { setReading(!root.classList.contains('reading')); });
-    p.querySelector('.vt-minus').addEventListener('click', function () { setStep(step() - 1); });
-    p.querySelector('.vt-plus').addEventListener('click', function () { setStep(step() + 1); });
+    p.querySelector('.vt-read').addEventListener('click', function (e) { setReading(!root.classList.contains('reading'), p, e); });
+    p.querySelector('.vt-minus').addEventListener('click', function (e) { setStep(step() - 1, p, e); });
+    p.querySelector('.vt-plus').addEventListener('click', function (e) { setStep(step() + 1, p, e); });
     panels.push(p);
     return p;
   }
@@ -267,7 +313,7 @@ local READING_SCRIPT = [=[
       bar.insertBefore(open, bar.querySelector('.quarto-search-button'));
       bar.parentElement.style.position = 'relative';
       bar.parentElement.appendChild(drop);
-      var show = function (v) { drop.classList.toggle('open', v); open.setAttribute('aria-expanded', v ? 'true' : 'false'); };
+      var show = function (v) { if (!v) release(drop, true); drop.classList.toggle('open', v); open.setAttribute('aria-expanded', v ? 'true' : 'false'); };
       open.addEventListener('click', function (e) { e.stopPropagation(); show(!drop.classList.contains('open')); });
       drop.addEventListener('click', function (e) { e.stopPropagation(); });
       document.addEventListener('click', function () { show(false); });
@@ -290,6 +336,17 @@ local READING_SCRIPT = [=[
       });
       setMenu(false);
     }
+    // a held group is let go when the mouse leaves it, at a click or a touch elsewhere, and when the window changes
+    document.addEventListener('pointermove', function (e) {
+      if (e.pointerType === 'touch') return;
+      panels.forEach(function (p) {
+        if (!p.vtHeld || p.classList.contains('gliding')) return;
+        var r = p.getBoundingClientRect();
+        if (e.clientX < r.left - 6 || e.clientX > r.right + 6 || e.clientY < r.top - 6 || e.clientY > r.bottom + 6) release(p);
+      });
+    });
+    document.addEventListener('pointerdown', function (e) { panels.forEach(function (p) { if (!p.contains(e.target)) release(p); }); }, true);
+    window.addEventListener('resize', function () { panels.forEach(function (p) { release(p, true); }); });
     render();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();

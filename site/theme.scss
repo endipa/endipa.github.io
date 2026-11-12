@@ -206,25 +206,34 @@ main :not(pre) > code { white-space: pre-wrap; overflow-wrap: anywhere; }
 // characters; the right column and the folded boxes stay as they are. On wide screens the menu is folded into the
 // button "Menu" at the top left (.vt-menu), which opens it beside the text (class "menu-open"). The text size scales
 // the root size, so that everything follows. Reading mode and text size are remembered in the browser.
+// (12 November 2026) The buttons of the group stay under the pointer, so that one can click A+ (or A-) several times
+// without moving the mouse: they used to grow with the text and to move with the column, and the second click on A+
+// landed on A-. Their sizes are multiples of $vt (the root size without the text scale) instead of rem, so the group
+// keeps its size; and while the pointer is on the group, the script holds it where it was (class "held": fixed in the
+// window; an empty box keeps its place in the column), then lets it glide back to its place (class "gliding").
 html:root { font-size: calc(#{$font-size-root} * var(--text-scale, 1)); }
-.view-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem; font-family: $font-family-sans-serif; }
+$vt: $font-size-root;
+.view-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3 * $vt; font-family: $font-family-sans-serif; }
 .view-tools button, .vt-menu { display: inline-flex; align-items: center; gap: 0.4rem; border: 1px solid #c9cfd8; border-radius: 4px; background: #fff;
   color: $primary; font-size: 0.8rem; font-weight: 500; line-height: 1.35; padding: 0.22rem 0.55rem; cursor: pointer; white-space: nowrap; }
+.view-tools button { gap: 0.4 * $vt; font-size: 0.8 * $vt; padding: 0.22 * $vt 0.55 * $vt; }
 .view-tools button:hover:not(:disabled), .view-tools button:focus-visible, .vt-menu:hover, .vt-menu:focus-visible { background: #eef3f8; border-color: #9fb3c8; }
 .view-tools button:disabled { color: #9aa3af; cursor: default; }
 .view-tools .vt-read[aria-pressed="true"] { background: $primary; border-color: $primary; color: #fff; }
 .view-tools .vt-read[aria-pressed="true"]:hover { background: darken($primary, 6%); }
 .view-tools .vt-sizes { display: inline-flex; }
-.view-tools .vt-sizes button { padding-left: 0.5rem; padding-right: 0.5rem; }
+.view-tools .vt-sizes button { padding-left: 0.5 * $vt; padding-right: 0.5 * $vt; }
 .view-tools .vt-sizes button:first-child { border-radius: 4px 0 0 4px; }
 .view-tools .vt-sizes button:last-child { border-radius: 0 4px 4px 0; margin-left: -1px; }
-#quarto-margin-sidebar > .view-tools { margin: 0 0 1.1rem; padding-top: 0.15rem; }
+#quarto-margin-sidebar > .view-tools { margin: 0 0 1.1rem; padding-top: 0.15 * $vt; }
 // phones: the group opens under the top bar, from the button "Aa"
 .vt-open { font-family: $font-family-sans-serif; font-weight: 600; font-size: 1rem; line-height: 1; padding: 0.3rem 0.5rem; color: inherit; }
-#quarto-header .view-tools { display: none; position: absolute; top: 100%; right: 0.5rem; z-index: 1040; background: #fff; border: 1px solid #d5dbe3;
-  border-radius: 6px; padding: 0.55rem 0.6rem; box-shadow: 0 8px 24px rgba(20, 28, 40, 0.14); }
+#quarto-header .view-tools { display: none; position: absolute; top: 100%; right: 0.5 * $vt; z-index: 1040; background: #fff; border: 1px solid #d5dbe3;
+  border-radius: 6px; padding: 0.55 * $vt 0.6 * $vt; box-shadow: 0 8px 24px rgba(20, 28, 40, 0.14); }
 #quarto-header .view-tools.open { display: flex; }
-#quarto-header .view-tools button { font-size: 0.9rem; padding: 0.4rem 0.7rem; }
+#quarto-header .view-tools button { font-size: 0.9 * $vt; padding: 0.4 * $vt 0.7 * $vt; }
+.view-tools.held { position: fixed !important; right: auto !important; margin: 0 !important; z-index: 1041; }
+.view-tools.held.gliding { transition: left 0.16s ease, top 0.16s ease; }
 @media (min-width: 768px) { .vt-open, #quarto-header .view-tools, #quarto-header .view-tools.open { display: none !important; } }
 .vt-menu { display: none; font-family: $font-family-sans-serif; }
 @media print { .view-tools, .vt-open, .vt-menu { display: none !important; } }
